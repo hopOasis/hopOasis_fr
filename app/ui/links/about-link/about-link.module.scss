@@ -1,0 +1,14 @@
+@import './../../../styles/';
+
+.about-link {
+  @include btn-styles;
+  border-radius: 64px;
+  width: 454px;
+  height: 80px;
+  color: #FFFFFF;
+  background-color: $about-btn-bgcolor;
+  @include typography-h2;
+
+  @include hover(background-color, $about-btn-hovercolor);
+  @include active(background-color, $about-btn-activecolor);
+}
