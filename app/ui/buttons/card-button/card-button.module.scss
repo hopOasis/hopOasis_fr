@@ -1,0 +1,15 @@
+@import './../../../styles/';
+
+.card-button {
+  @include btn-styles;
+  background-color: $color-grey-500;
+  border-radius: 64px;
+  width: 100%;
+  height: 56px;
+  color: #ffffff;
+  @include typography-h3;
+  
+  @include hover(background-color, $color-grey-400);
+  @include active(background-color, $color-grey-300);
+
+}
