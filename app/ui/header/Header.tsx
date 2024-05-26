@@ -1,10 +1,11 @@
-import { Navigation } from "../navigation";
-
+import HeaderMain from "./header-main/header-main";
+import HeaderTop from "./header-top/header-top";
+import styles from "./header.module.scss";
 export function Header() {
   return (
-    <header>
-      <h1>Хмільна оаза</h1>
-      <Navigation />
+    <header className={styles.header}>
+      <HeaderTop />
+      <HeaderMain />
     </header>
   );
 }

@@ -1,0 +1,12 @@
+@import './../../styles/';
+
+.navigation {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+
+  &__item {
+    @include typography-h2;
+    color: $white-color-500;
+  }
+}

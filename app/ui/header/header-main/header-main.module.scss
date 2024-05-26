@@ -1,0 +1,30 @@
+@import "./../../../styles/";
+
+.header-main {
+  padding-inline: 80px;
+  display: flex;
+  align-items: center;
+  height: $header-main-height;
+  background-image: url("./../../../../public/header-bg-image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__sale {
+    @include typography-h5;
+    color: $white-color-500;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    @include typography-h1;
+    color: $white-color-500;
+    margin-bottom: 8px;
+  }
+
+  &__information {
+    @include typography-h3;
+    color: $white-color-500;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+}

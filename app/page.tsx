@@ -3,8 +3,9 @@ import { Header } from "./ui/header/Header";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <div>
       <Header />
-    </main>
+      <main className={styles.main}></main>
+    </div>
   );
 }

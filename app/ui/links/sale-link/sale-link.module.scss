@@ -5,10 +5,10 @@
   border-radius: 64px;
   width: 454px;
   height: 80px;
-  background-color: $header-btn-bgcolor;
+  background-color: $white-color-500;
   @include typography-h2;
 
-  @include hover(background-color, $header-btn-hovercolor);
-  @include active(background-color, $header-btn-activecolor);
+  @include hover(background-color, $white-color-600);
+  @include active(background-color, $white-color-700);
 }
 
