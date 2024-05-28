@@ -1,4 +1,4 @@
-@import './../../../styles/';
+@import "./../../../styles/";
 
 .card-button {
   @include btn-styles;
@@ -8,8 +8,7 @@
   height: 56px;
   color: #ffffff;
   @include typography-h3;
-  
+
   @include hover(background-color, $color-grey-400);
   @include active(background-color, $color-grey-300);
-
 }
