@@ -1,4 +1,4 @@
-import { Icons } from "../../icons/icons";
+import Icons  from "../../icons/icons";
 import { Navigation } from "../../navigation/navigation";
 import styles from "./header-top.module.scss";
 
