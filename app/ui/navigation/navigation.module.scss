@@ -6,7 +6,7 @@
   list-style: none;
 
   &__item {
-    @include typography-h2;
+    @include typography-h4;
     color: $white-color-500;
   }
 }
