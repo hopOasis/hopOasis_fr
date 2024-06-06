@@ -2,10 +2,9 @@ import Link from "next/link";
 import styles from './navigation.module.scss';
 
 const links = [
-  { name: "Пиво", href: "/beer" },
-  { name: "Cідр", href: "/cider" },
-  { name: "Снеки", href: "/snacks" },
-  { name: "Набори", href: "/sets" },
+  { name: "Про нас", href: "/about-us" },
+  { name: "Магазин", href: "/shop" },
+  { name: "Доставка і оплата", href: "/dev-payment" },
 ];
 
 export function Navigation() {
