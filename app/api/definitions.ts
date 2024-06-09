@@ -1,10 +1,10 @@
 export interface ProductCard {
   image: string;
 	name: string;
-	volumeLarge: number;
-	volumeSmall: number;
+	volumeLarge: string;
+	volumeSmall: string;
 	priceSmall: number;
 	priceLarge: number;
-	descricpion: string;
+	description: string;
 	colorBeer: string;
 }
