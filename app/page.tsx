@@ -1,5 +1,5 @@
-import styles from "./page.module.scss";
-import { Header } from "./ui/header/Header";
+import styles from './page.module.scss';
+import { Header } from './ui/header/Header';
 
 export default function Home() {
   return (
