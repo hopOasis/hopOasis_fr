@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 import styles from './navigation.module.scss';
 
 const links = [
-  { name: "Про нас", href: "/about-us" },
-  { name: "Магазин", href: "/shop" },
-  { name: "Доставка і оплата", href: "/dev-payment" },
+  { name: 'Про нас', href: '/about-us' },
+  { name: 'Магазин', href: '/shop' },
+  { name: 'Доставка і оплата', href: '/dev-payment' },
 ];
 
 export function Navigation() {

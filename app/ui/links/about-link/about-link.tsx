@@ -1,9 +1,9 @@
-import Link from "next/link";
-import styles from "./about-link.module.scss";
+import Link from 'next/link';
+import styles from './about-link.module.scss';
 
 const AboutLink = () => {
   return (
-    <Link className={styles["about-link"]} href={"/about"}>
+    <Link className={styles['about-link']} href={'/about'}>
       Детальніше
     </Link>
   );

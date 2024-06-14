@@ -3,5 +3,5 @@ export default function Page() {
     <main>
       <h2>Сідр</h2>
     </main>
-  )
+  );
 }

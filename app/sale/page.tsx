@@ -1,5 +1,3 @@
-export default function Page () {
-  return (
-    <h2>Акції</h2>
-  )
+export default function Page() {
+  return <h2>Акції</h2>;
 }
