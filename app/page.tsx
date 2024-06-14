@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className={styles.main}></main>
+      <main className={styles.main}>{'I am main'}</main>
     </div>
   );
 }
