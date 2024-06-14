@@ -3,5 +3,5 @@ export default function Page() {
     <main>
       <h3>I am a beer</h3>
     </main>
-  )
+  );
 }
