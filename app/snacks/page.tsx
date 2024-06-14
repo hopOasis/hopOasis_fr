@@ -3,5 +3,5 @@ export default function Page() {
     <main>
       <h2>Снеки</h2>
     </main>
-  )
+  );
 }
