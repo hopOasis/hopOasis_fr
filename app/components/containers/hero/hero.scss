@@ -1,0 +1,42 @@
+@import "./../../../styles/variables/colors";
+@import "./../../../styles/mixins/animation";
+@import "./../../../styles/mixins/typography";
+
+.hero {
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(rgba(0, 0,0, 0.2), rgba(0, 0,0, 0.2)),
+    url("./../../../../public/header-bg-new.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  padding-top: 267px;
+  padding-bottom: 119px;
+
+  &__wrapper {
+    max-width: 483px;
+  }
+
+  &__title {
+    @include typography-h1;
+    color: $white-color-500;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    @include typography-h3;
+    color: $white-color-500;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .main-link {
+    min-width: 253px;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
