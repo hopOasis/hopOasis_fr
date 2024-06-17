@@ -1,0 +1,31 @@
+@import './../../../styles/';
+.header-bottom {
+  padding-inline: $desktop-padding-inline;
+  padding-top: 16px;
+  height: $header-bottom-height;
+  background-color: $black-color-500;
+
+  &__date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 142px;
+    border-radius: 64px;
+    background-color: $color-accent;
+    color: $white-color-500;
+    @include typography-h5;
+    margin-bottom: 9px;
+  }
+
+  &__sales {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    color: $white-color-500;
+    align-self: flex-end;
+  }
+
+
+}
