@@ -21,7 +21,7 @@ export default function Icons({
     heart: <HeartIconPath stroke={stroke} />,
     avatar: <AvatarIconPath stroke={stroke} />,
     trash: <TrashIconPath stroke={stroke} />,
-    arrow:  <ArrowIconPath stroke={stroke} />,
+    arrow: <ArrowIconPath stroke={stroke} />,
   };
 
   return (

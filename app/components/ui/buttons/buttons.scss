@@ -1,0 +1,27 @@
+@import "./../../../styles/variables/colors";
+@import "./../../../styles/mixins/typography";
+@import "./../../../styles/mixins/animation";
+
+.card-button {
+  display: block;
+  padding: 16px 40px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $color-grey-500;
+  color: white;
+  @include typography-h3;
+  @include hover(background-color, $color-grey-400);
+  @include active(background-color, $color-grey-300);
+}
+
+.fav-button {
+  width: auto;
+  path {
+    transition: stroke 0.3s ease-out;
+  }
+  &:hover {
+    path {
+      stroke: $color-accent;
+    }
+  }
+}
