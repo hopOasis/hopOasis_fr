@@ -1,9 +1,10 @@
 "use client";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis } from "lenis/react";
+import { IProps } from "./types";
 
-function SmoothScrolling({ children }) {
+function SmoothScrolling({ children }: IProps) {
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.2 }}>
       {children}
     </ReactLenis>
   );
