@@ -1,0 +1,28 @@
+@import "../../../styles/mixins/animation";
+@import "../../../styles/variables/colors";
+@import "../../../styles/variables/sizes";
+@import "../../../styles/mixins/typography";
+
+.action-section {
+  padding: 16px 0;
+  background-color: $black-color-500;
+  color: $white-color-500;
+
+  &__date {
+    display: inline-block;
+    @include typography-h5;
+    border: 1px solid $color-accent;
+    color: $color-accent;
+
+    border-radius: 4px;
+    margin-bottom: 9px;
+    padding: 4px 8px;
+  }
+
+  &__title {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
