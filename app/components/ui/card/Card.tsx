@@ -1,34 +1,40 @@
-import type { ProductCard } from '@/app/api/definitions';
-import Image from 'next/image';
-import { HiOutlineHeart } from 'react-icons/hi';
-import { CardButton } from '../buttons/card-button/card-button';
-import styles from './card.module.scss';
+"use client";
+import Image from "next/image";
+import "./card.scss";
+import Icons from "../icons/icons";
+import { IProductCard } from "@/app/types/types";
+import { CardButton, FavButton } from "../buttons/buttons";
 
-type Props = {
-  beer: Pick<
-    ProductCard,
-    'description' | 'name' | 'priceLarge' | 'volumeLarge'
-  >;
-};
-export const Card: React.FC<Props> = ({ beer }) => {
-  const { description, name, priceLarge, volumeLarge } = beer;
+export const Card = ({
+  id,
+  image,
+  name,
+  volumeLarge,
+  priceLarge,
+}: // description,
+IProductCard) => {
   return (
-    <article className={styles.card}>
-      <Image
-        src={'/beer.png'}
-        width={302}
-        height={302}
-        alt={`picture of ${name}`}
-      />
-      <div className={styles.card__description}>
-        <p className={styles.card__info}>{`${description} ${name}`}</p>
-        <p className={styles.card__info}>{volumeLarge}</p>
-        <p className={styles.card__price}>{`${priceLarge} грн.`}</p>
+    <article className="card shadow">
+      <div className="card__image-wrapper">
+        <Image
+          src={image}
+          width={302}
+          height={302}
+          alt={`picture of ${name}`}
+        />
+        <FavButton onClick={ ()=>{console.log("fav-button", id)}} />
+          
       </div>
-      <div className={styles['card__button-container']}>
-        <CardButton />
+      <div className="card__description-wrapper">
+        <p className="card__name">{`${name}`}</p>
+        <p className="card__info">{volumeLarge}</p>
+        <p className="card__price">{`${priceLarge} грн.`}</p>
+        <CardButton
+          onClick={() => {
+            console.log("button-id", id);
+          }}
+        />
       </div>
-      <HiOutlineHeart className={styles.card__icon} />
     </article>
   );
 };
