@@ -6,7 +6,7 @@ import img from './../../../../public/about-section.png'
 
 export default function AboutBrewery() {
   return (
-    <Section>
+    <Section id="anchor-about">
       <div className="about-section">
         <h2 className="title">Про броварню</h2>
         <Image
