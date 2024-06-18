@@ -3,8 +3,7 @@ import "./card.scss";
 import { IProductCard } from "@/app/types/types";
 import ImageBlock from "./ImageBlock";
 import DescriptionBlock from "./DescriptionBlock";
-import CardBackDrop from "./CardBackDrop";
-import CardFrontLines from "./CardFrontLines";
+import { useState } from "react";
 
 export const Card = ({
   id,
@@ -12,10 +11,17 @@ export const Card = ({
   name,
   volumeLarge,
   priceLarge,
-}: // description,
-IProductCard) => {
+}: IProductCard) => {
+  const [[x, y], setPoints] = useState([0, 0]);
   return (
-    <article className="card shadow">
+    <article
+      className="card shadow"
+      style={{ backgroundPosition: x + "px" + " " + y + "px" }}
+      onMouseMove={(e) => {
+        const { screenX, screenY } = e;
+        setPoints([screenX, screenY]);
+      }}
+    >
       <ImageBlock image={image} name={name} id={id} />
       <DescriptionBlock
         name={name}
@@ -23,8 +29,6 @@ IProductCard) => {
         priceLarge={priceLarge}
         id={id}
       />
-      <CardBackDrop />
-      <CardFrontLines/>
     </article>
   );
 };
