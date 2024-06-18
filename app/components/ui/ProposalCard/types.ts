@@ -1,7 +1,10 @@
-import { StaticImageData } from "next/image";
-
+type ImgType = {
+  src: string;
+  width: number;
+  height: number;
+};
 export type Props = {
-  img: StaticImageData;
+  img: ImgType;
   employee: string;
   proposalText: string;
   link: string;

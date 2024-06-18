@@ -9,8 +9,8 @@ export default function Proposals() {
       <div className="proposal">
         <h2 className="title">Пропозиції від нашої команди</h2>
         <div className="proposal-container">
-          {proposals.map((props) => (
-            <ProposalCard {...props} />
+          {proposals.map((props, idx) => (
+            <ProposalCard {...props} key={idx}/>
           ))}
         </div>
       </div>

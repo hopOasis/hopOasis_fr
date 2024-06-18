@@ -1,6 +1,7 @@
 import olena from "../../public/olena-proposal.png";
 import andriy from "../../public/andriy-proposal.png";
 import oleg from '../../public/oleh-proposal.png'
+
 export const proposals = [
   {
     img: {
