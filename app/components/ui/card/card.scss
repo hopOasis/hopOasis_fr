@@ -1,17 +1,20 @@
 @import "./../../../styles/variables/colors";
 @import "./../../../styles/mixins/typography";
 
-
 .card {
   position: relative;
   transition: transform 0.3s ease-out;
   overflow: hidden;
 
-  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-
   &:hover {
     transform: scale(1.05);
-
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.05) 20px,
+      rgba(0, 0, 0, 0.05) 20px,
+      rgba(0, 0, 0, 0.10) 43px
+    );
   }
 
   &__image-wrapper {
@@ -44,6 +47,4 @@
     color: $color-accent;
     margin-bottom: 16px;
   }
-
-
 }
