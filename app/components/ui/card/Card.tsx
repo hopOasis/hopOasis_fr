@@ -16,7 +16,10 @@ export const Card = ({
   return (
     <article
       className="card shadow"
-      style={{ backgroundPosition: x + "px" + " " + y + "px" }}
+      style={{
+        backgroundPositionX: x + "px",
+        backgroundPositionY: y + "px",
+      }}
       onMouseMove={(e) => {
         const { screenX, screenY } = e;
         setPoints([screenX, screenY]);
