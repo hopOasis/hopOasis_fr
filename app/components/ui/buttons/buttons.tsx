@@ -1,6 +1,7 @@
-import Icons from "../icons/icons";
-import "./buttons.scss";
-import { ICardButton } from "./types";
+import Link from 'next/link';
+import Icons from '../icons/icons';
+import './buttons.scss';
+import { ICardButton } from './types';
 
 export const CardButton = ({ onClick }: ICardButton) => {
   return (
