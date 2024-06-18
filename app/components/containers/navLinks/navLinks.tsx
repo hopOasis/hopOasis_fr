@@ -7,19 +7,23 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { LinkItem } from './types';
 gsap.registerPlugin(ScrollToPlugin);
 
+type CasesType = {
+  about: string;
+  delivery: string;
+};
 export function NavLinks() {
-  const cases = {
+  const cases: CasesType = {
     about: '#anchor-about',
     delivery: '#anchor-footer',
   };
 
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.target as HTMLAnchorElement;
-    if (!cases[target.id]) {
+    if (!cases[target.id as keyof CasesType]) {
       return;
     }
     e.preventDefault();
-    gsap.to(window, { scrollTo: cases[target.id] });
+    gsap.to(window, { scrollTo: cases[target.id as keyof CasesType] });
   };
 
   return (
