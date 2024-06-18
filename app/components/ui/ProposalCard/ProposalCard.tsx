@@ -17,6 +17,7 @@ export const ProposalCard = ({
           width={width}
           height={height}
           alt="Image of our worker"
+          placeholder='blur'
         />
       </div>
 
