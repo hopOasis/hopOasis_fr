@@ -2,11 +2,15 @@
 
 .footer {
   background-color: $black-color-500;
-  padding-block: 49px 70px;
+  padding: 40px 0 79px 0;
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: start;
   }
+}
+
+address {
+  font-style: unset;
 }
