@@ -3,8 +3,6 @@ import "./card.scss";
 import { IProductCard } from "@/app/types/types";
 import ImageBlock from "./ImageBlock";
 import DescriptionBlock from "./DescriptionBlock";
-import CardBackDrop from "./CardBackDrop";
-import CardFrontLines from "./CardFrontLines";
 
 export const Card = ({
   id,
@@ -23,8 +21,6 @@ IProductCard) => {
         priceLarge={priceLarge}
         id={id}
       />
-      <CardBackDrop />
-      <CardFrontLines/>
     </article>
   );
 };
