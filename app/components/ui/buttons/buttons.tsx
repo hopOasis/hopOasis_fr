@@ -1,6 +1,6 @@
 import Icons from '../icons/icons';
 import './buttons.scss';
-import { ICardButton, IQuestionButton } from './types';
+import { ICardButton } from './types';
 
 export const CardButton = ({ onClick }: ICardButton) => {
   return (
@@ -17,5 +17,3 @@ export const FavButton = ({ onClick }: ICardButton) => {
     </button>
   );
 };
-
-
