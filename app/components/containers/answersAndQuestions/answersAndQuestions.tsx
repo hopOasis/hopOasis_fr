@@ -1,4 +1,3 @@
-"use client";
 import Section from "../../ui/section/section";
 import "./answersAndQuestions.scss";
 import { QuestionsList } from "./question-list/QuestionItem";
