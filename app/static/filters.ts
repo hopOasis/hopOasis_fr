@@ -4,11 +4,11 @@ export const filters = [
     name: "пиво",
   },
   {
-    id: "beer",
+    id: "cider",
     name: "сидр",
   },
   {
-    id: "cider",
+    id: "snacks",
     name: "снеки",
   },
   {
