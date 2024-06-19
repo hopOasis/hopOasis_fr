@@ -1,6 +1,6 @@
 import Icons from '../icons/icons';
 import './buttons.scss';
-import { ICardButton, QuestionButton } from './types';
+import { ICardButton, IQuestionButton } from './types';
 
 export const CardButton = ({ onClick }: ICardButton) => {
   return (
@@ -18,7 +18,7 @@ export const FavButton = ({ onClick }: ICardButton) => {
   );
 };
 
-export const QuestionButton = ({ onClick, isActive }: QuestionButton) => {
+export const QuestionButton = ({ onClick, isActive }: IQuestionButton) => {
   return (
     <button
       type="button"

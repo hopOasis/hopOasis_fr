@@ -1,6 +1,6 @@
 export interface ICardButton {
   onClick: () => void;
 }
-export type QuestionButton = ICardButton & {
+export type IQuestionButton = ICardButton & {
   isActive: boolean;
 };
