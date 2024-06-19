@@ -4,7 +4,6 @@ import { IArrowLinkProps, IMainLinkProps } from "./types";
 import Icons from "../icons/icons";
 import { routes } from "@/app/static/routes";
 import Image from "next/image";
-import logo from "../../../../public/logo_2.svg";
 
 export default function MainLink({
   href,
@@ -33,7 +32,12 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
 export const LogoLink = () => {
   return (
     <Link href={routes[0].href}>
-      <Image src={logo} alt={"logo Khmilna oaza"} width={189} height={62} />
+      <Image
+        src="logo_2.svg"
+        alt="logo Khmilna oaza"
+        width={189}
+        height={62}
+      />
     </Link>
   );
 };
