@@ -1,4 +1,5 @@
-@import "../../../../styles/";
+@import "../../../../styles/mixins/typography";
+@import "../../../../styles/variables/colors";
 
 .questions-list {
   width: 100%;
@@ -19,28 +20,28 @@ details {
     border-bottom: 1px solid black;
     color: $black-color-500;
     @include typography-h3;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+  
   p {
     margin-top: 20px;
     position: relative;
     z-index: -1;
     @include typography-h3;
   }
-  // &::open {
-  //   p {
-  //     animation: fadeIn 0.35s ease-out;
-  //   }
-  // }
 }
 
-// details[open] {
-//   p {
-//     animation: fadeIn 0.35s ease-out;
-//   }
-// }
+details[open] {
+  p {
+    animation: fadeIn 0.35s ease-out;
+  }
 
-.animation {
-  animation: fadeIn 0.25s ease-out;
+  svg {
+    animation: rotation 0.35s ease-out both;
+  }
 }
 
 @keyframes fadeIn {
@@ -51,5 +52,14 @@ details {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-180deg);
   }
 }
