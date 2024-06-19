@@ -18,14 +18,4 @@ export const FavButton = ({ onClick }: ICardButton) => {
   );
 };
 
-export const QuestionButton = ({ onClick, isActive }: IQuestionButton) => {
-  return (
-    <button
-      type="button"
-      className={isActive ? 'question-button--active' : 'question-button'}
-      onClick={onClick}
-    >
-      <Icons name="chevronDown" stroke="#131313" />
-    </button>
-  );
-};
+
