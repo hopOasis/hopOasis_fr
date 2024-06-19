@@ -7,7 +7,7 @@ import Gallery from "../gallery/gallery";
 export default function WeakProducts() {
   return (
     <Section>
-      <p className="title">WeakProductsSection</p>
+      <p className="title">Товари тижня</p>
       <Gallery>
         {Array(4)
           .fill(1)
