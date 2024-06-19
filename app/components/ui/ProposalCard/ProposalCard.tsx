@@ -4,20 +4,20 @@ import './proposal-card.scss';
 import { Props } from './types';
 
 export const ProposalCard = ({
-  img:{src, width, height},
+  img: { src, width, height },
   employee,
   proposalText,
   link,
 }: Props) => {
   return (
-    <article className={"proposal-card shadow"}>
+    <article className={'proposal-card shadow'}>
       <div className="proposal-card__image-wrapper">
         <Image
           src={src}
           width={width}
           height={height}
           alt="Image of our worker"
-          placeholder='blur'
+          placeholder="blur"
         />
       </div>
 
