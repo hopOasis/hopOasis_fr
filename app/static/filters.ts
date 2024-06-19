@@ -1,22 +1,18 @@
 export const filters = [
   {
-    id: 1,
+    id: "beer",
     name: "пиво",
-    href: "/beer",
   },
   {
-    id: 2,
+    id: "beer",
     name: "сидр",
-    href: "/beer",
   },
   {
-    id: 3,
+    id: "cider",
     name: "снеки",
-    href: "/cider",
   },
   {
-    id: 4,
+    id: "sets",
     name: "набори",
-    href: "/sets",
   },
 ];
