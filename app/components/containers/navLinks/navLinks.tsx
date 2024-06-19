@@ -57,8 +57,17 @@ export const FooterNavLinks = () => {
 export const LinksFooter = () => {
   return (
     <ul className="links-footer__container">
-      {filters.map(({ id, name, href }) => (
-        <Link className="links-footer__item" href={href} key={id}>
+      {filters.map(({ id, name }) => (
+        <Link
+          className="links-footer__item"
+          href={{
+            pathname: routes[2].href,
+            query: {
+              filter: id,
+            },
+          }}
+          key={id}
+        >
           {name}
         </Link>
       ))}
