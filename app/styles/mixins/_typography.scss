@@ -8,6 +8,13 @@
 @mixin typography-h2 {
   font-weight: 500;
   font-size: $font-big;
+  line-height: 39.01px;
+}
+
+@mixin typography-h2-medium {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29.26px;
 }
 
 @mixin typography-h3 {
@@ -20,6 +27,11 @@
   font-size: $font-standart;
 }
 
+@mixin typography-text {
+  font-weight: 400;
+  font-size: $font-medium;
+  line-height: 24.38px;
+}
 @mixin typography-h5 {
   font-weight: 400;
   font-size: $font-small;

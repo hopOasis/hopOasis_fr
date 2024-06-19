@@ -1,0 +1,65 @@
+@import "../../../../styles/mixins/typography";
+@import "../../../../styles/variables/colors";
+
+.questions-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+details {
+  overflow: hidden;
+
+  summary {
+    list-style-type: none;
+    cursor: pointer;
+    background-color: white;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid black;
+    color: $black-color-500;
+    @include typography-h3;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  p {
+    margin-top: 20px;
+    position: relative;
+    z-index: -1;
+    @include typography-h3;
+  }
+}
+
+details[open] {
+  p {
+    animation: fadeIn 0.35s ease-out;
+  }
+
+  svg {
+    animation: rotation 0.35s ease-out both;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}

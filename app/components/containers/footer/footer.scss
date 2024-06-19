@@ -1,3 +1,16 @@
-.footer{
-    
+@import "../../../styles/";
+
+.footer {
+  background-color: $black-color-500;
+  padding: 40px 0 79px 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+
+address {
+  font-style: unset;
 }

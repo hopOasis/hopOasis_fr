@@ -11,3 +11,32 @@
     color: $white-color-500;
   }
 }
+
+.footer-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+  @include typography-h2-medium;
+  color: $white-color-500
+  }
+}
+
+.links-footer {
+  &__title {
+    @include typography-h2-medium;
+    color: $white-color-500;
+    margin-bottom: 8px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__item {
+    @include typography-h5;
+    color: $white-color-500;
+    line-height: 17.07px;
+  }
+}

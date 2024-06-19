@@ -2,6 +2,8 @@ import Link from "next/link";
 import "./links.scss";
 import { IArrowLinkProps, IMainLinkProps } from "./types";
 import Icons from "../icons/icons";
+import { routes } from "@/app/static/routes";
+import Image from "next/image";
 
 export default function MainLink({
   href,
@@ -23,6 +25,19 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
     <Link href={href} className="arrow-link">
       <Icons name="arrow" stroke="#FF9A00" />
       <Icons name="arrow" stroke="#FF9A00" />
+    </Link>
+  );
+};
+
+export const LogoLink = () => {
+  return (
+    <Link href={routes[0].href}>
+      <Image
+        src="logo_2.svg"
+        alt="logo Khmilna oaza"
+        width={189}
+        height={62}
+      />
     </Link>
   );
 };

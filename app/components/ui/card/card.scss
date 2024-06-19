@@ -1,0 +1,50 @@
+@import "./../../../styles/variables/colors";
+@import "./../../../styles/mixins/typography";
+
+.card {
+  position: relative;
+  transition: transform 0.3s ease-out;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.05);
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.05) 20px,
+      rgba(0, 0, 0, 0.05) 20px,
+      rgba(0, 0, 0, 0.10) 72px
+    );
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  &__description-wrapper {
+    padding: 16px 27px;
+  }
+
+  &__name {
+    @include typography-h3;
+    margin-bottom: 7px;
+  }
+
+  &__info {
+    color: $black-color-500;
+    font-weight: 600;
+    line-height: 19.5px;
+  }
+
+  &__price {
+    @include typography-h2;
+    color: $color-accent;
+    margin-bottom: 16px;
+  }
+}

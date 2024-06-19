@@ -1,0 +1,24 @@
+.proposal-container {
+  display: grid;
+  grid-template-columns: minmax(65%, 1fr) minmax(30%, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 54px;
+
+  .proposal-card {
+    &:nth-child(1) {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    &:nth-child(2) {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    &:nth-child(3) {
+      grid-area: 1 / 2 / 3 / 3;
+      display: flex;
+      flex-direction: column;
+
+      .proposal-card__info {
+        padding: 0 16px 16px 16px;
+      }
+    }
+  }
+}

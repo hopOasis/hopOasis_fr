@@ -1,19 +1,20 @@
 import {
   ArrowIconPath,
   AvatarIconPath,
+  ChevronDownIconPath,
   HeartIconPath,
   PhoneIconPath,
   SearchIconPath,
   TrashIconPath,
-} from "./path";
-import { CasesType, IProps } from "./types";
+} from './path';
+import { CasesType, IProps } from './types';
 
 export default function Icons({
   name,
   width = 24,
   height = 24,
-  stroke = "#FFFBF4",
-  fill = "none",
+  stroke = '#FFFBF4',
+  fill = 'none',
 }: IProps) {
   const cases: CasesType = {
     search: <SearchIconPath stroke={stroke} />,
@@ -21,7 +22,8 @@ export default function Icons({
     heart: <HeartIconPath stroke={stroke} />,
     avatar: <AvatarIconPath stroke={stroke} />,
     trash: <TrashIconPath stroke={stroke} />,
-    arrow:  <ArrowIconPath stroke={stroke} />,
+    arrow: <ArrowIconPath stroke={stroke} />,
+    chevronDown: <ChevronDownIconPath stroke={stroke} />,
   };
 
   return (
