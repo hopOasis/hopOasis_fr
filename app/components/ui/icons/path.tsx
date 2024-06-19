@@ -1,4 +1,4 @@
-import { IPathProps } from "./types";
+import { IPathProps } from './types';
 
 export const SearchIconPath = ({ stroke }: IPathProps) => {
   return (
@@ -64,6 +64,18 @@ export const ArrowIconPath = ({ stroke }: IPathProps) => {
   return (
     <path
       d="M7 12H17M17 12L13 8M17 12L13 16"
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  );
+};
+
+export const ChevronDownIconPath = ({ stroke }: IPathProps) => {
+  return (
+    <path
+      d="M19 9.5L12 16.5L5 9.5"
       stroke={stroke}
       strokeWidth="2"
       strokeLinecap="round"

@@ -1,7 +1,9 @@
+import { StaticImageData } from 'next/image';
+
 type ImgType = {
-  src: string;
-  width: number;
-  height: number;
+  src: StaticImageData | string;
+  width: number | `${number}` | undefined;
+  height: number | `${number}` | undefined;
 };
 export type Props = {
   img: ImgType;
