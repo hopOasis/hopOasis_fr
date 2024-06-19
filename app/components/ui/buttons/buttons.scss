@@ -25,3 +25,25 @@
     }
   }
 }
+
+.question-button {
+  background: transparent;
+  transition: transform 0.6s;
+  path {
+    transition: stroke 0.3s ease-out;
+  }
+  &:hover {
+    path {
+      stroke: $color-accent;
+    }
+  }
+
+  &--active {
+    transition: transform 0.6s;
+    background: transparent;
+    transform: rotate(-90deg);
+    path {
+      stroke: $color-accent;
+    }
+  }
+}
