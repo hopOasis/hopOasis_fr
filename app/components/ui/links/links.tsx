@@ -31,7 +31,7 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
 
 export const LogoLink = () => {
   return (
-    <Link href={routes[0].href}>
+    <Link href={routes[0].href} className="logo-link">
       <Image
         src="logo_2.svg"
         alt="logo Khmilna oaza"
