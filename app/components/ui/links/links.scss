@@ -4,8 +4,9 @@
 
 .main-link {
   padding: 24px;
-  @include typography-h2;
+  @include typography-h2-medium;
   text-align: center;
+  border-radius: 4px;
 }
 
 .main-link.dark {
@@ -49,6 +50,6 @@
   }
 }
 
-.logo-link{
+.logo-link {
   max-width: 144.6px;
 }
