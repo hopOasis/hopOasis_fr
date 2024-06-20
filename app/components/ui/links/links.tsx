@@ -24,7 +24,6 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
   return (
     <Link href={href} className="arrow-link">
       <Icons name="arrow" stroke="#FF9A00" />
-      <Icons name="arrow" stroke="#FF9A00" />
     </Link>
   );
 };
