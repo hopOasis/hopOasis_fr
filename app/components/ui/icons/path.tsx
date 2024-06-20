@@ -1,5 +1,8 @@
 import { IPathProps } from './types';
 
+
+
+
 export const SearchIconPath = ({ stroke }: IPathProps) => {
   return (
     <path

@@ -8,11 +8,10 @@ export default function NavIcons() {
       {routes
         .filter(({ icon }) => !!icon)
         .map(({ href, icon }, idx) => (
-          <Link href={href} key={idx}>
-            {icon}
-          </Link>
+          <li key={idx}>
+            <Link href={href}>{icon}</Link>
+          </li>
         ))}
-
     </ul>
   );
 }

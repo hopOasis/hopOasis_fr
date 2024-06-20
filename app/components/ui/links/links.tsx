@@ -24,14 +24,13 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
   return (
     <Link href={href} className="arrow-link">
       <Icons name="arrow" stroke="#FF9A00" />
-      <Icons name="arrow" stroke="#FF9A00" />
     </Link>
   );
 };
 
 export const LogoLink = () => {
   return (
-    <Link href={routes[0].href}>
+    <Link href={routes[0].href} className="logo-link">
       <Image
         src="logo_2.svg"
         alt="logo Khmilna oaza"
