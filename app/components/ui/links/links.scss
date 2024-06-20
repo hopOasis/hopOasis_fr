@@ -4,8 +4,9 @@
 
 .main-link {
   padding: 24px;
-  @include typography-h2;
+  @include typography-h2-medium;
   text-align: center;
+  border-radius: 4px;
 }
 
 .main-link.dark {
@@ -29,22 +30,13 @@
   position: relative;
   overflow: hidden;
 
-  svg {
-    transition: transform 0.5s ease-out;
-    &:nth-child(2) {
-      position: absolute;
-      transform: translateX(-200%);
-    }
-  }
+  transition:transform 0.35s ease-out;
 
   &:hover {
-    svg {
-      &:nth-child(1) {
-        transform: translateX(200%) scale(0.3);
-      }
-      &:nth-child(2) {
-        transform: translateX(0) scale(1.7);
-      }
-    }
+    transform: scale(1.15);
   }
+}
+
+.logo-link {
+  max-width: 144.6px;
 }

@@ -8,13 +8,13 @@
 
   &:hover {
     transform: scale(1.05);
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.05),
-      rgba(0, 0, 0, 0.05) 20px,
-      rgba(0, 0, 0, 0.05) 20px,
-      rgba(0, 0, 0, 0.10) 72px
-    );
+    // background: repeating-linear-gradient(
+    //   45deg,
+    //   rgba(0, 0, 0, 0.05),
+    //   rgba(0, 0, 0, 0.05) 20px,
+    //   rgba(0, 0, 0, 0.05) 20px,
+    //   rgba(0, 0, 0, 0.10) 72px
+    // );
   }
 
   &__image-wrapper {
