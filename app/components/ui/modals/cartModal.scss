@@ -1,0 +1,48 @@
+@import "../../../styles/mixins/typography";
+@import "../../../styles/variables/colors";
+
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 1080px;
+
+  &__container {
+    position: relative;
+    padding: 0 64px;
+  }
+
+  &__container--line {
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      background-color: $color-grey-300;
+    }
+  }
+
+  &__section {
+    padding-bottom: 24px;
+    .cart-modal__title {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include typography-h2-medium;
+
+    padding: 17.5px 0;
+  }
+}

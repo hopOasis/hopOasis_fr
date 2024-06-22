@@ -2,6 +2,7 @@ import {
   ArrowIconPath,
   AvatarIconPath,
   ChevronDownIconPath,
+  CloseIconPath,
   HeartIconPath,
   PhoneIconPath,
   SearchIconPath,
@@ -24,6 +25,7 @@ export default function Icons({
     trash: <TrashIconPath stroke={stroke} />,
     arrow: <ArrowIconPath stroke={stroke} />,
     chevronDown: <ChevronDownIconPath stroke={stroke} />,
+    close: <CloseIconPath stroke={stroke} />,
   };
 
   return (

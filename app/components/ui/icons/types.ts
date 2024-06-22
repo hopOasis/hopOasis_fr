@@ -3,13 +3,14 @@ export interface IPathProps {
 }
 
 type IconType =
-  | 'search'
-  | 'phone'
-  | 'heart'
-  | 'avatar'
-  | 'trash'
-  | 'arrow'
-  | 'chevronDown';
+  | "search"
+  | "phone"
+  | "heart"
+  | "avatar"
+  | "trash"
+  | "arrow"
+  | "chevronDown"
+  | "close";
 
 export interface IProps {
   name: IconType;

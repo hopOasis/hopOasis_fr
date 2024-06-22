@@ -14,7 +14,7 @@ export const routes = [
     id: "search",
     name: "search",
     href: "/search",
-    icon: <Icons name="search" width={20} height={20}/>,
+    icon: <Icons name="search" width={20} height={20} />,
   },
   {
     id: "favorites",
@@ -22,7 +22,16 @@ export const routes = [
     href: "/favorites",
     icon: <Icons name="heart" />,
   },
-  { id: "avatar", name: "avatar", href: "/sign-in", icon: <Icons name="avatar" /> },
-
-  { id: "cart", name: "cart", href: "/cart", icon: <Icons name="trash" /> },
+  {
+    id: "avatar",
+    name: "avatar",
+    href: "/sign-in",
+    icon: <Icons name="avatar" />,
+  },
+  {
+    id: "cart",
+    name: "cart",
+    href: "/?cart=true",
+    icon: <Icons name="trash" />,
+  },
 ];

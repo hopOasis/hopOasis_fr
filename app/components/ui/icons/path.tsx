@@ -1,8 +1,6 @@
 import { IPathProps } from './types';
 
 
-
-
 export const SearchIconPath = ({ stroke }: IPathProps) => {
   return (
     <path
@@ -86,3 +84,19 @@ export const ChevronDownIconPath = ({ stroke }: IPathProps) => {
     />
   );
 };
+
+export const CloseIconPath = ({ stroke }: IPathProps) => {
+  return (
+    <path
+      d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18"
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  );
+};
+
+
+
+
