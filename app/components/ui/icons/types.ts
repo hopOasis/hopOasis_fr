@@ -9,8 +9,11 @@ type IconType =
   | "avatar"
   | "trash"
   | "arrow"
+  | "cart"
   | "chevronDown"
-  | "close";
+  | "close"
+  | "minus"
+  | "plus";
 
 export interface IProps {
   name: IconType;

@@ -1,5 +1,4 @@
-import { IPathProps } from './types';
-
+import { IPathProps } from "./types";
 
 export const SearchIconPath = ({ stroke }: IPathProps) => {
   return (
@@ -49,10 +48,23 @@ export const AvatarIconPath = ({ stroke }: IPathProps) => {
   );
 };
 
-export const TrashIconPath = ({ stroke }: IPathProps) => {
+
+export const CartIconPath = ({ stroke }: IPathProps) => {
   return (
     <path
       d="M3 3H3.26835C3.74213 3 3.97943 3 4.17267 3.08548C4.34304 3.16084 4.48871 3.28218 4.59375 3.43604C4.71269 3.61026 4.75564 3.8429 4.84137 4.30727L7.00004 16L17.4218 16C17.875 16 18.1023 16 18.29 15.9199C18.4559 15.8492 18.5989 15.7346 18.7051 15.5889C18.8252 15.4242 18.8761 15.2037 18.9777 14.7631L18.9785 14.76L20.5477 7.95996L20.5481 7.95854C20.7023 7.29016 20.7796 6.95515 20.6947 6.69238C20.6202 6.46182 20.4635 6.26634 20.2556 6.14192C20.0184 6 19.6758 6 18.9887 6H5.5M18 21C17.4477 21 17 20.5523 17 20C17 19.4477 17.4477 19 18 19C18.5523 19 19 19.4477 19 20C19 20.5523 18.5523 21 18 21ZM8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20C9 20.5523 8.55228 21 8 21Z"
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  );
+};
+
+export const TrashIconPath = ({ stroke }: IPathProps) => {
+  return (
+    <path
+      d="M14 10V17M10 10V17M6 6V17.8C6 18.9201 6 19.4798 6.21799 19.9076C6.40973 20.2839 6.71547 20.5905 7.0918 20.7822C7.5192 21 8.07899 21 9.19691 21H14.8031C15.921 21 16.48 21 16.9074 20.7822C17.2837 20.5905 17.5905 20.2839 17.7822 19.9076C18 19.4802 18 18.921 18 17.8031V6M6 6H8M6 6H4M8 6H16M8 6C8 5.06812 8 4.60241 8.15224 4.23486C8.35523 3.74481 8.74432 3.35523 9.23438 3.15224C9.60192 3 10.0681 3 11 3H13C13.9319 3 14.3978 3 14.7654 3.15224C15.2554 3.35523 15.6447 3.74481 15.8477 4.23486C15.9999 4.6024 16 5.06812 16 6M16 6H18M18 6H20"
       stroke={stroke}
       strokeWidth="2"
       strokeLinecap="round"
@@ -97,6 +109,26 @@ export const CloseIconPath = ({ stroke }: IPathProps) => {
   );
 };
 
+export const MinusIconPath = ({ stroke }: IPathProps) => {
+  return (
+    <path
+      d="M6 12H18"
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  );
+};
 
-
-
+export const PlusIconPath = ({ stroke }: IPathProps) => {
+  return (
+    <path
+      d="M6 12H12M12 12H18M12 12V18M12 12V6"
+      stroke={stroke}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  );
+};

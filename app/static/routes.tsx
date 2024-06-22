@@ -31,7 +31,7 @@ export const routes = [
   {
     id: "cart",
     name: "cart",
-    href: "/?cart=true",
-    icon: <Icons name="trash" />,
+    href: "?cart=true",
+    icon: <Icons name="cart" />,
   },
 ];
