@@ -5,6 +5,8 @@ import { Header } from "./components/containers/header/Header";
 import Footer from "./components/containers/footer/footer";
 import SmoothScrolling from "./components/ui/lenis/lenis";
 import "normalize.css/normalize.css";
+import Portal from "./components/containers/Portal/Portal";
+import CartModal from "./components/ui/modals/CartModal";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600"],
@@ -29,6 +31,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Portal />
         </body>
       </SmoothScrolling>
     </html>
