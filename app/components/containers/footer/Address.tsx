@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Address() {
   return (
-    <div>
-      <h4 className="links-footer__title">Магазини</h4>
+    <div className="footer-address">
+      <h4 className="footer__title">Магазини</h4>
       <address>
-        <ul className="links-footer__container">
+        <ul >
           {shops.map(({ id, name, href }) => (
             <li key={id}>
               <Link
