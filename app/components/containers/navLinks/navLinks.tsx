@@ -1,36 +1,15 @@
 "use client";
 import Link from "next/link";
 import "./navLinks.scss";
-import { routes } from "@/app/static/routes";
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { filters } from "@/app/static/filters";
-gsap.registerPlugin(ScrollToPlugin);
-
-type CasesType = {
-  about: string;
-  delivery: string;
-};
-
-const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  const target = e.target as HTMLAnchorElement;
-  const cases: CasesType = {
-    about: "#anchor-about",
-    delivery: "#anchor-footer",
-  };
-  if (!cases[target.id as keyof CasesType]) {
-    return;
-  }
-  e.preventDefault();
-  gsap.to(window, { scrollTo: cases[target.id as keyof CasesType] });
-};
+import { filters } from "../../..//static/filters";
+import { routes } from "../../../static/routes";
 
 export function NavLinks() {
   return (
     <ul className="navigation">
       {routes.slice(1, 4).map(({ name, href, id }) => (
         <li className="navigation__item" key={id}>
-          <Link href={href} onClick={onClick} id={id}>
+          <Link href={href} id={id}>
             {name}
           </Link>
         </li>
@@ -45,7 +24,7 @@ export const FooterNavLinks = () => {
     <ul className="footer-navigation">
       {preparedRoutes.map(({ name, href, id }) => (
         <li className="footer-navigation__item" key={id}>
-          <Link href={href} id={id} onClick={onClick}>
+          <Link href={href} id={id}>
             {name}
           </Link>
         </li>

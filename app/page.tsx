@@ -10,11 +10,12 @@ import { useEffect } from "react";
 import Scrollbar from "smooth-scrollbar";
 
 export default function Home() {
-  useEffect(() => {
-    const root = document.querySelector("body")!;
-    Scrollbar.init(root, { damping: 0.05, continuousScrolling: false });
-    
-  }, []);
+
+  // useEffect(() => {
+  //   const root = document.querySelector("main")!;
+  //   Scrollbar.init(root, { damping: 0.05 });
+  //   return () => Scrollbar.destroyAll();
+  // }, []);
 
   return (
     <main>

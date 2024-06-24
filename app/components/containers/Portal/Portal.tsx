@@ -9,5 +9,5 @@ export default function Portal() {
   const searchParams = useSearchParams();
   const modal = searchParams.get("cart");
 
-  return modal ? createPortal(<CartModal />, ref.current) : null;
+  return modal && ref.current ? createPortal(<CartModal />, ref.current) : null;
 }
