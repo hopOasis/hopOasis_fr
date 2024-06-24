@@ -7,10 +7,11 @@ import Scrollbar from "smooth-scrollbar";
 import { useEffect } from "react";
 
 export default function CartModal() {
-  useEffect(() => {
-    const root = document.querySelector("dialog")!;
-    Scrollbar.init(root, { damping: 0.05 });
-  }, []);
+
+  // useEffect(() => {
+  //   const root = document.querySelector("dialog")!;
+  //   Scrollbar.init(root, { damping: 0.05 });
+  // }, []);
 
   return (
     <dialog open className="cart-modal">
