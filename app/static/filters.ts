@@ -1,5 +1,9 @@
 export const filters = [
   {
+    id: "all",
+    name: "всі товари",
+  },
+  {
     id: "beer",
     name: "пиво",
   },
