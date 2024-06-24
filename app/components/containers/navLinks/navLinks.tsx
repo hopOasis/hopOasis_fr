@@ -3,13 +3,20 @@ import Link from "next/link";
 import "./navLinks.scss";
 import { filters } from "../../..//static/filters";
 import { routes } from "../../../static/routes";
+import { usePathname } from "next/navigation";
 
 export function NavLinks() {
+  const pathname = usePathname();
+  console.log(pathname);
   return (
     <ul className="navigation">
       {routes.slice(1, 4).map(({ name, href, id }) => (
         <li className="navigation__item" key={id}>
-          <Link href={href} id={id}>
+          <Link
+            className={href === pathname ? "active" : undefined}
+            href={href}
+            id={id}
+          >
             {name}
           </Link>
         </li>

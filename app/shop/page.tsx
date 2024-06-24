@@ -1,3 +1,4 @@
+"use client";
 import Gallery from "../components/containers/gallery/gallery";
 import Card from "../components/ui/card/Card";
 import Section from "../components/ui/section/section";
