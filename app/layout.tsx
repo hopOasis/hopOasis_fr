@@ -4,7 +4,6 @@ import "./styles/index.scss";
 import { Header } from "./components/containers/header/Header";
 import Footer from "./components/containers/footer/footer";
 import "normalize.css/normalize.css";
-import "locomotive-scroll/dist/locomotive-scroll.css";
 import Portal from "./components/containers/Portal/Portal";
 
 const montserrat = Montserrat({

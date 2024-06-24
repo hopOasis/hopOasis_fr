@@ -32,6 +32,7 @@ export default function CartList() {
       <ul className="cart__list">
         {items.map((props) => (
           <CartItem
+            key={props.id}
             {...props}
             remove={() => remove(props.id)}
             increment={() => increment(props.id)}
