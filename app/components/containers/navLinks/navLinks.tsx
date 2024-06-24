@@ -40,18 +40,19 @@ export const ContactsBlock = () => {
 export const LinksFooter = () => {
   return (
     <ul>
-      {filters.map(({ id, name }) => (
-        <Link
-          key={id}
-          href={{
-            pathname: routes[2].href,
-            query: {
-              filter: id,
-            },
-          }}
-        >
-          {name}
-        </Link>
+      {filters.slice(1).map(({ id, name }) => (
+        <li key={id}>
+          <Link
+            href={{
+              pathname: routes[2].href,
+              query: {
+                filter: id,
+              },
+            }}
+          >
+            {name}
+          </Link>
+        </li>
       ))}
     </ul>
   );
