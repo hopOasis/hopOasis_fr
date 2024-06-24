@@ -8,7 +8,6 @@ export default function Page() {
     <main>
       <Section>
         <h2>Пиво</h2>
-
         <Gallery>
           {Array(12)
             .fill(1)
