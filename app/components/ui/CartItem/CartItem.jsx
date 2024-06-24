@@ -12,7 +12,7 @@ export default function CartItem({
   remove,
 }) {
   return (
-    <li key={id} className="cart-modal__container cart__list-item --line">
+    <li className="cart-modal__container cart__list-item --line">
       <div className="list-item__left-block">
         <Image src={image} width={54} height={93} alt="item" />
         <h3>{name}</h3>
