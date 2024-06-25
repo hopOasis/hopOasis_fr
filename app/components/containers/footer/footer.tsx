@@ -1,15 +1,15 @@
-import './footer.scss';
-import {  FooterNavLinks } from '../navLinks/navLinks';
-import { LogoLink } from '../../ui/links/links';
-import Address from './Address';
-import FooterFilters from './FooterFilters';
+import { LogoLink } from "../../ui/links/links";
+import Address from "./Address";
+import FooterFilters from "./FooterFilters";
+import Contacts from "./Contacts";
+import "./footer.scss";
 
 export default function Footer() {
   return (
-    <footer className="footer" id="anchor-footer">
+    <footer className="footer t-w-500">
       <div className="footer__container container">
         <LogoLink />
-        <FooterNavLinks />
+        <Contacts />
         <Address />
         <FooterFilters />
       </div>
