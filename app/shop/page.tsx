@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import Filters from '../components/containers/filters/Filters';
 import Gallery from '../components/containers/gallery/gallery';
 import Card from '../components/ui/card/Card';
@@ -13,7 +14,9 @@ export default function Page() {
         <h1>
           <span className="t-b-100">Khmilna Oaza</span> | Магазин
         </h1>
-        <Filters />
+        <Suspense>
+          <Filters />
+        </Suspense>
         <Gallery>
           {Array(12)
             .fill(1)
