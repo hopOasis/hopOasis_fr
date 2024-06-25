@@ -28,8 +28,8 @@ export function NavLinks() {
 export const ContactsBlock = () => {
   return (
     <ul className="footer__contacts">
-      {contacts.map((el) => (
-        <li key={el}>
+      {contacts.map((el, idx) => (
+        <li key={idx}>
           <Link href={`tel:${el}`}>{el}</Link>
         </li>
       ))}
