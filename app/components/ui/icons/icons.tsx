@@ -42,6 +42,7 @@ export default function Icons({
       fill={fill}
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>{cases[name]}</title>
       {cases[name]}
     </svg>
   );

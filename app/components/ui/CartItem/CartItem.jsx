@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Icons from "../icons/icons";
+import Image from 'next/image';
+import Icons from '../icons/icons';
 
 export default function CartItem({
   id,
@@ -28,7 +28,7 @@ export default function CartItem({
           </button>
         </div>
         <div>
-          <span>{count * priceLarge + " грн"}</span>
+          <span>{`${count * priceLarge} грн`}</span>
         </div>
       </div>
       <button type="button" onClick={remove}>

@@ -1,8 +1,8 @@
-import { beer } from "@/app/static/bear";
-import Card from "../../ui/card/Card";
-import Section from "../../ui/section/section";
-import "./weakProducts.scss";
-import Gallery from "../gallery/gallery";
+import { beer } from '@/app/static/bear';
+import Card from '../../ui/card/Card';
+import Section from '../../ui/section/section';
+import './weakProducts.scss';
+import Gallery from '../gallery/gallery';
 
 export default function WeakProducts() {
   return (
@@ -11,8 +11,8 @@ export default function WeakProducts() {
       <Gallery>
         {Array(4)
           .fill(1)
-          .map((el, idx) => (
-            <Card {...beer} key={idx} />
+          .map(() => (
+            <Card {...beer} key={beer.id} />
           ))}
       </Gallery>
     </Section>

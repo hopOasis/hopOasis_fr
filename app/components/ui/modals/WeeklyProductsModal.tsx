@@ -1,6 +1,6 @@
-import { beer } from "@/app/static/bear";
-import Gallery from "../../containers/gallery/gallery";
-import Card from "../card/Card";
+import { beer } from '@/app/static/bear';
+import Gallery from '../../containers/gallery/gallery';
+import Card from '../card/Card';
 
 export default function WeeklyProductsModal() {
   return (
@@ -9,8 +9,8 @@ export default function WeeklyProductsModal() {
       <Gallery>
         {Array(3)
           .fill(1)
-          .map((el, idx) => (
-            <Card {...beer} key={idx} />
+          .map(() => (
+            <Card {...beer} key={beer.id} />
           ))}
       </Gallery>
     </section>
