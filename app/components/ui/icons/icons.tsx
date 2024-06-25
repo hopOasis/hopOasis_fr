@@ -36,13 +36,14 @@ export default function Icons({
 
   return (
     <svg
+      role="img"
+      aria-label="title"
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       fill={fill}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>{cases[name]}</title>
       {cases[name]}
     </svg>
   );

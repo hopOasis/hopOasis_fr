@@ -1,10 +1,10 @@
-"use client";
-import Link from "next/link";
-import "./navLinks.scss";
-import { filters } from "../../..//static/filters";
-import { routes } from "../../../static/routes";
-import { usePathname } from "next/navigation";
-import { contacts } from "@/app/static/contacts";
+'use client';
+import Link from 'next/link';
+import './navLinks.scss';
+import { contacts } from '@/app/static/contacts';
+import { usePathname } from 'next/navigation';
+import { filters } from '../../..//static/filters';
+import { routes } from '../../../static/routes';
 
 export function NavLinks() {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export function NavLinks() {
       {routes.slice(1, 4).map(({ name, href, id }) => (
         <li className="navigation__item" key={id}>
           <Link
-            className={href === pathname ? "active" : undefined}
+            className={href === pathname ? 'active' : undefined}
             href={href}
             id={id}
           >
@@ -28,8 +28,8 @@ export function NavLinks() {
 export const ContactsBlock = () => {
   return (
     <ul className="footer__contacts">
-      {contacts.map((el, idx) => (
-        <li key={idx}>
+      {contacts.map((el) => (
+        <li key={el}>
           <Link href={`tel:${el}`}>{el}</Link>
         </li>
       ))}
