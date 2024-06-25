@@ -1,6 +1,31 @@
 @import "../../styles/variables/colors";
 
 .single-page {
+  section {
+    &:first-of-type {
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+          max-width: 628px;
+        }
+      }
+    }
+  }
+
+  &__description-block {
+    min-width: 543px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+    button {
+      margin-right: auto;
+    }
+  }
+
   .title {
     button {
       color: $black-color-300;
