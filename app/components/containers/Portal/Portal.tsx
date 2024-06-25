@@ -12,9 +12,5 @@ export default function Portal() {
   useEffect(() => {
     setElement(document.querySelector('body'));
   }, []);
-  return modal && element ? (
-    createPortal(<CartModal />, element)
-  ) : (
-    <p>Ой, щось пішло не так!</p>
-  );
+  return modal && element && createPortal(<CartModal />, element);
 }
