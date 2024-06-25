@@ -1,0 +1,16 @@
+@import "../../../styles/mixins/typography";
+
+.shop-filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 48px;
+  max-width: 671px;
+
+  a {
+    @include typography-h2-medium;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

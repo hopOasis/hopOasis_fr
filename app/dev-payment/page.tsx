@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h2>Акції</h2>;
+  return <h2>Про нас</h2>;
 }

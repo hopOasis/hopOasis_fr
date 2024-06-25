@@ -1,6 +1,10 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+
 
 a {
   color: inherit;
@@ -33,10 +37,16 @@ a {
 button {
   outline: unset;
   border: unset;
+  background-color: transparent;
 }
 
 img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+dialog {
+  padding: 0;
+  border: unset;
 }

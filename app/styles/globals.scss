@@ -23,9 +23,21 @@
 
 .dark {
   background-color: $black-color-500;
-  color:  $white-color-500;
+  color: $white-color-500;
 }
 
 .light {
   background-color: $white-color-500;
+}
+
+.active {
+  color: $color-accent;
+}
+
+.t-b-100 {
+  color: #696969;
+}
+
+.t-w-500 {
+  color: #fffbf4;
 }

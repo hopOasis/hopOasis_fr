@@ -1,9 +1,13 @@
-.about-section{
-    img{
-        margin-bottom: 24px;
-    }
+.about-section {
+  img {
+    margin-bottom: 24px;
+  }
 
-    .text{
-        margin-bottom: 24px;
-    }
+  &__text-block {
+    text-align: justify;
+    display: flex;
+    gap: 24px;
+
+    margin-bottom: 24px;
+  }
 }
