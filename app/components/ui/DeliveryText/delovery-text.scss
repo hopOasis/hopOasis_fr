@@ -1,0 +1,14 @@
+@import "../../../styles/variables/colors";
+
+.delivery-text {
+  ul {
+    list-style-type: disc;
+    li {
+      margin-left: 20px;
+    }
+  }
+
+  span {
+    font-weight: 500;
+  }
+}

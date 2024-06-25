@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom';
 import CartModal from '../../ui/modals/CartModal';
 
 export default function Portal() {
+  const ref = useRef(document.querySelector('body'));
   const [element, setElement] = useState<HTMLBodyElement | null>(null);
-
   const searchParams = useSearchParams();
   const modal = searchParams.get('cart');
   useEffect(() => {
