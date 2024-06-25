@@ -16,6 +16,7 @@ export default function SinglePage() {
     <main className="single-page">
       <h3>I am a beer</h3>
       <Section>
+        <p className="accent">{beer.priceLarge} грн.</p>
         <Rating onChange={(value) => console.log(value)} />
         <CardButton
           onClick={() => {
