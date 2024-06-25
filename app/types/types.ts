@@ -4,5 +4,5 @@ export interface IProductCard {
   name: string;
   volumeLarge: string;
   priceLarge: number;
-  // description: string;
+  description: string;
 }
