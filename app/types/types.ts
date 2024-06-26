@@ -6,3 +6,10 @@ export interface IProductCard {
   priceLarge: number;
   description: string;
 }
+
+export interface IFeedbackCard {
+  img: string;
+  author: string;
+  rating: number;
+  feedback: string;
+}
