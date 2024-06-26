@@ -1,3 +1,4 @@
 export interface IProps {
-  onChange: (val:number) => void;
+  onChange: (val: number) => void;
+  rating: number;
 }

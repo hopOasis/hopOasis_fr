@@ -14,8 +14,8 @@ const style = {
   inactiveStrokeColor: "#696969",
 };
 
-export default function Rating({ onChange }: IProps) {
-  const [rating, setRating] = useState<number>(4);
+export default function Rating({ onChange, rating: highOrderRating }: IProps) {
+  const [rating, setRating] = useState<number>(highOrderRating);
   return (
     <ReactRating
       className="rating"

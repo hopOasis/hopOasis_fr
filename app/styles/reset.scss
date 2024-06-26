@@ -4,7 +4,11 @@
   box-sizing: border-box;
 }
 
-
+body {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: calc(24.38 / 20);
+}
 
 a {
   color: inherit;

@@ -42,3 +42,18 @@
 .t-w-500 {
   color: #fffbf4;
 }
+
+.typography {
+  &__h4 {
+    &__regular {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: calc(24.38 / 20);
+    }
+  }
+  &__h5 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: calc(19.5 / 16);
+  }
+}

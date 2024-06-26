@@ -9,6 +9,8 @@ import DeliveryText from "@/app/components/ui/DeliveryText/DeliveryText";
 import Icons from "@/app/components/ui/icons/icons";
 import { CardButton } from "@/app/components/ui/buttons/buttons";
 import Image from "next/image";
+import { feedback } from "@/app/static/feedbacks";
+import FeedBackCard from "@/app/components/ui/FeedBackCard/FeedBackCard";
 
 export default function SinglePage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -20,7 +22,10 @@ export default function SinglePage() {
         <div className="single-page__description-block">
           <h1>{beer.name}</h1>
           <p className="accent">{beer.priceLarge} грн.</p>
-          <Rating onChange={(value) => console.log(value)} />
+          <Rating
+            rating={beer.rating}
+            onChange={(value) => console.log(value)}
+          />
           <CardButton
             onClick={() => {
               console.log("button-id", beer.id);
@@ -41,6 +46,16 @@ export default function SinglePage() {
           onClick={(idx: number) => setActiveTab(idx)}
         />
         {[<p>{beer.description}</p>, <DeliveryText />][activeTab]}
+      </Section>
+      <Section>
+        <h2 className="title">Відгуки</h2>
+        <ul className="feedback__list">
+          {feedback.map((el, idx) => (
+            <li className="feedback__item shadow" key={idx}>
+              <FeedBackCard {...el} />
+            </li>
+          ))}
+        </ul>
       </Section>
     </main>
   );
