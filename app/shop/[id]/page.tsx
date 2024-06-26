@@ -20,8 +20,8 @@ export default function SinglePage() {
       <Section>
         <Image src={beer.image} alt={beer.name} width={628} height={431} />
         <div className="single-page__description-block">
-          <h1>{beer.name}</h1>
-          <p className="accent">{beer.priceLarge} грн.</p>
+          <h1 className="title">{beer.name}</h1>
+          <p className="title accent">{beer.priceLarge} грн.</p>
           <Rating
             rating={beer.rating}
             onChange={(value) => console.log(value)}
@@ -32,7 +32,7 @@ export default function SinglePage() {
             }}
           />
           <button
-            className="single-page__fav-button"
+            className="single-page__fav-button typography__h5"
             type="button"
             onChange={() => console.log(beer.id)}
           >
