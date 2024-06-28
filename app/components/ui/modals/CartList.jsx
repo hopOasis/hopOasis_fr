@@ -9,7 +9,7 @@ const initialState = Array(3)
   .map((el, idx) => ({ ...beer, id: idx, count: 1 }));
 
 export default function CartList() {
-  const [items, setItems] = useState(() => initialState);
+  const [items, setItems] = useState(initialState);
 
   const remove = (id) =>
     setItems(items.filter(({ id: prevId }) => prevId !== id));
