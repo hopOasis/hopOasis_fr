@@ -20,11 +20,11 @@ export default function CartItem({
       <div className="list-item__middle-block">
         <div className="incremenet-decrement">
           <button type="button" onClick={decrement}>
-            <Icons name="minus" stroke="#696969" />
+            <Icons name="minus" />
           </button>
           <span>{count}</span>
           <button type="button" onClick={increment}>
-            <Icons name="plus" stroke="#696969" />
+            <Icons name="plus" />
           </button>
         </div>
         <div>
@@ -32,7 +32,7 @@ export default function CartItem({
         </div>
       </div>
       <button type="button" onClick={remove}>
-        <Icons name="trash" stroke="#B3B3B2" />
+        <Icons name="trash" />
       </button>
     </li>
   );

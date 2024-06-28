@@ -36,7 +36,7 @@ export default function SinglePage() {
             type="button"
             onChange={() => console.log(beer.id)}
           >
-            <Icons name="heart" stroke="#292929" /> Додати до обраного
+            <Icons name="heart" /> Додати до обраного
           </button>
         </div>
       </Section>

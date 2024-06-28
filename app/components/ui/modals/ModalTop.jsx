@@ -11,7 +11,7 @@ export default function ModalTop() {
       <p className="cart-modal__title">
         Кошик
         <Link href="#" onClick={() => router.back()}>
-          <Icons name="close" stroke="#696969" />
+          <Icons name="close" />
         </Link>
       </p>
     </header>
