@@ -1,10 +1,8 @@
-'use client';
 import { beer } from '@/app/static/bear';
-// import Card from '../../ui/card/Card';
 import Section from '../../ui/section/section';
 import './weakProducts.scss';
 import { CardSlider } from '../../ui/slider/CardSlider';
-// import Gallery from '../gallery/gallery';
+import Card from '../../ui/card/Card';
 
 export default function WeakProducts() {
   const products = Array(8)
@@ -16,9 +14,13 @@ export default function WeakProducts() {
   return (
     <Section>
       <p className="title">Товари тижня</p>
-      {/* <Gallery> */}
-      <CardSlider products={products} />
-      {/* </Gallery> */}
+      <CardSlider
+        products={products.map((product) => (
+          <swiper-slide  key={product.id}>
+            <Card {...product} />
+          </swiper-slide>
+        ))}
+      />
     </Section>
   );
 }

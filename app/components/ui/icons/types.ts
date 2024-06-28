@@ -1,6 +1,4 @@
-export interface IPathProps {
-  stroke?: string;
-}
+
 
 type IconType =
   | "search"
@@ -13,7 +11,9 @@ type IconType =
   | "chevronDown"
   | "close"
   | "minus"
-  | "plus";
+  | "plus"
+  | "swiper-right-arrow"
+  | "swiper-left-arrow";
 
 export interface IProps {
   name: IconType;

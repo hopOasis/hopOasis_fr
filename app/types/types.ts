@@ -5,6 +5,7 @@ export interface IProductCard {
   volumeLarge: string;
   priceLarge: number;
   description: string;
+  rating: number;
 }
 
 export interface IFeedbackCard {

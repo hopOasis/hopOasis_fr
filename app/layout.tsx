@@ -4,7 +4,7 @@ import "./styles/index.scss";
 import Footer from "./components/containers/footer/footer";
 import { Header } from "./components/containers/header/Header";
 import "normalize.css/normalize.css";
-import { Suspense } from "react";
+import "swiper/scss";
 import Portal from "./components/containers/Portal/Portal";
 
 const montserrat = Montserrat({
