@@ -23,7 +23,7 @@ export default function MainLink({
 export const ArrowLink = ({ href }: IArrowLinkProps) => {
   return (
     <Link href={href} className="arrow-link">
-      <Icons name="arrow" stroke="#FF9A00" />
+      <Icons name="arrow"  />
     </Link>
   );
 };
@@ -31,12 +31,7 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
 export const LogoLink = () => {
   return (
     <Link href={routes[0].href} className="logo-link">
-      <Image
-        src="logo_2.svg"
-        alt="logo Khmilna oaza"
-        width={189}
-        height={62}
-      />
+      <Image src="/logo_2.svg" alt="logo Khmilna oaza" width={189} height={62} />
     </Link>
   );
 };

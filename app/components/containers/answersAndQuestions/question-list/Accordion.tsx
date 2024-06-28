@@ -9,7 +9,7 @@ export const Accordion = ({ id, question, answer }: IProps) => {
     >
       <summary className="questions-list__item-container">
         {`${id}. ${question}`}
-        <Icons name="chevronDown" stroke="#131313" />
+        <Icons name="chevronDown" />
       </summary>
       <p >{answer}</p>
     </details>

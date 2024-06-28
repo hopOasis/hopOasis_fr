@@ -13,7 +13,7 @@ export const CardButton = ({ onClick }: ICardButton) => {
 export const FavButton = ({ onClick }: ICardButton) => {
   return (
     <button type="button" className="fav-button" onClick={onClick}>
-      <Icons name="heart" stroke="#131313" />
+      <Icons name="heart" />
     </button>
   );
 };

@@ -14,12 +14,12 @@
 
 .fav-button {
   width: auto;
-  path {
-    transition: stroke 0.3s ease-out;
+  svg {
+    transition: color 0.35s ease-out;
   }
   &:hover {
-    path {
-      stroke: $color-accent;
+    svg {
+      color: $color-accent;
     }
   }
 }

@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import Icons from '../icons/icons';
+import Image from "next/image";
+import Icons from "../icons/icons";
 
 export default function CartItem({
-  id,
   image,
   name,
   count,
@@ -19,12 +18,20 @@ export default function CartItem({
       </div>
       <div className="list-item__middle-block">
         <div className="incremenet-decrement">
-          <button type="button" onClick={decrement}>
-            <Icons name="minus" stroke="#696969" />
+          <button
+            type="button"
+            className={count !== 1 ? "accent" : undefined}
+            onClick={decrement}
+          >
+            <Icons name="minus" />
           </button>
           <span>{count}</span>
-          <button type="button" onClick={increment}>
-            <Icons name="plus" stroke="#696969" />
+          <button
+            type="button"
+            className={count >= 1 ? "accent" : undefined}
+            onClick={increment}
+          >
+            <Icons name="plus" />
           </button>
         </div>
         <div>
@@ -32,7 +39,7 @@ export default function CartItem({
         </div>
       </div>
       <button type="button" onClick={remove}>
-        <Icons name="trash" stroke="#B3B3B2" />
+        <Icons name="trash" />
       </button>
     </li>
   );
