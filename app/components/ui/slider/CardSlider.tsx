@@ -1,18 +1,12 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import "./cardslider.scss";
 import { SwiperContainer, register } from "swiper/element/bundle";
 import Icons from "../icons/icons";
+import { IProps } from "./types";
 
-type Props = {
-  products: React.ReactElement[];
-  slidesPerView?: number;
-};
 
-export const CardSlider: React.FC<Props> = ({
-  products,
-  slidesPerView = 4,
-}) => {
+export const CardSlider = ({ products, slidesPerView = 4 }: IProps) => {
   const swiperElRef = useRef<SwiperContainer>(null);
   const [isActiveIdx, setIsActiveIdx] = useState(0);
 

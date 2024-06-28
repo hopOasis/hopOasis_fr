@@ -1,5 +1,6 @@
 swiper-container {
   display: flex;
+  z-index: 0;
 
   swiper-slide {
     margin-top: 10px;
