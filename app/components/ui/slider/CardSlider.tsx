@@ -1,14 +1,10 @@
-import { IProductCard } from '@/app/types/types';
-import React, { Suspense, useEffect, useRef } from 'react';
-import Card from '../card/Card';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import './cardslider.scss';
-import { SwiperContainer, register } from 'swiper/element/bundle';
-import { SwiperOptions } from 'swiper/types';
+"use client";
+import React, { useEffect, useRef } from "react";
+import "./cardslider.scss";
+import { SwiperContainer, register } from "swiper/element/bundle";
 
 type Props = {
-  products: IProductCard[];
+  products: React.ReactElement[];
   slidesPerView?: number;
 };
 
@@ -21,12 +17,7 @@ export const CardSlider: React.FC<Props> = ({
   useEffect(() => {
     register();
     if (swiperElRef.current) {
-      const params: SwiperOptions = {
-        spaceBetween: 24,
-        speed: 1000,
-      };
-
-      Object.assign(swiperElRef.current, params);
+      Object.assign(swiperElRef.current, {});
       swiperElRef.current.initialize();
     }
   }, []);
@@ -34,16 +25,13 @@ export const CardSlider: React.FC<Props> = ({
   return (
     <swiper-container
       slides-per-view={slidesPerView}
-      style={{ zIndex: 0 }}
+      space-between={24}
+      speed={1000}
       init={false}
       navigation={true}
       ref={swiperElRef}
     >
-      {products.map((product) => (
-        <swiper-slide style={{ padding: '20px' }} key={product.id}>
-          <Card {...product} />
-        </swiper-slide>
-      ))}
+      {products}
     </swiper-container>
   );
 };
