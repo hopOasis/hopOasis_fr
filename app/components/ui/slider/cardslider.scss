@@ -1,0 +1,11 @@
+@import '../../../styles/';
+
+.slider {
+background-color: blue;
+
+  &__slide {
+    background-color: $black-color-500;
+    position: relative;
+    width: fit-content;
+  }
+}
