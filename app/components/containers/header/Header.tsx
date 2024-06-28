@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header className="dark">
       <nav className="container nav-block">
-        <LogoLink/>
+        <LogoLink />
         <NavLinks />
         <NavIcons />
       </nav>

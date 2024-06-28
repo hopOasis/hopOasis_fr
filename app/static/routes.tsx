@@ -14,7 +14,7 @@ export const routes = [
     id: "search",
     name: "search",
     href: "/search",
-    icon: <Icons name="search" width={20} height={20} />,
+    icon: <Icons name="search" />,
   },
   {
     id: "favorites",
