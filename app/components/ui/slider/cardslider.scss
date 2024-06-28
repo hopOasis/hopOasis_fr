@@ -1,9 +1,29 @@
-@import "../../../styles/";
-
 swiper-container {
   display: flex;
   position: relative;
+
   swiper-slide {
-    padding-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+}
+
+.swiper-navigation {
+  position: relative;
+  top: -72px;
+  right: 0;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: #b3b3b2;
+
+  button {
+    transition: color 0.35s ease-out;
+    color: currentColor;
+  }
+
+  button.active-swiper-arrow {
+    color: black;
   }
 }
