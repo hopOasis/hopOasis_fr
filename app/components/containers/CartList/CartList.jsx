@@ -1,8 +1,9 @@
-'use client';
-import { beer } from '@/app/static/bear';
-import { useState } from 'react';
-import CartItem from '../../ui/CartItem/CartItem';
-import Total from './Total';
+"use client";
+import { beer } from "@/app/static/bear";
+import { useState } from "react";
+import CartItem from "../../ui/CartItem/CartItem";
+import Total from "../../ui/modals/Total";
+import "./cart-list.scss";
 
 const initialState = Array(3)
   .fill(1)
@@ -43,7 +44,7 @@ export default function CartList() {
       <Total
         total={items.reduce(
           (acc, { count, priceLarge }) => acc + count * priceLarge,
-          0,
+          0
         )}
       />
     </>

@@ -1,0 +1,30 @@
+.field {
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    transition: transform 0.35s ease-out;
+    background-color: white;
+    padding: 5px;
+  }
+
+  input {
+    border: 1px solid #b3b3b2;
+    outline: none;
+    padding: 11.5px 8px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 4px;
+
+    &:focus ~ label {
+      transform: translate(-10%, -125%) scale(0.8);
+    }
+  }
+
+  label.blur {
+    transform: translate(-10%, -125%) scale(0.8);
+  }
+}

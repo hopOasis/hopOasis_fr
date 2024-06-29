@@ -1,10 +1,10 @@
-'use client';
-import './cartModal.scss';
-import { useEffect } from 'react';
+"use client";
+import "./cartModal.scss";
+import { useEffect } from "react";
 // import Scrollbar from 'smooth-scrollbar';
-import CartList from './CartList';
-import ModalTop from './ModalTop';
-import WeeklyProductsModal from './WeeklyProductsModal';
+import CartList from "../../containers/CartList/CartList";
+import ModalTop from "./ModalTop";
+import WeeklyProductsModal from "./WeeklyProductsModal";
 
 export default function CartModal() {
   // useEffect(() => {

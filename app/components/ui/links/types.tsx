@@ -7,3 +7,9 @@ export interface IMainLinkProps {
 export interface IArrowLinkProps {
   href: string;
 }
+
+type variantType = "dark" | "light";
+
+export interface IPropsLogoLink {
+  variant?: variantType;
+}

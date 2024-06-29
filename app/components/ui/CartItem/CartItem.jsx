@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Icons from "../icons/icons";
+import IncrementDecrement from "../IncrementDecrement/IncrementDecrement";
 
 export default function CartItem({
   image,
@@ -17,23 +18,7 @@ export default function CartItem({
         <h3>{name}</h3>
       </div>
       <div className="list-item__middle-block">
-        <div className="incremenet-decrement">
-          <button
-            type="button"
-            className={count !== 1 ? "accent" : undefined}
-            onClick={decrement}
-          >
-            <Icons name="minus" />
-          </button>
-          <span>{count}</span>
-          <button
-            type="button"
-            className={count >= 1 ? "accent" : undefined}
-            onClick={increment}
-          >
-            <Icons name="plus" />
-          </button>
-        </div>
+        <IncrementDecrement count={count} increment={increment} decrement={decrement} />
         <div>
           <span>{`${count * priceLarge} грн`}</span>
         </div>

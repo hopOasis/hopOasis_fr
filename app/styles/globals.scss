@@ -35,8 +35,15 @@
   color: $color-accent;
 }
 
-.t-b-100 {
-  color: #696969;
+.t {
+  &-b {
+    &-50 {
+      color: #b3b3b2;
+    }
+    &-100 {
+      color: #696969;
+    }
+  }
 }
 
 .t-w-500 {
@@ -44,6 +51,11 @@
 }
 
 .typography {
+  &__h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: calc(29.26 / 24);
+  }
   &__h4 {
     &__regular {
       font-size: 20px;
@@ -55,5 +67,26 @@
     font-size: 16px;
     font-weight: 600;
     line-height: calc(19.5 / 16);
+  }
+  &__h8 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: calc(21.94 / 18);
+  }
+}
+
+.--line {
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background-color: $color-grey-300;
   }
 }
