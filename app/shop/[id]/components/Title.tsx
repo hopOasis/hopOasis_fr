@@ -1,4 +1,4 @@
-import { IPropsTitle } from "./types";
+import { IPropsTitle } from "../types";
 
 export default function Title({ active, onClick }: IPropsTitle) {
   return (
