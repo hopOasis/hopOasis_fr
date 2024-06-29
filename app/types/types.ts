@@ -14,3 +14,10 @@ export interface IFeedbackCard {
   rating: number;
   feedback: string;
 }
+
+export type FormFieldType = {
+  id: string;
+  type: string;
+  placeholder: string;
+  validation: (value: string) => boolean;
+};

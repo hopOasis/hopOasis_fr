@@ -1,0 +1,19 @@
+.checkout {
+  label {
+  }
+  input {
+    outline: none;
+    padding: 11.5px 8px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 4px;
+  }
+}
+
+.form {
+  &__fields-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
