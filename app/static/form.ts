@@ -34,3 +34,22 @@ export const fields = [
     },
   },
 ];
+
+export const radio = [
+  {
+    id: "cash",
+    name:"payment",
+    placeholder: "Оплата при отриманні замовлення",
+  },
+  {
+    id: "LiqPay",
+    name:"payment",
+    type: "checkbox",
+    placeholder: "Карта Visa і MasterCard (LiqPay)",
+  },
+  {
+    id: "NovaPay",
+    name:"payment",
+    placeholder: "Карта Visa і MasterCard (NovaPay)",
+  },
+];

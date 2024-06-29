@@ -51,6 +51,11 @@
 }
 
 .typography {
+  &__h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: calc(29.26 / 24);
+  }
   &__h4 {
     &__regular {
       font-size: 20px;
@@ -67,5 +72,21 @@
     font-size: 18px;
     font-weight: 600;
     line-height: calc(21.94 / 18);
+  }
+}
+
+.--line {
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    background-color: $color-grey-300;
   }
 }
