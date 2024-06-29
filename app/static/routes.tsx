@@ -10,6 +10,7 @@ export const routes = [
     href: "/dev-payment",
     icon: null,
   },
+  { id: "checkout", name: "checkout", href: "/checkout", icon: null },
   {
     id: "search",
     name: "search",
