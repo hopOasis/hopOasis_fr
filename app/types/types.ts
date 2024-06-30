@@ -1,12 +1,25 @@
-export interface IProductCard {
-  id: string;
-  imageName: string[];
+export type ProductType = {
+  id: number;
   beerName: string;
-  volumeLarge: string;
+  volumeLarge: number;
+  volumeSmall: number;
   priceLarge: number;
+  priceSmall: number;
   description: string;
+  bearColor: string;
+  imageName: string[];
   rating: number;
-}
+};
+
+// export interface IProductCard {
+//   id: string;
+//   imageName: string[];
+//   beerName: string;
+//   volumeLarge: string;
+//   priceLarge: number;
+//   description: string;
+//   rating: number;
+// }
 
 export interface IFeedbackCard {
   img: string;

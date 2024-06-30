@@ -7,9 +7,14 @@ import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
 import { getData } from "../api/api";
 import { Endpoints } from "../api/types";
+import Loader from "../components/ui/Loader/Loader";
+import { ShopCardType } from "./types";
+
 
 export default async function Page() {
-  const products = await getData({ endpoint: Endpoints.beer });
+  const products: ShopCardType[] = await getData({
+    endpoint: Endpoints.beer,
+  });
   return (
     <MainLayout>
       <main className="shop-page">
@@ -20,7 +25,7 @@ export default async function Page() {
           <Suspense>
             <Filters />
           </Suspense>
-          <Suspense>
+          <Suspense fallback={<Loader />}>
             <Gallery>
               {products.map((product) => (
                 <Card {...product} key={product.id} />
