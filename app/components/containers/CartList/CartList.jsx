@@ -5,12 +5,8 @@ import CartItem from "../../ui/CartItem/CartItem";
 import Total from "../../ui/modals/Total";
 import "./cart-list.scss";
 
-const initialState = Array(3)
-  .fill(1)
-  .map((el, idx) => ({ ...beer, id: idx, count: 1 }));
-
-export default function CartList() {
-  const [items, setItems] = useState(initialState);
+export default function CartList({ list }) {
+  const [items, setItems] = useState(list);
 
   const remove = (id) =>
     setItems(items.filter(({ id: prevId }) => prevId !== id));
@@ -30,17 +26,21 @@ export default function CartList() {
 
   return (
     <>
-      <ul className="cart__list">
-        {items.map((props) => (
-          <CartItem
-            key={props.id}
-            {...props}
-            remove={() => remove(props.id)}
-            increment={() => increment(props.id)}
-            decrement={() => decrement(props.id)}
-          />
-        ))}
-      </ul>
+      {items.length > 0 ? (
+        <ul className="cart__list">
+          {items.map((props) => (
+            <CartItem
+              key={props.id}
+              {...props}
+              remove={() => remove(props.id)}
+              increment={() => increment(props.id)}
+              decrement={() => decrement(props.id)}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div>No items</div>
+      )}
       <Total
         total={items.reduce(
           (acc, { count, priceLarge }) => acc + count * priceLarge,

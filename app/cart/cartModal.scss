@@ -1,0 +1,46 @@
+@import "../styles/mixins/typography";
+@import "../styles/variables/colors";
+
+.cart-modal {
+  position: fixed !important;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 1080px;
+
+  height: 100dvh;
+  overflow-y: scroll;
+
+  &__container {
+    position: relative;
+    padding: 0 64px;
+  }
+
+  &__section {
+    padding-bottom: 24px;
+    .cart-modal__title {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include typography-h2-medium;
+
+    padding: 17.5px 0;
+
+    a {
+      color: $black-color-300;
+      transition: color 0.35s ease-out;
+      &:hover {
+        color: $black-color-500;
+      }
+    }
+  }
+}
+
+

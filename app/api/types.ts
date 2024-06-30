@@ -1,3 +1,5 @@
+import { ProductType } from "../types/types";
+
 export enum Endpoints {
   beer = "beers",
   cart = "cart",
@@ -10,7 +12,10 @@ export interface IPropsGetAll {
 
 export interface IPropsGetById {
   endpoint: Endpoints;
-  id:string
+  id: string;
 }
 
-
+export type CartResponseType = {
+  items: ProductType[];
+  priceForAll: number;
+};
