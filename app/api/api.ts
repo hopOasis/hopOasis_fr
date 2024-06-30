@@ -16,5 +16,7 @@ export async function getData({ endpoint }: IProps) {
     ),
   }));
 
+  console.log(result);
+
   return result;
 }
