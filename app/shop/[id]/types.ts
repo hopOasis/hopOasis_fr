@@ -1,23 +1,24 @@
-import { IProductCard } from "@/app/types/types";
+import { ProductType } from "@/app/types/types";
+export interface IProps {
+  params: {
+    id: string;
+  };
+}
 
 export interface IPropsTitle {
   active: number;
   onClick: (idx: number) => void;
 }
 type HeroSectionProps = Pick<
-  IProductCard,
-  "name" | "image" | "priceLarge" | "rating"
+  ProductType,
+  "beerName" | "imageName" | "priceLarge" | "rating" | "id"
 >;
 
 export interface IPropsHeroSection extends HeroSectionProps {
-  handleAddToFav: () => void;
-  handleAddToCart: () => void;
-  handleSetRating: (val: number) => void;
+  image: string;
 }
 
 type DeliveryPaymentProps = Pick<IProductCard, "description">;
 
 export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {
-  activeTab: number;
-  onClick: (idx: number) => void;
 }

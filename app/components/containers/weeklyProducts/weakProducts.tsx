@@ -5,6 +5,8 @@ import { CardSlider } from "../../ui/slider/CardSlider";
 import Card from "../../ui/card/Card";
 import { memo } from "react";
 
+
+
 const WeakProducts = memo(() => {
   const products = Array(8)
     .fill(1)
