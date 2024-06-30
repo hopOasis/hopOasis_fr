@@ -1,17 +1,15 @@
+import { getData } from "@/app/api/api";
 import Card from "@/app/components/ui/card/Card";
 import Section from "@/app/components/ui/section/section";
 import { CardSlider } from "@/app/components/ui/slider/CardSlider";
-import { beer } from "@/app/static/bear";
 import { memo } from "react";
+import { ShopCardType } from "../../types";
+import { Endpoints } from "@/app/api/types";
 
- const SpecialForYouSection = memo(() => {
-  const products = Array(8)
-    .fill(1)
-    .map(() => {
-      const id = crypto.randomUUID();
-      return { ...beer, id };
-    });
-
+ const SpecialForYouSection = memo(async () => {
+   const products: ShopCardType[] = await getData({
+     endpoint: Endpoints.beer,
+   });
   return (
     <Section>
       <p className="title">Спеціально для тебе</p>

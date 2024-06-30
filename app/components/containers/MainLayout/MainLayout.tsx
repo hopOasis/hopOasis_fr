@@ -9,7 +9,7 @@ export default function MainLayout({ children }: IProps) {
       <Header />
       {children}
       <Footer />
-      <Portal />
+      {/* <Portal /> */}
     </>
   );
 }

@@ -1,6 +1,4 @@
-"use client";
 import "./cartModal.scss";
-import { useEffect } from "react";
 // import Scrollbar from 'smooth-scrollbar';
 import CartList from "../../containers/CartList/CartList";
 import ModalTop from "./ModalTop";
