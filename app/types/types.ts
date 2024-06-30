@@ -1,7 +1,7 @@
 export interface IProductCard {
   id: string;
-  image: string;
-  name: string;
+  imageName: string[];
+  beerName: string;
   volumeLarge: string;
   priceLarge: number;
   description: string;
