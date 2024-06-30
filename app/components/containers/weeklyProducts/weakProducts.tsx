@@ -4,9 +4,6 @@ import "./weakProducts.scss";
 import { CardSlider } from "../../ui/slider/CardSlider";
 import Card from "../../ui/card/Card";
 import { memo } from "react";
-import { ShopCardType } from "@/app/shop/types";
-import { getData } from "@/app/api/api";
-import { Endpoints } from "@/app/api/types";
 
 
 

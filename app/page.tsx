@@ -9,12 +9,9 @@ import WeakProducts from "./components/containers/weeklyProducts/weakProducts";
 import MainLayout from "./components/containers/MainLayout/MainLayout";
 
 
+
 export default function Home() {
-  // useEffect(() => {
-  //   const root = document.querySelector("main")!;
-  //   Scrollbar.init(root, { damping: 0.05 });
-  //   return () => Scrollbar.destroyAll();
-  // }, []);
+
   return (
     <MainLayout>
       <main>
