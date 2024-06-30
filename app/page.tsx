@@ -8,10 +8,7 @@ import Proposals from "./components/containers/proposals/proposals";
 import WeakProducts from "./components/containers/weeklyProducts/weakProducts";
 import MainLayout from "./components/containers/MainLayout/MainLayout";
 
-
-
 export default function Home() {
-
   return (
     <MainLayout>
       <main>
