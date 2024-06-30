@@ -11,6 +11,15 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "**.eba-33ij8qpt.eu-central-1.elasticbeanstalk.com",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

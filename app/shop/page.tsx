@@ -1,14 +1,20 @@
-"use client";
 import { Suspense } from "react";
 import Filters from "../components/containers/filters/Filters";
 import Gallery from "../components/containers/gallery/gallery";
 import Card from "../components/ui/card/Card";
 import Section from "../components/ui/section/section";
-import { beer } from "../static/bear";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
+import { getData } from "../api/api";
+import { Endpoints } from "../api/types";
+import Loader from "../components/ui/Loader/Loader";
+import { ShopCardType } from "./types";
 
-export default function Page() {
+
+export default async function Page() {
+  const products: ShopCardType[] = await getData({
+    endpoint: Endpoints.beer,
+  });
   return (
     <MainLayout>
       <main className="shop-page">
@@ -19,13 +25,13 @@ export default function Page() {
           <Suspense>
             <Filters />
           </Suspense>
-          <Gallery>
-            {Array(12)
-              .fill(1)
-              .map(() => (
-                <Card {...beer} key={beer.id} />
+          <Suspense fallback={<Loader />}>
+            <Gallery>
+              {products.map((product) => (
+                <Card {...product} key={product.id} />
               ))}
-          </Gallery>
+            </Gallery>
+          </Suspense>
         </Section>
       </main>
     </MainLayout>
