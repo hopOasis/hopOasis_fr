@@ -1,23 +1,24 @@
 "use client";
-import { beer } from "@/app/static/bear";
 import { useState } from "react";
 import CartItem from "../../ui/CartItem/CartItem";
 import Total from "../../ui/modals/Total";
 import "./cart-list.scss";
+import { IProps } from "./types";
 
-export default function CartList({ list }) {
-  const [items, setItems] = useState(list);
 
-  const remove = (id) =>
+export default function CartList({ cart }: IProps) {
+  const [items, setItems] = useState(cart.items);
+
+  const remove = (id:number) =>
     setItems(items.filter(({ id: prevId }) => prevId !== id));
 
-  const increment = (id) => {
+  const increment = (id:number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     item.count += 1;
     setItems([...items]);
   };
 
-  const decrement = (id) => {
+  const decrement = (id:number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     if (item.count === 1) return;
     item.count -= 1;
