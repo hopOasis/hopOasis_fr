@@ -9,7 +9,7 @@ export default function AboutBrewery() {
   return (
     <Section id="anchor-about">
       <div className="about-section">
-        <h2 className="title">Про броварню</h2>
+        <h2 className="title typography__h2">Про броварню</h2>
         <Image
           src={img}
           height={500}

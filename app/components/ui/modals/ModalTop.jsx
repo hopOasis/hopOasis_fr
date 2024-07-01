@@ -8,7 +8,7 @@ export default function ModalTop() {
   const router = useRouter();
 
   return (
-    <header className="cart-modal__container --line">
+    <header className="cart-modal__container cart-modal__header --line">
       <p className="cart-modal__title typography__h3">
         Кошик
         <Link
