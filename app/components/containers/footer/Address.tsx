@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Address() {
   return (
     <div className="footer-address">
-      <h4 className="footer__title">Магазини</h4>
+      <h4 className="footer__title typography__h3">Магазини</h4>
       <address>
         <ul >
           {shops.map(({ id, name, href }) => (

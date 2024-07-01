@@ -6,7 +6,7 @@ import "./footer.scss";
 
 export default function Footer() {
   return (
-    <footer className="footer t-w-500">
+    <footer className="footer dark typography__h6 t-w-500">
       <div className="footer__container container">
         <LogoLink />
         <Contacts />
