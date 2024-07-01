@@ -27,6 +27,7 @@
 
 .light {
   background-color: var(--white-500);
+  color: var(--black-500);
 }
 .active,
 .accent {
@@ -35,17 +36,24 @@
 
 .t {
   &-b {
-    &-50 {
-      color: #b3b3b2;
-    }
     &-100 {
-      color: #696969;
+      color: var(--black-100);
+    }
+    &-50 {
+      color: var(--black-50);
     }
   }
 }
 
-.t-w-500 {
-  color: #fffbf4;
+.t {
+  &-w {
+    &-500 {
+      color: var(--white-500);
+    }
+    &-30 {
+      color: var(--white-30);
+    }
+  }
 }
 
 .--line {

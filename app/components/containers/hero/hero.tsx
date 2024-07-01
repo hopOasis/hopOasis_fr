@@ -4,8 +4,8 @@ import "./hero.scss";
 
 export default function Hero() {
   return (
-    <section className="hero">
-      <div className="container">
+    <section className="hero t-w-500">
+      <section className="container">
         <div className="hero__wrapper">
           <h1 className="hero__title">Завітай до нашої оази!</h1>
           <p className="hero__text">
@@ -16,7 +16,7 @@ export default function Hero() {
             Магазин
           </MainLink>
         </div>
-      </div>
+      </section>
     </section>
   );
 }
