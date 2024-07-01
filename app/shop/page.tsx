@@ -6,13 +6,12 @@ import Section from "../components/ui/section/section";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
 import { getData } from "../api/api";
-import { Endpoints } from "../api/types";
+import { Endpoints, PruductsResponseType } from "../api/types";
 import Loader from "../components/ui/Loader/Loader";
-import { ShopCardType } from "./types";
 
 
 export default async function Page() {
-  const products: ShopCardType[] = await getData({
+  const products: PruductsResponseType = await getData({
     endpoint: Endpoints.beer,
   });
   return (
@@ -27,7 +26,7 @@ export default async function Page() {
           </Suspense>
           <Suspense fallback={<Loader />}>
             <Gallery>
-              {products.map((product) => (
+              {products.content.map((product) => (
                 <Card {...product} key={product.id} />
               ))}
             </Gallery>
