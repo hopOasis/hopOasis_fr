@@ -1,22 +1,17 @@
-"use client";
 import "./cartModal.scss";
-import { useEffect } from "react";
-// import Scrollbar from 'smooth-scrollbar';
-import CartList from "../../containers/CartList/CartList";
 import ModalTop from "./ModalTop";
 import WeeklyProductsModal from "./WeeklyProductsModal";
+import { IPropsCartModal } from "./types";
+import CartList from "../../containers/CartList/CartList";
+import Overflow from "../Overflov/Overflow";
 
-export default function CartModal() {
-  // useEffect(() => {
-  //   const root = document.querySelector("dialog")!;
-  //   Scrollbar.init(root, { damping: 0.05 });
-  // }, []);
-
+export default  function CartModal({ cart, products }: IPropsCartModal) {
   return (
     <dialog open className="cart-modal">
+      <Overflow />
       <ModalTop />
-      <CartList />
-      <WeeklyProductsModal />
+      <CartList cart={cart} />
+      <WeeklyProductsModal products={products} />
     </dialog>
   );
 }

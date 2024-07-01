@@ -1,15 +1,11 @@
-'use client';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import CartModal from '../../ui/modals/CartModal';
+"use client";
+import { useSearchParams } from "next/navigation";
+import CartModal from "../../ui/modals/CartModal";
+import { IPropsCartModal } from "../../ui/modals/types";
 
-export default function Portal() {
-  const [element, setElement] = useState<HTMLBodyElement | null>(null);
+export default function Portal(props: IPropsCartModal) {
   const searchParams = useSearchParams();
-  const modal = searchParams.get('cart');
-  useEffect(() => {
-    setElement(document.querySelector('body'));
-  }, []);
-  return modal && element && createPortal(<CartModal />, element);
+  const modal = searchParams.get("cart");
+
+  return <>{modal && <CartModal {...props} />}</>;
 }

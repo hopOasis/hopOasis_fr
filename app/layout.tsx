@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./styles/index.scss";
-import Footer from "./components/containers/footer/footer";
-import { Header } from "./components/containers/header/Header";
 import "normalize.css/normalize.css";
 import "swiper/scss";
-import Portal from "./components/containers/Portal/Portal";
+import SmoothScrolling from "./components/ui/SmoothScrolling/SmoothScrolling";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600"],
@@ -27,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         {children}
+        <SmoothScrolling />
       </body>
     </html>
   );
