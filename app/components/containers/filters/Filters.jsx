@@ -16,7 +16,7 @@ export default function Filters() {
   };
 
   return (
-    <ul className="shop-filters">
+    <ul className="shop-filters typography__h3">
       {filters.map(({ id, name }) => (
         <li key={id}>
           <Link

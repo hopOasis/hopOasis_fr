@@ -3,12 +3,19 @@
 
 .card {
   position: relative;
-  transition: transform 0.3s ease-out;
+  transition: transform var(--main-transition);
   overflow: hidden;
   max-width: 302px;
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  &__name {
+    transition: color var(--main-transition);
+    &:hover {
+      color: var(--accent-500);
+    }
   }
 
   &__image-wrapper {
@@ -30,19 +37,10 @@
   }
 
   &__name {
-    @include typography-h3;
     margin-bottom: 7px;
   }
 
-  &__info {
-    color: $black-color-500;
-    font-weight: 600;
-    line-height: 19.5px;
-  }
-
   &__price {
-    @include typography-h2;
-    color: $color-accent;
     margin-bottom: 16px;
   }
 }

@@ -7,8 +7,6 @@
   align-items: center;
 
   &__item {
-    @include typography-h4;
-    color: $white-color-500;
   }
 }
 

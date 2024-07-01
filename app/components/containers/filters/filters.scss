@@ -8,7 +8,6 @@
   max-width: 671px;
 
   a {
-    @include typography-h2-medium;
     &::first-letter {
       text-transform: capitalize;
     }

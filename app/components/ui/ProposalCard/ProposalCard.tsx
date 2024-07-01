@@ -10,7 +10,7 @@ export const ProposalCard = ({
   link,
 }: Props) => {
   return (
-    <article className={'proposal-card shadow'}>
+    <article className="proposal-card shadow">
       <div className="proposal-card__image-wrapper">
         <Image
           src={src}
@@ -22,9 +22,9 @@ export const ProposalCard = ({
       </div>
 
       <div className="proposal-card__info">
-        <h4 className="proposal-card__header">{employee}</h4>
-        <p className="text-container text">{proposalText}</p>
-        <Link className="proposal-card__link" href={link}>
+        <h4 className="proposal-card__header typography__h5">{employee}</h4>
+        <p className="text-container ">{proposalText}</p>
+        <Link className="proposal-card__link accent" href={link}>
           Сторінка товару
         </Link>
       </div>

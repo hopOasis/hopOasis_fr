@@ -6,17 +6,12 @@
   gap: 40px;
 
   &__header {
-    font-weight: 600;
-    line-height: 19.5px;
-    color: $black-color-500;
     margin-bottom: 7px;
   }
 
   &__link {
-    color: $color-accent;
     font-weight: 600;
-    font-size: $font-medium;
-    line-height: 24.38px;
+    text-decoration: underline;
   }
 
   &__image-wrapper {

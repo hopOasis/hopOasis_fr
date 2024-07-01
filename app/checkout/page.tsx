@@ -10,6 +10,7 @@ import { beer } from "../static/bear";
 import Image from "next/image";
 import IncrementDecrement from "../components/ui/IncrementDecrement/IncrementDecrement";
 import Icons from "../components/ui/icons/icons";
+import { Palitra } from "../types/types";
 
 const initialState = Array(3)
   .fill(1)
@@ -41,12 +42,11 @@ export default function Page() {
     setItems([...items]);
   };
 
-  // console.log(values);
   return (
     <>
       <header className="checkout-header">
         <div className="container">
-          <LogoLink variant="dark" />
+          <LogoLink variant={Palitra.dark} />
         </div>
       </header>
       <main className="checkout container">
