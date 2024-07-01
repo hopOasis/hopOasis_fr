@@ -35,3 +35,8 @@ export type FormFieldType = {
   checked: boolean;
   validation: (value: string) => boolean;
 };
+
+export enum Palitra {
+  light = "light",
+  dark = "dark",
+}

@@ -4,6 +4,7 @@ import { IArrowLinkProps, IMainLinkProps, IPropsLogoLink } from "./types";
 import Icons from "../icons/icons";
 import { routes } from "@/app/static/routes";
 import Image from "next/image";
+import { Palitra } from "@/app/types/types";
 
 export default function MainLink({
   href,
@@ -13,7 +14,11 @@ export default function MainLink({
   return (
     <Link
       href={href}
-      className={variant === "dark" ? "main-link dark" : "main-link light"}
+      className={
+        variant === Palitra.dark
+          ? "typography__h3 main-link dark"
+          : "typography__h3 main-link light"
+      }
     >
       {children}
     </Link>
