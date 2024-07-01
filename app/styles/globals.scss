@@ -14,25 +14,23 @@
 
 .text {
   @include typography-text;
-  color: $black-color-500;
 }
 
 .shadow {
-  box-shadow: 8px 8px 16px 0px #13131333;
+  box-shadow: var(--main-shadow);
 }
 
 .dark {
-  background-color: $black-color-500;
-  color: $white-color-500;
+  background-color: var(--black-500);
+  color: var(--white-500);
 }
 
 .light {
-  background-color: $white-color-500;
+  background-color: var(--white-500);
 }
-
 .active,
 .accent {
-  color: $color-accent;
+  color: var(--accent-500);
 }
 
 .t {
@@ -48,31 +46,6 @@
 
 .t-w-500 {
   color: #fffbf4;
-}
-
-.typography {
-  &__h3 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: calc(29.26 / 24);
-  }
-  &__h4 {
-    &__regular {
-      font-size: 20px;
-      font-weight: 400;
-      line-height: calc(24.38 / 20);
-    }
-  }
-  &__h5 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: calc(19.5 / 16);
-  }
-  &__h8 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: calc(21.94 / 18);
-  }
 }
 
 .--line {
