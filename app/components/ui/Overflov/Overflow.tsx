@@ -6,7 +6,7 @@ export default function Overflow() {
   useEffect(() => {
     const root = document.body!;
     root.style.overflow = "hidden";
-    return () => (root.style.overflow = "unset");
+    return () => (root.style.overflow = "auto");
   }, []);
-  return <></>;
+  return null;
 }
