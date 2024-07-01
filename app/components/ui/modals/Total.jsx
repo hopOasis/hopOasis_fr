@@ -1,3 +1,4 @@
+"use client";
 import { routes } from "@/app/static/routes";
 import MainLink from "../links/links";
 import Link from "next/link";

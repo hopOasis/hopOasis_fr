@@ -12,7 +12,7 @@ const WeakProducts = memo(async () => {
   });
   return (
     <Section>
-      <p className="title">Товари тижня</p>
+      <p className="title typography__h2">Товари тижня</p>
       <CardSlider
         products={products.content.map((product) => (
           <swiper-slide key={product.id}>

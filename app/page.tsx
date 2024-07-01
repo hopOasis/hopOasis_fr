@@ -1,5 +1,3 @@
-import "./page.scss";
-// import Scrollbar from "smooth-scrollbar";
 import AboutBrewery from "./components/containers/aboutBrewery/aboutBrewery";
 import { ActionSection } from "./components/containers/actionSection/actionSection";
 import AnswersAndQuestions from "./components/containers/answersAndQuestions/answersAndQuestions";

@@ -46,6 +46,10 @@
 .cart-list {
   &__total {
     margin-bottom: 32px;
+    position: sticky;
+    background-color: white;
+    top: 0;
+    z-index: 1;
 
     .cart-modal__title {
       justify-content: flex-end;
@@ -66,7 +70,7 @@
   border-radius: 4px;
 
   transition: var(--main-transition);
-  transition-property:  background-color, border-color;
+  transition-property: background-color, border-color;
   &:hover {
     background-color: var(--accent-40);
     border-color: var(--accent-500);

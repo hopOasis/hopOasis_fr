@@ -7,7 +7,7 @@ export default function Proposals() {
   return (
     <Section>
       <div className="proposal">
-        <h2 className="title">Пропозиції від нашої команди</h2>
+        <h3 className="title typography__h2">Пропозиції від нашої команди</h3>
         <div className="proposal-container">
           {proposals.map(({ id, ...props }) => (
             <ProposalCard {...props} key={id} />

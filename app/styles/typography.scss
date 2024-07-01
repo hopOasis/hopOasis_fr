@@ -1,4 +1,9 @@
 .typography {
+   &__h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: calc(39.01 / 32);
+  }
   
   &__h3 {
     font-size: 24px;
