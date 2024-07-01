@@ -9,7 +9,7 @@ export default function ModalTop() {
 
   return (
     <header className="cart-modal__container --line">
-      <p className="cart-modal__title">
+      <p className="cart-modal__title typography__h3">
         Кошик
         <Link
           href="#"
