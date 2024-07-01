@@ -9,7 +9,6 @@ import { getData } from "../api/api";
 import { Endpoints, PruductsResponseType } from "../api/types";
 import Loader from "../components/ui/Loader/Loader";
 
-
 export default async function Page() {
   const products: PruductsResponseType = await getData({
     endpoint: Endpoints.beer,
@@ -18,7 +17,7 @@ export default async function Page() {
     <MainLayout>
       <main className="shop-page">
         <Section>
-          <h1>
+          <h1 className="typography__h4__regular">
             <span className="t-b-100">Khmilna Oaza</span> | Магазин
           </h1>
           <Suspense>
