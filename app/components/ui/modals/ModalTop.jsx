@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Icons from "../icons/icons";
+import { animate } from "@/app/utils";
 
 export default function ModalTop() {
   const router = useRouter();
@@ -10,7 +11,13 @@ export default function ModalTop() {
     <header className="cart-modal__container --line">
       <p className="cart-modal__title">
         Кошик
-        <Link href="#" onClick={() => router.back()}>
+        <Link
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            animate.modal.close({ cb: () => router.back() });
+          }}
+        >
           <Icons name="close" />
         </Link>
       </p>
