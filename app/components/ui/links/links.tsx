@@ -8,7 +8,7 @@ import { Palitra } from "@/app/types/types";
 
 export default function MainLink({
   href,
-  variant = "dark",
+  variant = Palitra.dark,
   children,
 }: IMainLinkProps) {
   return (
@@ -33,11 +33,11 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
   );
 };
 
-export const LogoLink = ({ variant = "light" }: IPropsLogoLink) => {
+export const LogoLink = ({ variant = Palitra.light }: IPropsLogoLink) => {
   return (
     <Link href={routes[0].href} className="logo-link">
       <Image
-        src={variant === "light" ? "/logo_light.svg" : "/logo_dark.svg"}
+        src={variant === Palitra.light ? "/logo_light.svg" : "/logo_dark.svg"}
         alt="logo Khmilna oaza"
         width={189}
         height={62}

@@ -3,6 +3,7 @@ import Section from "../../ui/section/section";
 import "./aboutBrewery.scss";
 import MainLink from "../../ui/links/links";
 import img from "./../../../../public/about-section.png";
+import { Palitra } from "@/app/types/types";
 
 export default function AboutBrewery() {
   return (
@@ -30,7 +31,7 @@ export default function AboutBrewery() {
             атмосферу справжньої пивної культури.
           </p>
         </div>
-        <MainLink href={"/about"} variant="dark">
+        <MainLink href={"/about"} variant={Palitra.dark}>
           Дізнатися більше
         </MainLink>
       </div>

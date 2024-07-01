@@ -1,6 +1,7 @@
 import { routes } from "@/app/static/routes";
 import MainLink from "../../ui/links/links";
 import "./hero.scss";
+import { Palitra } from "@/app/types/types";
 
 export default function Hero() {
   return (
@@ -12,7 +13,7 @@ export default function Hero() {
             Спробуй наші авторські види пива та відпочинь від повсякденної
             метушні
           </p>
-          <MainLink href={routes[2].href} variant="light">
+          <MainLink href={routes[2].href} variant={Palitra.light}>
             Магазин
           </MainLink>
         </div>
