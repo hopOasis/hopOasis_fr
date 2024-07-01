@@ -9,13 +9,30 @@
 }
 
 .main-link.dark {
-  @include hover(background-color, $white-color-600);
+  transition: var(--main-transition);
+  transition-property: color, background-color;
+  &:hover {
+    background-color: var(--accent-500);
+    color: var(--white-500);
+  }
+  &:active {
+    background-color: var(--accent-600);
+    color: var(--white-500);
+  }
 }
 
 .main-link.light {
-  @include hover(background-color, $white-color-600);
+  transition: var(--main-transition);
+  transition-property: color, background-color;
 
-  // @include active(background-color, $white-color-700);
+  &:hover {
+    background-color: var(--accent-500);
+    color: var(--white-500);
+  }
+  &:active {
+    background-color: var(--accent-600);
+    color: var(--white-500);
+  }
 }
 
 .arrow-link {
@@ -23,8 +40,8 @@
   color: var(--accent-500);
   border-radius: 4px;
   padding: 8px 16px;
-  transition:transform 0.35s ease-out;
-  
+  transition: transform 0.35s ease-out;
+
   display: flex;
   align-items: center;
   justify-content: center;
