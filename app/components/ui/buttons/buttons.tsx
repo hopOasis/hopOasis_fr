@@ -4,7 +4,7 @@ import { ICardButton } from './types';
 
 export const CardButton = ({ onClick }: ICardButton) => {
   return (
-    <button type="button" className="card-button" onClick={onClick}>
+    <button type="button" className="card-button main-link dark" onClick={onClick}>
       У кошик
     </button>
   );

@@ -15,7 +15,7 @@ export const Card = ({
     <article className="card shadow">
       <ImageBlock image={imageName?.[0]} name={beerName} id={id} />
       <DescriptionBlock
-        name={beerName}
+        beerName={beerName}
         volumeLarge={volumeLarge}
         priceLarge={priceLarge}
         id={id}

@@ -1,47 +1,18 @@
-@import "./../../../styles/variables/colors";
-@import "./../../../styles/mixins/typography";
-@import "./../../../styles/mixins/animation";
 
-.card-button {
+.card-button.main-link {
   padding: 16px 40px;
   text-align: center;
-  background-color: $color-grey-500;
-  color: $white-color-500;
-  @include typography-h3;
-  @include hover(background-color, $color-grey-400);
-  @include active(background-color, $color-grey-300);
+  letter-spacing: -0.5px;
 }
 
 .fav-button {
   width: auto;
   svg {
-    transition: color 0.35s ease-out;
+    transition: color var(--main-transition);
   }
   &:hover {
     svg {
-      color: $color-accent;
-    }
-  }
-}
-
-.question-button {
-  background: transparent;
-  transition: transform 0.6s;
-  path {
-    transition: stroke 0.3s ease-out;
-  }
-  &:hover {
-    path {
-      stroke: $color-accent;
-    }
-  }
-
-  &--active {
-    transition: transform 0.6s;
-    background: transparent;
-    transform: rotate(-90deg);
-    path {
-      stroke: $color-accent;
+      color: var(--accent-500);
     }
   }
 }

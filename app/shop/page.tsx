@@ -20,9 +20,7 @@ export default async function Page() {
           <h1 className="typography__h4__regular">
             <span className="t-b-100">Khmilna Oaza</span> | Магазин
           </h1>
-          <Suspense>
-            <Filters />
-          </Suspense>
+          <Filters />
           <Suspense fallback={<Loader />}>
             <Gallery>
               {products.content.map((product) => (
