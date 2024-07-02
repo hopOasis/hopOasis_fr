@@ -9,7 +9,6 @@ export async function GET() {
   }
 
   const parsedRes: PruductsResponseType = await res.json();
-  console.log(parsedRes);
   
   const data = {
     ...parsedRes,
