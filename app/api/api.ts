@@ -7,7 +7,6 @@ import {
 
 
 export async function postCartData({ endpoint, body }: IPropsGetAll) {
-  console.log({ endpoint: process.env.API_URL! + endpoint, body });
   const res = await fetch(process.env.API_URL! + endpoint, {
     method: "POST",
     body,

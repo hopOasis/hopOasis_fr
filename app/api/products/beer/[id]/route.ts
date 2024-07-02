@@ -1,12 +1,12 @@
 import { Endpoints } from "@/app/api/types";
 import { ProductType } from "@/app/types/types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 type Params = {
   id: number;
 };
 
-export async function GET(request: Request, context: { params: Params }) {
+export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
   const res = await fetch(process.env.API_URL! + Endpoints.beer + "/" + id);
   if (!res.ok) {

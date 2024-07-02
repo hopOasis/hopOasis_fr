@@ -3,7 +3,7 @@ import Link from "next/link";
 import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
 import { postCartData } from "@/app/api/api";
-import { Endpoints } from "@/app/api/types";
+import { Endpoints, ProxiEndpoints } from "@/app/api/types";
 
 export default function DescriptionBlock({
   beerName,
@@ -20,12 +20,13 @@ export default function DescriptionBlock({
       <p>{volumeLarge}</p>
       <p className="card__price typography__h3 accent">{`${priceLarge} грн.`}</p>
       <CardButton
-        onClick={() =>
-          postCartData({
-            endpoint: Endpoints.cart,
-            body: { itemId: id, quantity: 1, itemType: "BEER" },
-          })
-        }
+        onClick={async () => {
+          const body = { itemId: id, quantity: 1, itemType : "BEER"};
+          await fetch(ProxiEndpoints.cart, {
+            method: "POST",
+            body: JSON.stringify(body),
+          });
+        }}
       />
     </div>
   );

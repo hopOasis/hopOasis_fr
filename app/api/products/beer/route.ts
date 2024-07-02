@@ -1,7 +1,7 @@
 import { Endpoints, PruductsResponseType } from "../../types";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
   const res = await fetch(process.env.API_URL! + Endpoints.beer);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
