@@ -16,9 +16,9 @@ export default function HeroSection({
   return (
     <Section>
       <Image src={image} alt={beerName} width={628} height={431} />
-      <div className="single-page__description-block">
-        <h1 className="title">{beerName}</h1>
-        <p className="title accent">{priceLarge} грн.</p>
+      <div className="single-page__description-block ">
+        <h1 className="title typography__h2">{beerName}</h1>
+        <p className="title typography__h2 accent">{priceLarge} грн.</p>
         <Rating rating={rating} onChange={(value) => console.log(value)} />
         <CardButton onClick={() => console.log("button-id", id)} />
         <button

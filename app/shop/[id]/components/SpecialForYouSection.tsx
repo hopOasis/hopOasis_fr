@@ -11,7 +11,7 @@ import {  ProxiEndpoints, PruductsResponseType } from "@/app/api/types";
 
      return (
        <Section>
-         <p className="title">Спеціально для тебе</p>
+         <p className="title typography__h2">Спеціально для тебе</p>
          <CardSlider
            products={products.content.map((product) => (
              <swiper-slide key={product.id}>

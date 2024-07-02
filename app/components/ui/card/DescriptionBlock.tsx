@@ -2,8 +2,7 @@ import { CardButton } from "../buttons/buttons";
 import Link from "next/link";
 import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
-import { postCartData } from "@/app/api/api";
-import { Endpoints, ProxiEndpoints } from "@/app/api/types";
+import {  ProxiEndpoints } from "@/app/api/types";
 
 export default function DescriptionBlock({
   beerName,
