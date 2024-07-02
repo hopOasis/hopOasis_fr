@@ -1,18 +1,16 @@
-@import '../../../styles/variables/colors';
-
 .nav-icons {
   display: flex;
   align-items: center;
   gap: 20px;
 
   a {
-    svg {
-        transition: color 0.35s ease-out;
-      }
+    transition: color var(--main-transition);
+
     &:hover {
-      svg {
-        color: $color-accent;
-      }
+      color: var(--accent-500);
+    }
+    &:active {
+      color: var(--accent-600);
     }
   }
 }

@@ -1,16 +1,15 @@
-@import "../../styles/variables/colors";
-
 .single-page {
   margin-bottom: 144px;
   section {
     &:first-of-type {
       .container {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
 
         img {
-          max-width: 628px;
+          max-width: 400px;
+          margin: 0 auto;
         }
       }
     }
@@ -33,11 +32,11 @@
 
   .title {
     button {
-      color: $black-color-300;
+      color: var(--black-100);
     }
 
     button.active-tab {
-      color: $black-color-500;
+      color: var(--black-500);
     }
   }
 

@@ -5,13 +5,14 @@ import DeliveryPaymantSection from "./components/DeliveryPaymantSection";
 import SpecialForYouSection from "./components/SpecialForYouSection";
 import FeedBackSection from "./components/FeedBackSection";
 import MainLayout from "@/app/components/containers/MainLayout/MainLayout";
-import { getById } from "@/app/api/api";
-import { Endpoints } from "@/app/api/types";
+import { ProxiEndpoints } from "@/app/api/types";
 import { IProps } from "./types";
 import Loader from "@/app/components/ui/Loader/Loader";
 
 export default async function SinglePage({ params: { id } }: IProps) {
-  const product = await getById({ endpoint: Endpoints.beer, id });
+  const res = await fetch(ProxiEndpoints.beer + "/" + id);
+  const product = await res.json()
+  
   return (
     <MainLayout>
       <main className="single-page">

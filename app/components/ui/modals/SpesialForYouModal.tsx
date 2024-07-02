@@ -2,10 +2,10 @@ import Card from "../card/Card";
 import { CardSlider } from "../slider/CardSlider";
 import {  IPropsWeeklyProducts } from "./types";
 
-export default function WeeklyProductsModal({ products }: IPropsWeeklyProducts) {
+export default function SpesialForYouModal({ products }: IPropsWeeklyProducts) {
   return (
     <section className="cart-modal__container cart-modal__section ">
-      <p className="cart-modal__title">Рекомендовані товари</p>
+      <p className="cart-modal__title typography__h3">Спеціально для тебе</p>
       <CardSlider
         slidesPerView={3}
         products={products.map((product) => (

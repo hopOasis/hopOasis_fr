@@ -50,3 +50,8 @@ export type PruductsResponseType = {
   first: boolean;
   empty: boolean;
 };
+
+export enum ProxiEndpoints {
+  beer = `http://localhost:3000/api/products/beer`,
+  cart = "http://localhost:3000/api/cart",
+}
