@@ -20,5 +20,5 @@ export interface IPropsHeroSection extends HeroSectionProps {
 
 type DeliveryPaymentProps = Pick<IProductCard, "description">;
 
-export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {
-}
+export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {}
+
