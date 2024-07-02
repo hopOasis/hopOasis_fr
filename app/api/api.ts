@@ -24,21 +24,7 @@ export async function getData({ endpoint }: IPropsGetAll) {
   };
 }
 
-export async function getById({ endpoint, id }: IPropsGetById) {
-  const res = await fetch(process.env.API_URL! + endpoint + "/" + id);
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
 
-  const parsedRes: ProductType = await res.json();
-  return {
-    ...parsedRes,
-    imageName: parsedRes.imageName.map(
-      (name) => process.env.API_URL! + endpoint + "/images/" + name
-    ),
-  };
-}
 
 export async function getCartData({ endpoint }: IPropsGetAll) {
   const res = await fetch(process.env.API_URL! + endpoint);
@@ -47,7 +33,6 @@ export async function getCartData({ endpoint }: IPropsGetAll) {
     throw new Error("Failed to fetch data");
   }
   const parsedRes: CartResponseType = await res.json();
-
   return {
     ...parsedRes,
     items: parsedRes.items.map(({ imageName, ...rest }) => ({
@@ -56,5 +41,21 @@ export async function getCartData({ endpoint }: IPropsGetAll) {
         (name) => process.env.API_URL! + endpoint + "/images/" + name
       ),
     })),
+  };
+}
+
+export async function postCartData({ endpoint, body }: IPropsGetAll) {
+  console.log({ endpoint: process.env.API_URL! + endpoint, body });
+  const res = await fetch(process.env.API_URL! + endpoint, {
+    method: "POST",
+    body,
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const parsedRes: CartResponseType = await res.json();
+  console.log(parsedRes);
+  return {
+    message: "post cart",
   };
 }

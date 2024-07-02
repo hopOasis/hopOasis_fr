@@ -3,13 +3,12 @@ import "./weakProducts.scss";
 import { CardSlider } from "../../ui/slider/CardSlider";
 import Card from "../../ui/card/Card";
 import { memo } from "react";
-import { getData } from "@/app/api/api";
-import { Endpoints, PruductsResponseType } from "@/app/api/types";
+import {  ProxiEndpoints, PruductsResponseType } from "@/app/api/types";
 
 const WeakProducts = memo(async () => {
-  const products: PruductsResponseType = await getData({
-    endpoint: Endpoints.beer,
-  });
+   const res = await fetch(ProxiEndpoints.beer);
+   const products: PruductsResponseType = await res.json();
+
   return (
     <Section>
       <p className="title typography__h2">Товари тижня</p>

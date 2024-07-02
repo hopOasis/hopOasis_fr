@@ -2,6 +2,8 @@ import { CardButton } from "../buttons/buttons";
 import Link from "next/link";
 import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
+import { postCartData } from "@/app/api/api";
+import { Endpoints } from "@/app/api/types";
 
 export default function DescriptionBlock({
   beerName,
@@ -18,9 +20,12 @@ export default function DescriptionBlock({
       <p>{volumeLarge}</p>
       <p className="card__price typography__h3 accent">{`${priceLarge} грн.`}</p>
       <CardButton
-        onClick={() => {
-          console.log("button-id", id);
-        }}
+        onClick={() =>
+          postCartData({
+            endpoint: Endpoints.cart,
+            body: { itemId: id, quantity: 1, itemType: "BEER" },
+          })
+        }
       />
     </div>
   );

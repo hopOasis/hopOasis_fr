@@ -5,14 +5,13 @@ import Card from "../components/ui/card/Card";
 import Section from "../components/ui/section/section";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
-import { getData } from "../api/api";
-import { Endpoints, PruductsResponseType } from "../api/types";
 import Loader from "../components/ui/Loader/Loader";
+import { ProxiEndpoints, PruductsResponseType } from "../api/types";
 
 export default async function Page() {
-  const products: PruductsResponseType = await getData({
-    endpoint: Endpoints.beer,
-  });
+  const res = await fetch(ProxiEndpoints.beer);
+  const products: PruductsResponseType = await res.json();
+
   return (
     <MainLayout>
       <main className="shop-page">
