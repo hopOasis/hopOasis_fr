@@ -4,11 +4,12 @@
     &:first-of-type {
       .container {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
 
         img {
-          max-width: 628px;
+          max-width: 400px;
+          margin: 0 auto;
         }
       }
     }
