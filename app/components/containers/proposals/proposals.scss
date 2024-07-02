@@ -1,6 +1,6 @@
 .proposal-container {
   display: grid;
-  grid-template-columns: minmax(65%, 1fr) minmax(30%, 1fr);
+  grid-template-columns: 2.5fr 1fr;
   grid-template-rows: repeat(2, 1fr);
   gap: 54px;
 
@@ -15,9 +15,10 @@
       grid-area: 1 / 2 / 3 / 3;
       display: flex;
       flex-direction: column;
+      gap: 53px;
 
       .proposal-card__info {
-        padding: 0 16px 16px 16px;
+        padding: 26px 16px 16px 16px;
       }
     }
   }
