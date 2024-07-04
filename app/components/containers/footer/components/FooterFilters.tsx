@@ -1,4 +1,4 @@
-import { LinksFooter } from "../navLinks/navLinks";
+import { LinksFooter } from "../../navLinks/navLinks";
 
 export default function FooterFilters() {
   return (

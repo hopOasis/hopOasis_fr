@@ -8,12 +8,14 @@ import Loader from "../../ui/Loader/Loader";
 
 export default async function MainLayout({ children }: IProps) {
   const [cartRes, productsRes] = await Promise.all([
-    fetch(ProxiEndpoints.cart),
+    fetch("http://prod.eba-33ij8qpt.eu-central-1.elasticbeanstalk.com/cart"),
     fetch(ProxiEndpoints.beer),
   ]);
 
   const cart = await cartRes.json();
   const products = await productsRes.json();
+
+  // console.log(cart)
 
   return (
     <>

@@ -1,15 +1,20 @@
 import { Endpoints, PruductsResponseType } from "../../types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
-  const res = await fetch(process.env.API_URL! + Endpoints.beer);
-  if (!res.ok) {
+  const resCart = await fetch(process.env.API_URL! + Endpoints.cart);
+  const resProducts = await fetch(process.env.API_URL! + Endpoints.beer);
+
+  if (!resCart.ok || !resProducts.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 
-  const parsedRes: PruductsResponseType = await res.json();
-  
+  // const parsedCart: PruductsResponseType = await resCart.json();
+  const parsedRes: PruductsResponseType = await resProducts.json();
+
+  // console.log({ parsedCart, parsedRes });
+
   const data = {
     ...parsedRes,
     content: parsedRes.content.map(({ imageName, ...rest }) => ({
@@ -21,4 +26,21 @@ export async function GET() {
   };
 
   return NextResponse.json({ ...data });
+}
+
+export async function POST(request: NextRequest) {
+  const resProduct = await fetch(process.env.API_URL! + Endpoints.beer, {
+    method: "POST",
+    body: request.body,
+  });
+
+  if (!resProduct.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  const product = await resProduct.json();
+  console.log("product", product);
+
+  return NextResponse.json({ product });
 }
