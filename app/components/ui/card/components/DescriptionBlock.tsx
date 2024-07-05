@@ -21,10 +21,10 @@ export default function DescriptionBlock({
       {/* <input type="file" /> */}
       <CardButton
         onClick={async () => {
-          const formData = new FormData();
-          formData.append("itemId", "3");
-          formData.append("quantity", "1");
-          formData.append("itemType", "BEER");
+          // const formData = new FormData();
+          // formData.append("itemId", "3");
+          // formData.append("quantity", "1");
+          // formData.append("itemType", "BEER");
 
           // const formDataBeer = new FormData();
           // formDataBeer.append("name", "3");
@@ -34,23 +34,21 @@ export default function DescriptionBlock({
           // formDataBeer.append("priceSmall", "3");
           // formDataBeer.append("description", "test");
           // formDataBeer.append("image", new Blob(img), 'file');
+          const allCookies = document.cookie;
+          console.log(allCookies.slice(7));
+          await fetch(ProxiEndpoints.cart, {
+            method: "POST",
+            headers: {
+              Cookie: `_vid_t=${allCookies.slice(7)}`,
+            },
+            body: JSON.stringify({
+              itemId: id,
+              quantity: 1,
+              itemType: "BEER",
+            }),
+          });
 
-          const res = await fetch(
-            "http://prod.eba-33ij8qpt.eu-central-1.elasticbeanstalk.com/cart/items",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                itemId: 5,
-                quantity: 1,
-                itemType: "BEER",
-              }),
-            }
-          );
-
-          console.log(await res.json());
+          // console.log(await res.json());
         }}
       />
     </div>

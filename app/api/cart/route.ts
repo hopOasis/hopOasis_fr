@@ -10,8 +10,6 @@ export async function GET() {
 
   const parsedRes: CartResponseType = await res.json();
 
-  console.log("parsed res", parsedRes);
-
   const data = {
     ...parsedRes,
     items: parsedRes.items.map(({ imageName, ...rest }) => ({
@@ -26,15 +24,13 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get("path");
   const body = await request.json();
-  console.log({ path, body });
-  const res = await fetch(process.env.API_URL! + Endpoints.cart, {
+  const res = await fetch(process.env.API_URL! + Endpoints.cart + "/items", {
     method: "POST",
-    body,
+    body: JSON.stringify(body),
   });
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
+    // console.log(res)
     throw new Error("Failed to fetch data");
   }
 
