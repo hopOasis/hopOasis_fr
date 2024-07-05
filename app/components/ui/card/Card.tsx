@@ -1,7 +1,7 @@
 "use client";
 import "./card.scss";
-import ImageBlock from "./ImageBlock";
-import DescriptionBlock from "./DescriptionBlock";
+import ImageBlock from "./components/ImageBlock";
+import DescriptionBlock from "./components/DescriptionBlock";
 import { ShopCardType } from "@/app/shop/types";
 
 export const Card = ({

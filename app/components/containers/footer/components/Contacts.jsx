@@ -1,4 +1,4 @@
-import { ContactsBlock } from "../navLinks/navLinks";
+import { ContactsBlock } from "../../navLinks/navLinks";
 
 export default function Contacts() {
   return (

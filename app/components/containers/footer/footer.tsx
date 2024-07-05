@@ -1,7 +1,7 @@
 import { LogoLink } from "../../ui/links/links";
-import Address from "./Address";
-import FooterFilters from "./FooterFilters";
-import Contacts from "./Contacts";
+import Address from "./components/Address";
+import FooterFilters from "./components/FooterFilters";
+import Contacts from "./components/Contacts";
 import "./footer.scss";
 
 export default function Footer() {

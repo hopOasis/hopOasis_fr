@@ -1,15 +1,16 @@
 import { Endpoints, PruductsResponseType } from "../../types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
-  const res = await fetch(process.env.API_URL! + Endpoints.beer);
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
+  const resProducts = await fetch(process.env.API_URL! + Endpoints.beer);
+
+  if ( !resProducts.ok) {
     throw new Error("Failed to fetch data");
   }
 
-  const parsedRes: PruductsResponseType = await res.json();
-  
+  const parsedRes: PruductsResponseType = await resProducts.json();
+
+
   const data = {
     ...parsedRes,
     content: parsedRes.content.map(({ imageName, ...rest }) => ({
@@ -20,5 +21,21 @@ export async function GET() {
     })),
   };
 
+
   return NextResponse.json({ ...data });
+}
+
+export async function POST(request: NextRequest) {
+  const resProduct = await fetch(process.env.API_URL! + Endpoints.beer, {
+    method: "POST",
+    body: request.body,
+  });
+
+  if (!resProduct.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const product = await resProduct.json();
+
+  return NextResponse.json({ product });
 }
