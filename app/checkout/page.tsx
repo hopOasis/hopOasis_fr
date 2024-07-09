@@ -26,16 +26,16 @@ export default function Page() {
   });
   const [items, setItems] = useState(initialState);
 
-  const remove = (id) =>
+  const remove = (id: number) =>
     setItems(items.filter(({ id: prevId }) => prevId !== id));
 
-  const increment = (id) => {
+  const increment = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     item.count += 1;
     setItems([...items]);
   };
 
-  const decrement = (id) => {
+  const decrement = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     if (item.count === 1) return;
     item.count -= 1;

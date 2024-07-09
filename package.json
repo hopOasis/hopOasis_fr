@@ -15,12 +15,12 @@
     "jsonwebtoken": "^9.0.2",
     "lenis": "^1.1.5",
     "next": "14.2.3",
+    "next-session": "^4.0.5",
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "sharp": "^0.33.4",
-    "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.1.4",
     "uuid": "^10.0.0"
   },

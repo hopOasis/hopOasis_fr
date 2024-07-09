@@ -1,14 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CartResponseType, Endpoints } from "../types";
 
-export async function GET() {
-  const res = await fetch(process.env.API_URL! + Endpoints.cart);
+export async function GET(request: NextRequest) {
+  const headers = new Headers(request.headers);
+  console.log(request.headers);
+
+  const res = await fetch(process.env.API_URL! + Endpoints.cart, {
+    headers,
+  });
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 
   const parsedRes: CartResponseType = await res.json();
+
+  console.log("get cart/ parsed-res", parsedRes);
 
   const data = {
     ...parsedRes,
@@ -24,13 +30,20 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  // const cook = cookies();
+  // console.log("REQUEST", cook);
+
   const body = await request.json();
+  const requestHeaders = new Headers(request.headers);
+
   const res = await fetch(process.env.API_URL! + Endpoints.cart + "/items", {
     method: "POST",
+    headers: requestHeaders,
     body: JSON.stringify(body),
+    credentials: "include",
   });
   if (!res.ok) {
-    // console.log(res)
+    console.log(res.status);
     throw new Error("Failed to fetch data");
   }
 

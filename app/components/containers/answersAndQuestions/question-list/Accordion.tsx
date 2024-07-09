@@ -3,15 +3,12 @@ import { IProps } from "./types";
 
 export const Accordion = ({ id, question, answer }: IProps) => {
   return (
-    <details
-      key={id}
-      className="questions-list__item"
-    >
+    <details key={id} className="questions-list__item">
       <summary className="questions-list__item-container typography__h3">
         {`${id}. ${question}`}
         <Icons name="chevronDown" />
       </summary>
-      <p >{answer}</p>
+      <div>{answer}</div>
     </details>
   );
 };
