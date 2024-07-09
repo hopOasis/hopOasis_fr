@@ -1,27 +1,31 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { cookies } from "next/headers";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("Content-Type", "application/json");
-  requestHeaders.set("x-session-id", "session-id");
-  const cookieStore = cookies();
-  console.log(cookieStore);
-  console.log(
-    "--------------------------middleware---------------------------"
-  );
 
-  // You can also set request headers in NextResponse.rewrite
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
 
+  // console.log(
+  //   "--------------------------middleware---------------------------"
+  // );
+
+  response.cookies.set({
+    name: "JSESSIONID",
+    value: "3049223C17C032FC4D7DEBB78A7BDD8F",
+    path: "/",
+    httpOnly: true,
+    secure: false,
+  });
+
   return response;
 }
 
 export const config = {
-  matcher: "/:path*", // Применяет middleware ко всем маршрутам
+  matcher: "/:path*",
 };

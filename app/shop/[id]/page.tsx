@@ -9,7 +9,7 @@ import { ProxiEndpoints } from "@/app/api/types";
 import { IProps } from "./types";
 import Loader from "@/app/components/ui/Loader/Loader";
 
-export default async function SinglePage({ params: { id } }: IProps) {
+export default async function ProductPage({ params: { id } }: IProps) {
   const res = await fetch(ProxiEndpoints.beer + "/" + id);
   const product = await res.json()
   

@@ -1,4 +1,4 @@
-import "./delovery-text.scss";
+import "./delivery-text.scss";
 
 export default function DeliveryText() {
   return (
