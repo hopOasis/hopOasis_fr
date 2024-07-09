@@ -8,7 +8,7 @@
     &::after {
       content: "";
       display: block;
-      border: 2px solid orange;
+      border: 2px solid var(--black-50);
       width: 16px;
       height: 16px;
       border-radius: 50%;
@@ -17,10 +17,14 @@
       top: 50%;
       left: 0;
       transform: translate(0, -50%);
+      transition: border var(--main-transition);
+    }
+    &:hover::before {
+      border: 2px solid var(--black-500);
     }
 
     &::after {
-      border: 4px solid orange;
+      border: 4px solid var(--accent-500);
       opacity: 0;
       transform: translate(0, -50%) scale(2.5);
       transition: 0.35s ease-out;
@@ -30,6 +34,9 @@
 
   input {
     display: none;
+    &:checked + label::before {
+      border: 2px solid var(--accent-500);
+    }
     &:checked + label::after {
       opacity: 1;
       transform: translate(0, -50%) scale(0.5);
