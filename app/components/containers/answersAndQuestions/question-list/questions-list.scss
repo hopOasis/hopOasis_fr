@@ -9,6 +9,8 @@ details {
   overflow: hidden;
 
   summary {
+    position: relative;
+    z-index: 1;
     background-color: white;
     list-style-type: none;
     cursor: pointer;
@@ -21,15 +23,14 @@ details {
     align-items: center;
   }
 
-  p {
+  div {
     margin-top: 20px;
     position: relative;
-    z-index: -1;
   }
 }
 
 details[open] {
-  p {
+  div {
     animation: fadeIn 0.35s ease-out;
   }
 

@@ -1,3 +1,8 @@
+import AnswerDeliveryText from "./components/AnswerDeliveryText";
+import { AnswerForom } from "./components/AnswerForm";
+import AnswerPaymentText from "./components/AnswerPaymentText";
+import Loacations from "./components/Loacations";
+
 export const questions = [
   {
     id: 1,
@@ -12,24 +17,7 @@ export const questions = [
   {
     id: 2,
     question: "Як відбувається доставка пива?",
-    answer: (
-      <>
-        <p>
-          <span>Доставка </span>по Україні здійснюється Новою Поштою за вашим
-          бажанням: у відділення, курʼєром або у поштомат.
-        </p>
-        <ul>
-          <li>
-            <span>Відвантажуємо Пн-Пт</span>
-          </li>
-          <li>Замовлення прийняті до 14:00 відправляємо в той самий день</li>
-          <li>Терміни доставки 1-3 робочих дні</li>
-          <li>Пакуємо замовлення в коробки на 6 та 12 пляшок</li>
-          <li>Вартість доставки залежить від тарифів Нової Пошти</li>
-          <li>Ви можете врахувати вартість доставки у вартість замовлення.</li>
-        </ul>
-      </>
-    ),
+    answer: <AnswerDeliveryText />,
   },
   {
     id: 3,
@@ -47,32 +35,18 @@ export const questions = [
   {
     id: 4,
     question: "Які способи оплати ви приймаєте?",
-    answer: (
-      <ul>
-        <li>безготівкова оплата через платіжну систему MONO</li>
-        <li>
-          оплата карткою Visa/Mastercard при оформленні замовлення (без комісії)
-          + вартість послуг «Нової Пошти» при отриманні товару.
-        </li>
-        <li>
-          Послуги «Нової Пошти» оплачуються лише безпосередньо при отриманні
-          товару у відділенні.
-        </li>
-      </ul>
-    ),
+    answer: <AnswerPaymentText />,
   },
   {
     id: 5,
     question: "Де нас знайти?",
-    answer:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    answer: <Loacations />,
   },
 
   {
     id: 6,
     question:
       "Залишились питання? Наш менеджер з радістю дасть на них відповідь",
-    answer:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    answer: <AnswerForom />,
   },
 ];

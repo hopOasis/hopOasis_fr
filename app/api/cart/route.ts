@@ -3,7 +3,7 @@ import { CartResponseType, Endpoints } from "../types";
 
 export async function GET(request: NextRequest) {
   const headers = new Headers(request.headers);
-  console.log(request.headers);
+  // console.log(request.headers);
 
   const res = await fetch(process.env.API_URL! + Endpoints.cart, {
     headers,
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
   const parsedRes: CartResponseType = await res.json();
 
-  console.log("get cart/ parsed-res", parsedRes);
+  // console.log("get cart/ parsed-res", parsedRes);
 
   const data = {
     ...parsedRes,

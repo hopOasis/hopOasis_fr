@@ -1,0 +1,23 @@
+@import '../../components/ui/DeliveryText/delivery-text.scss';
+
+.answer-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  
+  div:first-of-type {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    min-width: 480px;
+  }
+}
+
+.locations{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+
