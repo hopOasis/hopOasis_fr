@@ -15,7 +15,7 @@ export default async function Page() {
   });
   const parsednewPostCitiesLibrary = await newPostCitiesLibrary.json();
 
-  console.log("parsednewPostCitiesLibrary", parsednewPostCitiesLibrary);
+  // console.log("parsednewPostCitiesLibrary", parsednewPostCitiesLibrary);
   return (
     <>
       <CheckoutHeader />
