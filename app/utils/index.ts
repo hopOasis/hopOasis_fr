@@ -22,3 +22,12 @@ export const animate = {
     },
   },
 };
+
+type CitiesType = { [key: string]: string };
+
+export const localizationCity = (city: string) => {
+  const cities: CitiesType = {
+    kyiv: "київ",
+  };
+  return cities[city.toLowerCase()];
+};

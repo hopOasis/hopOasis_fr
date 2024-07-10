@@ -6,7 +6,6 @@ import "swiper/scss";
 import SmoothScrolling from "./components/ui/SmoothScrolling/SmoothScrolling";
 import GuestToken from "./components/containers/GuestToken/GuestToken";
 
-
 const montserrat = Montserrat({
   weight: ["400", "500", "600"],
   style: "normal",
