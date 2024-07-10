@@ -24,7 +24,7 @@ import Loader from "../../ui/Loader/Loader";
 
 export default async function MainLayout({ children }: IProps) {
   const [cartRes, productsRes] = await Promise.all([
-    fetch(ProxiEndpoints.cart, { next: { revalidate: 5 } }),
+    fetch(ProxiEndpoints.cart),
     fetch(ProxiEndpoints.beer),
   ]);
 
