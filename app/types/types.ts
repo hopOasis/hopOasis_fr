@@ -32,7 +32,7 @@ export type FormFieldType = {
   id: string;
   type: string;
   placeholder: string;
-  checked: boolean;
+  checked?: boolean;
   validation: (value: string) => boolean;
 };
 

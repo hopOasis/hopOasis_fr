@@ -35,21 +35,38 @@ export const fields = [
   },
 ];
 
-export const radio = [
+export const deliveryRadio = [
+  {
+    id: "department",
+    name: "delivery",
+    placeholder: "Нова пошта (відділення)",
+  },
+  {
+    id: "parcel-station",
+    name: "delivery",
+    placeholder: "Нова пошта (поштомат)",
+  },
+  {
+    id: "courier",
+    name: "delivery",
+    placeholder: "Нова пошта (кур'єр)",
+  },
+];
+export const paymentRadio = [
   {
     id: "cash",
-    name:"payment",
+    name: "payment",
     placeholder: "Оплата при отриманні замовлення",
   },
   {
     id: "LiqPay",
-    name:"payment",
-    type: "checkbox",
+    name: "payment",
     placeholder: "Карта Visa і MasterCard (LiqPay)",
   },
   {
     id: "NovaPay",
-    name:"payment",
+    name: "payment",
     placeholder: "Карта Visa і MasterCard (NovaPay)",
   },
 ];
+

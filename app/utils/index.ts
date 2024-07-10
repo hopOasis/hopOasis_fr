@@ -21,6 +21,23 @@ export const animate = {
       });
     },
   },
+  popup: {
+    open: () => {
+      const tl = gsap.timeline();
+      tl.to(".popup", { top: "10%", opacity: 1, duration: 0.2 }).to(".popup", {
+        top: "5%",
+        duration: 0.35,
+      });
+      return tl;
+    },
+    close: () => {
+      gsap.to("dialog", {
+        top: -500,
+        opacity: 0,
+        duration: 0.2,
+      });
+    },
+  },
 };
 
 type CitiesType = { [key: string]: string };

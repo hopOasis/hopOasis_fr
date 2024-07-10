@@ -4,6 +4,7 @@
   cursor: pointer;
 
   label {
+    cursor: pointer;
     &::before,
     &::after {
       content: "";
