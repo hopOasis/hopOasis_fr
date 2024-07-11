@@ -26,6 +26,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  console.log("URL", process.env.API_URL! + Endpoints.beer);
   const resProduct = await fetch(process.env.API_URL! + Endpoints.beer, {
     method: "POST",
     body: request.body,

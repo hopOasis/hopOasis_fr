@@ -3,13 +3,11 @@ import { CartResponseType, Endpoints } from "../types";
 
 export async function GET(request: NextRequest) {
   const headers = new Headers(request.headers);
-  // console.log(request.headers);
-
   const res = await fetch(process.env.API_URL! + Endpoints.cart, {
     headers,
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to GET fetch CART data");
   }
 
   const parsedRes: CartResponseType = await res.json();
@@ -44,7 +42,7 @@ export async function POST(request: NextRequest) {
   });
   if (!res.ok) {
     console.log(res.status);
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to POST fetch CART data");
   }
 
   return NextResponse.json({ message: "sucsess" });
