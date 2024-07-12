@@ -18,6 +18,8 @@ export default async function MainLayout({ children }: IProps) {
     getProducts({ endpoint: Endpoints.beer }),
   ]);
 
+  console.log("cart",cart)
+
   return (
     <>
       <Header />

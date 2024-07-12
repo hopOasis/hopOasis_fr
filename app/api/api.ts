@@ -103,3 +103,18 @@ export async function getNewPostSettlementsLib({ city }: { city: string }) {
   });
   return data;
 }
+
+export async function addProdactToCart({ body }) {
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+  const { data } = await axios.post(
+    process.env.API_URL! + Endpoints.cart + "/items",
+    {
+      body,
+      httpsAgent: agent,
+    }
+  );
+
+  return data;
+}

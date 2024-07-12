@@ -3,6 +3,7 @@ import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
 import { ProxiEndpoints } from "@/app/api/types";
 import { CardButton } from "../../buttons/buttons";
+import { addProdactToCart } from "@/app/api/api";
 
 export default function DescriptionBlock({
   beerName,
@@ -20,14 +21,10 @@ export default function DescriptionBlock({
       <p className="card__price typography__h3 accent">{`${priceLarge} грн.`}</p>
       <CardButton
         onClick={async () => {
-          const data = await fetch(ProxiEndpoints.cart, {
-            method: "POST",
-            credentials:"include",
-            body: JSON.stringify({
-              itemId: id,
-              quantity: 1,
-              itemType: "BEER",
-            }),
+          const data = await addProdactToCart({
+            itemId: id,
+            quantity: 1,
+            itemType: "BEER",
           });
           console.log(await data.json());
         }}
