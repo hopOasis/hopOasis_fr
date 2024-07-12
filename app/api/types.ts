@@ -55,6 +55,7 @@ export enum ProxiEndpoints {
   newPostCities = "http://localhost:3000/api/newPost/citiesLib",
   newPostSettlements = "http://localhost:3000/api/newPost/settlementsLib",
   geolocation = "http://localhost:3000/api/location",
-  beer = `http://localhost:3000/api/products/beer`,
+  beer = `https://localhost:3000/api/products/beer`,
   cart = "http://localhost:3000/api/cart",
 }
+

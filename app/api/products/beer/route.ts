@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   const resProducts = await fetch(process.env.API_URL! + Endpoints.beer);
-
   if ( !resProducts.ok) {
+
+    console.log("error", resProducts);
     throw new Error("Failed to fetch data");
   }
 
