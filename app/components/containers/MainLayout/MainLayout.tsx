@@ -1,31 +1,31 @@
-import {  ProxiEndpoints } from "@/app/api/types";
+import {
+  CartResponseType,
+  Endpoints,
+  ProxiEndpoints,
+  PruductsResponseType,
+} from "@/app/api/types";
 import Portal from "../Portal/Portal";
 import Footer from "../footer/footer";
 import { Header } from "../header/Header";
 import { IProps } from "./types";
 import { Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
-
+import { getCart, getProducts } from "@/app/api/api";
 
 export default async function MainLayout({ children }: IProps) {
-  // const [cartRes, productsRes] = await Promise.all([
-  //   fetch(ProxiEndpoints.cart),
-  //   fetch(ProxiEndpoints.beer),
-  // ]);
-
-  // const cart = await cartRes.json();
-  // const products = await productsRes.json();
-
-  // console.log(cart);
+  const [cart, products] = await Promise.all([
+    getCart({ endpoint: Endpoints.cart }),
+    getProducts({ endpoint: Endpoints.beer }),
+  ]);
 
   return (
     <>
       <Header />
       {children}
       <Footer />
-      {/* <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader />}>
         <Portal cart={cart} products={products.content} />
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }

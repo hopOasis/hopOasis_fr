@@ -6,8 +6,12 @@ export enum Endpoints {
   cider = "cider",
 }
 
-export interface IPropsGetAll {
+export interface IPropsGet {
   endpoint: Endpoints;
+}
+
+export interface IPropsGetById extends IPropsGet {
+  id: string;
 }
 
 export interface IPropsGetById {

@@ -44,7 +44,7 @@ type CitiesType = { [key: string]: string };
 
 export const localizationCity = (city: string) => {
   const cities: CitiesType = {
-    kyiv: "київ",
+    kiev: "київ",
   };
   return cities[city.toLowerCase()];
 };

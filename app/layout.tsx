@@ -4,7 +4,6 @@ import "./styles/index.scss";
 import "normalize.css/normalize.css";
 import "swiper/scss";
 import SmoothScrolling from "./components/ui/SmoothScrolling/SmoothScrolling";
-import GuestToken from "./components/containers/GuestToken/GuestToken";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600"],
@@ -25,7 +24,6 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className={montserrat.className}>
-          <GuestToken />
           <SmoothScrolling />
           {children}
         </body>

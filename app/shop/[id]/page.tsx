@@ -5,14 +5,16 @@ import DeliveryPaymantSection from "./components/DeliveryPaymantSection";
 import SpecialForYouSection from "./components/SpecialForYouSection";
 import FeedBackSection from "./components/FeedBackSection";
 import MainLayout from "@/app/components/containers/MainLayout/MainLayout";
-import { ProxiEndpoints } from "@/app/api/types";
+import { Endpoints } from "@/app/api/types";
 import { IProps } from "./types";
 import Loader from "@/app/components/ui/Loader/Loader";
+import { getProductById } from "@/app/api/api";
 
-export default async function ProductPage({ params: { id } }: IProps) {
-  const res = await fetch(ProxiEndpoints.beer + "/" + id);
-  const product = await res.json()
-  
+export default async function SingleProductPage({ params: { id } }: IProps) {
+  const product = await getProductById({ endpoint: Endpoints.beer, id });
+
+  console.log(product)
+
   return (
     <MainLayout>
       <main className="single-page">
