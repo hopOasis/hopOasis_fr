@@ -13,8 +13,6 @@ import { getProductById } from "@/app/api/api";
 export default async function SingleProductPage({ params: { id } }: IProps) {
   const product = await getProductById({ endpoint: Endpoints.beer, id });
 
-  console.log(product)
-
   return (
     <MainLayout>
       <main className="single-page">
