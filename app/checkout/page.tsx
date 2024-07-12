@@ -21,7 +21,7 @@ export default async function Page() {
       <CheckoutHeader />
       <main className="checkout container">
         <Suspense fallback={<Loader />}>
-          <ChekoutForm />
+          <ChekoutForm location={localizationCity(city)} />
         </Suspense>
       </main>
     </>

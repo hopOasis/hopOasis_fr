@@ -1,0 +1,23 @@
+.popup {
+  position: fixed;
+  top: -50%;
+  left: 0;
+  border: 1px solid var(--black-500);
+  border-radius: 4px;
+
+  background-color: white;
+  padding: 30px;
+  p{
+    span{
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+
+  & > div {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+  }
+}

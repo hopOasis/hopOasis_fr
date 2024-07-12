@@ -14,8 +14,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "**.eba-33ij8qpt.eu-central-1.elasticbeanstalk.com",
+        protocol: "https",
+        hostname: "**",
         port: "",
       },
     ],

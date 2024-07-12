@@ -3,5 +3,14 @@ export type FormStateType = {
   lastName: string;
   phone: string;
   email: string;
+  delivery: string;
   payment: string;
 };
+
+export interface IPropsChekoutForm {
+  location: string;
+}
+
+export interface IPropsDepartmentComponent {
+  isTrueCurrentLocation: string | null;
+}

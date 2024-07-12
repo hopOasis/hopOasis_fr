@@ -15,13 +15,13 @@ export async function middleware(request: NextRequest) {
   //   "--------------------------middleware---------------------------"
   // );
 
-  response.cookies.set({
-    name: "JSESSIONID",
-    value: "3049223C17C032FC4D7DEBB78A7BDD8F",
-    path: "/",
-    httpOnly: true,
-    secure: false,
-  });
+  // response.cookies.set({
+  //   name: "JSESSIONID",
+  //   value: "3049223C17C032FC4D7DEBB78A7BDD8F",
+  //   path: "/",
+  //   httpOnly: true,
+  //   secure: false,
+  // });
 
   return response;
 }
