@@ -3,7 +3,7 @@ import { CartResponseType, Endpoints } from "../types";
 
 export async function GET(request: NextRequest) {
   const headers = new Headers(request.headers);
-  const res = await fetch(process.env.API_URL! + Endpoints.cart, {
+  const res = await fetch((process.env.API_URL! + Endpoints.cart).toString(), {
     headers,
   });
   if (!res.ok) {
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const requestHeaders = new Headers(request.headers);
 
-  const res = await fetch(process.env.API_URL! + Endpoints.cart + "/items", {
+  const res = await fetch((process.env.API_URL! + Endpoints.cart + "/items").toString(), {
     method: "POST",
     headers: requestHeaders,
     body: JSON.stringify(body),

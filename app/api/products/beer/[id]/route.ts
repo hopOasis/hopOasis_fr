@@ -8,7 +8,7 @@ type Params = {
 
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const res = await fetch(process.env.API_URL! + Endpoints.beer + "/" + id);
+  const res = await fetch(`${process.env.API_URL!}${Endpoints.beer}/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -16,7 +16,7 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   const data = {
     ...parsedRes,
     imageName: parsedRes.imageName.map(
-      (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+      (name) => `${process.env.API_URL!}${Endpoints.beer}/images/${name}`
     ),
   };
   return NextResponse.json({ ...data });

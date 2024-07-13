@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -11,16 +13,29 @@ export async function middleware(request: NextRequest) {
     },
   });
 
+  // const oazaGuest = cookies().has("oaza-guest");
+  // if (!oazaGuest) {
+  //   const value = v4();
+  //   response.cookies.set({
+  //     name: "oaza-guest",
+  //     value,
+  //     path: "/",
+  //   });
+
+  //   return response;
+  // }
+
+  // const oazaCookie = cookies().get("oaza-guest");
+
   // console.log(
   //   "--------------------------middleware---------------------------"
   // );
-
+  
   // response.cookies.set({
-  //   name: "JSESSIONID",
-  //   value: "3049223C17C032FC4D7DEBB78A7BDD8F",
+  //   ...oazaCookie,
   //   path: "/",
-  //   httpOnly: true,
-  //   secure: false,
+  //   // httpOnly: true,
+  //   // secure: false,
   // });
 
   return response;

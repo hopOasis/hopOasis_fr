@@ -1,8 +1,7 @@
 import {
   CartResponseType,
   Endpoints,
-  ProxiEndpoints,
-  PruductsResponseType,
+  ProductsResponseType,
 } from "@/app/api/types";
 import Portal from "../Portal/Portal";
 import Footer from "../footer/footer";
@@ -13,12 +12,13 @@ import Loader from "../../ui/Loader/Loader";
 import { getCart, getProducts } from "@/app/api/api";
 
 export default async function MainLayout({ children }: IProps) {
-  const [cart, products] = await Promise.all([
-    getCart({ endpoint: Endpoints.cart }),
-    getProducts({ endpoint: Endpoints.beer }),
-  ]);
+  const [cart, products]: [CartResponseType, ProductsResponseType] =
+    await Promise.all([
+      getCart({ endpoint: Endpoints.cart }),
+      getProducts({ endpoint: Endpoints.beer }),
+    ]);
 
-  console.log("cart",cart)
+  console.log("cart", cart);
 
   return (
     <>

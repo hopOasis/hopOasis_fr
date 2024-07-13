@@ -4,17 +4,17 @@ import {
   Endpoints,
   IPropsGet,
   IPropsGetById,
-  PruductsResponseType,
+  ProductsResponseType,
 } from "./types";
-import https from "https";
+import https from "node:https";
 import { ProductType } from "../types/types";
 
 export async function getProducts({ endpoint }: IPropsGet) {
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
-  const { data }: { data: PruductsResponseType } = await axios.get(
-    process.env.API_URL! + endpoint,
+  const { data }: { data: ProductsResponseType } = await axios.get(
+    (process.env.API_URL! + endpoint).toString(),
     {
       httpsAgent: agent,
     }
@@ -25,7 +25,7 @@ export async function getProducts({ endpoint }: IPropsGet) {
     content: data.content.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+        (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
       ),
     })),
   };
@@ -39,7 +39,7 @@ export async function getProductById({ endpoint, id }: IPropsGetById) {
     rejectUnauthorized: false,
   });
   const { data }: { data: ProductType } = await axios.get(
-    process.env.API_URL! + endpoint + "/" + id,
+    (process.env.API_URL! + endpoint + "/" + id).toString(),
     {
       httpsAgent: agent,
     }
@@ -48,7 +48,7 @@ export async function getProductById({ endpoint, id }: IPropsGetById) {
   const newData = {
     ...data,
     imageName: data.imageName.map(
-      (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+      (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
     ),
   };
 
@@ -60,7 +60,7 @@ export async function getCart({ endpoint }: IPropsGet) {
     rejectUnauthorized: false,
   });
   const { data }: { data: CartResponseType } = await axios.get(
-    process.env.API_URL! + endpoint,
+    (process.env.API_URL! + endpoint).toString(),
     {
       httpsAgent: agent,
     }
@@ -70,7 +70,7 @@ export async function getCart({ endpoint }: IPropsGet) {
     items: data.items.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+        (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
       ),
     })),
   };
@@ -84,7 +84,7 @@ export async function getLocation() {
     fields: "city",
   });
   const { data } = await axios.get(
-    process.env.GEOLOCATION_URL! + "?" + params.toString()
+    (process.env.GEOLOCATION_URL! + "?" + params.toString()).toString()
   );
 
   return data.city;
@@ -104,15 +104,19 @@ export async function getNewPostSettlementsLib({ city }: { city: string }) {
   return data;
 }
 
-export async function addProdactToCart({ body }) {
+export async function addProdactToCart({ body, cookie }) {
+  const params = new URLSearchParams({
+    ...body,
+  });
+
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
-  const { data } = await axios.post(
-    process.env.API_URL! + Endpoints.cart + "/items",
+  const { data } = await axios.get(
+    (process.env.API_URL! + Endpoints.cart + "/items" + "?" + params.toString()).toString(),
     {
-      body,
       httpsAgent: agent,
+      withCredentials: true,
     }
   );
 

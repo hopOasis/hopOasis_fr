@@ -2,14 +2,11 @@ import Card from "@/app/components/ui/card/Card";
 import Section from "@/app/components/ui/section/section";
 import { CardSlider } from "@/app/components/ui/slider/CardSlider";
 import { memo } from "react";
-import {
-  Endpoints,
-  PruductsResponseType,
-} from "@/app/api/types";
+import { Endpoints, ProductsResponseType } from "@/app/api/types";
 import { getProducts } from "@/app/api/api";
 
 const SpecialForYouSection = memo(async () => {
-  const products: PruductsResponseType = await getProducts({
+  const products: ProductsResponseType = await getProducts({
     endpoint: Endpoints.beer,
   });
 

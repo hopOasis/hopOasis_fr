@@ -8,7 +8,7 @@ import Image from "next/image";
 import IncrementDecrement from "@/app/components/ui/IncrementDecrement/IncrementDecrement";
 import Icons from "@/app/components/ui/icons/icons";
 import { beer } from "@/app/static/bear";
-import  { DepartmentComponent } from "./deliveryRadioComponents";
+import { DepartmentComponent } from "./deliveryRadioComponents";
 import Popup from "@/app/components/ui/popup/Popup";
 
 const initialState = Array(3)
@@ -48,6 +48,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const components = {
     department: (
       <DepartmentComponent
+        value={isTrueCurrentLocation === "yes" ? location : ""}
         isTrueCurrentLocation={isTrueCurrentLocation}
       />
     ),
@@ -58,18 +59,19 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     <>
       <form className="form">
         <div className="form__left-block">
-          <div className="form__fields-block">
+          {/* <div className="form__fields-block">
             <p className="typography__h8">Особисті дані</p>
             {fields.map((props) => (
               <Field
                 key={props.id}
                 {...props}
+                value={values[props.id]}
                 onChange={({ id, value }) =>
                   setValues({ ...values, [id]: value })
                 }
               />
             ))}
-          </div>
+          </div> */}
 
           <div className="form__fields-block">
             <p className="typography__h8">Доставка</p>
@@ -89,7 +91,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
             ))}
           </div>
 
-          <div className="form__fields-block">
+          {/* <div className="form__fields-block">
             <p className="typography__h8">Оплата</p>
             {paymentRadio.map((props) => (
               <RadioButtons
@@ -101,7 +103,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 }
               />
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="form__right-block">
           <p className="typography__h3 right-block--padding">Ваше замовлення</p>

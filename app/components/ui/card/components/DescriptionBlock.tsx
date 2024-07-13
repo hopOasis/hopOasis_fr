@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
-import { ProxiEndpoints } from "@/app/api/types";
 import { CardButton } from "../../buttons/buttons";
 import { addProdactToCart } from "@/app/api/api";
 
@@ -22,11 +21,10 @@ export default function DescriptionBlock({
       <CardButton
         onClick={async () => {
           const data = await addProdactToCart({
-            itemId: id,
-            quantity: 1,
-            itemType: "BEER",
+            body: { itemId: id, quantity: 1, itemType: "BEER" },
+            cookie: document.cookie,
           });
-          console.log(await data.json());
+          console.log(data);
         }}
       />
     </div>

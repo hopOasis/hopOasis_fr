@@ -6,11 +6,11 @@ import Section from "../components/ui/section/section";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
 import Loader from "../components/ui/Loader/Loader";
-import { Endpoints, PruductsResponseType } from "../api/types";
+import { Endpoints, ProductsResponseType } from "../api/types";
 import { getProducts } from "../api/api";
 
 export default async function Page() {
-  const products: PruductsResponseType = await getProducts({
+  const products: ProductsResponseType = await getProducts({
     endpoint: Endpoints.beer,
   });
 
