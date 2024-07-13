@@ -4,7 +4,7 @@ import { IProps } from "./types";
 export default function Icons({ name, ...props }: IProps) {
   return (
     <svg {...props} role="img" aria-label="title">
-      <use href={`/sprite.svg#${name}`}></use>
+      <use href={`/sprite.svg#${name}`} />
     </svg>
   );
 }

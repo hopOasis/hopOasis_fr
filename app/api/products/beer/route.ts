@@ -15,7 +15,7 @@ export async function GET() {
     content: parsedRes.content.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+        (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
       ),
     })),
   };

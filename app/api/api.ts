@@ -14,7 +14,7 @@ export async function getProducts({ endpoint }: IPropsGet) {
     rejectUnauthorized: false,
   });
   const { data }: { data: ProductsResponseType } = await axios.get(
-    (process.env.API_URL! + endpoint).toString(),
+    process.env.API_URL! + endpoint,
     {
       httpsAgent: agent,
     }
@@ -25,7 +25,7 @@ export async function getProducts({ endpoint }: IPropsGet) {
     content: data.content.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
+        (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
       ),
     })),
   };
@@ -34,12 +34,12 @@ export async function getProducts({ endpoint }: IPropsGet) {
 }
 
 export async function getProductById({ endpoint, id }: IPropsGetById) {
-  console.log("URL", process.env.API_URL! + endpoint + "/" + id);
+  console.log("URL", `${process.env.API_URL! + endpoint}/${id}`);
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
   const { data }: { data: ProductType } = await axios.get(
-    (process.env.API_URL! + endpoint + "/" + id).toString(),
+    `${process.env.API_URL! + endpoint}/${id}`,
     {
       httpsAgent: agent,
     }
@@ -48,7 +48,7 @@ export async function getProductById({ endpoint, id }: IPropsGetById) {
   const newData = {
     ...data,
     imageName: data.imageName.map(
-      (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
+      (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
     ),
   };
 
@@ -60,7 +60,7 @@ export async function getCart({ endpoint }: IPropsGet) {
     rejectUnauthorized: false,
   });
   const { data }: { data: CartResponseType } = await axios.get(
-    (process.env.API_URL! + endpoint).toString(),
+    process.env.API_URL! + endpoint,
     {
       httpsAgent: agent,
     }
@@ -70,7 +70,7 @@ export async function getCart({ endpoint }: IPropsGet) {
     items: data.items.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => (process.env.API_URL! + Endpoints.beer + "/images/" + name).toString()
+        (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
       ),
     })),
   };
@@ -84,7 +84,7 @@ export async function getLocation() {
     fields: "city",
   });
   const { data } = await axios.get(
-    (process.env.GEOLOCATION_URL! + "?" + params.toString()).toString()
+    `${process.env.GEOLOCATION_URL!}?${params.toString()}`
   );
 
   return data.city;
@@ -113,7 +113,7 @@ export async function addProdactToCart({ body, cookie }) {
     rejectUnauthorized: false,
   });
   const { data } = await axios.get(
-    (process.env.API_URL! + Endpoints.cart + "/items" + "?" + params.toString()).toString(),
+    `${process.env.API_URL! + Endpoints.cart}/items?${params.toString()}`,
     {
       httpsAgent: agent,
       withCredentials: true,

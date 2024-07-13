@@ -13,7 +13,7 @@ export default function DescriptionBlock({
   return (
     <div className="card__description-wrapper">
       <Link
-        href={routes[2].href + "/" + id}
+        href={`${routes[2].href}/${id}`}
         className="card__name typography__h5"
       >{`${beerName}`}</Link>
       <p>{volumeLarge}</p>
