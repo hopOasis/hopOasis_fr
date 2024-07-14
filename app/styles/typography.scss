@@ -1,10 +1,15 @@
 .typography {
-   &__h2 {
+  &__h1 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: calc(48.76 / 40);
+  }
+  &__h2 {
     font-size: 32px;
     font-weight: 500;
     line-height: calc(39.01 / 32);
   }
-  
+
   &__h3 {
     font-size: 24px;
     font-weight: 500;
@@ -31,7 +36,7 @@
     font-weight: 500;
     line-height: calc(17.07 / 14);
   }
- 
+
   &__h8 {
     font-size: 18px;
     font-weight: 600;
