@@ -12,13 +12,13 @@ import Loader from "../../ui/Loader/Loader";
 import { getCart, getProducts } from "@/app/api/api";
 
 export default async function MainLayout({ children }: IProps) {
-  const [cart, products]: [CartResponseType, ProductsResponseType] =
-    await Promise.all([
-      getCart({ endpoint: Endpoints.cart }),
-      getProducts({ endpoint: Endpoints.beer }),
-    ]);
+  // const [cart, products]: [CartResponseType, ProductsResponseType] =
+  //   await Promise.all([
+  //     getCart({ endpoint: Endpoints.cart }),
+  //     getProducts({ endpoint: Endpoints.beer }),
+  //   ]);
 
-  console.log("cart", cart);
+  const products = await getProducts({ endpoint: Endpoints.beer });
 
   return (
     <>
@@ -26,7 +26,7 @@ export default async function MainLayout({ children }: IProps) {
       {children}
       <Footer />
       <Suspense fallback={<Loader />}>
-        <Portal cart={cart} products={products.content} />
+        <Portal cart={{items:[], priceForAll: 0}} products={products.content} />
       </Suspense>
     </>
   );

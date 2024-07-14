@@ -6,7 +6,7 @@ import {
   IPropsGetById,
   ProductsResponseType,
 } from "./types";
-import https from "node:https";
+import https from "https";
 import { ProductType } from "../types/types";
 
 export async function getProducts({ endpoint }: IPropsGet) {
@@ -59,6 +59,7 @@ export async function getCart({ endpoint }: IPropsGet) {
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
+  
   const { data }: { data: CartResponseType } = await axios.get(
     process.env.API_URL! + endpoint,
     {
