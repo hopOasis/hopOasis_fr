@@ -3,6 +3,7 @@ import { routes } from "@/app/static/routes";
 import { ProductType } from "@/app/types/types";
 import { CardButton } from "../../buttons/buttons";
 import { oazaStorage } from "@/app/utils";
+import revalidate from "@/app/actions";
 
 export default function DescriptionBlock({
   beerName,
@@ -22,6 +23,8 @@ export default function DescriptionBlock({
         id={id}
         onClick={() => {
           oazaStorage.set({ id, quantity: 1 });
+              revalidate();
+
         }}
       />
     </div>
