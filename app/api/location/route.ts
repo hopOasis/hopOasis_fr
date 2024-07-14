@@ -7,7 +7,7 @@ export async function GET() {
   });
 
   const resLocation = await fetch(
-    process.env.GEOLOCATION_URL! + "?" + params.toString()
+    `${process.env.GEOLOCATION_URL!}?${params.toString()}`
   );
 
   if (!resLocation.ok) {

@@ -1,4 +1,3 @@
-@import "../../../styles/variables/colors";
 
 .cart {
   &__list {
@@ -16,11 +15,11 @@
     padding-bottom: 8px;
 
     & > button {
-      color: $black-color-300;
-      transition: color 0.35s ease-out;
+      color: var(--black-50);
+      transition: color var(--main-transition);
       height: 24px;
       &:hover {
-        color: $black-color-500;
+        color:var(--black-500);
       }
     }
 
@@ -37,6 +36,7 @@
       &__middle-block {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
         gap: 20px;
       }
     }

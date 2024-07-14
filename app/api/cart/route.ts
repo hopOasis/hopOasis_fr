@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     items: parsedRes.items.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+        (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
       ),
     })),
   };
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const requestHeaders = new Headers(request.headers);
 
-  const res = await fetch(process.env.API_URL! + Endpoints.cart + "/items", {
+  const res = await fetch(`${process.env.API_URL! + Endpoints.cart}/items`, {
     method: "POST",
     headers: requestHeaders,
     body: JSON.stringify(body),

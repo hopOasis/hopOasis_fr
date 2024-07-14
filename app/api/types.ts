@@ -6,8 +6,12 @@ export enum Endpoints {
   cider = "cider",
 }
 
-export interface IPropsGetAll {
+export interface IPropsGet {
   endpoint: Endpoints;
+}
+
+export interface IPropsGetById extends IPropsGet {
+  id: string;
 }
 
 export interface IPropsGetById {
@@ -33,7 +37,7 @@ export type PageableType = {
   unpaged: boolean;
 };
 
-export type PruductsResponseType = {
+export type ProductsResponseType = {
   content: ProductType[];
   pageable: PageableType;
   totalElements: number;
@@ -55,7 +59,6 @@ export enum ProxiEndpoints {
   newPostCities = "http://localhost:3000/api/newPost/citiesLib",
   newPostSettlements = "http://localhost:3000/api/newPost/settlementsLib",
   geolocation = "http://localhost:3000/api/location",
-  beer = `https://localhost:3000/api/products/beer`,
+  beer = "https://localhost:3000/api/products/beer",
   cart = "http://localhost:3000/api/cart",
 }
-

@@ -5,6 +5,7 @@ import Icons from "@/app/components/ui/icons/icons";
 import Section from "@/app/components/ui/section/section";
 import Image from "next/image";
 import { IPropsHeroSection } from "../types";
+import { oazaStorage } from "@/app/utils";
 
 export default function HeroSection({
   id,
@@ -20,7 +21,10 @@ export default function HeroSection({
         <h1 className="title typography__h2">{beerName}</h1>
         <p className="title typography__h2 accent">{priceLarge} грн.</p>
         <Rating rating={rating} onChange={(value) => console.log(value)} />
-        <CardButton onClick={() => console.log("button-id", id)} />
+        <CardButton
+          id={id}
+          onClick={() => oazaStorage.set({ id, quantity: 1 })}
+        />
         <button
           className="single-page__fav-button typography__h5"
           type="button"

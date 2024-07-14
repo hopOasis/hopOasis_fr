@@ -4,16 +4,25 @@ import { fields } from "@/app/static/form";
 
 export const DepartmentComponent = ({
   isTrueCurrentLocation,
+  value,
 }: IPropsDepartmentComponent) => {
   return (
     <div>
-      {fields.map((props) => (
+      <Field
+        id="city"
+        type="text"
+        placeholder="Місто"
+        validation={(value) => value.length >= 3}
+        onChange={({ id, value }) => console.log({ [id]: value })}
+        value={value}
+      />
+      {/* {fields.map((props) => (
         <Field
           key={props.id}
           {...props}
           onChange={({ id, value }) => setValues({ ...values, [id]: value })}
         />
-      ))}{" "}
+      ))} */}
     </div>
   );
 };

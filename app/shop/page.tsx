@@ -6,11 +6,13 @@ import Section from "../components/ui/section/section";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
 import Loader from "../components/ui/Loader/Loader";
-import { Endpoints, ProxiEndpoints, PruductsResponseType } from "../api/types";
+import { Endpoints, ProductsResponseType } from "../api/types";
+import { getProducts } from "../api/api";
 
 export default async function Page() {
-  const res = await fetch(ProxiEndpoints.beer);
-  const products: PruductsResponseType = await res.json();
+  const products: ProductsResponseType = await getProducts({
+    endpoint: Endpoints.beer,
+  });
 
   return (
     <MainLayout>

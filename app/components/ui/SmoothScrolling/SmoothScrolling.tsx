@@ -10,10 +10,12 @@ export default function SmoothScrolling() {
   useEffect(() => {
     const lenis = new Lenis({
       lerp: 0.08,
-      wrapper: document.querySelector(!modal ? "body": "dialog")!,
+      wrapper: !modal
+        ? document.querySelector("body")!
+        : document.querySelector("dialog")!,
     });
 
-    function raf(time: any) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }

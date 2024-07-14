@@ -1,21 +1,16 @@
 import { Suspense } from "react";
-import { ProxiEndpoints } from "../api/types";
 import "./checkout.scss";
 import CheckoutHeader from "./components/CheckoutHeader";
 import ChekoutForm from "./components/ChekoutForm";
 import Loader from "../components/ui/Loader/Loader";
 import { localizationCity } from "../utils";
+import { getLocation, getNewPostSettlementsLib } from "../api/api";
 
 export default async function Page() {
-  const geolocation = await fetch(ProxiEndpoints.geolocation);
-  const { city } = await geolocation.json();
-  const newPostCitiesLibrary = await fetch(ProxiEndpoints.newPostSettlements, {
-    method: "POST",
-    body: JSON.stringify({ city: localizationCity(city) }),
-  });
-  const parsednewPostCitiesLibrary = await newPostCitiesLibrary.json();
+  const city = await getLocation();
+  const newPostSettlement = await getNewPostSettlementsLib({ city: localizationCity(city) });
 
-  // console.log("parsednewPostCitiesLibrary", parsednewPostCitiesLibrary);
+  // console.log("parsednewPostCitiesLibrary", newPostSettlement);
   return (
     <>
       <CheckoutHeader />

@@ -15,7 +15,7 @@ export const CardSlider = ({ products, slidesPerView = 4 }: IProps) => {
     if (swiperElRef.current) {
       Object.assign(swiperElRef.current, {
         on: {
-          slideChange(e:any) {
+          slideChange(e: { activeIndex: React.SetStateAction<number>; isEnd: any; }) {
             setIsActiveIdx(e.activeIndex);
             e.isEnd && setIsActiveIdx(-1);
           },

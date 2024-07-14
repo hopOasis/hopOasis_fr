@@ -1,27 +1,24 @@
-import { Endpoints, PruductsResponseType } from "../../types";
+import { Endpoints, ProductsResponseType } from "../../types";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   const resProducts = await fetch(process.env.API_URL! + Endpoints.beer);
-  if ( !resProducts.ok) {
-
+  if (!resProducts.ok) {
     console.log("error", resProducts);
     throw new Error("Failed to fetch data");
   }
 
-  const parsedRes: PruductsResponseType = await resProducts.json();
-
+  const parsedRes: ProductsResponseType = await resProducts.json();
 
   const data = {
     ...parsedRes,
     content: parsedRes.content.map(({ imageName, ...rest }) => ({
       ...rest,
       imageName: imageName.map(
-        (name) => process.env.API_URL! + Endpoints.beer + "/images/" + name
+        (name) => `${process.env.API_URL! + Endpoints.beer}/images/${name}`
       ),
     })),
   };
-
 
   return NextResponse.json({ ...data });
 }

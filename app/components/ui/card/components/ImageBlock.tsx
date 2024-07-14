@@ -14,7 +14,7 @@ export default function ImageBlock({
           src={image}
           width={302}
           height={302}
-          alt={`picture of ${name}`}
+          alt={name}
         />
       </div>
       <FavButton
