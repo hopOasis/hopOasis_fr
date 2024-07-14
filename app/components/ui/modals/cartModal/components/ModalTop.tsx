@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Icons from "../icons/icons";
+import Icons from "../../../icons/icons";
 import { animate } from "@/app/utils";
 
 export default function ModalTop() {

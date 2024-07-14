@@ -40,6 +40,27 @@ export const animate = {
       });
     },
   },
+  ageGateModal: {
+    open: () => {
+      const tl = gsap.timeline();
+      tl.to(".age-gate-modal", { top: 100, opacity: 1, duration: 0.2 }).to(
+        ".age-gate-modal",
+        {
+          top: 0,
+          duration: 0.35,
+        }
+      );
+      return tl;
+    },
+    close: ({ cb }: { cb: () => void }) => {
+      gsap.to(".age-gate-modal", {
+        top: -500,
+        opacity: 0,
+        duration: 0.2,
+        onComplete: cb,
+      });
+    },
+  },
 };
 
 type CitiesType = { [key: string]: string };

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Total from "../../ui/modals/Total";
+import Total from "../../ui/modals/cartModal/components/Total";
 import "./cart-list.scss";
 import { IProps } from "./types";
 import CartItem from "../../ui/CartItem/CartItem";
@@ -23,7 +23,6 @@ export default function CartList({ cart }: IProps) {
     item.count -= 1;
     setItems([...items]);
   };
-
 
   return (
     <>

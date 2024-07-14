@@ -1,14 +1,12 @@
-"use client";
-import "./cartModal.scss";
-import ModalTop from "./ModalTop";
-import { IPropsCartModal } from "./types";
-import CartList from "../../containers/CartList/CartList";
-import Overflow from "../Overflov/Overflow";
 import { useEffect } from "react";
-import { animate } from "@/app/utils";
 import SpesialForYouModal from "./SpesialForYouModal";
+import { animate } from "@/app/utils";
+import Overflow from "../../../Overflov/Overflow";
+import CartList from "@/app/components/containers/CartList/CartList";
+import ModalTop from "./ModalTop";
+import { IPropsCartModal } from "../types";
 
-export default function CartModal({ cart, products }: IPropsCartModal) {
+export default function ModalDialog({ cart, products }: IPropsCartModal) {
   useEffect(() => {
     const animation = animate.modal.open();
     return () => animation.revert();
