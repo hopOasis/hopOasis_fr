@@ -23,8 +23,7 @@ export default function DescriptionBlock({
         id={id}
         onClick={() => {
           oazaStorage.set({ id, quantity: 1 });
-              revalidate();
-
+          revalidate();
         }}
       />
     </div>

@@ -84,4 +84,7 @@ export const oazaStorage = {
     if (!data) return false;
     return !!this.get().find(({ id: storeId }) => storeId === id);
   },
+  getItemById: function (id: Pick<ProductType, "id">) {
+    return this.get().find(({ id: storeId }) => storeId === id);
+  }
 };

@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import CartItem from "../../ui/CartItem/CartItem";
 import Total from "../../ui/modals/Total";
 import "./cart-list.scss";
 import { IProps } from "./types";
+import CartItem from "../../ui/CartItem/CartItem";
 
 export default function CartList({ cart }: IProps) {
   const [items, setItems] = useState(cart.items);
@@ -24,11 +24,12 @@ export default function CartList({ cart }: IProps) {
     setItems([...items]);
   };
 
+
   return (
     <>
       <Total
         total={items.reduce(
-          (acc, { count, priceLarge }) => acc + count * priceLarge,
+          (acc, { quantity, priceLarge }) => acc + quantity * priceLarge,
           0
         )}
       />
