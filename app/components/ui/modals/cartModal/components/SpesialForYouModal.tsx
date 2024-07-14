@@ -1,6 +1,6 @@
-import Card from "../card/Card";
-import { CardSlider } from "../slider/CardSlider";
-import {  IPropsWeeklyProducts } from "./types";
+import Card from "../../../card/Card";
+import { CardSlider } from "../../../slider/CardSlider";
+import { IPropsWeeklyProducts } from "../types";
 
 export default function SpesialForYouModal({ products }: IPropsWeeklyProducts) {
   return (
