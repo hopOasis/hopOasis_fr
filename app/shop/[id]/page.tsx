@@ -9,6 +9,7 @@ import { Endpoints } from "@/app/api/types";
 import { IProps } from "./types";
 import Loader from "@/app/components/ui/Loader/Loader";
 import { getProductById } from "@/app/api/api";
+import BreadCrumbs from "@/app/components/ui/BreadCrumbs/BreadCrumbs";
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
   const product = await getProductById({ endpoint: Endpoints.beer, id });
@@ -16,12 +17,13 @@ export default async function SingleProductPage({ params: { id } }: IProps) {
   return (
     <MainLayout>
       <main className="single-page">
-        <Suspense fallback={<Loader />}>
+        <BreadCrumbs product={product} />
+        {/* <Suspense fallback={<Loader />}>
           <HeroSection {...product} image={product.imageName[0]} />
         </Suspense>
         <Suspense fallback={<Loader />}>
           <DeliveryPaymantSection {...product} />
-        </Suspense>
+        </Suspense> */}
         <SpecialForYouSection />
         <FeedBackSection />
       </main>

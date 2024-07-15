@@ -8,6 +8,7 @@ import MainLayout from "../components/containers/MainLayout/MainLayout";
 import Loader from "../components/ui/Loader/Loader";
 import { Endpoints, ProductsResponseType } from "../api/types";
 import { getProducts } from "../api/api";
+import BreadCrumbs from "../components/ui/BreadCrumbs/BreadCrumbs";
 
 export default async function Page() {
   const products: ProductsResponseType = await getProducts({
@@ -18,9 +19,7 @@ export default async function Page() {
     <MainLayout>
       <main className="shop-page">
         <Section>
-          <h1 className="typography__h4__regular">
-            <span className="t-b-100">Khmilna Oaza</span> | Магазин
-          </h1>
+          <BreadCrumbs/>
           <Filters />
           <Suspense fallback={<Loader />}>
             <Gallery>

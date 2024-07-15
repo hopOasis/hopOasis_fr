@@ -1,0 +1,26 @@
+.bread-crumbs {
+  padding-top: 40px;
+  text-align: center;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &:last-of-type {
+      color: var(--black-500);
+    }
+    &::before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 15px;
+      background-color: var(--black-100);
+    }
+  }
+}
