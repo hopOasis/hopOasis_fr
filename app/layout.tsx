@@ -5,6 +5,7 @@ import "normalize.css/normalize.css";
 import "swiper/scss";
 import SmoothScrolling from "./components/ui/SmoothScrolling/SmoothScrolling";
 import AgeGateModal from "./components/ui/modals/AgeGateModal/AgeGateModal";
+import StorageUtils from "./components/ui/StorageUtils/StorageUtils";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600"],
@@ -28,6 +29,7 @@ export default function RootLayout({
         <SmoothScrolling />
         {children}
         <AgeGateModal />
+        <StorageUtils />
       </body>
     </html>
   );

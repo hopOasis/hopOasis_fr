@@ -59,7 +59,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     <>
       <form className="form">
         <div className="form__left-block">
-          {/* <div className="form__fields-block">
+          <div className="form__fields-block">
             <p className="typography__h8">Особисті дані</p>
             {fields.map((props) => (
               <Field
@@ -71,7 +71,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 }
               />
             ))}
-          </div> */}
+          </div>
 
           <div className="form__fields-block">
             <p className="typography__h8">Доставка</p>
