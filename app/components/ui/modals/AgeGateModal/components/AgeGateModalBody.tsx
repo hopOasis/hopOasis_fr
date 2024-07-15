@@ -1,4 +1,4 @@
-import { animate } from "@/app/utils";
+import { animate, oazaStorage } from "@/app/utils";
 import { useEffect } from "react";
 import { IPropsAgeGateModal } from "../types";
 
@@ -17,7 +17,12 @@ export default function AgeGateModalBody({ setShow }: IPropsAgeGateModal) {
             className="main-link light"
             type="button"
             onClick={() =>
-              animate.ageGateModal.close({ cb: () => setShow(false) })
+              animate.ageGateModal.close({
+                cb: () => {
+                  oazaStorage.setSecure();
+                  setShow(false);
+                },
+              })
             }
           >
             Так

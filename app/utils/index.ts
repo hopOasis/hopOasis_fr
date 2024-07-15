@@ -67,6 +67,7 @@ type CitiesType = { [key: string]: string };
 
 export const localizationCity = (city: string) => {
   const cities: CitiesType = {
+    kiev: "київ",
     kyiv: "київ",
   };
   return (
@@ -80,6 +81,7 @@ type LocalStorageSetType = {
 
 export const oazaStorage = {
   key: "oaza_guest",
+  keySecure: "oaza_age_gate_secure",
   set: function ({ id, quantity }: LocalStorageSetType) {
     const data = this.get();
 
@@ -107,5 +109,15 @@ export const oazaStorage = {
   },
   getItemById: function (id: Pick<ProductType, "id">) {
     return this.get().find(({ id: storeId }) => storeId === id);
-  }
+  },
+  setSecure: function () {
+    store.set(this.keySecure, true);
+    return true;
+  },
+  getSecure: function () {
+    return !!store.get(this.keySecure);
+  },
+  clearSecure: function () { 
+    store.remove(this.keySecure);
+  },
 };
