@@ -2,7 +2,7 @@ import Icons from '../components/ui/icons/icons';
 
 export const routes = [
   { id: "main", name: "main", href: "/", icon: null },
-  { id: "about", name: "Про нас", href: "/about", icon: null },
+  { id: "about", name: "Про броварню", href: "/about", icon: null },
   { id: "shop", name: "Магазин", href: "/shop", icon: null },
   {
     id: "delivery",

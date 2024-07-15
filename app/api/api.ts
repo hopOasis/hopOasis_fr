@@ -34,7 +34,6 @@ export async function getProducts({ endpoint }: IPropsGet) {
 }
 
 export async function getProductById({ endpoint, id }: IPropsGetById) {
-  console.log("URL", `${process.env.API_URL! + endpoint}/${id}`);
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
