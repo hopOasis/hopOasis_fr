@@ -1,4 +1,4 @@
-import Icons from '../components/ui/icons/icons';
+import Icons from "../components/ui/icons/icons";
 
 export const routes = [
   { id: "main", name: "main", href: "/", icon: null },
@@ -24,10 +24,16 @@ export const routes = [
     icon: <Icons name="heart" />,
   },
   {
-    id: "avatar",
-    name: "avatar",
+    id: "sign-in",
+    name: "sign-in",
     href: "/sign-in",
     icon: <Icons name="avatar" />,
+  },
+  {
+    id: "sign-up",
+    name: "sign-up",
+    href: "/sign-up",
+    icon: null,
   },
   {
     id: "cart",

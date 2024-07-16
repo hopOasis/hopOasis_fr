@@ -61,6 +61,16 @@ export const animate = {
       });
     },
   },
+  eye: () => {
+    const tl = gsap.timeline();
+    tl.to("#eye", {
+      scaleY: 0.5,
+      duration: 0.25,
+    }).to("#eye", {
+      scaleY: 1,
+      duration: 0.1,
+    });
+  },
 };
 
 type CitiesType = { [key: string]: string };
@@ -117,7 +127,7 @@ export const oazaStorage = {
   getSecure: function () {
     return !!store.get(this.keySecure);
   },
-  clearSecure: function () { 
+  clearSecure: function () {
     store.remove(this.keySecure);
   },
 };
