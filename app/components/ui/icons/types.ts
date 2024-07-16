@@ -13,7 +13,8 @@ type IconType =
   | "minus"
   | "plus"
   | "swiper-right-arrow"
-  | "swiper-left-arrow";
+  | "swiper-left-arrow"
+  | "eye";
 
 export interface IProps {
   name: IconType;

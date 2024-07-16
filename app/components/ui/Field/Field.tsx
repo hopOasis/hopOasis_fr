@@ -10,6 +10,7 @@ export default function Field({
   value,
   validation,
   onChange,
+  children,
 }: IProps) {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isBlur, setIsBlur] = useState<boolean>(false);
@@ -31,9 +32,13 @@ export default function Field({
         onBlur={({ target: { value } }) => setIsBlur(value.length > 0)}
         className={invalid ? "invalid" : undefined}
       />
-      <label htmlFor={id} className={isBlur || value ? "blur t-b-50" : "t-b-50"}>
+      <label
+        htmlFor={id}
+        className={isBlur || value ? "blur t-b-50" : "t-b-50"}
+      >
         {placeholder}
       </label>
+      {children}
       {invalid && <span className="typography__h6">{isValid.toString()}</span>}
     </div>
   );

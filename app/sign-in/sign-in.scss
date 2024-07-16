@@ -1,0 +1,57 @@
+.sign-in {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__right-block {
+    place-items: center;
+    width: 100%;
+    max-width: 516px;
+    padding: 48px;
+  }
+
+  &__sign-up-link {
+    a {
+      color: var(--blue-500);
+    }
+  }
+
+  form {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+
+    input[id="password"] + label + button {
+      color: var(--black-100);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+      transition: color var(--main-transition);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: var(--black-500);
+      }
+    }
+  }
+}
+
+.blue {
+  background-color: var(--blue-500);
+  color: white;
+  transition: background-color var(--main-transition);
+  &:hover {
+    background-color: var(--blue-400);
+  }
+  &:active {
+    background-color: var(--blue-300);
+  }
+}

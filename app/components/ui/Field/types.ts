@@ -4,6 +4,7 @@ import { FormFieldType } from "@/app/types/types";
 export interface IProps extends FormFieldType {
   onChange: (
     e: React.InputHTMLAttributes<HTMLInputElement>
-  ) => React.Dispatch<React.SetStateAction<FormStateType>>;
+  ) => void;
   value: string;
+  children?: React.ReactNode;
 }
