@@ -41,6 +41,7 @@ export const LogoLink = ({ variant = Palitra.light }: IPropsLogoLink) => {
         alt="logo Khmilna oaza"
         width={189}
         height={62}
+        priority
       />
     </Link>
   );

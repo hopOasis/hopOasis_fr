@@ -12,7 +12,7 @@ export default function SmoothScrolling() {
       lerp: 0.08,
       wrapper: !modal
         ? document.querySelector("body")!
-        : document.querySelector("dialog")!,
+        : document.querySelector("dialog")! || document.querySelector("body")!,
     });
 
     function raf(time: number) {

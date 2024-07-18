@@ -12,16 +12,14 @@ import { getProductById } from "@/app/api/api";
 import BreadCrumbs from "@/app/components/ui/BreadCrumbs/BreadCrumbs";
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
-  const product = await getProductById({ endpoint: Endpoints.beer, id });
+  // const product = await getProductById({ endpoint: Endpoints.beer, id });
 
   return (
     <MainLayout>
       <main className="single-page">
-        <BreadCrumbs product={product} />
         {/* <Suspense fallback={<Loader />}>
+          <BreadCrumbs product={product} />
           <HeroSection {...product} image={product.imageName[0]} />
-        </Suspense>
-        <Suspense fallback={<Loader />}>
           <DeliveryPaymantSection {...product} />
         </Suspense> */}
         <SpecialForYouSection />

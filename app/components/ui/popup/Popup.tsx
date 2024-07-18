@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./popup.scss";
 import { IProps } from "./types";
 import { animate } from "@/app/utils";
+import { revalidateCheckout } from "@/app/actions";
 
 export default function Popup({ city, setIsTrueCurrentLocation }: IProps) {
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function Popup({ city, setIsTrueCurrentLocation }: IProps) {
           onClick={() => {
             setIsTrueCurrentLocation("yes");
             animate.popup.close();
+            revalidateCheckout();
           }}
         >
           Так

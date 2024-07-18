@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FormStateType, IPropsChekoutForm } from "../types";
 import { deliveryRadio, fields, paymentRadio } from "@/app/static/form";
 import Field from "@/app/components/ui/Field/Field";
@@ -10,6 +10,7 @@ import Icons from "@/app/components/ui/icons/icons";
 import { beer } from "@/app/static/bear";
 import { DepartmentComponent } from "./deliveryRadioComponents";
 import Popup from "@/app/components/ui/popup/Popup";
+import { throttle } from "throttle-debounce";
 
 const initialState = Array(3)
   .fill(1)
@@ -32,17 +33,39 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const remove = (id: number) =>
     setItems(items.filter(({ id: prevId }) => prevId !== id));
 
+  const throttlingFetch = useCallback(
+    throttle(
+      2000,
+      () => {
+        console.log(
+          "trottle",
+          items.map(({ id, count }) => ({
+            itemId: id,
+            quantity: count,
+          }))
+        );
+      },
+      { noLeading: true }
+    ),
+    []
+  );
   const increment = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     item.count += 1;
     setItems([...items]);
+
+    throttlingFetch();
   };
 
   const decrement = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
-    if (item.count === 1) return;
+    if (item.count === 1) {
+      throttlingFetch();
+      return;
+    }
     item.count -= 1;
     setItems([...items]);
+    throttlingFetch();
   };
 
   const components = {

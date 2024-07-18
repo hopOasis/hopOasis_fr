@@ -58,7 +58,7 @@ export async function getCart({ endpoint }: IPropsGet) {
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
-  
+
   const { data }: { data: CartResponseType } = await axios.get(
     process.env.API_URL! + endpoint,
     {
@@ -91,14 +91,12 @@ export async function getLocation() {
 }
 
 export async function getNewPostSettlementsLib({ city }: { city: string }) {
-  const { data } = await axios.post(process.env.NEW_POST_URL!, {
+  const data = await axios.post(process.env.NEW_POST_URL!, {
     apiKey: process.env.NEW_POST_API_KEY!,
     modelName: "AddressGeneral",
     calledMethod: "searchSettlements",
     methodProperties: {
       CityName: city,
-      //         Limit: "50",
-      // Page: "1",
     },
   });
   return data;

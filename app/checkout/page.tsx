@@ -8,8 +8,11 @@ import { getLocation, getNewPostSettlementsLib } from "../api/api";
 
 export default async function Page() {
   const city = await getLocation();
-  const newPostSettlement = await getNewPostSettlementsLib({ city: localizationCity(city) });
-  console.log("parsednewPostCitiesLibrary", newPostSettlement);
+  // const newPostSettlement = await getNewPostSettlementsLib({ city: localizationCity(city) });
+  // console.log(
+  //   "parsednewPostCitiesLibrary",
+  //   // newPostSettlement.data
+  // );
   return (
     <>
       <CheckoutHeader />
