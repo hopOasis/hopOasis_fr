@@ -12,8 +12,6 @@ export async function GET(request: NextRequest) {
 
   const parsedRes: CartResponseType = await res.json();
 
-  // console.log("get cart/ parsed-res", parsedRes);
-
   const data = {
     ...parsedRes,
     items: parsedRes.items.map(({ imageName, ...rest }) => ({
@@ -28,8 +26,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  // const cook = cookies();
-  // console.log("REQUEST", cook);
 
   const body = await request.json();
   const requestHeaders = new Headers(request.headers);

@@ -10,7 +10,7 @@ export default function ImageBlock({
   return (
     <div className="card__image-wrapper">
       <div className="card__image-container"> 
-        <img
+        <Image
           src={image}
           width={302}
           height={302}

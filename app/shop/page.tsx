@@ -6,7 +6,7 @@ import Section from "../components/ui/section/section";
 import "./shop.scss";
 import MainLayout from "../components/containers/MainLayout/MainLayout";
 import Loader from "../components/ui/Loader/Loader";
-import { Endpoints, ProductsResponseType } from "../api/types";
+import { Endpoints, ProductsResponseType, ProxiEndpoints } from "../api/types";
 import { getProducts } from "../api/api";
 import BreadCrumbs from "../components/ui/BreadCrumbs/BreadCrumbs";
 
@@ -15,7 +15,9 @@ export default async function Page() {
   //   endpoint: Endpoints.beer,
   // });
 
-  // console.log("------products-------",products);
+   const resProducts = await fetch(ProxiEndpoints.beer);
+   const products: ProductsResponseType = await resProducts.json();
+
 
   return (
     <MainLayout>
@@ -24,11 +26,11 @@ export default async function Page() {
           <BreadCrumbs/>
           <Filters />
           <Suspense fallback={<Loader />}>
-            {/* <Gallery>
+            <Gallery>
               {products.content.map((product) => (
                 <Card {...product} key={product.id} />
               ))}
-            </Gallery> */}
+            </Gallery>
           </Suspense>
         </Section>
       </main>

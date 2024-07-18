@@ -16,6 +16,7 @@ export const DepartmentComponent = ({
   const throttledFunc = throttle(
     1000,
     async (city: string, resolve: (val: any) => void) => {
+      console.log("fetch");
       const { data } = await getNewPostSettlementsLib({ city });
       if (!data.success) return resolve(defaultOption);
       const options = data.data[0].Addresses.map(({ Present }) => ({
@@ -27,22 +28,24 @@ export const DepartmentComponent = ({
     { noLeading: true }
   );
 
-  const promiseOptions = async (city: string) => {
+  const cityOptions = async (city: string) => {
     if (!city) return defaultOption;
-
     const options = await new Promise((resolve) => {
       throttledFunc(city, resolve);
     });
-
     return options;
   };
+  
   return (
-    <AsyncSelect
-      id="city"
-      placeholder="Місто"
-      cacheOptions
-      loadOptions={promiseOptions}
-      defaultOptions
-    />
+    <div>
+      <AsyncSelect
+        id="city"
+        placeholder="Місто"
+        cacheOptions
+        loadOptions={cityOptions}
+        defaultOptions
+      />
+    
+    </div>
   );
 };

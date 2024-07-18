@@ -46,9 +46,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
         );
       },
       { noLeading: true }
-    ),
-    []
+    ),[]
   );
+
   const increment = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     item.count += 1;
