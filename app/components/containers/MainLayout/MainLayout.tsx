@@ -2,6 +2,7 @@ import {
   CartResponseType,
   Endpoints,
   ProductsResponseType,
+  ProxiEndpoints,
 } from "@/app/api/types";
 import Footer from "../footer/footer";
 import { Header } from "../header/Header";
@@ -9,7 +10,6 @@ import { IProps } from "./types";
 import { Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
 import { getCart, getProducts } from "@/app/api/api";
-import { oazaStorage } from "@/app/utils";
 import CartModal from "../../ui/modals/cartModal/CartModal";
 
 export default async function MainLayout({ children }: IProps) {
@@ -18,6 +18,10 @@ export default async function MainLayout({ children }: IProps) {
   //     getCart({ endpoint: Endpoints.cart }),
   //     getProducts({ endpoint: Endpoints.beer }),
   //   ]);
+  
+  // const resCart = await fetch(ProxiEndpoints.cart);
+  // const cart = await resCart.json();
+  // console.log("cart", cart)
 
   // const products = await getProducts({ endpoint: Endpoints.beer });
   // const cartItems = products.content.filter((item) =>

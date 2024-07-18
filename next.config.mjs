@@ -6,6 +6,11 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const hostname = process.env.API_URL.replace(/^https?:\/\//, "").replace(
+  /\/$/,
+  ""
+);
+
 const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
@@ -19,8 +24,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: hostname,
         port: "",
+        pathname: "/**",
       },
     ],
   },
