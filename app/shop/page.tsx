@@ -11,9 +11,11 @@ import { getProducts } from "../api/api";
 import BreadCrumbs from "../components/ui/BreadCrumbs/BreadCrumbs";
 
 export default async function Page() {
-  const products: ProductsResponseType = await getProducts({
-    endpoint: Endpoints.beer,
-  });
+  // const products: ProductsResponseType = await getProducts({
+  //   endpoint: Endpoints.beer,
+  // });
+
+  // console.log("------products-------",products);
 
   return (
     <MainLayout>
@@ -22,11 +24,11 @@ export default async function Page() {
           <BreadCrumbs/>
           <Filters />
           <Suspense fallback={<Loader />}>
-            <Gallery>
+            {/* <Gallery>
               {products.content.map((product) => (
                 <Card {...product} key={product.id} />
               ))}
-            </Gallery>
+            </Gallery> */}
           </Suspense>
         </Section>
       </main>

@@ -19,28 +19,28 @@ export default async function MainLayout({ children }: IProps) {
   //     getProducts({ endpoint: Endpoints.beer }),
   //   ]);
 
-  const products = await getProducts({ endpoint: Endpoints.beer });
-  const cartItems = products.content.filter((item) =>
-    oazaStorage.isInStore(item.id)
-  );
+  // const products = await getProducts({ endpoint: Endpoints.beer });
+  // const cartItems = products.content.filter((item) =>
+  //   oazaStorage.isInStore(item.id)
+  // );
 
-  const cart = {
-    items: cartItems.map((item) => ({
-      ...item,
-      quantity: oazaStorage.getItemById(item.id).quantity,
-    })),
-    priceForAll: cartItems.reduce((acc, { priceLarge, quantity },) => {
-      return (acc += priceLarge * quantity);
-    },0),
-  };
+  // const cart = {
+  //   items: cartItems.map((item) => ({
+  //     ...item,
+  //     quantity: oazaStorage.getItemById(item.id).quantity,
+  //   })),
+  //   priceForAll: cartItems.reduce((acc, { priceLarge, quantity },) => {
+  //     return (acc += priceLarge * quantity);
+  //   },0),
+  // };
   return (
     <>
       <Header />
       {children}
       <Footer />
-      <Suspense fallback={<Loader />}>
+      {/* <Suspense fallback={<Loader />}>
         <CartModal cart={cart} products={products.content} />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
