@@ -1,4 +1,3 @@
-
 .main-link {
   padding: 24px;
   text-align: center;
@@ -29,6 +28,32 @@
   &:active {
     background-color: var(--accent-600);
     color: var(--white-500);
+  }
+}
+
+.main-link.white {
+  transition: var(--main-transition);
+  transition-property: background-color, border;
+  border: 1px solid var(--black-50);
+  &:hover {
+    border: 1px solid var(--accent-500);
+    background-color: var(--accent-40);
+  }
+  &:active {
+    border: 1px solid var(--accent-500);
+    background-color: var(--accent-50);
+  }
+}
+
+.main-link.blue {
+  background-color: var(--blue-500);
+  color: white;
+  transition: background-color var(--main-transition);
+  &:hover {
+    background-color: var(--blue-400);
+  }
+  &:active {
+    background-color: var(--blue-300);
   }
 }
 

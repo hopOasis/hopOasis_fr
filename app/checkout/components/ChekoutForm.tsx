@@ -11,6 +11,9 @@ import { beer } from "@/app/static/bear";
 import { DepartmentComponent } from "./deliveryRadioComponents";
 import Popup from "@/app/components/ui/popup/Popup";
 import { throttle } from "throttle-debounce";
+import { routes } from "@/app/static/routes";
+import MainLink from "@/app/components/ui/links/links";
+import { Palitra } from "@/app/types/types";
 
 const initialState = Array(3)
   .fill(1)
@@ -18,7 +21,7 @@ const initialState = Array(3)
 
 export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<
-    string | null
+    boolean | null
   >(null);
   const [values, setValues] = useState<FormStateType>({
     firstName: "",
@@ -46,7 +49,8 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
         );
       },
       { noLeading: true }
-    ),[]
+    ),
+    []
   );
 
   const increment = (id: number) => {
@@ -71,8 +75,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const components = {
     department: (
       <DepartmentComponent
-        value={isTrueCurrentLocation === "yes" ? location : ""}
+        location={isTrueCurrentLocation ? location : ""}
         isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
     "parcel-station": null,
@@ -83,8 +88,14 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
       <form className="form">
         <div className="form__left-block">
           <div className="form__fields-block">
+            <div className="form__header">
+              <h1 className="typography__h3">Оформлення замовлення</h1>
+              <MainLink href={routes[7].href} variant={Palitra.white}>
+                Я маю обліковий запис
+              </MainLink>
+            </div>
             <p className="typography__h8">Особисті дані</p>
-            {fields.map((props) => (
+            {fields.slice(0, 4).map((props) => (
               <Field
                 key={props.id}
                 {...props}
@@ -114,7 +125,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
             ))}
           </div>
 
-          {/* <div className="form__fields-block">
+          <div className="form__fields-block">
             <p className="typography__h8">Оплата</p>
             {paymentRadio.map((props) => (
               <RadioButtons
@@ -126,7 +137,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 }
               />
             ))}
-          </div> */}
+          </div>
         </div>
         <div className="form__right-block">
           <p className="typography__h3 right-block--padding">Ваше замовлення</p>

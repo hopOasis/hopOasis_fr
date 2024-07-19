@@ -64,19 +64,4 @@
   }
 }
 
-.cont-shopping-link {
-  padding: 18px 70px;
-  border: 1px solid var(--black-50);
-  border-radius: 4px;
 
-  transition: var(--main-transition);
-  transition-property: background-color, border-color;
-  &:hover {
-    background-color: var(--accent-40);
-    border-color: var(--accent-500);
-  }
-  &:active {
-    background-color: var(--accent-50);
-    border-color: var(--accent-500);
-  }
-}

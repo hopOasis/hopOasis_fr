@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <SmoothScrolling />
+        {/* <SmoothScrolling /> */}
         {children}
         <AgeGateModal />
         <StorageUtils />
