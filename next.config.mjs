@@ -12,6 +12,7 @@ const hostname = process.env.API_URL.replace(/^https?:\/\//, "").replace(
 );
 
 const nextConfig = {
+  reactStrictMode: false,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },

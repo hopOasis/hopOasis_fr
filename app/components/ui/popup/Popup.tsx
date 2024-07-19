@@ -17,7 +17,7 @@ export default function Popup({ city, setIsTrueCurrentLocation }: IProps) {
         <button
           type="button"
           onClick={() => {
-            setIsTrueCurrentLocation("no");
+            setIsTrueCurrentLocation(false);
             animate.popup.close();
           }}
         >
@@ -26,7 +26,7 @@ export default function Popup({ city, setIsTrueCurrentLocation }: IProps) {
         <button
           type="button"
           onClick={() => {
-            setIsTrueCurrentLocation("yes");
+            setIsTrueCurrentLocation(true);
             animate.popup.close();
             revalidateCheckout();
           }}

@@ -18,7 +18,7 @@ const initialState = Array(3)
 
 export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<
-    string | null
+    boolean | null
   >(null);
   const [values, setValues] = useState<FormStateType>({
     firstName: "",
@@ -46,7 +46,8 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
         );
       },
       { noLeading: true }
-    ),[]
+    ),
+    []
   );
 
   const increment = (id: number) => {
@@ -71,8 +72,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const components = {
     department: (
       <DepartmentComponent
-        value={isTrueCurrentLocation === "yes" ? location : ""}
+        location={isTrueCurrentLocation ? location : ""}
         isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
     "parcel-station": null,

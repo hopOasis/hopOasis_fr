@@ -12,6 +12,7 @@ export interface IPropsChekoutForm {
 }
 
 export interface IPropsDepartmentComponent {
-  value: string;
-  isTrueCurrentLocation: string | null;
+  location: string;
+  isTrueCurrentLocation: boolean | null;
+  setIsTrueCurrentLocation:()=>void;
 }

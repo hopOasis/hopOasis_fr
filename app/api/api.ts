@@ -90,17 +90,6 @@ export async function getLocation() {
   return data.city;
 }
 
-export async function getNewPostSettlementsLib({ city }: { city: string }) {
-  const data = await axios.post(process.env.NEW_POST_URL!, {
-    apiKey: process.env.NEW_POST_API_KEY!,
-    modelName: "AddressGeneral",
-    calledMethod: "searchSettlements",
-    methodProperties: {
-      CityName: city,
-    },
-  });
-  return data;
-}
 
 export async function addProdactToCart({ body, cookie }) {
   const params = new URLSearchParams({
@@ -118,5 +107,31 @@ export async function addProdactToCart({ body, cookie }) {
     }
   );
 
+  return data;
+}
+
+
+export async function getNewPostSettlementsLib({ city }: { city: string }) {
+  const data = await axios.post(process.env.NEW_POST_URL!, {
+    apiKey: process.env.NEW_POST_API_KEY!,
+    modelName: "AddressGeneral",
+    calledMethod: "searchSettlements",
+    methodProperties: {
+      CityName: city,
+    },
+  });
+  return data;
+}
+
+export async function getNewPostStreetsLib({ cityRef, streetName }: { cityRef: string, streetName: string }) {
+  const data = await axios.post(process.env.NEW_POST_URL!, {
+    apiKey: process.env.NEW_POST_API_KEY!,
+    modelName: "AddressGeneral",
+    calledMethod: "searchSettlementStreets",
+    methodProperties: {
+      StreetName: streetName,
+      SettlementRef: cityRef,
+    },
+  });
   return data;
 }
