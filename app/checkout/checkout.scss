@@ -7,8 +7,15 @@
   display: grid;
   grid-template-columns: 65% 35%;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__left-block {
     border-right: 1px solid black;
+    padding-right: 68px;
   }
   &__right-block {
     .typography__h3 {
@@ -58,4 +65,20 @@
 
 .right-block--padding {
   padding-left: 40px;
+}
+
+.new-post-charachters {
+  span: {
+    color: red;
+  }
+  p,
+  li {
+    font-weight: 600;
+  }
+}
+
+.delivery-component {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
 }

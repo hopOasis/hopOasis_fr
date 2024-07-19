@@ -11,15 +11,14 @@ export default function MainLink({
   variant = Palitra.dark,
   children,
 }: IMainLinkProps) {
+  const cases = {
+    light: "typography__h3 main-link light",
+    dark: "typography__h3 main-link dark",
+    white: "typography__h5 main-link white",
+    blue: "typography__h5 main-link blue",
+  };
   return (
-    <Link
-      href={href}
-      className={
-        variant === Palitra.dark
-          ? "typography__h3 main-link dark"
-          : "typography__h3 main-link light"
-      }
-    >
+    <Link href={href} className={cases[variant]}>
       {children}
     </Link>
   );

@@ -44,14 +44,4 @@
   }
 }
 
-.blue {
-  background-color: var(--blue-500);
-  color: white;
-  transition: background-color var(--main-transition);
-  &:hover {
-    background-color: var(--blue-400);
-  }
-  &:active {
-    background-color: var(--blue-300);
-  }
-}
+

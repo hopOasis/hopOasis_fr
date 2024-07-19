@@ -14,5 +14,5 @@ export interface IPropsChekoutForm {
 export interface IPropsDepartmentComponent {
   location: string;
   isTrueCurrentLocation: boolean | null;
-  setIsTrueCurrentLocation:()=>void;
+  setIsTrueCurrentLocation: React.Dispatch<React.SetStateAction<boolean | null>>;
 }

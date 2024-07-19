@@ -1,6 +1,6 @@
-import "./styles.scss";
 import Select from "react-select";
 import { IProps } from "./types";
+import { styles } from "./select-styles.js";
 
 export default function SelectComponent({
   placeholder,
@@ -10,6 +10,7 @@ export default function SelectComponent({
 }: IProps) {
   return (
     <Select
+      styles={styles}
       id={id}
       placeholder={placeholder}
       onChange={(value) => onChange(value)}

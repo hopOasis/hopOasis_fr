@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Loader from "@/app/components/ui/Loader/Loader";
 import SelectComponent from "@/app/components/ui/SelectComponent/SelectComponent";
 import AsyncSelectComponent from "@/app/components/ui/SelectComponent/AsyncSelectComponent";
+import NewPostCharacters from "./NewPostCharacters";
 const defaultOption = [
   {
     label: "Почніть вводити текст. Викоистовуйте українську літерацію",
@@ -23,7 +24,7 @@ export const DepartmentComponent = ({
 }: IPropsDepartmentComponent) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [cityRef, setCityRef] = useState<any | null>(null);
-  const [departmentRef, setDepartmentRef] = useState<string | null>(null);
+  const [departmentRef, setDepartmentRef] = useState<any | null>(null);
 
   useEffect(() => {
     if (!isTrueCurrentLocation) return;
@@ -99,9 +100,8 @@ export const DepartmentComponent = ({
     return options;
   };
 
-  // console.log("isTrueCurrentLocation", isTrueCurrentLocation);
   return (
-    <div>
+    <div className="delivery-component">
       {isTrueCurrentLocation ? (
         loading ? (
           <Loader />
@@ -110,7 +110,11 @@ export const DepartmentComponent = ({
             id="_city"
             placeholder={cityRef?.Present}
             value={{ label: cityRef?.Present, value: cityRef?.Ref }}
-            onChange={() => setIsTrueCurrentLocation(false)}
+            onChange={() => {
+              setIsTrueCurrentLocation(false);
+              setCityRef(null);
+              setDepartmentRef(null);
+            }}
           />
         )
       ) : (
@@ -118,7 +122,14 @@ export const DepartmentComponent = ({
           id="city"
           placeholder="Місто"
           options={cityOptions}
-          onChange={(value) => setCityRef(value ? value.transferData : null)}
+          onChange={(value) => {
+            if (!value) {
+              setCityRef(null);
+              setDepartmentRef(null);
+              return;
+            }
+            setCityRef(value.transferData);
+          }}
         />
       )}
       {cityRef && (
@@ -126,11 +137,12 @@ export const DepartmentComponent = ({
           id="street"
           placeholder="Адреса або номер відділення"
           options={departmentsAndPostalOptions}
-          onChange={(value) =>
-            setDepartmentRef(value ? value.transferData : null)
-          }
+          onChange={(value) => {
+            setDepartmentRef(value ? value.transferData : null);
+          }}
         />
       )}
+      {departmentRef && cityRef && <NewPostCharacters {...departmentRef} />}
     </div>
   );
 };

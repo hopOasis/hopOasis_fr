@@ -11,15 +11,6 @@ export type ProductType = {
   rating: number;
 };
 
-// export interface IProductCard {
-//   id: string;
-//   imageName: string[];
-//   beerName: string;
-//   volumeLarge: string;
-//   priceLarge: number;
-//   description: string;
-//   rating: number;
-// }
 
 export interface IFeedbackCard {
   img: string;
@@ -39,4 +30,6 @@ export type FormFieldType = {
 export enum Palitra {
   light = "light",
   dark = "dark",
+  white = "white",
+  blue = "blue",
 }
