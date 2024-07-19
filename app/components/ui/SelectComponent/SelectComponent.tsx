@@ -3,7 +3,6 @@ import Select from "react-select";
 import { IProps } from "./types";
 
 export default function SelectComponent({
-  options = [],
   placeholder,
   id,
   onChange,

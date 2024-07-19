@@ -123,14 +123,15 @@ export async function getNewPostSettlementsLib({ city }: { city: string }) {
   return data;
 }
 
-export async function getNewPostStreetsLib({ cityRef, streetName }: { cityRef: string, streetName: string }) {
+export async function getDepartmentsAndPostalLib({ cityRef, streetName }: { cityRef: string, streetName: string }) {
   const data = await axios.post(process.env.NEW_POST_URL!, {
     apiKey: process.env.NEW_POST_API_KEY!,
     modelName: "AddressGeneral",
-    calledMethod: "searchSettlementStreets",
+    calledMethod: "getWarehouses",
     methodProperties: {
-      StreetName: streetName,
-      SettlementRef: cityRef,
+      FindByString: streetName,
+      CityRef: cityRef,
+      Limit: 50,
     },
   });
   return data;

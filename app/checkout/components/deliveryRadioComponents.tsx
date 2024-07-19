@@ -1,6 +1,9 @@
 "use client";
 import { IPropsDepartmentComponent } from "../types";
-import { getNewPostSettlementsLib, getNewPostStreetsLib } from "@/app/api/api";
+import {
+  getDepartmentsAndPostalLib,
+  getNewPostSettlementsLib,
+} from "@/app/api/api";
 import { throttle } from "throttle-debounce";
 import { ThrottleType } from "./type";
 import { useEffect, useState } from "react";
@@ -19,8 +22,8 @@ export const DepartmentComponent = ({
   setIsTrueCurrentLocation,
 }: IPropsDepartmentComponent) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [cityRef, setCityRef] = useState<any | {}>({});
-  // const [streetRef, setStreetRef] = useState<string | null>(null);
+  const [cityRef, setCityRef] = useState<any | null>(null);
+  const [departmentRef, setDepartmentRef] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isTrueCurrentLocation) return;
@@ -62,33 +65,39 @@ export const DepartmentComponent = ({
         inputValue: city,
         resolve,
         fetchFn: (val) => getNewPostSettlementsLib({ city: val }),
-        generateOptionsFn: (data) =>
-          data.data[0].Addresses.map(({ Present, DeliveryCity }) => ({
-            value: DeliveryCity,
-            label: Present,
+        generateOptionsFn: (addresses) =>
+          addresses.data[0].Addresses.map((data) => ({
+            value: data.DeliveryCity,
+            label: data.Present,
+            transferData: data,
           })),
       });
     });
     return options;
   };
 
-  // const streetOptions = async (street: string) => {
-  //   if (!cityRef) return defaultOption;
+  const departmentsAndPostalOptions = async (street: string) => {
+    if (!cityRef) return defaultOption;
 
-  //   const options = await new Promise((resolve) => {
-  //     throttledFunc({
-  //       inputValue: street,
-  //       resolve,
-  //       fetchFn: (val) => getNewPostStreetsLib({ cityRef, streetName: val }),
-  //       generateOptionsFn: (data) =>
-  //         data.data[0].Addresses.map(({ Present, SettlementStreetRef }) => ({
-  //           value: SettlementStreetRef,
-  //           label: Present,
-  //         })),
-  //     });
-  //   });
-  //   return options;
-  // };
+    const options = await new Promise((resolve) => {
+      throttledFunc({
+        inputValue: street,
+        resolve,
+        fetchFn: (val) =>
+          getDepartmentsAndPostalLib({
+            cityRef: cityRef.DeliveryCity,
+            streetName: val,
+          }),
+        generateOptionsFn: (streets) =>
+          streets.data.map((data) => ({
+            value: data.Ref,
+            label: data.Description,
+            transferData: data,
+          })),
+      });
+    });
+    return options;
+  };
 
   // console.log("isTrueCurrentLocation", isTrueCurrentLocation);
   return (
@@ -99,9 +108,8 @@ export const DepartmentComponent = ({
         ) : (
           <SelectComponent
             id="_city"
-            placeholder={cityRef.Present}
-            value={{ label: cityRef.Present, value: cityRef.Ref }}
-            options={() => []}
+            placeholder={cityRef?.Present}
+            value={{ label: cityRef?.Present, value: cityRef?.Ref }}
             onChange={() => setIsTrueCurrentLocation(false)}
           />
         )
@@ -110,17 +118,19 @@ export const DepartmentComponent = ({
           id="city"
           placeholder="Місто"
           options={cityOptions}
-          onChange={(value) => setCityRef(value ? value.value : null)}
+          onChange={(value) => setCityRef(value ? value.transferData : null)}
         />
       )}
-      {/* {cityRef && (
+      {cityRef && (
         <AsyncSelectComponent
           id="street"
-          placeholder="Ведіть назву вулиці"
-          options={streetOptions}
-          onChange={(value) => setStreetRef(value ? value.value : null)}
+          placeholder="Адреса або номер відділення"
+          options={departmentsAndPostalOptions}
+          onChange={(value) =>
+            setDepartmentRef(value ? value.transferData : null)
+          }
         />
-      )} */}
+      )}
     </div>
   );
 };
