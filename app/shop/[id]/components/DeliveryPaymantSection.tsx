@@ -11,7 +11,7 @@ export default function DeliveryPaymantSection({
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <Section>
+    <Section id="delivery-payment">
       <Title active={activeTab} onClick={(idx) => setActiveTab(idx)} />
       {[<p>{description}</p>, <DeliveryText />][activeTab]}
     </Section>
