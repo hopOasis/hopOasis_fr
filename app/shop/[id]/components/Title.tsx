@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { IPropsTitle } from "../types";
 
 export default function Title({ active, onClick }: IPropsTitle) {
@@ -11,10 +12,12 @@ export default function Title({ active, onClick }: IPropsTitle) {
         }
         onClick={() => {
           onClick(0);
+          gsap.to(".tab-line", { y: 0 });
         }}
       >
         Опис
       </button>
+      <span className="tab-line"></span>
       <button
         id="delivery-payment-tab-1"
         type="button"
@@ -23,6 +26,7 @@ export default function Title({ active, onClick }: IPropsTitle) {
         }
         onClick={() => {
           onClick(1);
+          gsap.to(".tab-line", { y: 87 });
         }}
       >
         Доставка і оплата
