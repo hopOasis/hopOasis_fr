@@ -1,27 +1,36 @@
+import gsap from "gsap";
 import { IPropsTitle } from "../types";
 
 export default function Title({ active, onClick }: IPropsTitle) {
   return (
-    <p className="title ">
+    <div className="delivery-payment-tabs">
       <button
+        id="delivery-payment-tab-0"
         type="button"
         className={
           active === 0 ? "active-tab typography__h2" : "typography__h2"
         }
-        onClick={() => onClick(0)}
+        onClick={() => {
+          onClick(0);
+          gsap.to(".tab-line", { y: 0 });
+        }}
       >
         Опис
       </button>
-      <span className="typography__h2"> | </span>
+      <span className="tab-line"></span>
       <button
+        id="delivery-payment-tab-1"
         type="button"
         className={
           active === 1 ? "active-tab typography__h2" : "typography__h2"
         }
-        onClick={() => onClick(1)}
+        onClick={() => {
+          onClick(1);
+          gsap.to(".tab-line", { y: 87 });
+        }}
       >
         Доставка і оплата
       </button>
-    </p>
+    </div>
   );
 }
