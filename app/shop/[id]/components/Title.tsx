@@ -1,10 +1,8 @@
-import gsap from "gsap";
 import { IPropsTitle } from "../types";
-import { useEffect } from "react";
 
 export default function Title({ active, onClick }: IPropsTitle) {
   return (
-    <div className="title">
+    <div className="delivery-payment-tabs">
       <button
         id="delivery-payment-tab-0"
         type="button"
@@ -17,7 +15,6 @@ export default function Title({ active, onClick }: IPropsTitle) {
       >
         Опис
       </button>
-      <span className="separator"></span>
       <button
         id="delivery-payment-tab-1"
         type="button"
