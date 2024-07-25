@@ -6,13 +6,15 @@ import Section from "@/app/components/ui/section/section";
 import Image from "next/image";
 import { IPropsHeroSection } from "../types";
 import { oazaStorage } from "@/app/utils";
+import { ProxiEndpoints } from "@/app/api/types";
+import { revalidateProductPage } from "@/app/actions";
 
 export default function HeroSection({
   id,
   beerName,
   image,
   priceLarge,
-  rating,
+  averageRating,
 }: IPropsHeroSection) {
   return (
     <Section>
@@ -20,7 +22,16 @@ export default function HeroSection({
       <div className="single-page__description-block ">
         <h1 className="title typography__h2">{beerName}</h1>
         <p className="title typography__h2 accent">{priceLarge} грн.</p>
-        <Rating rating={rating} onChange={(value) => console.log(value)} />
+        <Rating
+          rating={averageRating}
+          onChange={async (value) => {
+            await fetch(ProxiEndpoints.rating, {
+              method: "POST",
+              body: JSON.stringify({ id, value }),
+            });
+            revalidateProductPage(id.toString());
+          }}
+        />
         <CardButton
           id={id}
           onClick={() => oazaStorage.set({ id, quantity: 1 })}

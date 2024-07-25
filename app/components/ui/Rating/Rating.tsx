@@ -19,7 +19,7 @@ export default function Rating({ onChange, rating: highOrderRating }: IProps) {
   return (
     <ReactRating
       className="rating"
-      value={rating}
+      value={Math.round(rating)}
       itemStyles={style}
       onChange={(value: number) => {
         onChange(value);

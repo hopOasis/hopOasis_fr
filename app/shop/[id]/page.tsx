@@ -9,8 +9,8 @@ import { getProductById } from "@/app/api/api";
 import BreadCrumbs from "@/app/components/ui/BreadCrumbs/BreadCrumbs";
 import { ProductType } from "@/app/types/types";
 import HeroSection from "./components/HeroSection";
-import DeliveryPaymantSection from "./components/DeliveryPaymantSection";
 import SpecialForYouSection from "./components/SpecialForYouSection";
+import DeliveryPaymantSection from "./components/DeliveryPaymantSection";
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
   // const product = await getProductById({ endpoint: Endpoints.beer, id });

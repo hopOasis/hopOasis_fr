@@ -9,3 +9,8 @@ export async function revalidate() {
 export async function revalidateCheckout() {
   revalidatePath("/checkout", "page");
 }
+
+export async function revalidateProductPage(id:string) {
+  revalidatePath(`/shop/${id}`, "page");
+}
+
