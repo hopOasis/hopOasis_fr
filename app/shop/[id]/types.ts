@@ -11,7 +11,7 @@ export interface IPropsTitle {
 }
 type HeroSectionProps = Pick<
   ProductType,
-  "beerName" | "imageName" | "priceLarge" | "rating" | "id"
+  "beerName" | "imageName" | "priceLarge" | "averageRating" | "id"
 >;
 
 export interface IPropsHeroSection extends HeroSectionProps {

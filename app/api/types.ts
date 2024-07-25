@@ -4,6 +4,7 @@ export enum Endpoints {
   beer = "beers",
   cart = "cart",
   cider = "cider",
+  rating = "ratings",
 }
 
 export interface IPropsGet {
@@ -61,4 +62,6 @@ export enum ProxiEndpoints {
   geolocation = "http://localhost:3000/api/location",
   beer = "https://localhost:3000/api/products/beer",
   cart = "http://localhost:3000/api/cart",
+  cartDB = "https://localhost:3000/api/cartDB",
+  rating = "https://localhost:3000/api/rating",
 }

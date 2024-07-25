@@ -8,7 +8,7 @@ export type ProductType = {
   description: string;
   bearColor: string;
   imageName: string[];
-  rating: number;
+  averageRating: number;
 };
 
 
