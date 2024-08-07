@@ -1,4 +1,4 @@
-import { IProps } from "./types";
+import { IProps } from './types';
 
 export default function GoogleMaps({ width = 800, height = 600 }: IProps) {
   return (
@@ -7,6 +7,7 @@ export default function GoogleMaps({ width = 800, height = 600 }: IProps) {
       width={width}
       height={height}
       loading="lazy"
+      title="Google map"
     />
   );
 }

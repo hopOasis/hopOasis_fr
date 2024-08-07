@@ -1,9 +1,9 @@
-"use client";
-import Section from "@/app/components/ui/section/section";
-import Title from "./Title";
-import DeliveryText from "@/app/components/ui/DeliveryText/DeliveryText";
-import { IPropsDeliveryPaymentSection } from "../types";
-import { useState } from "react";
+'use client';
+import DeliveryText from '@/app/components/ui/DeliveryText/DeliveryText';
+import Section from '@/app/components/ui/section/section';
+import { useState } from 'react';
+import { IPropsDeliveryPaymentSection } from '../types';
+import Title from './Title';
 
 export default function DeliveryPaymantSection({
   description,
@@ -13,7 +13,7 @@ export default function DeliveryPaymantSection({
   return (
     <Section id="delivery-payment">
       <Title active={activeTab} onClick={(idx) => setActiveTab(idx)} />
-      {[<p>{description}</p>, <DeliveryText />][activeTab]}
+      {[<p key="1">{description}</p>, <DeliveryText key="2" />][activeTab]}
     </Section>
   );
 }
