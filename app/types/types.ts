@@ -7,10 +7,9 @@ export type ProductType = {
   priceSmall: number;
   description: string;
   bearColor: string;
-  imageName: string[];
+  image: string[];
   averageRating: number;
 };
-
 
 export interface IFeedbackCard {
   img: string;
@@ -28,8 +27,8 @@ export type FormFieldType = {
 };
 
 export enum Palitra {
-  light = "light",
-  dark = "dark",
-  white = "white",
-  blue = "blue",
+  light = 'light',
+  dark = 'dark',
+  white = 'white',
+  blue = 'blue',
 }
