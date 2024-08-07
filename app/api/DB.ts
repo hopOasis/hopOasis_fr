@@ -15,6 +15,7 @@ export const DB = {
 
     try {
       const existingData = this.readDB();
+      //@ts-ignore
       const item = existingData.find(({ id }) => id === data.id);
       if (!item) {
         existingData.push(data);
@@ -52,6 +53,7 @@ export const DB = {
 
   removeRecord: function (uniqueIdentifier: string) {
     const existingData = this.readDB();
+    //@ts-ignore
     const newData = existingData.filter(({ id }) => id === uniqueIdentifier);
     try {
       fs.writeFileSync('database.json', JSON.stringify(newData));
