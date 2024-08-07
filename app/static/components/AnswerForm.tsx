@@ -17,6 +17,7 @@ export const AnswerForom = () => {
           <Field
             key={props.id}
             {...props}
+            value="123"
             //@ts-ignore
             onChange={({ id, value }) => setValues({ ...values, [id]: value })}
           />
