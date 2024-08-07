@@ -1,4 +1,4 @@
 export interface IProps {
   city: string;
-  setIsTrueCurrentLocation: (val:string) => void;
+  setIsTrueCurrentLocation: (val: boolean) => void;
 }
