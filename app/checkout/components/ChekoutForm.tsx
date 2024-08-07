@@ -1,19 +1,19 @@
-"use client";
-import { useCallback, useState } from "react";
-import { FormStateType, IPropsChekoutForm } from "../types";
-import { deliveryRadio, fields, paymentRadio } from "@/app/static/form";
-import Field from "@/app/components/ui/Field/Field";
-import RadioButtons from "@/app/components/ui/RadioButtons/RadioButtons";
-import Image from "next/image";
-import IncrementDecrement from "@/app/components/ui/IncrementDecrement/IncrementDecrement";
-import Icons from "@/app/components/ui/icons/icons";
-import { beer } from "@/app/static/bear";
-import { DepartmentComponent } from "./deliveryRadioComponents";
-import Popup from "@/app/components/ui/popup/Popup";
-import { throttle } from "throttle-debounce";
-import { routes } from "@/app/static/routes";
-import MainLink from "@/app/components/ui/links/links";
-import { Palitra } from "@/app/types/types";
+'use client';
+import Field from '@/app/components/ui/Field/Field';
+import IncrementDecrement from '@/app/components/ui/IncrementDecrement/IncrementDecrement';
+import RadioButtons from '@/app/components/ui/RadioButtons/RadioButtons';
+import Icons from '@/app/components/ui/icons/icons';
+import MainLink from '@/app/components/ui/links/links';
+import Popup from '@/app/components/ui/popup/Popup';
+import { beer } from '@/app/static/bear';
+import { deliveryRadio, fields, paymentRadio } from '@/app/static/form';
+import { routes } from '@/app/static/routes';
+import { Palitra } from '@/app/types/types';
+import Image from 'next/image';
+import { useCallback, useState } from 'react';
+import { throttle } from 'throttle-debounce';
+import { FormStateType, IPropsChekoutForm } from '../types';
+import { DepartmentComponent } from './deliveryRadioComponents';
 
 const initialState = Array(3)
   .fill(1)
@@ -24,10 +24,10 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     boolean | null
   >(null);
   const [values, setValues] = useState<FormStateType>({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
     delivery: deliveryRadio[0].id,
     payment: paymentRadio[0].id,
   });
@@ -41,21 +41,23 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
       2000,
       () => {
         console.log(
-          "trottle",
+          'trottle',
           items.map(({ id, count }) => ({
             itemId: id,
             quantity: count,
-          }))
+          })),
         );
       },
-      { noLeading: true }
+      { noLeading: true },
     ),
-    []
+    [],
   );
 
   const increment = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
-    item.count += 1;
+    if (item) {
+      item.count += 1;
+    }
     setItems([...items]);
 
     throttlingFetch();
@@ -63,11 +65,13 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
 
   const decrement = (id: number) => {
     const item = items.find(({ id: prevId }) => prevId === id);
-    if (item.count === 1) {
+    if (item && item.count === 1) {
       throttlingFetch();
       return;
     }
-    item.count -= 1;
+    if (item) {
+      item.count -= 1;
+    }
     setItems([...items]);
     throttlingFetch();
   };
@@ -75,12 +79,12 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
   const components = {
     department: (
       <DepartmentComponent
-        location={isTrueCurrentLocation ? location : ""}
+        location={isTrueCurrentLocation ? location : ''}
         isTrueCurrentLocation={isTrueCurrentLocation}
         setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
-    "parcel-station": null,
+    'parcel-station': null,
     courier: null,
   };
   return (
@@ -99,8 +103,11 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
               <Field
                 key={props.id}
                 {...props}
+                //@ts-ignore
+
                 value={values[props.id]}
                 onChange={({ id, value }) =>
+                  //@ts-ignore
                   setValues({ ...values, [id]: value })
                 }
               />
@@ -119,7 +126,8 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 }
               >
                 {values.delivery === props.id
-                  ? components[values.delivery]
+                  ? //@ts-ignore
+                    components[values.delivery]
                   : null}
               </RadioButtons>
             ))}
@@ -163,7 +171,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
       </form>
       <Popup
         city={location}
-        setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(answer)}
+        setIsTrueCurrentLocation={(answer) =>
+          setIsTrueCurrentLocation(Boolean(answer))
+        }
       />
     </>
   );
