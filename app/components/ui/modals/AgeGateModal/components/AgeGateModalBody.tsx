@@ -1,11 +1,13 @@
-import { animate, oazaStorage } from "@/app/utils";
-import { useEffect } from "react";
-import { IPropsAgeGateModal } from "../types";
+import { animate, oazaStorage } from '@/app/utils';
+import { useEffect } from 'react';
+import { IPropsAgeGateModal } from '../types';
 
 export default function AgeGateModalBody({ setShow }: IPropsAgeGateModal) {
   useEffect(() => {
     const animation = animate.ageGateModal.open();
-    return () => animation.revert();
+    return () => {
+      animation.revert();
+    };
   }, []);
   return (
     <div className="age-gate-modal__backdrop">
