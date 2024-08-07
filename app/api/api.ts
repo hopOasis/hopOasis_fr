@@ -1,4 +1,4 @@
-import https from 'node:https';
+import https from 'https';
 import axios from 'axios';
 import { ProductType } from '../types/types';
 import {
@@ -89,9 +89,9 @@ export async function getLocation() {
 
   return data.city;
 }
+// @ts-ignore
 
 export async function addProdactToCart({ body }) {
-  console.log(body);
   const params = new URLSearchParams({
     ...body,
   });
