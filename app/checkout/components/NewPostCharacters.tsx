@@ -1,4 +1,4 @@
-
+//@ts-ignore
 export default function NewPostCharacters(props) {
   return (
     <div className="new-post-charachters">
@@ -6,8 +6,7 @@ export default function NewPostCharacters(props) {
         Телефон відділення <span>{props?.Phone}</span>
       </p>
       <p>
-        Статус{" "}
-        <span>{props?.WarehouseStatus === "Working" && "Працює"}</span>
+        Статус <span>{props?.WarehouseStatus === 'Working' && 'Працює'}</span>
       </p>
       {/* <p>
         Максимальна вага вантажу для доставки на відділення
@@ -15,9 +14,7 @@ export default function NewPostCharacters(props) {
       </p> */}
       <p>
         Ліміти щодо розмірів для доставки на відділення
-        <span>
-          Ширина {props?.ReceivingLimitationsOnDimensions.Width} см.
-        </span>
+        <span>Ширина {props?.ReceivingLimitationsOnDimensions.Width} см.</span>
         <span>
           Висота {props?.ReceivingLimitationsOnDimensions.Height}
           см.
@@ -38,7 +35,7 @@ export default function NewPostCharacters(props) {
         <li>Неділя : {props?.Schedule.Sunday}</li>
       </ul>
       <p>
-        Точка на карті <span>{props?.Longitude}</span>{" "}
+        Точка на карті <span>{props?.Longitude}</span>{' '}
         <span>{props?.Latitude}</span>
       </p>
       <p>
@@ -54,8 +51,7 @@ export default function NewPostCharacters(props) {
         ??? POSTerminal <span> {props?.POSTerminal}</span>
       </p>
       <p>
-        ??? InternationalShipping{" "}
-        <span> {props?.InternationalShipping}</span>
+        ??? InternationalShipping <span> {props?.InternationalShipping}</span>
       </p>
     </div>
   );

@@ -1,19 +1,20 @@
-"use client";
-import { IPropsDepartmentComponent } from "../types";
+'use client';
 import {
   getDepartmentsAndPostalLib,
   getNewPostSettlementsLib,
-} from "@/app/api/api";
-import { throttle } from "throttle-debounce";
-import { ThrottleType } from "./type";
-import { useEffect, useState } from "react";
-import Loader from "@/app/components/ui/Loader/Loader";
-import SelectComponent from "@/app/components/ui/SelectComponent/SelectComponent";
-import AsyncSelectComponent from "@/app/components/ui/SelectComponent/AsyncSelectComponent";
-import NewPostCharacters from "./NewPostCharacters";
+} from '@/app/api/api';
+import Loader from '@/app/components/ui/Loader/Loader';
+import AsyncSelectComponent from '@/app/components/ui/SelectComponent/AsyncSelectComponent';
+import SelectComponent from '@/app/components/ui/SelectComponent/SelectComponent';
+import { useEffect, useState } from 'react';
+import { throttle } from 'throttle-debounce';
+//@ts-ignore
+import { IPropsDepartmentComponent } from '../types';
+import NewPostCharacters from './NewPostCharacters';
+import { ThrottleType } from './type';
 const defaultOption = [
   {
-    label: "Почніть вводити текст. Викоистовуйте українську літерацію",
+    label: 'Почніть вводити текст. Викоистовуйте українську літерацію',
     value: null,
   },
 ];
@@ -34,6 +35,8 @@ export const DepartmentComponent = ({
         const { data } = await getNewPostSettlementsLib({ city: location });
         setCityRef(data.data[0].Addresses[0]);
       } catch (error) {
+        //@ts-ignore
+
         console.log(error.message);
       } finally {
         setLoading(false);
@@ -41,7 +44,7 @@ export const DepartmentComponent = ({
     };
 
     getData();
-  }, [isTrueCurrentLocation]);
+  }, [isTrueCurrentLocation, location]);
 
   const throttledFunc = throttle(
     1000,
@@ -56,7 +59,7 @@ export const DepartmentComponent = ({
       const options = generateOptionsFn(data);
       resolve(options);
     },
-    { noLeading: true }
+    { noLeading: true },
   );
 
   const cityOptions = async (city: string) => {
@@ -67,6 +70,7 @@ export const DepartmentComponent = ({
         resolve,
         fetchFn: (val) => getNewPostSettlementsLib({ city: val }),
         generateOptionsFn: (addresses) =>
+          //@ts-ignore
           addresses.data[0].Addresses.map((data) => ({
             value: data.DeliveryCity,
             label: data.Present,
@@ -90,6 +94,8 @@ export const DepartmentComponent = ({
             streetName: val,
           }),
         generateOptionsFn: (streets) =>
+          //@ts-ignore
+
           streets.data.map((data) => ({
             value: data.Ref,
             label: data.Description,
