@@ -18,6 +18,6 @@ export interface IPropsHeroSection extends HeroSectionProps {
   image: string;
 }
 
-type DeliveryPaymentProps = { description: string };
+type DeliveryPaymentProps = Pick<ProductType, 'description'>;
 
 export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {}
