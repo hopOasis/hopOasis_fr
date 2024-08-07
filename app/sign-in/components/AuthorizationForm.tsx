@@ -1,25 +1,25 @@
-"use client";
-import Field from "@/app/components/ui/Field/Field";
-import { fields } from "@/app/static/form";
-import { useState } from "react";
-import { IAuthorizationFormState } from "./types";
-import { animate } from "@/app/utils";
-import EyeButton from "./EyeButton";
+'use client';
+import Field from '@/app/components/ui/Field/Field';
+import { fields } from '@/app/static/form';
+import { animate } from '@/app/utils';
+import { useState } from 'react';
+import EyeButton from './EyeButton';
+import { IAuthorizationFormState } from './types';
 
 export default function AuthorizationForm() {
   const [values, setValues] = useState<IAuthorizationFormState>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [showPass, setShowPass] = useState<boolean>(false);
 
   const defineType = (type: string): string =>
-    type === "password" ? (!showPass ? "password" : "text") : type;
+    type === 'password' ? (!showPass ? 'password' : 'text') : type;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    };
-    
+  };
+
   return (
     <form onSubmit={onSubmit}>
       {[fields[3], fields[4]].map((props) => (
@@ -27,10 +27,15 @@ export default function AuthorizationForm() {
           {...props}
           key={props.id}
           type={defineType(props.type)}
-          value={values[props.id]}
-          onChange={({ id, value }) => setValues({ ...values, [id]: value })}
+          value={values[props.id as keyof IAuthorizationFormState]}
+          onChange={({ id, value }) =>
+            setValues({
+              ...values,
+              [id as keyof IAuthorizationFormState]: value,
+            })
+          }
         >
-          {props.type === "password" && (
+          {props.type === 'password' && (
             <EyeButton
               onClick={() => {
                 setShowPass((prev) => !prev);

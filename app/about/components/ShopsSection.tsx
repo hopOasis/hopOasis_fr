@@ -1,6 +1,6 @@
-import Address from "@/app/components/containers/footer/components/Address";
-import GoogleMaps from "@/app/components/ui/GoogleMaps/GoogleMaps";
-import Section from "@/app/components/ui/section/section";
+import Address from '@/app/components/containers/footer/components/Address';
+import GoogleMaps from '@/app/components/ui/GoogleMaps/GoogleMaps';
+import Section from '@/app/components/ui/section/section';
 
 export default function ShopsSection() {
   return (

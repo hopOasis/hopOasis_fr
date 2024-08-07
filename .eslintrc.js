@@ -126,7 +126,7 @@ module.exports = {
             allowArrowFunctions: false,
           },
         ],
-        '@typescript-eslint/no-explicit-any': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unsafe-call': 'error',
         '@typescript-eslint/no-unsafe-member-access': 'error',
         '@typescript-eslint/no-unsafe-argument': 'error',

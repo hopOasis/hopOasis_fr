@@ -3,6 +3,9 @@
   "linter": {
     "ignore": ["**/@generated/*"],
     "rules": {
+      "suspicious": {
+        "noExplicitAny": "off"
+      },
       "style": {
         "useImportType": "off"
       },

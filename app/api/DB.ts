@@ -1,12 +1,12 @@
-const fs = require("fs");
+const fs = require('node:fs');
 
 export const DB = {
-  readDB: function () {
+  readDB: () => {
     try {
-      const data = fs.readFileSync("database.json", "utf8");
+      const data = fs.readFileSync('database.json', 'utf8');
       return JSON.parse(data);
     } catch (err) {
-      console.error("Failed to read data:", err);
+      console.error('Failed to read data:', err);
       return [];
     }
   },
@@ -18,13 +18,13 @@ export const DB = {
       const item = existingData.find(({ id }) => id === data.id);
       if (!item) {
         existingData.push(data);
-        fs.writeFileSync("database.json", JSON.stringify(existingData));
+        fs.writeFileSync('database.json', JSON.stringify(existingData));
       }
 
-      console.log("Data Saved");
+      console.log('Data Saved');
       return this.readDB();
     } catch (err) {
-      console.error("Failed to write data:", err);
+      console.error('Failed to write data:', err);
     }
   },
 
@@ -54,10 +54,10 @@ export const DB = {
     const existingData = this.readDB();
     const newData = existingData.filter(({ id }) => id === uniqueIdentifier);
     try {
-      fs.writeFileSync("database.json", JSON.stringify(newData));
-      console.log("Removed successfully");
+      fs.writeFileSync('database.json', JSON.stringify(newData));
+      console.log('Removed successfully');
     } catch (err) {
-      console.error("Failed to write data:", err);
+      console.error('Failed to write data:', err);
     }
   },
 };

@@ -1,6 +1,6 @@
-import Section from "@/app/components/ui/section/section";
-import { aboutPageList } from "@/app/static/aboutPageList";
-import Image from "next/image";
+import Section from '@/app/components/ui/section/section';
+import { aboutPageList } from '@/app/static/aboutPageList';
+import Image from 'next/image';
 
 export default function ProductionProccesSection() {
   return (
@@ -17,8 +17,8 @@ export default function ProductionProccesSection() {
         </div>
         <div className="about-page__right-block">
           <ul className="production-procces-list">
-            {aboutPageList.map((el, idx) => (
-              <li key={idx}>{el}</li>
+            {aboutPageList.map(({ text, id }) => (
+              <li key={id}>{text}</li>
             ))}
           </ul>
         </div>

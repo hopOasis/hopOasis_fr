@@ -1,10 +1,10 @@
-import { Endpoints } from "@/app/api/types";
-import { NextRequest, NextResponse } from "next/server";
+import { Endpoints } from '@/app/api/types';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-    // const requestHeaders = new Headers(request.headers);
-    // requestHeaders.set("Content-Type", "application/json");
+  // const requestHeaders = new Headers(request.headers);
+  // requestHeaders.set("Content-Type", "application/json");
 
   // console.log({
   //   URL: `${process.env.API_URL!}${Endpoints.beer}/${body.id}/${
@@ -13,18 +13,18 @@ export async function POST(request: NextRequest) {
   //   body: JSON.stringify({ ratingValue: body.value }),
   // });
   const res = await fetch(
-    `${process.env.API_URL!}${Endpoints.beer}/${body.id}/${Endpoints.rating}`,
+    `${process.env.API_URL}${Endpoints.beer}/${body.id}/${Endpoints.rating}`,
     {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ratingValue: body.value }),
-    }
+    },
   );
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
 
-  console.log("res", await res.json())
+  console.log('res', await res.json());
 
-  return NextResponse.json({ message: "succsess" });
+  return NextResponse.json({ message: 'succsess' });
 }
