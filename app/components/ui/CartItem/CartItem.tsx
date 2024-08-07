@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Icons from "../icons/icons";
-import IncrementDecrement from "../IncrementDecrement/IncrementDecrement";
-import { ProductType } from "@/app/types/types";
-
+import { ProductType } from '@/app/types/types';
+import Image from 'next/image';
+import IncrementDecrement from '../IncrementDecrement/IncrementDecrement';
+import Icons from '../icons/icons';
+//@ts-ignore
 export default function CartItem({
   imageName,
   beerName,
@@ -11,7 +11,12 @@ export default function CartItem({
   increment,
   decrement,
   remove,
-}: ProductType & { quantity: number }) {
+}: ProductType & {
+  quantity?: number;
+  increment: () => void;
+  decrement: () => void;
+  remove: () => void;
+}) {
   return (
     <li className="cart-modal__container cart__list-item --line">
       <div className="list-item__left-block">
@@ -20,12 +25,12 @@ export default function CartItem({
       </div>
       <div className="list-item__middle-block">
         <IncrementDecrement
-          count={quantity}
+          count={quantity || 0}
           increment={increment}
           decrement={decrement}
         />
         <div>
-          <span>{`${quantity * priceLarge} грн`}</span>
+          і<span>{`${quantity || 0 * priceLarge} грн`}</span>
         </div>
       </div>
       <button type="button" onClick={remove}>
