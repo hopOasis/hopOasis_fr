@@ -67,9 +67,9 @@ export async function getCart({ endpoint }: IPropsGet) {
   );
   const newData = {
     ...data,
-    items: data.items.map(({ imageName, ...rest }) => ({
+    items: data.items.map(({ image, ...rest }) => ({
       ...rest,
-      imageName: imageName.map(
+      imageName: image.map(
         (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
       ),
     })),

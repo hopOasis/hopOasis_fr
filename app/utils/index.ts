@@ -114,7 +114,7 @@ export const oazaStorage = {
   get: function () {
     return store.get(this.key);
   },
-  isInStore: function (id: Pick<ProductType, 'id'>) {
+  isInStore: function (id: number) {
     const data = this.get();
     if (!data) return false;
     // @ts-ignore
