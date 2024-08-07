@@ -109,6 +109,7 @@ export const oazaStorage = {
 
       [...newData].map((item) => JSON.parse(item)),
     );
+
     return 'Added to localstorage';
   },
   get: function () {
