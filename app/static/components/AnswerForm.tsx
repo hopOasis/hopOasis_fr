@@ -1,13 +1,13 @@
-"use client";
-import Field from "@/app/components/ui/Field/Field";
-import { useState } from "react";
-import { fields } from "../form";
-import "./styles.scss";
-import Contacts from "@/app/components/containers/footer/components/Contacts";
+'use client';
+import Field from '@/app/components/ui/Field/Field';
+import { useState } from 'react';
+import { fields } from '../form';
+import './styles.scss';
+import Contacts from '@/app/components/containers/footer/components/Contacts';
 
 export const AnswerForom = () => {
-  const [values, setValues] = useState({ firstName: "", phone: "" });
-  const onSubmit = (e) => {
+  const [values, setValues] = useState({ firstName: '', phone: '' });
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
   return (
@@ -17,6 +17,7 @@ export const AnswerForom = () => {
           <Field
             key={props.id}
             {...props}
+            //@ts-ignore
             onChange={({ id, value }) => setValues({ ...values, [id]: value })}
           />
         ))}
