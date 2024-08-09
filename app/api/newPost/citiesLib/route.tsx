@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // const {city} = await request.json();
-  const resCitiesLibrary = await fetch(process.env.NEW_POST_URL, {
+  const resCitiesLibrary = await fetch(process.env.NEXT_PUBLIC_NEW_POST_URL, {
     method: 'POST',
     body: JSON.stringify({
-      apiKey: process.env.NEW_POST_API_KEY,
+      apiKey: process.env.NEXT_PUBLIC_API_NEW_POST_API_KEY,
       modelName: 'AddressGeneral',
       calledMethod: 'getCities',
       // methodProperties: {
