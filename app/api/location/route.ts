@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   const params = new URLSearchParams({
-    apiKey: process.env.NEXT_PUBLIC_GEOLOCATION_API_KEY,
+    apiKey: process.env.GEOLOCATION_API_KEY,
     fields: 'city',
   });
 
   const resLocation = await fetch(
-    `${process.env.NEXT_PUBLIC_GEOLOCATION_URL}?${params.toString()}`,
+    `${process.env.GEOLOCATION_URL}?${params.toString()}`,
   );
 
   if (!resLocation.ok) {
