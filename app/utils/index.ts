@@ -99,7 +99,6 @@ export const oazaStorage = {
       return 'Added to localstorage';
     }
     data.push({ id, quantity });
-    // @ts-ignore
 
     const newData = new Set(data.map((item) => JSON.stringify(item)));
 
