@@ -6,7 +6,7 @@ export default function Address() {
     <div className="footer-address">
       <h4 className="footer__title typography__h3">Магазини</h4>
       <address>
-        <ul >
+        <ul>
           {shops.map(({ id, name, href }) => (
             <li key={id}>
               <Link

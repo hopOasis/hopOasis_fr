@@ -8,6 +8,10 @@
     width: 100%;
     max-width: 630px;
     text-align: justify;
+
+    h2 {
+      margin-top: 32px;
+    }
   }
 
   &__right-block {
@@ -30,4 +34,22 @@
       content: url("/ckhmil.svg");
     }
   }
+}
+
+#about-page-contacts-section {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.contacts-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 480px;
 }
