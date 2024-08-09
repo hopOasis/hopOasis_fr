@@ -1,6 +1,6 @@
-import Address from '@/app/components/containers/footer/components/Address';
-import GoogleMaps from '@/app/components/ui/GoogleMaps/GoogleMaps';
-import Section from '@/app/components/ui/section/section';
+import Address from "@/app/components/containers/footer/components/Address";
+import GoogleMaps from "@/app/components/ui/GoogleMaps/GoogleMaps";
+import Section from "@/app/components/ui/section/section";
 
 export default function ShopsSection() {
   return (
@@ -18,8 +18,8 @@ export default function ShopsSection() {
             смаком. Завітайте до магазинів "Хмільна Оаза" і насолоджуйтесь
             смаком найкращого крафтового пива!
           </p>
-          {/* <h2 className="title typography__h2">Де нас знайти</h2>
-          <Address /> */}
+          <h2 className="title typography__h2">Де нас знайти</h2>
+          <Address />
         </div>
         <div className="about-page__right-block">
           <GoogleMaps width={586} />
