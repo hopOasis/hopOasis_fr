@@ -8,8 +8,6 @@ const __dirname = path.dirname(__filename);
 
 const hostname = process.env.API_URL ? process.env.API_URL.slice(8, -1) : '';
 
-console.log(hostname);
-
 const nextConfig = {
   reactStrictMode: false,
   sassOptions: {
