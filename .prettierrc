@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "importOrder": [
+    "^.+\\.scss$",
+    "^[.]/[-a-zA-Z0-9_]+[.](css|scss|less)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@internal/(.*)$",
+    "^[./].*(?<!\\.(c|le|sc)ss)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "printWidth": 120
+}

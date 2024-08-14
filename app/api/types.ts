@@ -60,7 +60,7 @@ export enum Endpoints {
 }
 
 export const ProxiEndpoints = {
-  beer: proxiUrl + "products/" + Endpoints.beer,
+  beer: proxiUrl + Endpoints.beer,
   cart: proxiUrl + Endpoints.cart,
   rating: proxiUrl + Endpoints.rating,
   //future remove

@@ -30,17 +30,19 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.1",
     "@svgr/webpack": "^8.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/store": "^2.0.5",
     "@types/throttle-debounce": "^5.0.2",
-    "eslint": "8",
+    "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-promise": "^6.2.0",
+    "prettier": "^3.3.3",
     "sass": "^1.77.0",
     "typescript": "^5"
   }

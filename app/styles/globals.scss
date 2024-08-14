@@ -11,7 +11,6 @@
   margin-bottom: 40px;
 }
 
-
 .shadow {
   box-shadow: var(--main-shadow);
 }
@@ -55,7 +54,7 @@
 .--line {
   position: relative;
   &::after {
-    content: "";
+    content: '';
     display: block;
     height: 1px;
     width: 100%;

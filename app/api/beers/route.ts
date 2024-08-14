@@ -1,17 +1,17 @@
+"use server";
 import { NextRequest, NextResponse } from "next/server";
-import { ApiEndpoints, ProductsResponseType } from "../../types";
+import { ApiEndpoints, ProductsResponseType } from "../types";
 
 export async function GET() {
-  // const resProducts = await fetch(ApiEndpoints.beer);
+  const resProducts = await fetch(ApiEndpoints.beer);
 
-  // if (!resProducts.ok) {
-  //   throw new Error("Failed to fetch data");
-  // }
+  if (!resProducts.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-  // const parsedRes: ProductsResponseType = await resProducts.json();
-  return NextResponse.json({ message: "" });
+  const parsedRes: ProductsResponseType = await resProducts.json();
 
-  // return NextResponse.json({ ...parsedRes });
+  return NextResponse.json({ ...parsedRes });
 }
 
 export async function POST(request: NextRequest) {
