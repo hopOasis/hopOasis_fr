@@ -1,5 +1,5 @@
-import { ApiEndpoints, Endpoints } from "@/app/api/types";
 import { NextRequest, NextResponse } from "next/server";
+import { ApiEndpoints, Endpoints } from "../types";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

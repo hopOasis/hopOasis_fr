@@ -7,7 +7,7 @@ import Image from "next/image";
 import { oazaStorage } from "@/app/utils";
 import { ProxiEndpoints } from "@/app/api/types";
 import { revalidateProductPage } from "@/app/actions";
-import { IPropsHeroSection } from "./types";
+import { IPropsHeroSection } from "../types";
 
 export default function HeroSection({
   id,
