@@ -1,10 +1,10 @@
-import { ProductType } from "../types/types";
+import { ProductType } from '../types/types';
 
 export enum Endpoints {
-  beer = "beers",
-  cart = "cart",
-  cider = "cider",
-  rating = "ratings",
+  beer = 'beers',
+  cart = 'cart',
+  cider = 'cider',
+  rating = 'ratings',
 }
 
 export interface IPropsGet {
@@ -57,11 +57,11 @@ export type ProductsResponseType = {
 };
 
 export enum ProxiEndpoints {
-  newPostCities = "http://localhost:3000/api/newPost/citiesLib",
-  newPostSettlements = "http://localhost:3000/api/newPost/settlementsLib",
-  geolocation = "http://localhost:3000/api/location",
-  beer = "https://localhost:3000/api/products/beer",
-  cart = "http://localhost:3000/api/cart",
-  cartDB = "https://localhost:3000/api/cartDB",
-  rating = "https://localhost:3000/api/rating",
+  newPostCities = 'https://hop-oasis-fr.vercel.app/api/newPost/citiesLib',
+  newPostSettlements = 'https://hop-oasis-fr.vercel.app/api/newPost/settlementsLib',
+  geolocation = 'https://hop-oasis-fr.vercel.app/api/location',
+  beer = 'https://hop-oasis-fr.vercel.app/api/products/beer',
+  cart = 'https://hop-oasis-fr.vercel.app/api/cart',
+  cartDB = 'https://hop-oasis-fr.vercel.app/api/cartDB',
+  rating = 'https://hop-oasis-fr.vercel.app/api/rating',
 }

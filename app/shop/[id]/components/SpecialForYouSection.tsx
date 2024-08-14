@@ -1,19 +1,22 @@
-import Card from "@/app/components/ui/card/Card";
-import Section from "@/app/components/ui/section/section";
-import { CardSlider } from "@/app/components/ui/slider/CardSlider";
-import { memo, Suspense } from "react";
-import { Endpoints, ProductsResponseType, ProxiEndpoints } from "@/app/api/types";
-import { getProducts } from "@/app/api/api";
-import Loader from "@/app/components/ui/Loader/Loader";
+import { getProducts } from '@/app/api/api';
+import {
+  Endpoints,
+  ProductsResponseType,
+  ProxiEndpoints,
+} from '@/app/api/types';
+import Loader from '@/app/components/ui/Loader/Loader';
+import Card from '@/app/components/ui/card/Card';
+import Section from '@/app/components/ui/section/section';
+import { CardSlider } from '@/app/components/ui/slider/CardSlider';
+import { Suspense, memo } from 'react';
 
 const SpecialForYouSection = memo(async () => {
   // const products: ProductsResponseType = await getProducts({
   //   endpoint: Endpoints.beer,
   // });
-  
-   const resProducts = await fetch(ProxiEndpoints.beer);
-   const products: ProductsResponseType = await resProducts.json();
 
+  const resProducts = await fetch(ProxiEndpoints.beer);
+  const products: ProductsResponseType = await resProducts.json();
 
   return (
     <Section>
