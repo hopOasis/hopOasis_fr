@@ -9,7 +9,7 @@ import { Header } from "../header/Header";
 import { IProps } from "./types";
 import { Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
-import { getCart, getProducts } from "@/app/api/api";
+// import { getCart, getProducts } from "@/app/api/api";
 import CartModal from "../../ui/modals/cartModal/CartModal";
 
 export default async function MainLayout({ children }: IProps) {

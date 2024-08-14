@@ -4,10 +4,10 @@ import { CardButton } from "@/app/components/ui/buttons/buttons";
 import Icons from "@/app/components/ui/icons/icons";
 import Section from "@/app/components/ui/section/section";
 import Image from "next/image";
-import { IPropsHeroSection } from "../types";
 import { oazaStorage } from "@/app/utils";
 import { ProxiEndpoints } from "@/app/api/types";
 import { revalidateProductPage } from "@/app/actions";
+import { IPropsHeroSection } from "./types";
 
 export default function HeroSection({
   id,

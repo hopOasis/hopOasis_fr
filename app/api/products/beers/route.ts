@@ -2,14 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { ApiEndpoints, ProductsResponseType } from "../../types";
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.beer);
-  if (!resProducts.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  // const resProducts = await fetch(ApiEndpoints.beer);
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
+  // if (!resProducts.ok) {
+  //   throw new Error("Failed to fetch data");
+  // }
 
-  return NextResponse.json({ ...parsedRes });
+  // const parsedRes: ProductsResponseType = await resProducts.json();
+  return NextResponse.json({ message: "" });
+
+  // return NextResponse.json({ ...parsedRes });
 }
 
 export async function POST(request: NextRequest) {
