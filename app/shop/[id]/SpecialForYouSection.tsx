@@ -11,10 +11,6 @@ import { CardSlider } from '@/app/components/ui/slider/CardSlider';
 import { Suspense, memo } from 'react';
 
 const SpecialForYouSection = memo(async () => {
-  // const products: ProductsResponseType = await getProducts({
-  //   endpoint: Endpoints.beer,
-  // });
-
   const resProducts = await fetch(ProxiEndpoints.beer);
   const products: ProductsResponseType = await resProducts.json();
 

@@ -2,8 +2,8 @@
 import DeliveryText from '@/app/components/ui/DeliveryText/DeliveryText';
 import Section from '@/app/components/ui/section/section';
 import { useState } from 'react';
-import { IPropsDeliveryPaymentSection } from '../types';
 import Title from './Title';
+import { IPropsDeliveryPaymentSection } from './types';
 
 export default function DeliveryPaymantSection({
   description,
