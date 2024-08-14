@@ -56,12 +56,16 @@ export type ProductsResponseType = {
   empty: boolean;
 };
 
-export enum ProxiEndpoints {
-  newPostCities = "http://localhost:3000/api/newPost/citiesLib",
-  newPostSettlements = "http://localhost:3000/api/newPost/settlementsLib",
-  geolocation = "http://localhost:3000/api/location",
-  beer = "https://localhost:3000/api/products/beer",
-  cart = "http://localhost:3000/api/cart",
-  cartDB = "https://localhost:3000/api/cartDB",
-  rating = "https://localhost:3000/api/rating",
-}
+const url = process.env.API_URL;
+
+export const ProxiEndpoints = {
+  newPostCities: url + `/api/newPost/citiesLib`,
+  newPostSettlements: url + "/api/newPost/settlementsLib",
+  geolocation: url + "/api/location",
+  beer: url + "/api/products/beer",
+  cart: url + "/api/cart",
+  cartDB: url + "/api/cartDB",
+  rating: url + "/api/rating",
+} ;
+
+
