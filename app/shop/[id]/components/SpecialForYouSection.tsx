@@ -1,6 +1,6 @@
-import { getProducts } from '@/app/api/api';
+// import { getProducts } from '@/app/api/api';
 import {
-  Endpoints,
+  // Endpoints,
   ProductsResponseType,
   ProxiEndpoints,
 } from '@/app/api/types';
