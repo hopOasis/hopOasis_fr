@@ -10,21 +10,10 @@ export async function GET() {
 
   const parsedRes: ProductsResponseType = await resProducts.json();
 
-  const data = {
-    ...parsedRes,
-    content: parsedRes.content.map(({ imageName, ...rest }) => ({
-      ...rest,
-      imageName: imageName.map(
-        (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
-      ),
-    })),
-  };
-
-  return NextResponse.json({ ...data });
+  return NextResponse.json({ ...parsedRes });
 }
 
 export async function POST(request: NextRequest) {
-  console.log('URL', process.env.API_URL + Endpoints.beer);
   const resProduct = await fetch(process.env.API_URL + Endpoints.beer, {
     method: 'POST',
     body: request.body,
