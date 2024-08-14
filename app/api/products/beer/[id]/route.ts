@@ -7,17 +7,22 @@ type Params = {
 };
 
 export async function GET(_: NextRequest, context: { params: Params }) {
-  const id = context.params.id;
-  const res = await fetch(`${process.env.API_URL}${Endpoints.beer}/${id}`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+  try {
+    const id = context.params.id;
+    const res = await fetch(`${process.env.API_URL}${Endpoints.beer}/${id}`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    const parsedRes: ProductType = await res.json();
+    const data = {
+      ...parsedRes,
+      imageName: parsedRes.imageName.map(
+        (name) => `${process.env.API_URL}${Endpoints.beer}/images/${name}`,
+      ),
+    };
+    return NextResponse.json({ ...data });
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
   }
-  const parsedRes: ProductType = await res.json();
-  const data = {
-    ...parsedRes,
-    imageName: parsedRes.imageName.map(
-      (name) => `${process.env.API_URL}${Endpoints.beer}/images/${name}`,
-    ),
-  };
-  return NextResponse.json({ ...data });
 }

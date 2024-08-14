@@ -1,18 +1,33 @@
-import { NextRequest, NextResponse } from "next/server";
-import { DB } from "../DB";
+import { NextRequest, NextResponse } from 'next/server';
+import { DB } from '../DB';
 
 export async function GET() {
-  const cart = DB.readDB();
-  return NextResponse.json({ message: "sucsess", cart });
+  try {
+    const cart = DB.readDB();
+    return NextResponse.json({ message: 'sucsess', cart });
+  } catch (error) {
+    console.error(`Failed to fetch ${error}`);
+    throw new Error();
+  }
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  DB.writeDB(body);
-  return NextResponse.json({ message: "sucsess" });
+  try {
+    const body = await request.json();
+    DB.writeDB(body);
+    return NextResponse.json({ message: 'sucsess' });
+  } catch (error) {
+    console.error(`Failed to fetch ${error}`);
+    throw new Error();
+  }
 }
 
 export async function DELETE() {
-  DB.removeRecord("id");
-  return NextResponse.json({ message: "sucsess" });
+  try {
+    DB.removeRecord('id');
+    return NextResponse.json({ message: 'sucsess' });
+  } catch (error) {
+    console.error(`Failed to fetch ${error}`);
+    throw new Error();
+  }
 }

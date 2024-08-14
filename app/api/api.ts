@@ -10,131 +10,166 @@ import {
 } from './types';
 
 export async function getProducts({ endpoint }: IPropsGet) {
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-  const { data }: { data: ProductsResponseType } = await axios.get(
-    process.env.API_URL + endpoint,
-    {
-      httpsAgent: agent,
-    },
-  );
+  try {
+    const agent = new https.Agent({
+      rejectUnauthorized: false,
+    });
+    const { data }: { data: ProductsResponseType } = await axios.get(
+      process.env.API_URL + endpoint,
+      {
+        httpsAgent: agent,
+      },
+    );
 
-  const newData = {
-    ...data,
-    content: data.content.map(({ imageName, ...rest }) => ({
-      ...rest,
-      imageName: imageName.map(
-        (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
-      ),
-    })),
-  };
+    const newData = {
+      ...data,
+      content: data.content.map(({ imageName, ...rest }) => ({
+        ...rest,
+        imageName: imageName.map(
+          (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
+        ),
+      })),
+    };
 
-  return newData;
+    return newData;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 
 export async function getProductById({ endpoint, id }: IPropsGetById) {
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-  const { data }: { data: ProductType } = await axios.get(
-    `${process.env.API_URL + endpoint}/${id}`,
-    {
-      httpsAgent: agent,
-    },
-  );
+  try {
+    const agent = new https.Agent({
+      rejectUnauthorized: false,
+    });
+    const { data }: { data: ProductType } = await axios.get(
+      `${process.env.API_URL + endpoint}/${id}`,
+      {
+        httpsAgent: agent,
+      },
+    );
 
-  const newData = {
-    ...data,
-    imageName: data.imageName.map(
-      (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
-    ),
-  };
+    const newData = {
+      ...data,
+      imageName: data.imageName.map(
+        (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
+      ),
+    };
 
-  return newData;
+    return newData;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 
 export async function getCart({ endpoint }: IPropsGet) {
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
+  try {
+    const agent = new https.Agent({
+      rejectUnauthorized: false,
+    });
 
-  const { data }: { data: CartResponseType } = await axios.get(
-    process.env.API_URL + endpoint,
-    {
-      httpsAgent: agent,
-    },
-  );
-  const newData = {
-    ...data,
-    items: data.items.map(({ imageName, ...rest }) => ({
-      ...rest,
-      imageName: imageName.map(
-        (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
-      ),
-    })),
-  };
+    const { data }: { data: CartResponseType } = await axios.get(
+      process.env.API_URL + endpoint,
+      {
+        httpsAgent: agent,
+      },
+    );
+    const newData = {
+      ...data,
+      items: data.items.map(({ imageName, ...rest }) => ({
+        ...rest,
+        imageName: imageName.map(
+          (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
+        ),
+      })),
+    };
 
-  return newData;
+    return newData;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 
 export async function getLocation() {
-  const params = new URLSearchParams({
-    apiKey: process.env.GEOLOCATION_API_KEY,
-    fields: 'city',
-  });
-  const { data } = await axios.get(
-    `${process.env.GEOLOCATION_URL}?${params.toString()}`,
-  );
+  try {
+    const params = new URLSearchParams({
+      apiKey: process.env.GEOLOCATION_API_KEY,
+      fields: 'city',
+    });
+    const { data } = await axios.get(
+      `${process.env.GEOLOCATION_URL}?${params.toString()}`,
+    );
 
-  return data.city;
+    return data.city;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 // @ts-ignore
 
 export async function addProdactToCart({ body }) {
-  const params = new URLSearchParams({
-    ...body,
-  });
+  try {
+    const params = new URLSearchParams({
+      ...body,
+    });
 
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-  const { data } = await axios.get(
-    `${process.env.API_URL + Endpoints.cart}/items?${params.toString()}`,
-    {
-      httpsAgent: agent,
-      withCredentials: true,
-    },
-  );
+    const agent = new https.Agent({
+      rejectUnauthorized: false,
+    });
+    const { data } = await axios.get(
+      `${process.env.API_URL + Endpoints.cart}/items?${params.toString()}`,
+      {
+        httpsAgent: agent,
+        withCredentials: true,
+      },
+    );
 
-  return data;
+    return data;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 
 export async function getNewPostSettlementsLib({ city }: { city: string }) {
-  const data = await axios.post(process.env.NEW_POST_URL, {
-    apiKey: process.env.NEW_POST_API_KEY,
-    modelName: 'AddressGeneral',
-    calledMethod: 'searchSettlements',
-    methodProperties: {
-      CityName: city,
-    },
-  });
-  return data;
+  try {
+    const data = await axios.post(process.env.NEW_POST_URL, {
+      apiKey: process.env.NEW_POST_API_KEY,
+      modelName: 'AddressGeneral',
+      calledMethod: 'searchSettlements',
+      methodProperties: {
+        CityName: city,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
 
 export async function getDepartmentsAndPostalLib({
   cityRef,
   streetName,
 }: { cityRef: string; streetName: string }) {
-  const data = await axios.post(process.env.NEW_POST_URL, {
-    apiKey: process.env.NEW_POST_API_KEY,
-    modelName: 'AddressGeneral',
-    calledMethod: 'getWarehouses',
-    methodProperties: {
-      FindByString: streetName,
-      CityRef: cityRef,
-      Limit: 50,
-    },
-  });
-  return data;
+  try {
+    const data = await axios.post(process.env.NEW_POST_URL, {
+      apiKey: process.env.NEW_POST_API_KEY,
+      modelName: 'AddressGeneral',
+      calledMethod: 'getWarehouses',
+      methodProperties: {
+        FindByString: streetName,
+        CityRef: cityRef,
+        Limit: 50,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }
