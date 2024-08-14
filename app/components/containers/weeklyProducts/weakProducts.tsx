@@ -2,19 +2,15 @@ import Section from '../../ui/section/section';
 import './weakProducts.scss';
 import { getProducts } from '@/app/api/api';
 import {
-  Endpoints,
+  // Endpoints,
   ProductsResponseType,
   ProxiEndpoints,
-} from '@/app/api/types';
-import { Suspense, memo } from 'react';
-import Loader from '../../ui/Loader/Loader';
-import Card from '../../ui/card/Card';
-import { CardSlider } from '../../ui/slider/CardSlider';
+} from "@/app/api/types";
+// import { getProducts } from "@/app/api/api";
+import { memo, Suspense } from "react";
+import Loader from "../../ui/Loader/Loader";
 
 const WeakProducts = memo(async () => {
-  // const products: ProductsResponseType = await getProducts({
-  //   endpoint: Endpoints.beer,
-  // });
   const resProducts = await fetch(ProxiEndpoints.beer);
   const products: ProductsResponseType = await resProducts.json();
 

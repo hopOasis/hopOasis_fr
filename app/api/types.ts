@@ -1,11 +1,4 @@
-import { ProductType } from '../types/types';
-
-export enum Endpoints {
-  beer = 'beers',
-  cart = 'cart',
-  cider = 'cider',
-  rating = 'ratings',
-}
+import { ProductType } from "../types/types";
 
 export interface IPropsGet {
   endpoint: Endpoints;
@@ -56,12 +49,26 @@ export type ProductsResponseType = {
   empty: boolean;
 };
 
-export enum ProxiEndpoints {
-  newPostCities = 'https://hop-oasis-fr.vercel.app/api/newPost/citiesLib',
-  newPostSettlements = 'https://hop-oasis-fr.vercel.app/api/newPost/settlementsLib',
-  geolocation = 'https://hop-oasis-fr.vercel.app/api/location',
-  beer = 'https://hop-oasis-fr.vercel.app/api/products/beer',
-  cart = 'https://hop-oasis-fr.vercel.app/api/cart',
-  cartDB = 'https://hop-oasis-fr.vercel.app/api/cartDB',
-  rating = 'https://hop-oasis-fr.vercel.app/api/rating',
+const proxiUrl = process.env.HOST_URL;
+const apiUrl = process.env.API_URL;
+
+export enum Endpoints {
+  beer = "beers",
+  cart = "cart",
+  cider = "cider",
+  rating = "ratings",
 }
+
+export const ProxiEndpoints = {
+  beer: proxiUrl + "products/" + Endpoints.beer,
+  cart: proxiUrl + Endpoints.cart,
+  rating: proxiUrl + Endpoints.rating,
+  //future remove
+  cartDB: proxiUrl + "cartDB",
+};
+
+export const ApiEndpoints = {
+  beer: apiUrl + Endpoints.beer,
+  cart: apiUrl + Endpoints.cart,
+  rating: apiUrl + Endpoints.rating,
+};
