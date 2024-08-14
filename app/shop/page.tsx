@@ -10,9 +10,6 @@ import BreadCrumbs from '../components/ui/BreadCrumbs/BreadCrumbs';
 import Loader from '../components/ui/Loader/Loader';
 
 export default async function Page() {
-  // const products: ProductsResponseType = await getProducts({
-  //   endpoint: Endpoints.beer,
-  // });
 
   const resProducts = await fetch(ProxiEndpoints.beer);
   const products: ProductsResponseType = await resProducts.json();
