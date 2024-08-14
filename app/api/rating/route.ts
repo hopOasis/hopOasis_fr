@@ -15,5 +15,9 @@ export async function POST(request: NextRequest) {
     throw new Error('Failed to fetch data');
   }
 
-  return NextResponse.json({ message: 'succsess' });
+    return NextResponse.json({ message: 'succsess' });
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
 }

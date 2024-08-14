@@ -1,7 +1,6 @@
-import Section from "../../ui/section/section";
-import "./weakProducts.scss";
-import { CardSlider } from "../../ui/slider/CardSlider";
-import Card from "../../ui/card/Card";
+import Section from '../../ui/section/section';
+import './weakProducts.scss';
+import { getProducts } from '@/app/api/api';
 import {
   // Endpoints,
   ProductsResponseType,

@@ -1,0 +1,50 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { Endpoints, ProductsResponseType } from '../../types';
+
+export async function GET() {
+  try {
+    const resProducts = await fetch(process.env.API_URL + Endpoints.beer);
+    if (!resProducts.ok) {
+      console.log('error', resProducts);
+      throw new Error('Failed to fetch data');
+    }
+
+    const parsedRes: ProductsResponseType = await resProducts.json();
+
+    const data = {
+      ...parsedRes,
+      content: parsedRes.content.map(({ imageName, ...rest }) => ({
+        ...rest,
+        imageName: imageName.map(
+          (name) => `${process.env.API_URL + Endpoints.beer}/images/${name}`,
+        ),
+      })),
+    };
+
+    return NextResponse.json({ ...data });
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const resProduct = await fetch(process.env.API_URL + Endpoints.beer, {
+      method: 'POST',
+      body: request.body,
+    });
+
+    if (!resProduct.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const product = await resProduct.json();
+
+    return NextResponse.json({ product });
+  } catch (error) {
+    console.log(`Something went wrong: ${error}`);
+    throw new Error();
+  }
+}
+
