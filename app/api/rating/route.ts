@@ -1,10 +1,10 @@
-import { Endpoints, ProxiEndpoints } from '@/app/api/types';
+import { ApiEndpoints, Endpoints } from '@/app/api/types';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const res = await fetch(
-    `${ProxiEndpoints.rating}/${body.id}/${Endpoints.rating}`,
+    `${ApiEndpoints.rating}/${body.id}/${Endpoints.rating}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

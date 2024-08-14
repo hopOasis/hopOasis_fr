@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import {  ProductsResponseType, ProxiEndpoints } from "../../types";
+import { ApiEndpoints, ProductsResponseType } from "../../types";
 
 export async function GET() {
-  console.log("________________________________", ProxiEndpoints.beer);
-  const resProducts = await fetch(ProxiEndpoints.beer);
+  const resProducts = await fetch(ApiEndpoints.beer);
   if (!resProducts.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -14,7 +13,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const resProduct = await fetch(ProxiEndpoints.beer, {
+  const resProduct = await fetch(ApiEndpoints.beer, {
     method: "POST",
     body: request.body,
   });

@@ -1,4 +1,4 @@
-import { ProxiEndpoints } from "@/app/api/types";
+import { ApiEndpoints } from "@/app/api/types";
 import { ProductType } from "@/app/types/types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -8,7 +8,7 @@ type Params = {
 
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const res = await fetch(`${ProxiEndpoints.beer}/${id}`);
+  const res = await fetch(`${ApiEndpoints.beer}/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

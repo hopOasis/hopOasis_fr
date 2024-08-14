@@ -49,7 +49,8 @@ export type ProductsResponseType = {
   empty: boolean;
 };
 
-const url = process.env.API_URL;
+const proxiUrl = process.env.HOST_URL;
+const apiUrl = process.env.API_URL;
 
 export enum Endpoints {
   beer = "beers",
@@ -59,9 +60,15 @@ export enum Endpoints {
 }
 
 export const ProxiEndpoints = {
-  beer: url + "products/" + Endpoints.beer,
-  cart: url + Endpoints.cart,
-  rating: url + Endpoints.rating,
+  beer: proxiUrl + "products/" + Endpoints.beer,
+  cart: proxiUrl + Endpoints.cart,
+  rating: proxiUrl + Endpoints.rating,
   //future remove
-  cartDB: url + "cartDB",
+  cartDB: proxiUrl + "cartDB",
+};
+
+export const ApiEndpoints = {
+  beer: apiUrl + Endpoints.beer,
+  cart: apiUrl + Endpoints.cart,
+  rating: apiUrl + Endpoints.rating,
 };

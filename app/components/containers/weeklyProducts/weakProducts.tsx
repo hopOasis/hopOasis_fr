@@ -3,11 +3,11 @@ import "./weakProducts.scss";
 import { CardSlider } from "../../ui/slider/CardSlider";
 import Card from "../../ui/card/Card";
 import {
-  Endpoints,
+  // Endpoints,
   ProductsResponseType,
   ProxiEndpoints,
 } from "@/app/api/types";
-import { getProducts } from "@/app/api/api";
+// import { getProducts } from "@/app/api/api";
 import { memo, Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
 
