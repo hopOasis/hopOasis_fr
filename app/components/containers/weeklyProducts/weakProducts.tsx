@@ -9,6 +9,8 @@ import {
 // import { getProducts } from "@/app/api/api";
 import { memo, Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
+import { CardSlider } from '../../ui/slider/CardSlider';
+import Card from '../../ui/card/Card';
 
 const WeakProducts = memo(async () => {
   const resProducts = await fetch(ProxiEndpoints.beer);
