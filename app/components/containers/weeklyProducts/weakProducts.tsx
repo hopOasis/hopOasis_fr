@@ -1,6 +1,6 @@
 import Section from '../../ui/section/section';
 import './weakProducts.scss';
-import { getProducts } from '@/app/api/api';
+// import { getProducts } from '@/app/api/api';
 import {
   // Endpoints,
   ProductsResponseType,
