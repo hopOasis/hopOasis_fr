@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Endpoints, ProductsResponseType } from "../../types";
+import {  ProductsResponseType, ProxiEndpoints } from "../../types";
 
 export async function GET() {
-  const resProducts = await fetch(process.env.API_URL + Endpoints.beer);
+  console.log("________________________________", ProxiEndpoints.beer);
+  const resProducts = await fetch(ProxiEndpoints.beer);
   if (!resProducts.ok) {
-    console.log("error", resProducts);
     throw new Error("Failed to fetch data");
   }
 
@@ -14,13 +14,12 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const resProduct = await fetch(process.env.API_URL + Endpoints.beer, {
+  const resProduct = await fetch(ProxiEndpoints.beer, {
     method: "POST",
     body: request.body,
   });
 
   if (!resProduct.ok) {
-    console.log("error", resProduct);
     throw new Error("Failed to fetch data");
   }
 

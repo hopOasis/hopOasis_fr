@@ -1,12 +1,5 @@
 import { ProductType } from "../types/types";
 
-export enum Endpoints {
-  beer = "beers",
-  cart = "cart",
-  cider = "cider",
-  rating = "ratings",
-}
-
 export interface IPropsGet {
   endpoint: Endpoints;
 }
@@ -58,14 +51,17 @@ export type ProductsResponseType = {
 
 const url = process.env.API_URL;
 
+export enum Endpoints {
+  beer = "beers",
+  cart = "cart",
+  cider = "cider",
+  rating = "ratings",
+}
+
 export const ProxiEndpoints = {
-  newPostCities: url + `/api/newPost/citiesLib`,
-  newPostSettlements: url + "/api/newPost/settlementsLib",
-  geolocation: url + "/api/location",
-  beer: url + "/api/products/beer",
-  cart: url + "/api/cart",
-  cartDB: url + "/api/cartDB",
-  rating: url + "/api/rating",
-} ;
-
-
+  beer: url + "products/" + Endpoints.beer,
+  cart: url + Endpoints.cart,
+  rating: url + Endpoints.rating,
+  //future remove
+  cartDB: url + "cartDB",
+};

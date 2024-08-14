@@ -12,9 +12,6 @@ import { memo, Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
 
 const WeakProducts = memo(async () => {
-  // const products: ProductsResponseType = await getProducts({
-  //   endpoint: Endpoints.beer,
-  // });
   const resProducts = await fetch(ProxiEndpoints.beer);
   const products: ProductsResponseType = await resProducts.json();
 
