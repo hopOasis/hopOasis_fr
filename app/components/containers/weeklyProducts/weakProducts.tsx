@@ -1,20 +1,29 @@
-import { beer } from '@/app/static/bear';
-import Card from '../../ui/card/Card';
-import Section from '../../ui/section/section';
-import './weakProducts.scss';
-import Gallery from '../gallery/gallery';
+import Section from "../../ui/section/section";
+import "./weakProducts.scss";
+import { memo, Suspense } from "react";
+import Loader from "../../ui/Loader/Loader";
+import { CardSlider } from "../../ui/slider/CardSlider";
+import Card from "../../ui/card/Card";
+import { ProductsResponseType, ProxiEndpoints } from "@/app/api/types";
 
-export default function WeakProducts() {
+const WeakProducts = memo(async () => {
+  const resProducts = await fetch(ProxiEndpoints.beer, { cache: "no-store" });
+  const products: ProductsResponseType = await resProducts.json();
+
   return (
     <Section>
-      <p className="title">Товари тижня</p>
-      <Gallery>
-        {Array(4)
-          .fill(1)
-          .map(() => (
-            <Card {...beer} key={beer.id} />
+      <p className="title typography__h2">Товари тижня</p>
+      <Suspense fallback={<Loader />}>
+        <CardSlider
+          products={products.content.map((product) => (
+            <swiper-slide key={product.id}>
+              <Card {...product} />
+            </swiper-slide>
           ))}
-      </Gallery>
+        />
+      </Suspense>
     </Section>
   );
-}
+});
+
+export default WeakProducts;

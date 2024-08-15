@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './styles/index.scss';
-import Footer from './components/containers/footer/footer';
-import { Header } from './components/containers/header/Header';
 import 'normalize.css/normalize.css';
-import { Suspense } from 'react';
-import Portal from './components/containers/Portal/Portal';
+import 'swiper/scss';
+import StorageUtils from './components/ui/StorageUtils/StorageUtils';
+import AgeGateModal from './components/ui/modals/AgeGateModal/AgeGateModal';
 
 const montserrat = Montserrat({
   weight: ['400', '500', '600'],
@@ -26,13 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <Header />
-
+        {/* <SmoothScrolling /> */}
         {children}
-        <Footer />
-        <Suspense>
-          <Portal />
-        </Suspense>
+        <AgeGateModal />
+        <StorageUtils />
       </body>
     </html>
   );

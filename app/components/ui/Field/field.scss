@@ -1,0 +1,52 @@
+.field {
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    transition: transform 0.35s ease-out;
+    background-color: white;
+    padding: 5px;
+  }
+
+  input {
+    border: 1px solid var(--black-50);
+    outline: none;
+    padding: 11.5px 8px;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 4px;
+    transition: border var(--main-transition);
+
+    &:focus {
+      border: 1px solid var(--accent-500);
+    }
+
+    &:not(:focus):hover {
+      border: 1px solid var(--black-500);
+    }
+
+    &:focus ~ label {
+      transform: translate(-10%, -125%) scale(0.8);
+    }
+  }
+  input.invalid {
+  border: 1px solid var(--invalid);
+}
+
+  label.blur {
+    transform: translate(-10%, -125%) scale(0.8);
+  }
+
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    color: var(--invalid);
+  }
+}
+
+

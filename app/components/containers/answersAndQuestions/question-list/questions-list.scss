@@ -1,6 +1,3 @@
-@import "../../../../styles/mixins/typography";
-@import "../../../../styles/variables/colors";
-
 .questions-list {
   width: 100%;
   display: flex;
@@ -12,30 +9,28 @@ details {
   overflow: hidden;
 
   summary {
+    position: relative;
+    z-index: 1;
+    background-color: white;
     list-style-type: none;
     cursor: pointer;
-    background-color: white;
 
     padding-bottom: 16px;
-    border-bottom: 1px solid black;
-    color: $black-color-500;
-    @include typography-h3;
+    border-bottom: 1px solid var(--black-500);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
-  p {
+
+  div {
     margin-top: 20px;
     position: relative;
-    z-index: -1;
-    @include typography-h3;
   }
 }
 
 details[open] {
-  p {
+  div {
     animation: fadeIn 0.35s ease-out;
   }
 

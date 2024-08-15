@@ -1,18 +1,9 @@
-@import "../../../styles/mixins/animation";
-@import "../../../styles/variables/colors";
-@import "../../../styles/variables/sizes";
-@import "../../../styles/mixins/typography";
-
 .action-section {
   padding: 16px 0;
-  background-color: $black-color-500;
-  color: $white-color-500;
 
   &__date {
     display: inline-block;
-    @include typography-h5;
-    border: 1px solid $color-accent;
-    color: $color-accent;
+    border: 1px solid var(--accent-500);
 
     border-radius: 4px;
     margin-bottom: 9px;

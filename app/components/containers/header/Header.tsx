@@ -5,9 +5,9 @@ import { LogoLink } from "../../ui/links/links";
 
 export function Header() {
   return (
-    <header className="dark">
+    <header className="typography__h4 dark ">
       <nav className="container nav-block">
-        <LogoLink/>
+        <LogoLink />
         <NavLinks />
         <NavIcons />
       </nav>

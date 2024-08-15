@@ -1,8 +1,8 @@
-import Icons from '../components/ui/icons/icons';
+import Icons from "../components/ui/icons/icons";
 
 export const routes = [
   { id: "main", name: "main", href: "/", icon: null },
-  { id: "about", name: "Про нас", href: "/about", icon: null },
+  { id: "about", name: "Про броварню", href: "/about", icon: null },
   { id: "shop", name: "Магазин", href: "/shop", icon: null },
   {
     id: "delivery",
@@ -10,11 +10,12 @@ export const routes = [
     href: "/dev-payment",
     icon: null,
   },
+  { id: "checkout", name: "checkout", href: "/checkout", icon: null },
   {
     id: "search",
     name: "search",
     href: "/search",
-    icon: <Icons name="search" width={20} height={20} />,
+    icon: <Icons name="search" />,
   },
   {
     id: "favorites",
@@ -23,10 +24,16 @@ export const routes = [
     icon: <Icons name="heart" />,
   },
   {
-    id: "avatar",
-    name: "avatar",
+    id: "sign-in",
+    name: "sign-in",
     href: "/sign-in",
     icon: <Icons name="avatar" />,
+  },
+  {
+    id: "sign-up",
+    name: "sign-up",
+    href: "/sign-up",
+    icon: null,
   },
   {
     id: "cart",

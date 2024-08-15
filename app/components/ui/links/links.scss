@@ -1,36 +1,72 @@
-@import "../../../styles/mixins/typography";
-@import "../../../styles/variables/colors";
-@import "../../../styles/mixins/animation";
-
 .main-link {
   padding: 24px;
-  @include typography-h2-medium;
   text-align: center;
   border-radius: 4px;
 }
 
 .main-link.dark {
-  @include hover(background-color, $white-color-600);
+  transition: var(--main-transition);
+  transition-property: color, background-color;
+  &:hover {
+    background-color: var(--accent-500);
+    color: var(--white-500);
+  }
+  &:active {
+    background-color: var(--accent-600);
+    color: var(--white-500);
+  }
 }
 
 .main-link.light {
-  @include hover(background-color, $white-color-600);
+  transition: var(--main-transition);
+  transition-property: color, background-color;
 
-  // @include active(background-color, $white-color-700);
+  &:hover {
+    background-color: var(--accent-500);
+    color: var(--white-500);
+  }
+  &:active {
+    background-color: var(--accent-600);
+    color: var(--white-500);
+  }
+}
+
+.main-link.white {
+  transition: var(--main-transition);
+  transition-property: background-color, border;
+  border: 1px solid var(--black-50);
+  &:hover {
+    border: 1px solid var(--accent-500);
+    background-color: var(--accent-40);
+  }
+  &:active {
+    border: 1px solid var(--accent-500);
+    background-color: var(--accent-50);
+  }
+}
+
+.main-link.blue {
+  background-color: var(--blue-500);
+  color: white;
+  transition: background-color var(--main-transition);
+  &:hover {
+    background-color: var(--blue-400);
+  }
+  &:active {
+    background-color: var(--blue-300);
+  }
 }
 
 .arrow-link {
-  border: 1px solid $color-accent;
+  border: 1px solid var(--accent-500);
+  color: var(--accent-500);
   border-radius: 4px;
   padding: 8px 16px;
+  transition: transform 0.35s ease-out;
 
   display: flex;
   align-items: center;
-
-  position: relative;
-  overflow: hidden;
-
-  transition:transform 0.35s ease-out;
+  justify-content: center;
 
   &:hover {
     transform: scale(1.15);

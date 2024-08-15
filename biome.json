@@ -3,8 +3,13 @@
   "linter": {
     "ignore": ["**/@generated/*"],
     "rules": {
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noShadowRestrictedNames": "info"
+      },
       "style": {
-        "useImportType": "off"
+        "useImportType": "off",
+        "useNodejsImportProtocol": "off"
       },
       "a11y": {
         "useKeyWithClickEvents": "off"

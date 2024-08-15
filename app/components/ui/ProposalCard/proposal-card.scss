@@ -1,31 +1,24 @@
-@import "./../../../styles/";
-
 .proposal-card {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 2.5fr 3fr;
   gap: 40px;
 
   &__header {
-    font-weight: 600;
-    line-height: 19.5px;
-    color: $black-color-500;
     margin-bottom: 7px;
   }
 
   &__link {
-    color: $color-accent;
     font-weight: 600;
-    font-size: $font-medium;
-    line-height: 24.38px;
+    text-decoration: underline;
   }
 
   &__image-wrapper {
-    width: 100%;
-    &:not(:last-child) {
-      min-width: 339px;
-    }
+
+    overflow: hidden;
+
     img {
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
       object-position: center;
     }
   }
@@ -38,4 +31,17 @@
 
 .text-container {
   margin-bottom: 16px;
+}
+
+
+.tex-overflow{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 5;
+  line-clamp: 5; 
+  max-height: calc(1.2em * 5); 
+  height: auto;
+  white-space: normal;
 }

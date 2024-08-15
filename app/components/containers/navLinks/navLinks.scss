@@ -1,26 +1,5 @@
-@import "../../../styles/variables/colors";
-@import "../../../styles/mixins/typography";
-
 .navigation {
   display: flex;
   gap: 40px;
   align-items: center;
-
-  &__item {
-    @include typography-h4;
-    color: $white-color-500;
-  }
 }
-
-.footer-navigation {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  &__item {
-  @include typography-h2-medium;
-  color: $white-color-500
-  }
-}
-
-

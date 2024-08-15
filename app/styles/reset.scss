@@ -4,7 +4,22 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: calc(24.38 / 20);
+  color: var(--grey-500);
 
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--black-40);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--black-50);
+  }
+}
 
 a {
   color: inherit;

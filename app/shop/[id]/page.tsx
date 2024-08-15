@@ -1,7 +1,31 @@
-export default function Page() {
+import "./single-page.scss";
+import { Suspense } from "react";
+import FeedBackSection from "./components/FeedBackSection";
+import MainLayout from "@/app/components/containers/MainLayout/MainLayout";
+import { IProps } from "./types";
+import Loader from "@/app/components/ui/Loader/Loader";
+import BreadCrumbs from "@/app/components/ui/BreadCrumbs/BreadCrumbs";
+import { ProductType } from "@/app/types/types";
+import HeroSection from "./components/HeroSection";
+import DeliveryPaymantSection from "./components/DeliveryPaymantSection";
+import SpecialForYouSection from "./components/SpecialForYouSection";
+import { ProxiEndpoints } from "@/app/api/types";
+
+export default async function SingleProductPage({ params: { id } }: IProps) {
+  const resProduct = await fetch(`${ProxiEndpoints.beer}/${id}`);
+  const product: ProductType = await resProduct.json();
+
   return (
-    <main>
-      <h3>I am a beer</h3>
-    </main>
+    <MainLayout>
+      <main className="single-page">
+        <Suspense fallback={<Loader />}>
+          <BreadCrumbs product={product} />
+          <HeroSection {...product} image={product.imageName[0]} />
+          <DeliveryPaymantSection {...product} />
+        </Suspense>
+        <SpecialForYouSection />
+        <FeedBackSection />
+      </main>
+    </MainLayout>
   );
 }

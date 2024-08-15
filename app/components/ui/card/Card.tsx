@@ -1,21 +1,21 @@
 "use client";
 import "./card.scss";
-import { IProductCard } from "@/app/types/types";
-import ImageBlock from "./ImageBlock";
-import DescriptionBlock from "./DescriptionBlock";
+import ImageBlock from "./components/ImageBlock";
+import DescriptionBlock from "./components/DescriptionBlock";
+import { ShopCardType } from "@/app/shop/types";
 
 export const Card = ({
   id,
-  image,
-  name,
+  imageName,
+  beerName,
   volumeLarge,
   priceLarge,
-}: IProductCard) => {
+}: ShopCardType) => {
   return (
     <article className="card shadow">
-      <ImageBlock image={image} name={name} id={id} />
+      <ImageBlock image={imageName?.[0]} name={beerName} id={id} />
       <DescriptionBlock
-        name={name}
+        beerName={beerName}
         volumeLarge={volumeLarge}
         priceLarge={priceLarge}
         id={id}

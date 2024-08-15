@@ -1,14 +1,8 @@
-@import "../styles/mixins/typography";
 
 .shop-page {
   padding-bottom: 80px;
 
-  h1 {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 24.48px;
-
-    margin-bottom: 40px;
-    text-align: center;
+  .section{
+    padding-top: 0;
   }
 }
