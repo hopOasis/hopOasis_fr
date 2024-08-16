@@ -5,3 +5,8 @@ export interface ICardButton {
   onClick: (id: number) => void;
   isInCart: boolean;
 }
+
+export interface IFavButton {
+  id: number;
+  onClick: (id: number) => void;
+}

@@ -1,21 +1,14 @@
-"use client";
-import Rating from "@/app/components/ui/Rating/Rating";
-import { CardButton } from "@/app/components/ui/buttons/buttons";
-import Icons from "@/app/components/ui/icons/icons";
-import Section from "@/app/components/ui/section/section";
-import Image from "next/image";
-import { oazaStorage } from "@/app/utils";
-import { ProxiEndpoints } from "@/app/api/types";
-import { revalidateProductPage } from "@/app/actions";
-import { IPropsHeroSection } from "../types";
+'use client';
+import Rating from '@/app/components/ui/Rating/Rating';
+import { CardButton } from '@/app/components/ui/buttons/buttons';
+import Icons from '@/app/components/ui/icons/icons';
+import Section from '@/app/components/ui/section/section';
+import Image from 'next/image';
+import { ProxiEndpoints } from '@/app/api/types';
+import { revalidateProductPage } from '@/app/actions';
+import { IPropsHeroSection } from '../types';
 
-export default function HeroSection({
-  id,
-  beerName,
-  image,
-  priceLarge,
-  averageRating,
-}: IPropsHeroSection) {
+export default function HeroSection({ id, beerName, image, priceLarge, averageRating, isInCart }: IPropsHeroSection) {
   return (
     <Section>
       <Image src={image} alt={beerName} width={628} height={431} />
@@ -26,7 +19,7 @@ export default function HeroSection({
           rating={averageRating}
           onChange={async (value) => {
             await fetch(ProxiEndpoints.rating, {
-              method: "POST",
+              method: 'POST',
               body: JSON.stringify({ id, value }),
             });
             revalidateProductPage(id.toString());
@@ -34,12 +27,15 @@ export default function HeroSection({
         />
         <CardButton
           id={id}
-          onClick={() => oazaStorage.set({ id, quantity: 1 })}
+          onClick={() => {
+            console.log('fetch api');
+          }}
+          isInCart={isInCart}
         />
         <button
           className="single-page__fav-button typography__h5"
           type="button"
-          onClick={() => console.log("button-id", id)}
+          onClick={() => console.log('button-id', id)}
         >
           <Icons name="heart" /> Додати до обраного
         </button>

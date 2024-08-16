@@ -2,7 +2,7 @@
 import Icons from '../icons/icons';
 import './buttons.scss';
 import { Palitra } from '@/app/types/types';
-import { ICardButton } from './types';
+import { ICardButton, IFavButton } from './types';
 
 export const CardButton = ({ id, onClick, isInCart = false }: ICardButton) => {
   return (
@@ -16,7 +16,7 @@ export const CardButton = ({ id, onClick, isInCart = false }: ICardButton) => {
   );
 };
 
-export const FavButton = ({ onClick, id }: ICardButton) => {
+export const FavButton = ({ onClick, id }: IFavButton) => {
   return (
     <button type="button" className="fav-button" onClick={() => onClick(id)}>
       <Icons name="heart" />
