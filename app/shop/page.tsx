@@ -8,8 +8,10 @@ import BreadCrumbs from '../components/ui/BreadCrumbs/BreadCrumbs';
 import Loader from '../components/ui/Loader/Loader';
 import { ProductsResponseType, ProxiEndpoints } from '../api/types';
 import { Card } from '../components/ui/card/Card';
+import { IProps } from './types';
 
-export default async function Page() {
+export default async function Page({ searchParams: { filter } }: IProps) {
+  console.log('------filter', filter);
   const resProducts = await fetch(ProxiEndpoints.beer, { cache: 'no-store' });
   const products: ProductsResponseType = await resProducts.json();
 
