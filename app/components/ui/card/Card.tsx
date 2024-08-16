@@ -1,16 +1,10 @@
-"use client";
-import "./card.scss";
-import ImageBlock from "./components/ImageBlock";
-import DescriptionBlock from "./components/DescriptionBlock";
-import { ShopCardType } from "@/app/shop/types";
+'use client';
+import './card.scss';
+import ImageBlock from './components/ImageBlock';
+import DescriptionBlock from './components/DescriptionBlock';
+import { ShopCardType } from '@/app/shop/types';
 
-export const Card = ({
-  id,
-  imageName,
-  beerName,
-  volumeLarge,
-  priceLarge,
-}: ShopCardType) => {
+export const Card = ({ id, imageName, beerName, volumeLarge, priceLarge, isInCart }: ShopCardType) => {
   return (
     <article className="card shadow">
       <ImageBlock image={imageName?.[0]} name={beerName} id={id} />
@@ -19,9 +13,9 @@ export const Card = ({
         volumeLarge={volumeLarge}
         priceLarge={priceLarge}
         id={id}
+        isInCart={isInCart}
       />
     </article>
   );
 };
 
-export default Card;

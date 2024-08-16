@@ -9,6 +9,7 @@ export type ProductType = {
   bearColor: string;
   imageName: string[];
   averageRating: number;
+  isInCart: boolean;
 };
 
 export interface IFeedbackCard {

@@ -1,4 +1,4 @@
-import Card from "../../../card/Card";
+import { Card } from "../../../card/Card";
 import { CardSlider } from "../../../slider/CardSlider";
 import { IPropsWeeklyProducts } from "../types";
 
