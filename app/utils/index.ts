@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import store from 'store';
 import { ProductType } from '../types/types';
 export const parseProductName = (name: string) => name.split(' ').join('_');
+import { v4 as uuidv4 } from 'uuid';
 
 export const animate = {
   modal: {
@@ -42,13 +43,10 @@ export const animate = {
   ageGateModal: {
     open: () => {
       const tl = gsap.timeline();
-      tl.to('.age-gate-modal', { top: 100, opacity: 1, duration: 0.2 }).to(
-        '.age-gate-modal',
-        {
-          top: 0,
-          duration: 0.35,
-        },
-      );
+      tl.to('.age-gate-modal', { top: 100, opacity: 1, duration: 0.2 }).to('.age-gate-modal', {
+        top: 0,
+        duration: 0.35,
+      });
       return tl;
     },
     close: ({ cb }: { cb: () => void }) => {
@@ -79,52 +77,13 @@ export const localizationCity = (city: string) => {
     kiev: 'київ',
     kyiv: 'київ',
   };
-  return (
-    cities?.[city.toLowerCase()] || 'CITY not found in localization Library'
-  );
+  return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
-type LocalStorageSetType = {
-  quantity: number;
-} & Pick<ProductType, 'id'>;
-
 export const oazaStorage = {
-  key: 'oaza_guest',
   keySecure: 'oaza_age_gate_secure',
-  set: function ({ id, quantity }: LocalStorageSetType) {
-    const data = this.get();
+  keyCartId: 'oaza_cart_id',
 
-    if (!data) {
-      store.set(this.key, [{ id, quantity }]);
-      return 'Added to localstorage';
-    }
-    data.push({ id, quantity });
-
-    const newData = new Set(data.map((item) => JSON.stringify(item)));
-
-    store.set(
-      this.key,
-      // @ts-ignore
-
-      [...newData].map((item) => JSON.parse(item)),
-    );
-
-    return 'Added to localstorage';
-  },
-  get: function () {
-    return store.get(this.key);
-  },
-  isInStore: function (id: number) {
-    const data = this.get();
-    if (!data) return false;
-    // @ts-ignore
-    return !!this.get().find(({ id: storeId }) => storeId === id);
-  },
-  getItemById: function (id: Pick<ProductType, 'id'>) {
-    // @ts-ignore
-
-    return this.get().find(({ id: storeId }) => storeId === id);
-  },
   setSecure: function () {
     store.set(this.keySecure, true);
     return true;
@@ -134,5 +93,14 @@ export const oazaStorage = {
   },
   clearSecure: function () {
     store.remove(this.keySecure);
+  },
+  getCartId: function () {
+    const cartId = store.get(this.keyCartId);
+    if (!cartId) {
+      const cartId = uuidv4();
+      store.set(this.keyCartId, cartId);
+      return cartId;
+    }
+    return cartId;
   },
 };

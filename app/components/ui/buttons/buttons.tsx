@@ -1,18 +1,14 @@
-import { oazaStorage } from '@/app/utils';
+'use client';
 import Icons from '../icons/icons';
 import './buttons.scss';
 import { Palitra } from '@/app/types/types';
 import { ICardButton } from './types';
 
-export const CardButton = ({ id, onClick }: ICardButton) => {
-  const isInCart = oazaStorage.isInStore(id);
-
+export const CardButton = ({ id, onClick, isInCart = false }: ICardButton) => {
   return (
     <button
       type="button"
-      className={`card-button main-link ${
-        !isInCart ? Palitra.dark : Palitra.light
-      }`}
+      className={`card-button main-link ${!isInCart ? Palitra.dark : Palitra.light}`}
       onClick={() => onClick(id)}
     >
       {!isInCart ? 'У кошик' : 'Додано у кошик'}

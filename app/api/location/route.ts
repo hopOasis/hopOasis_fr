@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  try {
     const params = new URLSearchParams({
       apiKey: process.env.GEOLOCATION_API_KEY,
       fields: 'city',
@@ -18,8 +17,4 @@ export async function GET() {
     const parsedRes = await resLocation.json();
 
     return NextResponse.json({ ...parsedRes });
-  } catch (error) {
-    console.error(`Failed to fetch ${error}`);
-    throw new Error();
-  }
 }

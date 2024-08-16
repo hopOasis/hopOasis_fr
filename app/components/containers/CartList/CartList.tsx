@@ -49,7 +49,7 @@ export default function CartList({ cart }: IProps) {
           ))}
         </ul>
       ) : (
-        <div>No items</div>
+        <div className='container'>No items</div>
       )}
     </>
   );

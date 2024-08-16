@@ -49,7 +49,7 @@ export type ProductsResponseType = {
   empty: boolean;
 };
 
-const proxiUrl = process.env.HOST_URL;
+const proxiUrl = process.env.NEXT_PUBLIC_HOST_URL;
 const apiUrl = process.env.API_URL;
 
 export enum Endpoints {
