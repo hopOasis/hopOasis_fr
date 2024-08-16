@@ -59,7 +59,6 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
       item.count += 1;
     }
     setItems([...items]);
-
     throttlingFetch();
   };
 
