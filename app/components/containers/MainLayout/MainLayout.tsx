@@ -20,9 +20,9 @@ export default async function MainLayout({ children }: IProps) {
       <Header />
       {children}
       <Footer />
-      {/* <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader />}>
         <CartModal cart={cart} products={products.content} />
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
