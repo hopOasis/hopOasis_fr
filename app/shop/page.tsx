@@ -11,9 +11,15 @@ import { Card } from '../components/ui/card/Card';
 import { IProps } from './types';
 
 export default async function Page({ searchParams: { filter } }: IProps) {
-  console.log('------filter', filter);
-  const resProducts = await fetch(ProxiEndpoints.beer, { cache: 'no-store' });
+  const resProducts = await fetch(ProxiEndpoints.products, {
+    method: 'POST',
+    cache: 'no-store',
+    body: JSON.stringify({ filter }),
+  });
+  const resCart = await fetch(ProxiEndpoints.cart)
   const products: ProductsResponseType = await resProducts.json();
+  const cart = await resCart.json();
+
 
   return (
     <MainLayout>
