@@ -65,6 +65,7 @@ export enum Endpoints {
 export const ProxiEndpoints = {
   beer: proxiUrl + Endpoints.beer,
   cart: proxiUrl + Endpoints.cart,
+  setCartIdToDataBase: proxiUrl + Endpoints.cart + '/setCartIdToDataBase',
   rating: proxiUrl + Endpoints.rating,
   products: proxiUrl + Endpoints.products,
 

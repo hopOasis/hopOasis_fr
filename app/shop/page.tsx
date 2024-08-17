@@ -16,10 +16,10 @@ export default async function Page({ searchParams: { filter } }: IProps) {
     cache: 'no-store',
     body: JSON.stringify({ filter }),
   });
-  const resCart = await fetch(ProxiEndpoints.cart)
+  // const resCart = await fetch(ProxiEndpoints.cart, { method: 'POST', cache: 'no-store' });
+  
   const products: ProductsResponseType = await resProducts.json();
-  const cart = await resCart.json();
-
+  // const cart = await resCart.json();
 
   return (
     <MainLayout>
@@ -28,11 +28,11 @@ export default async function Page({ searchParams: { filter } }: IProps) {
           <BreadCrumbs />
           <Suspense fallback={<Loader />}>
             <Filters />
-            <Gallery>
+            {/* <Gallery>
               {products.content.map((product) => (
                 <Card {...product} key={product.id} />
               ))}
-            </Gallery>
+            </Gallery> */}
           </Suspense>
         </Section>
       </main>

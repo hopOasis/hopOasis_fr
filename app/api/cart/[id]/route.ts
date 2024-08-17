@@ -10,24 +10,26 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
   const res = await fetch(`${ApiEndpoints.beer}/${id}`);
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch CART data');
   }
   const parsedRes: ProductType = await res.json();
 
   return NextResponse.json({ ...parsedRes });
 }
 
-export async function POST(request: NextRequest,  context: { params: Params }) {
+export async function POST(request: NextRequest, { params: Params }) {
   const body = await request.json();
   const requestHeaders = new Headers(request.headers);
-  const res = await fetch(ApiEndpoints.cart, {
-    method: 'POST',
-    headers: requestHeaders,
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    throw new Error('Failed to POST fetch CART data');
-  }
+  // console.log('----------params', params);
+  // const res = await fetch(`${ApiEndpoints.cart}/${params}`, {
+  //   method: 'POST',
+  //   headers: requestHeaders,
+  //   body: JSON.stringify(body),
+  // });
+
+  // if (res.status !== 200) {
+  //   return NextResponse.json({ items: [], priceForAll: 0 });
+  // }
 
   return NextResponse.json({ message: 'succsess' });
 }

@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import store from 'store';
-import { ProductType } from '../types/types';
 export const parseProductName = (name: string) => name.split(' ').join('_');
-import { v4 as uuidv4 } from 'uuid';
 
 export const animate = {
   modal: {
@@ -80,6 +78,15 @@ export const localizationCity = (city: string) => {
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
+function getRandomInt64() {
+  const randomBigInt = BigInt.asUintN(
+    64,
+    BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
+      BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)),
+  );
+  return randomBigInt.toString();
+}
+
 export const oazaStorage = {
   keySecure: 'oaza_age_gate_secure',
   keyCartId: 'oaza_cart_id',
@@ -95,9 +102,12 @@ export const oazaStorage = {
     store.remove(this.keySecure);
   },
   getCartId: function () {
+    return !!store.get(this.keyCartId);
+  },
+  generateAndSetCartId: function () {
     const cartId = store.get(this.keyCartId);
     if (!cartId) {
-      const cartId = uuidv4();
+      const cartId = getRandomInt64();
       store.set(this.keyCartId, cartId);
       return cartId;
     }

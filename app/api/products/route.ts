@@ -3,7 +3,8 @@ import { ApiEndpoints, ProductsResponseType } from '../types';
 
 export async function POST(req: NextRequest) {
   const { filter } = await req.json();
-  const resProducts = await fetch(ApiEndpoints[filter], { method: 'GET' });
+  //need to check fields in ApiEndpoints
+  const resProducts = await fetch(ApiEndpoints?.[filter] ?? ApiEndpoints.beer, { method: 'GET' });
 
   if (!resProducts.ok) {
     throw new Error('Failed to fetch data');

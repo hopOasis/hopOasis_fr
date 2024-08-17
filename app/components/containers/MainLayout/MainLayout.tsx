@@ -9,7 +9,7 @@ import CartModal from '../../ui/modals/cartModal/CartModal';
 export default async function MainLayout({ children }: IProps) {
   const [resProducts, resCart] = await Promise.all([
     fetch(ProxiEndpoints.beer, { cache: 'no-store' }),
-    fetch(ProxiEndpoints.cart, { cache: 'no-store' }),
+    fetch(ProxiEndpoints.cart, { cache: 'no-store', method: 'POST', body: JSON.stringify({ cartId: null }) }),
   ]);
 
   const products = await resProducts.json();
@@ -20,9 +20,9 @@ export default async function MainLayout({ children }: IProps) {
       <Header />
       {children}
       <Footer />
-      <Suspense fallback={<Loader />}>
+      {/* <Suspense fallback={<Loader />}>
         <CartModal cart={cart} products={products.content} />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
