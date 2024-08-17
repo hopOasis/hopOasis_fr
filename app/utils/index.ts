@@ -84,7 +84,8 @@ function getRandomInt64() {
     BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
       BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)),
   );
-  return randomBigInt.toString();
+  const number = Math.round(Number(randomBigInt) * 0.000000000001);
+  return number.toString();
 }
 
 export const oazaStorage = {
