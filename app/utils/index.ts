@@ -78,7 +78,7 @@ export const localizationCity = (city: string) => {
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
-function getRandomInt64() {
+export function generateRandomID() {
   const randomBigInt = BigInt.asUintN(
     64,
     BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
@@ -108,7 +108,7 @@ export const oazaStorage = {
   generateAndSetCartId: function () {
     const cartId = store.get(this.keyCartId);
     if (!cartId) {
-      const cartId = getRandomInt64();
+      const cartId = generateRandomID();
       store.set(this.keyCartId, cartId);
       return cartId;
     }

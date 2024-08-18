@@ -1,4 +1,4 @@
-import { ApiEndpoints } from "@/app/api/types";
+import { ApiEndpoints } from "@/app/static/constants";
 import { ProductType } from "@/app/types/types";
 import { NextRequest, NextResponse } from "next/server";
 

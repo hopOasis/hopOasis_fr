@@ -2,24 +2,20 @@ import Link from 'next/link';
 import { routes } from '@/app/static/routes';
 import { CardButton } from '../../buttons/buttons';
 import { revalidate } from '@/app/actions';
-import { ProxiEndpoints } from '@/app/api/types';
 import { IDescriptionBlock } from '../types';
-import { oazaStorage } from '@/app/utils';
+import { ProxiEndpoints } from '@/app/static/constants';
 
 export default function DescriptionBlock({ beerName, volumeLarge, priceLarge, id, isInCart }: IDescriptionBlock) {
   const onClick = async () => {
-    let cartId = oazaStorage.getCartId();
-    if (!cartId) {
-      cartId = oazaStorage.generateAndSetCartId();
-    }
 
-    await fetch(`${ProxiEndpoints.cart}/${id}`, {
+    await fetch(ProxiEndpoints.cart, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, quantity: 1, cartId, itemType: 'BEER' }),
+      body: JSON.stringify({ itemId: id, quantity: 1, itemType: 'BEER' }),
     });
+
     revalidate();
   };
 

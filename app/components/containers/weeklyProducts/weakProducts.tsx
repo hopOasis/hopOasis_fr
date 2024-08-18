@@ -3,8 +3,9 @@ import "./weakProducts.scss";
 import { memo, Suspense } from "react";
 import Loader from "../../ui/Loader/Loader";
 import { CardSlider } from "../../ui/slider/CardSlider";
-import { ProductsResponseType, ProxiEndpoints } from "@/app/api/types";
+import { ProductsResponseType } from "@/app/api/types";
 import { Card } from "../../ui/card/Card";
+import { ProxiEndpoints } from "@/app/static/constants";
 
 const WeakProducts = memo(async () => {
   const resProducts = await fetch(ProxiEndpoints.beer, { cache: "no-store" });

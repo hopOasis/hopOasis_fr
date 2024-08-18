@@ -25,7 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        {/* <SmoothScrolling /> */}
+        
+        {/* 
+        not working with react-select
+        <SmoothScrolling /> 
+        */}
         {children}
         <AgeGateModal />
         <StorageUtils />

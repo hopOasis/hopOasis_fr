@@ -6,23 +6,23 @@ import './shop.scss';
 import MainLayout from '../components/containers/MainLayout/MainLayout';
 import BreadCrumbs from '../components/ui/BreadCrumbs/BreadCrumbs';
 import Loader from '../components/ui/Loader/Loader';
-import { ProductsResponseType, ProxiEndpoints } from '../api/types';
+import { ProductsResponseType } from '../api/types';
 import { Card } from '../components/ui/card/Card';
 import { IProps } from './types';
 
 export default async function Page({ searchParams: { filter } }: IProps) {
-  const resProducts = await fetch(ProxiEndpoints.products, {
-    method: 'POST',
-    cache: 'no-store',
-    body: JSON.stringify({ filter }),
-  });
-  const resCart = await fetch(ProxiEndpoints.cart, {
-    method: 'POST',
-    cache: 'no-store',
-    body: JSON.stringify({ cartId: null }),
-  });
-  const products: ProductsResponseType = await resProducts.json();
-  const cart = await resCart.json();
+  // const resProducts = await fetch(ProxiEndpoints.products, {
+  //   method: 'POST',
+  //   cache: 'no-store',
+  //   body: JSON.stringify({ filter }),
+  // });
+  // const resCart = await fetch(ProxiEndpoints.cart, {
+  //   method: 'POST',
+  //   cache: 'no-store',
+  //   body: JSON.stringify({ cartId: null }),
+  // });
+  // const products: ProductsResponseType = await resProducts.json();
+  // const cart = await resCart.json();
 
   return (
     <MainLayout>
@@ -31,11 +31,11 @@ export default async function Page({ searchParams: { filter } }: IProps) {
           <BreadCrumbs />
           <Suspense fallback={<Loader />}>
             <Filters />
-            <Gallery>
+            {/* <Gallery>
               {products.content.map((product) => (
                 <Card {...product} key={product.id} />
               ))}
-            </Gallery>
+            </Gallery> */}
           </Suspense>
         </Section>
       </main>
