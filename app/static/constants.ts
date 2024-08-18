@@ -12,6 +12,8 @@ export const ProxiEndpoints = {
   cartDefaults: PROXI_URL + 'cart/defaults',
   rating: PROXI_URL + 'rating',
   products: PROXI_URL + 'products',
+  //needed to create and add real proxi
+  weekProducts: PROXI_URL + 'beers',
 };
 
 export const ApiEndpoints = {
