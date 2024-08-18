@@ -13,11 +13,14 @@ export default async function MainLayout({ children }: IProps) {
   const oazaCookie = cookieStore.get(oaza_guest);
 
   const cartId = !oazaCookie ? false : oazaCookie.value;
-  const switchProxiApi = !cartId
-    ? fetch(`${ProxiEndpoints.cartDefaults}`, { cache: 'no-store', method: 'GET' })
+  const switchCartProxiApi = !cartId
+    ? fetch(ProxiEndpoints.cartDefaults, { cache: 'no-store', method: 'GET' })
     : fetch(`${ProxiEndpoints.cart}/${cartId}`, { cache: 'no-store', method: 'GET' });
 
-  const [resProducts, resCart] = await Promise.all([fetch(ProxiEndpoints.beer, { cache: 'no-store' }), switchProxiApi]);
+  const [resProducts, resCart] = await Promise.all([
+    fetch(ProxiEndpoints.beer, { cache: 'no-store' }),
+    switchCartProxiApi,
+  ]);
 
   const products = await resProducts.json();
   const cart = await resCart.json();
