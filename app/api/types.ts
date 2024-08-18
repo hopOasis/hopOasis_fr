@@ -1,20 +1,15 @@
-import { ProductType } from "../types/types";
+import { ProductType } from '../types/types';
 
-export interface IPropsGet {
-  endpoint: Endpoints;
-}
-
-export interface IPropsGetById extends IPropsGet {
-  id: string;
-}
-
-export interface IPropsGetById {
-  endpoint: Endpoints;
-  id: string;
-}
+export type CartType = {
+  itemId: number;
+  itemTitle: string;
+  pricePerItem: number;
+  quantity: number;
+  totalCost: number;
+};
 
 export type CartResponseType = {
-  items: ProductType[];
+  items: CartType[];
   priceForAll: number;
 };
 
@@ -49,26 +44,4 @@ export type ProductsResponseType = {
   empty: boolean;
 };
 
-const proxiUrl = process.env.NEXT_PUBLIC_HOST_URL;
-const apiUrl = process.env.API_URL;
 
-export enum Endpoints {
-  beer = "beers",
-  cart = "cart",
-  cider = "cider",
-  rating = "ratings",
-}
-
-export const ProxiEndpoints = {
-  beer: proxiUrl + Endpoints.beer,
-  cart: proxiUrl + Endpoints.cart,
-  rating: proxiUrl + Endpoints.rating,
-  //future remove
-  cartDB: proxiUrl + "cartDB",
-};
-
-export const ApiEndpoints = {
-  beer: apiUrl + Endpoints.beer,
-  cart: apiUrl + Endpoints.cart,
-  rating: apiUrl + Endpoints.rating,
-};

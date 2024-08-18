@@ -14,12 +14,13 @@ import { useCallback, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { FormStateType, IPropsChekoutForm } from '../types';
 import { DepartmentComponent } from './deliveryRadioComponents';
+import { CartResponseType } from '@/app/api/types';
 
 const initialState = Array(3)
   .fill(1)
   .map((el, idx) => ({ ...beer, id: idx, count: 1 }));
 
-export default function ChekoutForm({ location }: IPropsChekoutForm) {
+export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
   const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<
     boolean | null
   >(null);

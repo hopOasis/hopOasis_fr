@@ -1,6 +1,6 @@
-"use server";
 import { NextRequest, NextResponse } from "next/server";
-import { ApiEndpoints, ProductsResponseType } from "../types";
+import {  ProductsResponseType } from "../types";
+import { ApiEndpoints } from "@/app/static/constants";
 
 export async function GET() {
   const resProducts = await fetch(ApiEndpoints.beer);
