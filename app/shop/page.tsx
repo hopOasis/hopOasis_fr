@@ -8,26 +8,20 @@ import BreadCrumbs from '../components/ui/BreadCrumbs/BreadCrumbs';
 import Loader from '../components/ui/Loader/Loader';
 import { Card } from '../components/ui/card/Card';
 import { IProps } from './types';
-import { cookies } from 'next/headers';
-import { oaza_guest, ProxiEndpoints } from '../static/constants';
+import {  ProxiEndpoints } from '../static/constants';
 import { generateProducts } from '../utils';
+import { fetchCartUtils } from '../utils/serverUtils';
 
 export default async function Page({ searchParams: { filter } }: IProps) {
-  const cookieStore = cookies();
-  const oazaCookie = cookieStore.get(oaza_guest);
+  const switchCartProxiApi = await fetchCartUtils();
+  const productsProxiApi = () =>
+    fetch(ProxiEndpoints.products, {
+      method: 'POST',
+      cache: 'force-cache',
+      body: JSON.stringify({ filter }),
+    });
 
-  const cartId = !oazaCookie ? false : oazaCookie.value;
-
-  const productsProxiApi = fetch(ProxiEndpoints.products, {
-    method: 'POST',
-    cache: 'no-store',
-    body: JSON.stringify({ filter }),
-  });
-  const switchCartProxiApi = !cartId
-    ? fetch(ProxiEndpoints.cartDefaults, { cache: 'no-store', method: 'GET' })
-    : fetch(`${ProxiEndpoints.cart}/${cartId}`, { cache: 'no-store', method: 'GET' });
-
-  const [resProducts, resCart] = await Promise.all([productsProxiApi, switchCartProxiApi]);
+  const [resProducts, resCart] = await Promise.all([productsProxiApi(), switchCartProxiApi()]);
 
   const unpreparedProducts = await resProducts.json();
   const cart = await resCart.json();
@@ -36,6 +30,7 @@ export default async function Page({ searchParams: { filter } }: IProps) {
     products: unpreparedProducts,
     cart,
   });
+
 
   return (
     <MainLayout>

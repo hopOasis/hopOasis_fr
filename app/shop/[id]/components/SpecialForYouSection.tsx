@@ -2,22 +2,16 @@ import { Card } from '@/app/components/ui/card/Card';
 import Loader from '@/app/components/ui/Loader/Loader';
 import Section from '@/app/components/ui/section/section';
 import { CardSlider } from '@/app/components/ui/slider/CardSlider';
-import { oaza_guest, ProxiEndpoints } from '@/app/static/constants';
+import {  ProxiEndpoints } from '@/app/static/constants';
 import { generateProducts } from '@/app/utils';
-import { cookies } from 'next/headers';
+import { fetchCartUtils } from '@/app/utils/serverUtils';
 import { Suspense, memo } from 'react';
 
 const SpecialForYouSection = memo(async () => {
-  const cookieStore = cookies();
-  const oazaCookie = cookieStore.get(oaza_guest);
+  const specialForYouProxiApi = () => fetch(ProxiEndpoints.specialForYou);
+  const switchCartProxiApi = await fetchCartUtils();
 
-  const cartId = !oazaCookie ? false : oazaCookie.value;
-  const switchCartProxiApi = !cartId
-    ? fetch(ProxiEndpoints.cartDefaults, { cache: 'no-store', method: 'GET' })
-    : fetch(`${ProxiEndpoints.cart}/${cartId}`, { cache: 'no-store', method: 'GET' });
-  const specialForYouProxiApi = fetch(ProxiEndpoints.specialForYou);
-
-  const [resSpecialForYouProducts, resCart] = await Promise.all([specialForYouProxiApi, switchCartProxiApi]);
+  const [resSpecialForYouProducts, resCart] = await Promise.all([specialForYouProxiApi(), switchCartProxiApi()]);
 
   const unpreparedProducts = await resSpecialForYouProducts.json();
   const cart = await resCart.json();

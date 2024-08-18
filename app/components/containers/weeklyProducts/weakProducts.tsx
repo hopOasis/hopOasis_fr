@@ -3,24 +3,16 @@ import './weakProducts.scss';
 import { memo, Suspense } from 'react';
 import Loader from '../../ui/Loader/Loader';
 import { CardSlider } from '../../ui/slider/CardSlider';
-import { ProductsResponseType } from '@/app/api/types';
 import { Card } from '../../ui/card/Card';
-import { oaza_guest, ProxiEndpoints } from '@/app/static/constants';
-import { cookies } from 'next/headers';
+import {  ProxiEndpoints } from '@/app/static/constants';
 import { generateProducts } from '@/app/utils';
+import { fetchCartUtils } from '@/app/utils/serverUtils';
 
 const WeakProducts = memo(async () => {
-  const cookieStore = cookies();
-  const oazaCookie = cookieStore.get(oaza_guest);
+  const weekProductsProxiApi = () => fetch(ProxiEndpoints.weekProducts, { cache: 'no-store', method: 'GET' });
+  const switchCartProxiApi = await fetchCartUtils();
 
-  const cartId = !oazaCookie ? false : oazaCookie.value;
-
-  const weekProductsProxiApi = fetch(ProxiEndpoints.weekProducts, { cache: 'no-store', method: 'GET' });
-  const switchCartProxiApi = !cartId
-    ? fetch(ProxiEndpoints.cartDefaults, { cache: 'no-store', method: 'GET' })
-    : fetch(`${ProxiEndpoints.cart}/${cartId}`, { cache: 'no-store', method: 'GET' });
-
-  const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi, switchCartProxiApi]);
+  const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi(), switchCartProxiApi()]);
 
   const unpreparedProducts = await resWeekProducts.json();
   const cart = await resCart.json();

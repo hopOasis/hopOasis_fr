@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const res = await fetch(
-    `${ApiEndpoints.rating}/${body.id}/ratings`,
+    `${ApiEndpoints.ratings}/${body.id}/ratings`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

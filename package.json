@@ -16,6 +16,7 @@
     "lenis": "^1.1.5",
     "next": "14.2.3",
     "next-session": "^4.0.5",
+    "next-swagger-doc": "^0.4.0",
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
@@ -23,6 +24,7 @@
     "react-select": "^5.8.0",
     "sharp": "^0.33.4",
     "store": "^2.0.12",
+    "swagger-ui-react": "^5.17.14",
     "swiper": "^11.1.4",
     "throttle-debounce": "^5.0.2",
     "uuid": "^10.0.0"

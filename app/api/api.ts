@@ -11,6 +11,8 @@ export async function getLocation() {
     `${GEOLOCATION_URL}?${params.toString()}`,
   );
 
+  console.log('---------------server-side location', data.city);
+
   return data.city;
 }
 

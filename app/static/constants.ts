@@ -7,20 +7,26 @@ export const GEOLOCATION_URL = process.env.GEOLOCATION_URL;
 
 
 export const ProxiEndpoints = {
-  beer: PROXI_URL + 'beers',
-  cart: PROXI_URL + 'cart',
-  cartDefaults: PROXI_URL + 'cart/defaults',
-  rating: PROXI_URL + 'rating',
+  beers: PROXI_URL + 'beers',
+  snacks: PROXI_URL + 'snacks',
+  carts: PROXI_URL + 'carts',
+  cartDefaults: PROXI_URL + 'carts/defaults',
+  ratings: PROXI_URL + 'ratings',
   products: PROXI_URL + 'products',
-  //needed to create and add real proxi
-  weekProducts: PROXI_URL + 'beers',
-  specialForYou: PROXI_URL + 'beers',
+  weekProducts: PROXI_URL + 'weekProducts',
+  specialForYou: PROXI_URL + 'specialForYou',
 };
 
 export const ApiEndpoints = {
-  beer: API_URL + 'beers',
-  cart: API_URL + 'carts',
-  rating: API_URL + 'ratings',
+  beers: API_URL + 'beers',
+  ciders: API_URL + 'ciders',
+  snacks: API_URL + 'snacks',
+  sets: API_URL + 'products-bundle',
+  carts: API_URL + 'carts',
+  ratings: API_URL + 'ratings',
+  //needed to add real api
+  weekProducts: API_URL + 'beers',
+  specialForYou: API_URL + 'beers',
 };
 
 export const oaza_guest = 'oaza_guest';

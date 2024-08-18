@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const cookieStore = cookies();
   const oazaGuest = cookieStore.get(oaza_guest);
 
-  const resCart = await fetch(ProxiEndpoints.cart, {
+  const resCart = await fetch(ProxiEndpoints.carts, {
     method: 'POST',
     body: JSON.stringify({ ...body, cartId: oazaGuest.value }),
   });

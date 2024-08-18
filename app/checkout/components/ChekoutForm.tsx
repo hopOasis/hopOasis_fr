@@ -87,6 +87,7 @@ export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
     'parcel-station': null,
     courier: null,
   };
+
   return (
     <>
       <form className="form">
