@@ -125,3 +125,5 @@ export const generateProducts = ({ products, cart }: { products: ProductsRespons
 
   return { ...products, content: res };
 };
+
+
