@@ -14,6 +14,7 @@ export const ProxiEndpoints = {
   products: PROXI_URL + 'products',
   //needed to create and add real proxi
   weekProducts: PROXI_URL + 'beers',
+  specialForYou: PROXI_URL + 'beers',
 };
 
 export const ApiEndpoints = {
