@@ -13,8 +13,12 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   if (!res.ok) {
     throw new Error('Failed to fetch CART data');
   }
-  const parsedRes: ProductType = await res.json();
 
+  if (res.status === 404) {
+    return NextResponse.json({ items: [], priceForAll: 0 });
+  }
+  
+  const parsedRes: ProductType = await res.json();
   return NextResponse.json({ ...parsedRes });
 }
 

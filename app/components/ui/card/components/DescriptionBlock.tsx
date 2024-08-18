@@ -7,7 +7,6 @@ import { ProxiEndpoints } from '@/app/static/constants';
 
 export default function DescriptionBlock({ beerName, volumeLarge, priceLarge, id, isInCart }: IDescriptionBlock) {
   const onClick = async () => {
-
     await fetch(ProxiEndpoints.cart, {
       method: 'POST',
       headers: {
