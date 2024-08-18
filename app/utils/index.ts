@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import store from 'store';
+import { CartResponseType, ProductsResponseType } from '../api/types';
 export const parseProductName = (name: string) => name.split(' ').join('_');
 
 export const animate = {
@@ -114,4 +115,13 @@ export const oazaStorage = {
     }
     return cartId;
   },
+};
+
+export const generateProducts = ({ products, cart }: { products: ProductsResponseType; cart: CartResponseType }) => {
+  const res = products.content.map((product) => {
+    const isInCart = cart.items.some(({ itemId: cartId }) => cartId === product.id);
+    return isInCart ? { ...product, isInCart: true } : { ...product, isInCart: false };
+  });
+
+  return { ...products, content: res };
 };

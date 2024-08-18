@@ -1,7 +1,15 @@
 import { ProductType } from '../types/types';
 
+export type CartType = {
+  itemId: number;
+  itemTitle: string;
+  pricePerItem: number;
+  quantity: number;
+  totalCost: number;
+};
+
 export type CartResponseType = {
-  items: ProductType[];
+  items: CartType[];
   priceForAll: number;
 };
 
