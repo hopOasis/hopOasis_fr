@@ -21,27 +21,27 @@ export default function CartList({ cart }: IProps) {
   );
 
   const remove = (id: number) => {
-    setItems(items.filter(({ id: prevId }) => prevId !== id));
+    setItems(items.filter(({ itemId: prevId }) => prevId !== id));
     throttlingFetch();
   };
 
   const increment = (id: number) => {
-    const item = items.find(({ id: prevId }) => prevId === id);
+    const item = items.find(({ itemId: prevId }) => prevId === id);
     //@ts-ignore
-    item.count += 1;
+    item.quantity += 1;
     setItems([...items]);
     throttlingFetch();
   };
 
   const decrement = (id: number) => {
-    const item = items.find(({ id: prevId }) => prevId === id);
+    const item = items.find(({ itemId: prevId }) => prevId === id);
     //@ts-ignore
-    if (item.count === 1) {
+    if (item.quantity === 1) {
       throttlingFetch();
       return;
     }
     //@ts-ignore
-    item.count -= 1;
+    item.quantity -= 1;
     setItems([...items]);
     throttlingFetch();
   };
@@ -53,11 +53,11 @@ export default function CartList({ cart }: IProps) {
         <ul className="cart__list">
           {items.map((props) => (
             <CartItem
-              key={props.id}
+              key={props.itemId}
               {...props}
-              remove={() => remove(props.id)}
-              increment={() => increment(props.id)}
-              decrement={() => decrement(props.id)}
+              remove={() => remove(props.itemId)}
+              increment={() => increment(props.itemId)}
+              decrement={() => decrement(props.itemId)}
             />
           ))}
         </ul>
