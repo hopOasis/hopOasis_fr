@@ -1,6 +1,3 @@
-import {
-  ProductsResponseType,
-} from '@/app/api/types';
 import { Card } from '@/app/components/ui/card/Card';
 import Loader from '@/app/components/ui/Loader/Loader';
 import Section from '@/app/components/ui/section/section';
