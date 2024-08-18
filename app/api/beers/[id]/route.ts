@@ -8,7 +8,7 @@ type Params = {
 
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const res = await fetch(`${ApiEndpoints.beer}/${id}`);
+  const res = await fetch(`${ApiEndpoints.beers}/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

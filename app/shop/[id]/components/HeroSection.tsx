@@ -18,7 +18,7 @@ export default function HeroSection({ id, beerName, image, priceLarge, averageRa
         <Rating
           rating={averageRating}
           onChange={async (value) => {
-            await fetch(ProxiEndpoints.rating, {
+            await fetch(ProxiEndpoints.ratings, {
               method: 'POST',
               body: JSON.stringify({ id, value }),
             });
