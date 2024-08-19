@@ -25,8 +25,7 @@ export async function GET(_: NextRequest, context: { params: Params }) {
 export async function POST(request: NextRequest, { params: Params }) {
   const body = await request.json();
   const requestHeaders = new Headers(request.headers);
-  // console.log('----------params', params);
-  // const res = await fetch(`${ApiEndpoints.cart}/${params}`, {
+  // const res = await fetch(`${ApiEndpoints.carts}/${params}`, {
   //   method: 'POST',
   //   headers: requestHeaders,
   //   body: JSON.stringify(body),

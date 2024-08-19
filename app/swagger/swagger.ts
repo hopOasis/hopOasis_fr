@@ -72,7 +72,6 @@ export const getApiDocs = async () => {
             responses: {},
           },
         },
-
         '/weekProducts': {
           get: {
             tags: ['Special'],
@@ -108,6 +107,9 @@ export const getApiDocs = async () => {
                     },
                     required: ['filter'],
                   },
+                  example: {
+                    filter: '=> enum  all | beers | ciders | snacks | sets',
+                  },
                 },
               },
             },
@@ -117,7 +119,60 @@ export const getApiDocs = async () => {
         '/location': {
           get: {
             tags: ['Service'],
-            description: 'Getting location from remote api',
+            description: 'Getting cart from remote api',
+            responses: {},
+          },
+        },
+        '/carts': {
+          post: {
+            tags: ['Cart'],
+            description:
+              "Post cart to remote api. !!!Notice. Cart use cookies. Cookies expire after 30 days. Cookie automatically generated in the server. You can get cookie from BROWSER=>DEVTOOLS=>APPLICATION=>COOKIES=>OAZA_GUEST to fill 'cartId' field. Field 'itemType' - enum BEER | SNACK | PRODUCT_BUNDLE | CIDER",
+            parameters: [
+              {
+                name: 'oaza_guest',
+                in: 'cookie',
+                required: true,
+                shema: {
+                  type: 'number',
+                },
+              },
+            ],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      cartId: {
+                        type: 'number',
+                      },
+                      itemId: { type: 'number' },
+                      quantity: {
+                        type: 'number',
+                      },
+                      itemType: { type: 'string' },
+                    },
+                  },
+                  example: {
+                    cartId: '=> set number from cookie',
+                    itemId: 30001,
+                    quantity: 1,
+                    itemType: '=> enum BEER | SNACK | PRODUCT_BUNDLE | CIDER',
+                  },
+                },
+              },
+              required: true,
+            },
+            responses: {},
+          },
+        },
+        '/carts/{id}': {
+          get: {
+            tags: ['Cart'],
+            description:
+              'Getting cart from remote api. !!!Notice. Cart use cookies. Cookies expire after 30 days. Cookie automatically generated in the server. You can get cookie from BROWSER=>DEVTOOLS=>APPLICATION=>COOKIES=>OAZA_GUEST',
+            parameters: [{ name: 'id', in: 'path', type: 'number', required: true }],
             responses: {},
           },
         },

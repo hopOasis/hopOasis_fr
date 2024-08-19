@@ -32,9 +32,9 @@ export async function middleware(request: NextRequest) {
     response.cookies.set(oaza_guest, cookieValue, {
       httpOnly: true,
       // secure: process.env.NODE_ENV === 'production', // Использовать только в HTTPS в продакшене
-      sameSite: 'lax', // Защита от CSRF атак
+      sameSite: 'lax',
       maxAge: 60 * 60 * 24 * 30,
-      path: '/', // Куки будут доступны на всех страницах сайта
+      path: '/',
     });
   }
 
