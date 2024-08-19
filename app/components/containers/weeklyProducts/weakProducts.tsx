@@ -9,7 +9,7 @@ import { generateProducts } from '@/app/utils';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
 
 const WeakProducts = memo(async () => {
-  const weekProductsProxiApi = () => fetch(ApiEndpoints.weekProducts, { method: 'GET' });
+  const weekProductsProxiApi = () => fetch(ApiEndpoints.beers, { method: 'GET' });
   const switchCartProxiApi = await fetchCartUtils();
 
   const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi(), switchCartProxiApi()]);
