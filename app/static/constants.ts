@@ -25,7 +25,7 @@ export const ApiEndpoints = {
   carts: API_URL + 'carts',
   ratings: API_URL + 'ratings',
   //needed to add real api
-  weekProducts: API_URL + 'beers',
+  weekProducts: API_URL + 'special-offers/active',
   specialForYou: API_URL + 'beers',
 };
 

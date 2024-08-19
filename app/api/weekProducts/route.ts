@@ -6,7 +6,7 @@ export async function GET() {
   const resProducts = await fetch(ApiEndpoints.weekProducts);
 
   if (!resProducts.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch WEEK PRODUCTS data');
   }
 
   const parsedRes: ProductsResponseType = await resProducts.json();
