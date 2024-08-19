@@ -17,7 +17,7 @@ export default async function Page({ searchParams: { filter } }: IProps) {
   const productsProxiApi = () =>
     fetch(ProxiEndpoints.products, {
       method: 'POST',
-      cache: 'force-cache',
+      cache: 'no-store',
       body: JSON.stringify({ filter }),
     });
 

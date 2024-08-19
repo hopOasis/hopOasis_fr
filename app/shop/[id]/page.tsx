@@ -8,12 +8,12 @@ import BreadCrumbs from '@/app/components/ui/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection';
 import DeliveryPaymantSection from './components/DeliveryPaymantSection';
 import SpecialForYouSection from './components/SpecialForYouSection';
-import {  ProxiEndpoints } from '@/app/static/constants';
+import { ProxiEndpoints } from '@/app/static/constants';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
   const switchCartProxiApi = await fetchCartUtils();
-  const productProxiApi = () => fetch(`${ProxiEndpoints.beers}/${id}`);
+  const productProxiApi = () => fetch(`${ProxiEndpoints.beers}/${id}`, { method: 'GET' });
 
   const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);
 
