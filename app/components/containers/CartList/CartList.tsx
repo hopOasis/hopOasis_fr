@@ -20,27 +20,24 @@ export default function CartList({ cart }: IProps) {
     [],
   );
 
-  const remove = (id: number) => {
+  const remove = (id: string) => {
     setItems(items.filter(({ itemId: prevId }) => prevId !== id));
     throttlingFetch();
   };
 
-  const increment = (id: number) => {
-    const item = items.find(({ itemId: prevId }) => prevId === id);
-    //@ts-ignore
+  const increment = (id: string) => {
+    const item = items.find(({ itemId: prevId }) => prevId === id)!;
     item.quantity += 1;
     setItems([...items]);
     throttlingFetch();
   };
 
-  const decrement = (id: number) => {
-    const item = items.find(({ itemId: prevId }) => prevId === id);
-    //@ts-ignore
+  const decrement = (id: string) => {
+    const item = items.find(({ itemId: prevId }) => prevId === id)!;
     if (item.quantity === 1) {
       throttlingFetch();
       return;
     }
-    //@ts-ignore
     item.quantity -= 1;
     setItems([...items]);
     throttlingFetch();

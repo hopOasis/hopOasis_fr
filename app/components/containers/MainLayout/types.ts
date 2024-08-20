@@ -1,3 +1,3 @@
-export interface IProps {
-  children: React.ReactElement;
-}
+import { WithChildren } from '@/app/types/types';
+
+export interface IProps extends WithChildren {}

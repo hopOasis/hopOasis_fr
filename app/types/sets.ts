@@ -11,7 +11,7 @@ export type SetsType = {
   specialOfferIds: number[];
 };
 
-export type SnackTypeApiResponse = {
+export type SetsApiResponse = {
   content: SetsType[];
   pageable: PageableType;
   last: boolean;

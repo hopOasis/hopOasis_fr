@@ -1,6 +1,6 @@
-import { Palitra } from "@/app/types/types";
+import { Palitra,  WithNode } from "@/app/types/types";
 
-export interface IMainLinkProps {
+export interface IMainLinkProps extends WithNode {
   href: string;
   variant: Palitra;
   children: React.ReactNode;

@@ -17,7 +17,7 @@ export default function ModalDialog({ cart, products }: IPropsCartModal) {
     <dialog open className="cart-modal">
       <Overflow />
       <ModalTop />
-      <CartList cart={cart} />
+      {/* <CartList cart={cart} /> */}
       <SpesialForYouModal products={products} />
     </dialog>
   );

@@ -1,6 +1,12 @@
 import gsap from 'gsap';
 import store from 'store';
 import { CartResponseType, ProductsResponseType } from '../api/types';
+import { BeersApiResponse } from '../types/beers';
+import { CiderApiResponse } from '../types/ciders';
+import { SnackApiResponse } from '../types/snacks';
+import { SetsApiResponse } from '../types/sets';
+import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
+import { CartProxiResponse } from '../types/cart';
 export const parseProductName = (name: string) => name.split(' ').join('_');
 
 export const animate = {
@@ -79,7 +85,7 @@ export const localizationCity = (city: string) => {
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
-export function generateRandomID() {
+export function generateRandomID():string {
   const randomBigInt = BigInt.asUintN(
     64,
     BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
@@ -117,7 +123,13 @@ export const oazaStorage = {
   },
 };
 
-export const generateProducts = ({ products, cart }: { products: ProductsResponseType; cart: CartResponseType }) => {
+export const generateProducts = ({
+  products,
+  cart,
+}: {
+  products: PreparedProductApiResponse;
+  cart: CartProxiResponse;
+}): GeneratedProduct => {
   const res = products.content.map((product) => {
     const isInCart = cart.items.some(({ itemId: cartId }) => cartId === product.id);
     return isInCart ? { ...product, isInCart: true } : { ...product, isInCart: false };
@@ -126,4 +138,27 @@ export const generateProducts = ({ products, cart }: { products: ProductsRespons
   return { ...products, content: res };
 };
 
+export const generateId = ({ type, id }: { type: string; id: number }): string => `${type}-${id}`;
 
+export const preparingProducts = (
+  produtsResponse: BeersApiResponse | CiderApiResponse | SnackApiResponse | SetsApiResponse,
+): PreparedProductApiResponse => {
+  const products = {
+    ...produtsResponse,
+    content: produtsResponse.content.map((product) => ({
+      id: generateId({ type: product.type, id: product.id }),
+      name: product.beerName || product.ciderName || product.snackName || products.name,
+      volumeLarge: product.volumeLarge || product.weightLarge || null,
+      volumeSmall: product.volumeSmall || product.weightLarge || null,
+      priceLarge: product.priceLarge || product.priceLarge || product.price,
+      priceSmall: product.priceSmall || null,
+      description: product.description,
+      beerColor: product.beerColor || null,
+      image: product.image || product.ciderImageName || product.snackImageName || product.productImageName,
+      rating: product.averageRating,
+      votes: product.ratingCount,
+      specialOfferIds: product.specialOfferIds,
+    })),
+  };
+  return products;
+};

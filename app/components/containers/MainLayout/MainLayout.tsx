@@ -5,21 +5,23 @@ import { Suspense } from 'react';
 import Loader from '../../ui/Loader/Loader';
 import CartModal from '../../ui/modals/cartModal/CartModal';
 import { generateProducts } from '@/app/utils';
-import { ApiEndpoints, ProxiEndpoints } from '@/app/static/constants';
+import { ProxiEndpoints } from '@/app/static/constants';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
+import { GeneratedProduct, PreparedProductApiResponse } from '@/app/types/products';
+import {  CartProxiResponse } from '@/app/types/cart';
 
 export default async function MainLayout({ children }: IProps) {
-  const weekProductsProxiApi = () => fetch(ProxiEndpoints.specialForYou, { method: 'GET', });
+  const specialForYouProxiApi = () => fetch(ProxiEndpoints.specialForYou, { method: 'GET' });
   const switchCartProxiApi = await fetchCartUtils();
 
-  const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi(), switchCartProxiApi()]);
+  const [specialForYouProducts, resCart] = await Promise.all([specialForYouProxiApi(), switchCartProxiApi()]);
 
-  const unpreparedProducts = await resWeekProducts.json();
-  const cart = await resCart.json();
+  const responseProxiProducts: PreparedProductApiResponse = await specialForYouProducts.json();
+  const responseProxiCart: CartProxiResponse = await resCart.json();
 
-  const products = generateProducts({
-    products: unpreparedProducts,
-    cart,
+  const products: GeneratedProduct = generateProducts({
+    products: responseProxiProducts,
+    cart: responseProxiCart,
   });
 
   return (
@@ -28,7 +30,7 @@ export default async function MainLayout({ children }: IProps) {
       {children}
       <Footer />
       <Suspense fallback={<Loader />}>
-        <CartModal cart={cart} products={products.content} />
+        <CartModal cart={responseProxiCart} products={products.content} />
       </Suspense>
     </>
   );

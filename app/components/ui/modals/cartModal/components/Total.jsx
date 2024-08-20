@@ -1,7 +1,6 @@
 "use client";
 import { routes } from "@/app/static/routes";
 import MainLink from "../../../links/links";
-import Link from "next/link";
 import { Palitra } from "@/app/types/types";
 
 export default function Total({ total }) {

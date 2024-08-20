@@ -1,5 +1,6 @@
 import { ApiEndpoints } from '@/app/static/constants';
-import { ProductType } from '@/app/types/types';
+import { CartApiResponse } from '@/app/types/cart';
+import { generateId } from '@/app/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
@@ -17,9 +18,14 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   if (res.status === 404) {
     return NextResponse.json({ items: [], priceForAll: 0 });
   }
-  
-  const parsedRes: ProductType = await res.json();
-  return NextResponse.json({ ...parsedRes });
+
+  const parsedRes: CartApiResponse = await res.json();
+
+  const cart = {
+    ...parsedRes,
+    items: parsedRes.items.map((item) => ({ ...item, itemId: generateId({ type: item.type, id: item.itemId }) })),
+  };
+  return NextResponse.json({ ...cart });
 }
 
 export async function POST(request: NextRequest, { params: Params }) {

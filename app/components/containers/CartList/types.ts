@@ -1,5 +1,5 @@
-import { CartResponseType } from "@/app/api/types";
+import { CartProxiResponse } from "@/app/types/cart";
 
-export interface IProps{
-    cart: CartResponseType
+export interface IProps {
+  cart: CartProxiResponse;
 }
