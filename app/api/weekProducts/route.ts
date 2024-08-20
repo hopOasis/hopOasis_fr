@@ -7,7 +7,7 @@ export async function GET() {
 
   let products = [];
 
-  if (res.status === 404) {
+  if (!res.ok && res.status === 404) {
     return NextResponse.json({ content: products });
   }
 
