@@ -5,7 +5,10 @@ type SetsType = {
   name: string;
   price: number;
   description: string;
-  imageDto: string[];
+  productImageName: string[];
+  averageRating: number;
+  ratingCount: number;
+  specialOfferIds: number[];
 };
 
 export type SnackTypeApiResponse = {

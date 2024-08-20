@@ -8,7 +8,10 @@ type CiderType = {
   priceLarge: number;
   priceSmall: number;
   description: string;
-  image: string[];
+  ciderImageName: string[];
+  averageRating: number;
+  ratingCount: number;
+  specialOfferIds: number[];
 };
 
 export type CiderApiResponse = {

@@ -8,7 +8,10 @@ type SnackType = {
   priceLarge: number;
   priceSmall: number;
   description: string;
-  snackImageDto: string[];
+  snackImageName: string[];
+  averageRating: number;
+  ratingCount: number;
+  specialOfferIds: number[];
 };
 
 export type SnackTypeApiResponse = {
