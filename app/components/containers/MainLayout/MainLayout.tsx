@@ -5,11 +5,11 @@ import { Suspense } from 'react';
 import Loader from '../../ui/Loader/Loader';
 import CartModal from '../../ui/modals/cartModal/CartModal';
 import { generateProducts } from '@/app/utils';
-import { ApiEndpoints } from '@/app/static/constants';
+import { ApiEndpoints, ProxiEndpoints } from '@/app/static/constants';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
 
 export default async function MainLayout({ children }: IProps) {
-  const weekProductsProxiApi = () => fetch(ApiEndpoints.beers, { method: 'GET' });
+  const weekProductsProxiApi = () => fetch(ProxiEndpoints.specialForYou, { method: 'GET', });
   const switchCartProxiApi = await fetchCartUtils();
 
   const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi(), switchCartProxiApi()]);

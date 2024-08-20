@@ -1,6 +1,6 @@
 import { PageableType, SortType } from "./common";
 
-type CiderType = {
+export type CiderType = {
   id: number;
   ciderName: string;
   volumeLarge: number;

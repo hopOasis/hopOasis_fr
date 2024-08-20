@@ -1,6 +1,6 @@
 import { PageableType, SortType } from "./common";
 
-type SnackType = {
+export type SnackType = {
   id: number;
   snackName: string;
   weightLarge: number;

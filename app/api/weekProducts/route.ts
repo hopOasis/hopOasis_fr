@@ -1,15 +1,24 @@
 import { ApiEndpoints } from '@/app/static/constants';
 import { NextResponse } from 'next/server';
-import { ProductsResponseType } from '../types';
+import { WeekProductsApiResponse } from '@/app/types/weekProducts';
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.weekProducts);
+  const res = await fetch(ApiEndpoints.weekProducts);
 
-  if (!resProducts.ok) {
-    throw new Error('Failed to fetch WEEK PRODUCTS data');
+  let products = [];
+
+  if (res.status === 404) {
+    return NextResponse.json({ content: products });
   }
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
+  const parsedRes: WeekProductsApiResponse = await res.json();
 
-  return NextResponse.json({ ...parsedRes });
+  const beers = parsedRes?.specialOfferBeers ?? [];
+  const ciders = parsedRes?.specialOfferCiders ?? [];
+  const snacks = parsedRes?.specialOfferSnacks ?? [];
+  const sets = parsedRes?.specialOfferProductBundles ?? [];
+
+  products = [...beers, ...ciders, ...snacks, ...sets];
+
+  return NextResponse.json({ content: products });
 }

@@ -1,6 +1,6 @@
 import { PageableType, SortType } from "./common";
 
-type SetsType = {
+export type SetsType = {
   id: number;
   name: string;
   price: number;
