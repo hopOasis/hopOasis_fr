@@ -10,8 +10,6 @@ import NoItems from '../../ui/NoItems/NoItems';
 export default function CartList({ cart }: IProps) {
   const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
 
-  console.log('items', items);
-
   const throttlingFetch = useCallback(
     throttle(
       2000,
