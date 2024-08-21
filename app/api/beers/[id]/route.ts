@@ -1,5 +1,5 @@
 import { ApiEndpoints } from "@/app/static/constants";
-import { ProductType } from "@/app/types/types";
+import { BeerType } from "@/app/types/beers";
 import { NextRequest, NextResponse } from "next/server";
 
 type Params = {
@@ -9,10 +9,11 @@ type Params = {
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
   const res = await fetch(`${ApiEndpoints.beers}/${id}`);
+
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch BEER data");
   }
-  const parsedRes: ProductType = await res.json();
+  const parsedRes: BeerType = await res.json();
 
   return NextResponse.json({ ...parsedRes });
 }

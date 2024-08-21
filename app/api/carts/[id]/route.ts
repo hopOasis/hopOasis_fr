@@ -23,7 +23,7 @@ export async function GET(_: NextRequest, context: { params: Params }) {
 
   const cart = {
     ...parsedRes,
-    items: parsedRes.items.map((item) => ({ ...item, itemId: generateId({ type: item.type, id: item.itemId }) })),
+    items: parsedRes.items.map((item) => ({ ...item, itemId: generateId({ type: item.itemType, id: item.itemId }) })),
   };
   return NextResponse.json({ ...cart });
 }

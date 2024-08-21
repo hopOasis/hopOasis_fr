@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ProductsResponseType } from '../types';
 import { ApiEndpoints } from '@/app/static/constants';
+import { ProductsResponseType } from '@/app/types/products';
 
 export async function POST(req: NextRequest) {
   const { filter } = await req.json();

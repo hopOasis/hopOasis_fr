@@ -14,7 +14,7 @@ import { fetchCartUtils } from '../utils/serverUtils';
 import NoItems from '../components/ui/NoItems/NoItems';
 
 export default async function Page({ searchParams: { filter } }: IProps) {
-  // const switchCartProxiApi = await fetchCartUtils();
+  // const switchCartProxiApi =  fetchCartUtils();
   // const productsProxiApi = () =>
   //   fetch(ProxiEndpoints.products, {
   //     method: 'POST',

@@ -1,4 +1,4 @@
-import { CartResponseType } from '../api/types';
+import { GeneratedProduct } from "../types/products";
 
 export type FormStateType = {
   firstName: string;
@@ -11,7 +11,7 @@ export type FormStateType = {
 
 export interface IPropsChekoutForm {
   location: string;
-  cart: CartResponseType;
+  cart: GeneratedProduct;
 }
 
 export interface IPropsDepartmentComponent {

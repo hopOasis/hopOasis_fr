@@ -1,5 +1,5 @@
 import { ApiEndpoints } from '@/app/static/constants';
-import { ProductType } from '@/app/types/types';
+import { CiderType } from '@/app/types/ciders';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
@@ -14,7 +14,7 @@ export async function GET(_: NextRequest, context: { params: Params }) {
     throw new Error('Failed to fetch CIDER data');
   }
 
-  const parsedRes: ProductType = await res.json();
+  const parsedRes:CiderType = await res.json();
 
   return NextResponse.json({ ...parsedRes });
 }

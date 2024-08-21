@@ -17,7 +17,7 @@ export default async function MainLayout({ children }: IProps) {
   const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET' });
   const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET' });
 
-  const switchCartProxiApi = await fetchCartUtils();
+  const switchCartProxiApi =  fetchCartUtils();
 
   const [specialForYouProducts, beersProducts, cidersProducts, snacksProducts, setsProducts, resCart] =
     await Promise.all([

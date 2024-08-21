@@ -12,7 +12,7 @@ import { ProxiEndpoints } from '@/app/static/constants';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
-  const switchCartProxiApi = await fetchCartUtils();
+  const switchCartProxiApi = fetchCartUtils();
   const productProxiApi = () => fetch(`${ProxiEndpoints.beers}/${id}`, { method: 'GET' });
 
   const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);
@@ -27,7 +27,7 @@ export default async function SingleProductPage({ params: { id } }: IProps) {
     <MainLayout>
       <main className="single-page">
         <Suspense fallback={<Loader />}>
-          <BreadCrumbs product={product} />
+          <BreadCrumbs productName={product.name} />
           <HeroSection {...product} image={product.imageName[0]} />
           <DeliveryPaymantSection {...product} />
         </Suspense>

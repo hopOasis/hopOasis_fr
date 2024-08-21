@@ -9,7 +9,7 @@ import { Suspense, memo } from 'react';
 
 const SpecialForYouSection = memo(async () => {
   const specialForYouProxiApi = () => fetch(ApiEndpoints.specialForYou);
-  const switchCartProxiApi = await fetchCartUtils();
+  const switchCartProxiApi =  fetchCartUtils();
 
   const [resSpecialForYouProducts, resCart] = await Promise.all([specialForYouProxiApi(), switchCartProxiApi()]);
 

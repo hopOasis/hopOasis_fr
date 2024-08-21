@@ -4,6 +4,7 @@ export type CartItemBase = {
   pricePerItem: number;
   quantity: number;
   totalCost: number;
+  itemType: string;
 };
 
 export type CartApiResponse = {

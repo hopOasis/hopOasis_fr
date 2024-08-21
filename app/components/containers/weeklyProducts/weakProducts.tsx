@@ -11,7 +11,7 @@ import NoItems from '../../ui/NoItems/NoItems';
 
 const WeakProducts = memo(async () => {
   const weekProductsProxiApi = () => fetch(ProxiEndpoints.weekProducts, { method: 'GET', cache: 'no-store' });
-  const switchCartProxiApi = await fetchCartUtils();
+  const switchCartProxiApi = fetchCartUtils();
 
   const [resWeekProducts, resCart] = await Promise.all([weekProductsProxiApi(), switchCartProxiApi()]);
 

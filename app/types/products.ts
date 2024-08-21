@@ -1,4 +1,10 @@
+import { BeersApiResponse } from './beers';
+import { CiderApiResponse } from './ciders';
 import { PageableType, SortType } from './common';
+import { SetsApiResponse } from './sets';
+import { SnackApiResponse } from './snacks';
+
+export type ProductsResponseType = ({} & BeersApiResponse) | CiderApiResponse | SnackApiResponse | SetsApiResponse;
 
 export type PreparedProductType = {
   id: string;
@@ -47,4 +53,3 @@ export type GeneratedProduct = {
   numberOfElements: number;
   empty: boolean;
 };
-
