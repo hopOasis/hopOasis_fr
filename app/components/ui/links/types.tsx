@@ -2,7 +2,7 @@ import { Palitra,  WithNode } from "@/app/types/types";
 
 export interface IMainLinkProps extends WithNode {
   href: string;
-  variant: Palitra;
+  variant?: Palitra;
   children: React.ReactNode;
 }
 

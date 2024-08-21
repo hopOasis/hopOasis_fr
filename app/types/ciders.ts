@@ -12,6 +12,7 @@ export type CiderType = {
   averageRating: number;
   ratingCount: number;
   specialOfferIds: number[];
+  itemType: string;
 };
 
 export type CiderApiResponse = {

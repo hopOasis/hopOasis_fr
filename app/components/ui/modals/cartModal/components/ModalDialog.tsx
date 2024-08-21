@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import Overflow from '../../../Overflov/Overflow';
 import { IPropsCartModal } from '../types';
 import ModalTop from './ModalTop';
-import SpesialForYouModal from './SpesialForYouModal';
+import SpecialForYouModal from './SpesialForYouModal';
 
-export default function ModalDialog({ cart, products }: IPropsCartModal) {
+export default function ModalDialog({ cart, specialForYou }: IPropsCartModal) {
   useEffect(() => {
     const animation = animate.modal.open();
     return () => {
@@ -17,8 +17,8 @@ export default function ModalDialog({ cart, products }: IPropsCartModal) {
     <dialog open className="cart-modal">
       <Overflow />
       <ModalTop />
-      {/* <CartList cart={cart} /> */}
-      <SpesialForYouModal products={products} />
+      <CartList cart={cart} />
+      <SpecialForYouModal specialForYou={specialForYou} />
     </dialog>
   );
 }

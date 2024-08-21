@@ -85,7 +85,7 @@ export const localizationCity = (city: string) => {
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
-export function generateRandomID():string {
+export function generateRandomID(): string {
   const randomBigInt = BigInt.asUintN(
     64,
     BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
@@ -131,8 +131,10 @@ export const generateProducts = ({
   cart: CartProxiResponse;
 }): GeneratedProduct => {
   const res = products.content.map((product) => {
-    const isInCart = cart.items.some(({ itemId: cartId }) => cartId === product.id);
-    return isInCart ? { ...product, isInCart: true } : { ...product, isInCart: false };
+    const cartItem = cart.items.find(({ itemId: cartId }) => cartId === product.id);
+    return cartItem
+      ? { ...product, isInCart: true, quantity: cartItem.quantity }
+      : { ...product, isInCart: false, quantity: null };
   });
 
   return { ...products, content: res };

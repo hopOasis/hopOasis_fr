@@ -31,6 +31,7 @@ export type PreparedProductApiResponse = {
 
 export type GeneratedProductType = {
   isInCart: boolean;
+  quantity: number | null;
 } & PreparedProductType;
 
 export type GeneratedProduct = {

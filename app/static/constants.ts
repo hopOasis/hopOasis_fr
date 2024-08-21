@@ -8,7 +8,10 @@ export const GEOLOCATION_URL = process.env.GEOLOCATION_URL;
 
 export const ProxiEndpoints = {
   beers: PROXI_URL + 'beers',
+  ciders: PROXI_URL + 'ciders',
   snacks: PROXI_URL + 'snacks',
+  sets: PROXI_URL + 'sets',
+
   carts: PROXI_URL + 'carts',
   cartDefaults: PROXI_URL + 'carts/defaults',
   ratings: PROXI_URL + 'ratings',

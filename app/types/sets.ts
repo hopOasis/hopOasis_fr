@@ -9,6 +9,7 @@ export type SetsType = {
   averageRating: number;
   ratingCount: number;
   specialOfferIds: number[];
+  itemType: string;
 };
 
 export type SetsApiResponse = {

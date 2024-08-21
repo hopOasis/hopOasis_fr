@@ -12,6 +12,7 @@ export type SnackType = {
   averageRating: number;
   ratingCount: number;
   specialOfferIds: number[];
+  itemType: string;
 };
 
 export type SnackApiResponse = {

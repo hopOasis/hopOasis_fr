@@ -13,6 +13,7 @@ export type BeerType = {
   averageRating: number;
   ratingCount: number;
   specialOfferIds: number[];
+  itemType: string;
 };
 
 export type BeersApiResponse = {

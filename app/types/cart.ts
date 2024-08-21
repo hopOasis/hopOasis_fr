@@ -11,9 +11,9 @@ export type CartApiResponse = {
   priceForAll: number;
 };
 
-type CartItemBaseWithoutId = Omit<CartItemBase, 'itemId'>;
+export type CartItemBaseWithoutId = Omit<CartItemBase, 'itemId'>;
 
-type CartItemProxi = CartItemBaseWithoutId & {
+export type CartItemProxi = CartItemBaseWithoutId & {
   itemId: string;
 };
 
