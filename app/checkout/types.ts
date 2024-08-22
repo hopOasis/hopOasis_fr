@@ -1,3 +1,5 @@
+import { GeneratedProduct } from "../types/products";
+
 export type FormStateType = {
   firstName: string;
   lastName: string;
@@ -9,6 +11,7 @@ export type FormStateType = {
 
 export interface IPropsChekoutForm {
   location: string;
+  cart: GeneratedProduct;
 }
 
 export interface IPropsDepartmentComponent {

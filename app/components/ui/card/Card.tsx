@@ -1,27 +1,14 @@
-"use client";
-import "./card.scss";
-import ImageBlock from "./components/ImageBlock";
-import DescriptionBlock from "./components/DescriptionBlock";
-import { ShopCardType } from "@/app/shop/types";
+'use client';
+import './card.scss';
+import ImageBlock from './components/ImageBlock';
+import DescriptionBlock from './components/DescriptionBlock';
+import { GeneratedProductType } from '@/app/types/products';
 
-export const Card = ({
-  id,
-  imageName,
-  beerName,
-  volumeLarge,
-  priceLarge,
-}: ShopCardType) => {
+export const Card = (props: GeneratedProductType) => {
   return (
     <article className="card shadow">
-      <ImageBlock image={imageName?.[0]} name={beerName} id={id} />
-      <DescriptionBlock
-        beerName={beerName}
-        volumeLarge={volumeLarge}
-        priceLarge={priceLarge}
-        id={id}
-      />
+      <ImageBlock {...props}/>
+      <DescriptionBlock {...props} />
     </article>
   );
 };
-
-export default Card;

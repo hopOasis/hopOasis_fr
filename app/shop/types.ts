@@ -1,3 +1,6 @@
-import { ProductType } from "../types/types";
 
-export type ShopCardType = Omit<ProductType, "rating">;
+export interface IProps {
+  searchParams: { filter: string };
+}
+
+

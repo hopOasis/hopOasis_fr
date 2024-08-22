@@ -1,5 +1,5 @@
-import { CartResponseType } from "@/app/api/types";
+import { GeneratedProduct } from "@/app/types/products";
 
-export interface IProps{
-    cart: CartResponseType
+export interface IProps {
+  cart: GeneratedProduct;
 }

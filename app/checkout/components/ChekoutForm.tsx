@@ -19,10 +19,8 @@ const initialState = Array(3)
   .fill(1)
   .map((el, idx) => ({ ...beer, id: idx, count: 1 }));
 
-export default function ChekoutForm({ location }: IPropsChekoutForm) {
-  const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<
-    boolean | null
-  >(null);
+export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
+  const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<boolean | null>(null);
   const [values, setValues] = useState<FormStateType>({
     firstName: '',
     lastName: '',
@@ -31,10 +29,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     delivery: deliveryRadio[0].id,
     payment: paymentRadio[0].id,
   });
-  const [items, setItems] = useState(initialState);
+  const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
 
-  const remove = (id: number) =>
-    setItems(items.filter(({ id: prevId }) => prevId !== id));
+  const remove = (id: string) => setItems(items.filter(({ id: prevId }) => prevId !== id));
 
   const throttlingFetch = useCallback(
     throttle(
@@ -42,9 +39,9 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
       () => {
         console.log(
           'trottle',
-          items.map(({ id, count }) => ({
+          items.map(({ id, quantity }) => ({
             itemId: id,
-            quantity: count,
+            quantity,
           })),
         );
       },
@@ -53,24 +50,23 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     [],
   );
 
-  const increment = (id: number) => {
+  const increment = (id: string) => {
     const item = items.find(({ id: prevId }) => prevId === id);
     if (item) {
-      item.count += 1;
+      item.quantity += 1;
     }
     setItems([...items]);
-
     throttlingFetch();
   };
 
-  const decrement = (id: number) => {
+  const decrement = (id: string) => {
     const item = items.find(({ id: prevId }) => prevId === id);
-    if (item && item.count === 1) {
+    if (item && item.quantity === 1) {
       throttlingFetch();
       return;
     }
     if (item) {
-      item.count -= 1;
+      item.quantity -= 1;
     }
     setItems([...items]);
     throttlingFetch();
@@ -87,6 +83,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
     'parcel-station': null,
     courier: null,
   };
+
   return (
     <>
       <form className="form">
@@ -121,9 +118,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 key={props.id}
                 {...props}
                 checked={values.delivery === props.id}
-                onChange={({ value }) =>
-                  setValues({ ...values, delivery: value })
-                }
+                onChange={({ value }) => setValues({ ...values, delivery: value })}
               >
                 {values.delivery === props.id
                   ? //@ts-ignore
@@ -140,9 +135,7 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
                 key={props.id}
                 {...props}
                 checked={values.payment === props.id}
-                onChange={({ value }) =>
-                  setValues({ ...values, payment: value })
-                }
+                onChange={({ value }) => setValues({ ...values, payment: value })}
               />
             ))}
           </div>
@@ -153,28 +146,23 @@ export default function ChekoutForm({ location }: IPropsChekoutForm) {
           <ul className="form__cart-list">
             {items.map((props) => (
               <li key={props.id} className="form__cart-item --line">
-                <Image src={props.image} width={54} height={93} alt="item" />
+                <Image src={props.image[0]} width={54} height={93} alt="item" />
                 <h3>{props.name}</h3>
                 <IncrementDecrement
-                  count={props.count}
+                  count={props.quantity}
                   increment={() => increment(props.id)}
                   decrement={() => decrement(props.id)}
                 />
                 <button type="button" onClick={() => remove(props.id)}>
                   <Icons name="trash" />
                 </button>
-                <span>{`${props.count * props.priceLarge} грн`}</span>
+                <span>{`${props.quantity * props.priceLarge} грн`}</span>
               </li>
             ))}
           </ul>
         </div>
       </form>
-      <Popup
-        city={location}
-        setIsTrueCurrentLocation={(answer) =>
-          setIsTrueCurrentLocation(Boolean(answer))
-        }
-      />
+      <Popup city={location} setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(Boolean(answer))} />
     </>
   );
 }

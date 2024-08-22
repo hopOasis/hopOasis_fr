@@ -1,40 +1,55 @@
 'use client';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Total from '../../ui/modals/cartModal/components/Total';
 import './cart-list.scss';
 import CartItem from '../../ui/CartItem/CartItem';
 import { IProps } from './types';
+import { throttle } from 'throttle-debounce';
+import NoItemsInCart from '../../ui/NoItemsInCart/NoItemsInCart';
 
 export default function CartList({ cart }: IProps) {
-  const [items, setItems] = useState(cart.items);
+  const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
 
-  const remove = (id: number) =>
+  const throttlingFetch = useCallback(
+    throttle(
+      2000,
+      () => {
+        console.log('trottle', cart);
+      },
+      { noLeading: true },
+    ),
+    [],
+  );
+
+  const remove = (id: string) => {
     setItems(items.filter(({ id: prevId }) => prevId !== id));
-
-  const increment = (id: number) => {
-    const item = items.find(({ id: prevId }) => prevId === id);
-    //@ts-ignore
-    item.count += 1;
-    setItems([...items]);
+    throttlingFetch();
   };
 
-  const decrement = (id: number) => {
-    const item = items.find(({ id: prevId }) => prevId === id);
-    //@ts-ignore
-    if (item.count === 1) return;
-    //@ts-ignore
-    item.count -= 1;
+  const increment = (id: string) => {
+    const item = items.find(({ id: prevId }) => prevId === id)!;
+    item.quantity! += 1;
     setItems([...items]);
+    throttlingFetch();
+  };
+
+  const decrement = (id: string) => {
+    const item = items.find(({ id: prevId }) => prevId === id)!;
+    if (item.quantity === 1) {
+      throttlingFetch();
+      return;
+    }
+    item.quantity! -= 1;
+    setItems([...items]);
+    throttlingFetch();
   };
 
   return (
     <>
       <Total
-        total={items.reduce(
-          //@ts-ignore
-          (acc, { quantity, priceLarge }) => acc + quantity * priceLarge,
-          0,
-        )}
+        total={cart.content.reduce((acc, cartItem) => {
+          return (acc += cartItem.priceLarge * cartItem?.quantity! || 0);
+        }, 0)}
       />
       {items.length > 0 ? (
         <ul className="cart__list">
@@ -49,7 +64,9 @@ export default function CartList({ cart }: IProps) {
           ))}
         </ul>
       ) : (
-        <div>No items</div>
+        <div className="cart-modal__container ">
+          <NoItemsInCart />
+        </div>
       )}
     </>
   );

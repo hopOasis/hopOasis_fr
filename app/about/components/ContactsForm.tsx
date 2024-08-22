@@ -20,7 +20,7 @@ export default function ContactsForm() {
         <Field
           key={props.id}
           {...props}
-          value={values[props.id]}
+          value={values[props.id] }
           onChange={({ id, value }) => setValues({ ...values, [id]: value })}
         />
       ))}

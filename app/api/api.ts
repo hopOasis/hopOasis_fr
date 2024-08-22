@@ -1,49 +1,24 @@
-import https from 'https';
 import axios from 'axios';
-import {
-  CartResponseType,
-  Endpoints,
-  IPropsGet,
-  IPropsGetById,
-  ProductsResponseType,
-} from './types';
+import { GEOLOCATION_API_KEY, GEOLOCATION_URL, NEW_POST_API_KEY, NEW_POST_URL } from '../static/constants';
 
 
 export async function getLocation() {
   const params = new URLSearchParams({
-    apiKey: process.env.GEOLOCATION_API_KEY,
+    apiKey: GEOLOCATION_API_KEY,
     fields: 'city',
   });
   const { data } = await axios.get(
-    `${process.env.GEOLOCATION_URL}?${params.toString()}`,
+    `${GEOLOCATION_URL}?${params.toString()}`,
   );
+
+  console.log('---------------server-side location', data.city);
 
   return data.city;
 }
-// @ts-ignore
-
-export async function addProdactToCart({ body }) {
-  const params = new URLSearchParams({
-    ...body,
-  });
-
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-  const { data } = await axios.get(
-    `${process.env.API_URL + Endpoints.cart}/items?${params.toString()}`,
-    {
-      httpsAgent: agent,
-      withCredentials: true,
-    },
-  );
-
-  return data;
-}
 
 export async function getNewPostSettlementsLib({ city }: { city: string }) {
-  const data = await axios.post(process.env.NEW_POST_URL, {
-    apiKey: process.env.NEW_POST_API_KEY,
+  const data = await axios.post(NEW_POST_URL, {
+    apiKey: NEW_POST_API_KEY,
     modelName: 'AddressGeneral',
     calledMethod: 'searchSettlements',
     methodProperties: {
@@ -57,8 +32,8 @@ export async function getDepartmentsAndPostalLib({
   cityRef,
   streetName,
 }: { cityRef: string; streetName: string }) {
-  const data = await axios.post(process.env.NEW_POST_URL, {
-    apiKey: process.env.NEW_POST_API_KEY,
+  const data = await axios.post(NEW_POST_URL, {
+    apiKey: NEW_POST_API_KEY,
     modelName: 'AddressGeneral',
     calledMethod: 'getWarehouses',
     methodProperties: {

@@ -1,30 +1,19 @@
-"use server";
-import { NextRequest, NextResponse } from "next/server";
-import { ApiEndpoints, ProductsResponseType } from "../types";
+import { NextResponse } from 'next/server';
+import { ApiEndpoints } from '@/app/static/constants';
+import { BeersApiResponse } from '@/app/types/beers';
+import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.beer);
+  const res = await fetch(ApiEndpoints.beers);
 
-  if (!resProducts.ok) {
-    throw new Error("Failed to fetch data");
+  if (!res.ok) {
+    throw new Error('Failed to fetch BEER data');
   }
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
+  const parsedRes: BeersApiResponse = await res.json();
 
-  return NextResponse.json({ ...parsedRes });
-}
+  const products = preparingProducts(parsedRes);
 
-export async function POST(request: NextRequest) {
-  const resProduct = await fetch(ApiEndpoints.beer, {
-    method: "POST",
-    body: request.body,
-  });
 
-  if (!resProduct.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const product = await resProduct.json();
-
-  return NextResponse.json({ product });
+  return NextResponse.json({ ...products });
 }

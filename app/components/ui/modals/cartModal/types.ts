@@ -1,11 +1,11 @@
-import { CartResponseType } from "@/app/api/types";
-import { ProductType } from "@/app/types/types";
+import { GeneratedProduct, GeneratedProductType } from '@/app/types/products';
 
-export interface IPropsWeeklyProducts {
-  products: ProductType[];
+export interface IPropsSpecialForYou {
+  specialForYou: GeneratedProduct;
 }
 
-export interface IPropsCartModal{
-  cart: CartResponseType
-  products: ProductType[];
+export interface IPropsCartList {
+  cart: GeneratedProduct;
 }
+
+export interface IPropsCartModal extends IPropsSpecialForYou, IPropsCartList {}

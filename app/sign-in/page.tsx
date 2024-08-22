@@ -1,4 +1,4 @@
-import MainLink, { LogoLink } from "../components/ui/links/links";
+import  { LogoLink } from "../components/ui/links/links";
 import Section from "../components/ui/section/section";
 import { Palitra } from "../types/types";
 import "./sign-in.scss";
@@ -11,8 +11,8 @@ export default function SignIn() {
     <main className="sign-in">
       <Section>
         <div className="sign-in__left-block">
-          <LogoLink variant={Palitra.dark} />
-          <h1 className="typography__h2">Увійдіть або зареєструйтеся</h1>
+          <LogoLink variant={Palitra.light} />
+          <h1 className="typography__h2 t-w-30">Увійдіть або зареєструйтеся</h1>
         </div>
         <div className="sign-in__right-block">
           <h1 className="typography__h2">Вхід</h1>

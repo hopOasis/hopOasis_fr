@@ -1,30 +1,42 @@
-// import { getProducts } from '@/app/api/api';
-import {
-  // Endpoints,
-  ProductsResponseType,
-  ProxiEndpoints,
-} from '@/app/api/types';
+import { Card } from '@/app/components/ui/card/Card';
 import Loader from '@/app/components/ui/Loader/Loader';
-import Card from '@/app/components/ui/card/Card';
+import NoItems from '@/app/components/ui/NoItems/NoItems';
 import Section from '@/app/components/ui/section/section';
 import { CardSlider } from '@/app/components/ui/slider/CardSlider';
+import { ApiEndpoints, ProxiEndpoints } from '@/app/static/constants';
+import { generateProducts } from '@/app/utils';
+import { fetchCartUtils } from '@/app/utils/serverUtils';
 import { Suspense, memo } from 'react';
 
 const SpecialForYouSection = memo(async () => {
-  const resProducts = await fetch(ProxiEndpoints.beer);
-  const products: ProductsResponseType = await resProducts.json();
+  const specialForYouProxiApi = () => fetch(ProxiEndpoints.specialForYou);
+  const switchCartProxiApi = fetchCartUtils();
+
+  const [resSpecialForYouProducts, resCart] = await Promise.all([specialForYouProxiApi(), switchCartProxiApi()]);
+
+  const unpreparedProducts = await resSpecialForYouProducts.json();
+  const cart = await resCart.json();
+
+  const products = generateProducts({
+    products: unpreparedProducts,
+    cart,
+  });
 
   return (
     <Section>
       <p className="title typography__h2">Спеціально для тебе</p>
       <Suspense fallback={<Loader />}>
-        <CardSlider
-          products={products.content.map((product) => (
-            <swiper-slide key={product.id}>
-              <Card {...product} />
-            </swiper-slide>
-          ))}
-        />
+        {!products.content.length ? (
+          <NoItems />
+        ) : (
+          <CardSlider
+            products={products.content.map((product) => (
+              <swiper-slide key={product.id}>
+                <Card {...product} />
+              </swiper-slide>
+            ))}
+          />
+        )}
       </Suspense>
     </Section>
   );

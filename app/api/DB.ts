@@ -6,13 +6,11 @@ export const DB = {
       const data = fs.readFileSync('database.json', 'utf8');
       return JSON.parse(data);
     } catch (err) {
-      console.error('Failed to read data:', err);
-      return [];
+      throw new Error(err.message)
     }
   },
   writeDB: function (data: any) {
     if (!data) return null;
-
     try {
       const existingData = this.readDB();
       //@ts-ignore
@@ -22,7 +20,6 @@ export const DB = {
         fs.writeFileSync('database.json', JSON.stringify(existingData));
       }
 
-      console.log('Data Saved');
       return this.readDB();
     } catch (err) {
       console.error('Failed to write data:', err);
@@ -57,9 +54,8 @@ export const DB = {
     const newData = existingData.filter(({ id }) => id === uniqueIdentifier);
     try {
       fs.writeFileSync('database.json', JSON.stringify(newData));
-      console.log('Removed successfully');
     } catch (err) {
-      console.error('Failed to write data:', err);
+      throw new Error(err.message);
     }
   },
 };

@@ -1,15 +1,4 @@
-export type ProductType = {
-  id: number;
-  beerName: string;
-  volumeLarge: number;
-  volumeSmall: number;
-  priceLarge: number;
-  priceSmall: number;
-  description: string;
-  bearColor: string;
-  imageName: string[];
-  averageRating: number;
-};
+
 
 export interface IFeedbackCard {
   img: string;
@@ -31,4 +20,12 @@ export enum Palitra {
   dark = 'dark',
   white = 'white',
   blue = 'blue',
+}
+
+export interface WithChildren {
+  children: React.ReactElement;
+}
+
+export interface WithNode {
+  children: React.ReactNode;
 }
