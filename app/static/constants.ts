@@ -8,7 +8,10 @@ export const GEOLOCATION_URL = process.env.GEOLOCATION_URL;
 
 export const ProxiEndpoints = {
   beers: PROXI_URL + 'beers',
+  ciders: PROXI_URL + 'ciders',
   snacks: PROXI_URL + 'snacks',
+  sets: PROXI_URL + 'sets',
+
   carts: PROXI_URL + 'carts',
   cartDefaults: PROXI_URL + 'carts/defaults',
   ratings: PROXI_URL + 'ratings',
@@ -24,8 +27,8 @@ export const ApiEndpoints = {
   sets: API_URL + 'products-bundle',
   carts: API_URL + 'carts',
   ratings: API_URL + 'ratings',
+  weekProducts: API_URL + 'special-offers/active',
   //needed to add real api
-  weekProducts: API_URL + 'beers',
   specialForYou: API_URL + 'beers',
 };
 

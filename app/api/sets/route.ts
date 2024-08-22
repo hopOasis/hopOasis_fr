@@ -1,14 +1,17 @@
 import { ApiEndpoints } from '@/app/static/constants';
+import { SetsApiResponse } from '@/app/types/sets';
+import { preparingProducts } from '@/app/utils';
 import { NextResponse } from 'next/server';
-import { ProductsResponseType } from '../types';
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.sets);
+  const res = await fetch(ApiEndpoints.sets);
 
-  if (!resProducts.ok) {
+  if (!res.ok) {
     throw new Error('Failed to fetch SET data');
   }
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
-  return NextResponse.json({ ...parsedRes });
+  const parsedRes: SetsApiResponse = await res.json();
+  const products = preparingProducts(parsedRes);
+
+  return NextResponse.json({ ...products });
 }

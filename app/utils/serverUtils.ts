@@ -1,9 +1,8 @@
-'use server';
 
 import { cookies } from 'next/headers';
 import { oaza_guest, ProxiEndpoints } from '../static/constants';
 
-export const fetchCartUtils = async () => {
+export const fetchCartUtils =  () => {
   const cookieStore = cookies();
   const oazaCookie = cookieStore.get(oaza_guest);
 

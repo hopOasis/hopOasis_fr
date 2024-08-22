@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
-import { ProductsResponseType } from '../types';
 
 import { ApiEndpoints } from '@/app/static/constants';
+import { preparingProducts } from '@/app/utils';
+import { CiderApiResponse } from '@/app/types/ciders';
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.ciders);
+  const res = await fetch(ApiEndpoints.ciders);
 
-  if (!resProducts.ok) {
-    throw new Error('Failed to fetch data');
+  if (!res.ok) {
+    throw new Error('Failed to fetch CIDER data');
   }
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
+  const parsedRes: CiderApiResponse = await res.json();
+  const products = preparingProducts(parsedRes);
 
-  return NextResponse.json({ ...parsedRes });
+  return NextResponse.json({ ...products });
 }

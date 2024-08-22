@@ -5,18 +5,18 @@ import Icons from '@/app/components/ui/icons/icons';
 import Section from '@/app/components/ui/section/section';
 import Image from 'next/image';
 import { revalidateProductPage } from '@/app/actions';
-import { IPropsHeroSection } from '../types';
 import { ProxiEndpoints } from '@/app/static/constants';
+import { IHeroSection } from '../types';
 
-export default function HeroSection({ id, beerName, image, priceLarge, averageRating, isInCart }: IPropsHeroSection) {
+export default function HeroSection({ id, name, image, priceLarge, isInCart, rating }: IHeroSection) {
   return (
     <Section>
-      <Image src={image} alt={beerName} width={628} height={431} />
+      <Image src={image[0]} alt={name} width={628} height={431} />
       <div className="single-page__description-block ">
-        <h1 className="title typography__h2">{beerName}</h1>
+        <h1 className="title typography__h2">{name}</h1>
         <p className="title typography__h2 accent">{priceLarge} грн.</p>
         <Rating
-          rating={averageRating}
+          rating={rating}
           onChange={async (value) => {
             await fetch(ProxiEndpoints.ratings, {
               method: 'POST',

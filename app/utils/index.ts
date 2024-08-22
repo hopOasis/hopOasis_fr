@@ -1,6 +1,11 @@
 import gsap from 'gsap';
 import store from 'store';
-import { CartResponseType, ProductsResponseType } from '../api/types';
+import { BeersApiResponse, BeerType } from '../types/beers';
+import { CiderApiResponse, CiderType } from '../types/ciders';
+import { SnackApiResponse, SnackType } from '../types/snacks';
+import { SetsApiResponse, SetsType } from '../types/sets';
+import { GeneratedProduct, PreparedProductApiResponse, PreparedProductType } from '../types/products';
+import { CartProxiResponse } from '../types/cart';
 export const parseProductName = (name: string) => name.split(' ').join('_');
 
 export const animate = {
@@ -79,7 +84,7 @@ export const localizationCity = (city: string) => {
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };
 
-export function generateRandomID() {
+export function generateRandomID(): string {
   const randomBigInt = BigInt.asUintN(
     64,
     BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
@@ -117,13 +122,80 @@ export const oazaStorage = {
   },
 };
 
-export const generateProducts = ({ products, cart }: { products: ProductsResponseType; cart: CartResponseType }) => {
+export const generateProducts = ({
+  products,
+  cart,
+}: {
+  products: PreparedProductApiResponse;
+  cart: CartProxiResponse;
+}): GeneratedProduct => {
   const res = products.content.map((product) => {
-    const isInCart = cart.items.some(({ itemId: cartId }) => cartId === product.id);
-    return isInCart ? { ...product, isInCart: true } : { ...product, isInCart: false };
+    const cartItem = cart.items.find(({ itemId: cartId }) => cartId === product.id);
+    return cartItem
+      ? { ...product, isInCart: true, quantity: cartItem.quantity }
+      : { ...product, isInCart: false, quantity: null };
   });
 
   return { ...products, content: res };
 };
 
+export const generateId = ({ type, id }: { type: string; id: number }): string => `${type}-${id}`;
+export const separateId = (id: string):number => Number(id.split('-')[1]);
 
+
+export const preparingProducts = (
+  produtsResponse: BeersApiResponse | CiderApiResponse | SnackApiResponse | SetsApiResponse,
+): PreparedProductApiResponse => {
+  const products = {
+    ...produtsResponse,
+    content: produtsResponse.content.map((product) => ({
+      id: generateId({ type: product.itemType, id: product.id }),
+      name: product.beerName || product.ciderName || product.snackName || products.name,
+      volumeLarge: product.volumeLarge || product.weightLarge || null,
+      volumeSmall: product.volumeSmall || product.weightLarge || null,
+      priceLarge: product.priceLarge || product.priceLarge || product.price,
+      priceSmall: product.priceSmall || null,
+      description: product.description,
+      beerColor: product.beerColor || null,
+      image: product.image || product.ciderImageName || product.snackImageName || product.productImageName,
+      rating: product.averageRating,
+      votes: product.ratingCount,
+      specialOfferIds: product.specialOfferIds,
+      itemType: product.itemType,
+    })),
+  };
+  return products;
+};
+
+export const preparingSingleProducts = (produtsResponse: BeerType | CiderType | SnackType | SetsType): PreparedProductType => {
+  const products = {
+    id: generateId({ type: produtsResponse.itemType, id: produtsResponse.id }),
+    //@ts-ignore
+    name: produtsResponse.beerName || produtsResponse.ciderName || produtsResponse.snackName || produtsResponse.name,
+    //@ts-ignore
+    volumeLarge: produtsResponse.volumeLarge || produtsResponse.weightLarge || null,
+    //@ts-ignore
+    volumeSmall: produtsResponse.volumeSmall || produtsResponse.weightLarge || null,
+    //@ts-ignore
+    priceLarge: produtsResponse.priceLarge || produtsResponse.priceLarge || produtsResponse.price,
+    //@ts-ignore
+    priceSmall: produtsResponse.priceSmall || null,
+    description: produtsResponse.description,
+    //@ts-ignore
+    beerColor: produtsResponse.beerColor || null,
+    image:
+      //@ts-ignore
+      produtsResponse.imageName ||
+      //@ts-ignore
+      produtsResponse.ciderImageName ||
+      //@ts-ignore
+      produtsResponse.snackImageName ||
+      //@ts-ignore
+      produtsResponse.productImageName,
+    rating: produtsResponse.averageRating,
+    votes: produtsResponse.ratingCount,
+    specialOfferIds: produtsResponse.specialOfferIds,
+    itemType: produtsResponse.itemType,
+  };
+  return products;
+};

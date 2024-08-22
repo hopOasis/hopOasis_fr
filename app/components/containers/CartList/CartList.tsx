@@ -5,64 +5,68 @@ import './cart-list.scss';
 import CartItem from '../../ui/CartItem/CartItem';
 import { IProps } from './types';
 import { throttle } from 'throttle-debounce';
+import NoItemsInCart from '../../ui/NoItemsInCart/NoItemsInCart';
 
 export default function CartList({ cart }: IProps) {
-  const [items, setItems] = useState(cart.items);
+  const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
 
   const throttlingFetch = useCallback(
     throttle(
       2000,
       () => {
-        console.log('trottle', cart.items);
+        console.log('trottle', cart);
       },
       { noLeading: true },
     ),
     [],
   );
 
-  const remove = (id: number) => {
-    setItems(items.filter(({ itemId: prevId }) => prevId !== id));
+  const remove = (id: string) => {
+    setItems(items.filter(({ id: prevId }) => prevId !== id));
     throttlingFetch();
   };
 
-  const increment = (id: number) => {
-    const item = items.find(({ itemId: prevId }) => prevId === id);
-    //@ts-ignore
-    item.quantity += 1;
+  const increment = (id: string) => {
+    const item = items.find(({ id: prevId }) => prevId === id)!;
+    item.quantity! += 1;
     setItems([...items]);
     throttlingFetch();
   };
 
-  const decrement = (id: number) => {
-    const item = items.find(({ itemId: prevId }) => prevId === id);
-    //@ts-ignore
+  const decrement = (id: string) => {
+    const item = items.find(({ id: prevId }) => prevId === id)!;
     if (item.quantity === 1) {
       throttlingFetch();
       return;
     }
-    //@ts-ignore
-    item.quantity -= 1;
+    item.quantity! -= 1;
     setItems([...items]);
     throttlingFetch();
   };
 
   return (
     <>
-      <Total total={cart.priceForAll} />
+      <Total
+        total={cart.content.reduce((acc, cartItem) => {
+          return (acc += cartItem.priceLarge * cartItem?.quantity! || 0);
+        }, 0)}
+      />
       {items.length > 0 ? (
         <ul className="cart__list">
           {items.map((props) => (
             <CartItem
-              key={props.itemId}
+              key={props.id}
               {...props}
-              remove={() => remove(props.itemId)}
-              increment={() => increment(props.itemId)}
-              decrement={() => decrement(props.itemId)}
+              remove={() => remove(props.id)}
+              increment={() => increment(props.id)}
+              decrement={() => decrement(props.id)}
             />
           ))}
         </ul>
       ) : (
-        <div className="cart-modal__container">No items</div>
+        <div className="cart-modal__container ">
+          <NoItemsInCart />
+        </div>
       )}
     </>
   );

@@ -1,15 +1,20 @@
-import { ApiEndpoints } from "@/app/static/constants";
-import { NextResponse } from "next/server";
-import { ProductsResponseType } from "../types";
+import { ApiEndpoints } from '@/app/static/constants';
+import { preparingProducts } from '@/app/utils';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const resProducts = await fetch(ApiEndpoints.specialForYou);
+  // const res = await fetch(ApiEndpoints.specialForYou);
 
-  if (!resProducts.ok) {
-    throw new Error('Failed to fetch data');
-  }
+  // if (!res.ok) {
+  //   throw new Error('Failed to fetch SPECIAL FOR YOU data');
+  // }
 
-  const parsedRes: ProductsResponseType = await resProducts.json();
+  // const parsedRes = await res.json();
+  // const products = preparingProducts(parsedRes);
 
-  return NextResponse.json({ ...parsedRes });
+  const products = {
+    content: [],
+  };
+
+  return NextResponse.json({ ...products });
 }

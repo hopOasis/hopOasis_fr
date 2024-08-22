@@ -1,5 +1,7 @@
 import { ApiEndpoints } from '@/app/static/constants';
-import { ProductType } from '@/app/types/types';
+import { PreparedProductType } from '@/app/types/products';
+import { SnackType } from '@/app/types/snacks';
+import { preparingSingleProducts } from '@/app/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
@@ -11,10 +13,11 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   const res = await fetch(`${ApiEndpoints.snacks}/${id}`);
 
   if (!res.ok) {
-    throw new Error('Failed to fetch SET data');
+    throw new Error('Failed to fetch SNACK data');
   }
 
-  const parsedRes: ProductType = await res.json();
+  const parsedRes: SnackType = await res.json();
+  const product: PreparedProductType = preparingSingleProducts(parsedRes);
 
-  return NextResponse.json({ ...parsedRes });
+  return NextResponse.json({ ...product });
 }

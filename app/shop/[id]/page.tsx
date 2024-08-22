@@ -8,12 +8,14 @@ import BreadCrumbs from '@/app/components/ui/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection';
 import DeliveryPaymantSection from './components/DeliveryPaymantSection';
 import SpecialForYouSection from './components/SpecialForYouSection';
-import {  ProxiEndpoints } from '@/app/static/constants';
+import { ProxiEndpoints } from '@/app/static/constants';
 import { fetchCartUtils } from '@/app/utils/serverUtils';
+import { PreparedProductType } from '@/app/types/products';
 
-export default async function SingleProductPage({ params: { id } }: IProps) {
-  const switchCartProxiApi = await fetchCartUtils();
-  const productProxiApi = () => fetch(`${ProxiEndpoints.beers}/${id}`);
+export default async function SingleProductPage({ params: { id }, searchParams: { filter } }: IProps) {
+  const switchCartProxiApi = fetchCartUtils();
+  const productProxiApi = () =>
+    fetch(`${ProxiEndpoints.products}/${id}`, { method: 'POST', body: JSON.stringify({ filter }) });
 
   const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);
 
@@ -27,8 +29,8 @@ export default async function SingleProductPage({ params: { id } }: IProps) {
     <MainLayout>
       <main className="single-page">
         <Suspense fallback={<Loader />}>
-          <BreadCrumbs product={product} />
-          <HeroSection {...product} image={product.imageName[0]} />
+          <BreadCrumbs productName={product.name} />
+          <HeroSection {...product}  />
           <DeliveryPaymantSection {...product} />
         </Suspense>
         <SpecialForYouSection />
