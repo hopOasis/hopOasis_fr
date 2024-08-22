@@ -11,12 +11,8 @@ export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
   const res = await fetch(`${ApiEndpoints.carts}/${id}`);
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch CART data');
-  }
-
-  if (res.status === 404) {
-    return NextResponse.json({ items: [], priceForAll: 0 });
+  if (!res.ok && res.status === 404) {
+    return NextResponse.json({ items: [], priceForAll: 0 }, { status: 200 });
   }
 
   const parsedRes: CartApiResponse = await res.json();

@@ -1,23 +1,18 @@
-import { ProductType } from '@/app/types/types';
+import { GeneratedProductType } from '@/app/types/products';
+
 export interface IProps {
-  params: {
-    id: string;
-  };
+  params: { id: string };
+  searchParams: { filter: string };
 }
 
 export interface IPropsTitle {
   active: number;
   onClick: (idx: number) => void;
 }
-type HeroSectionProps = Pick<
-  ProductType,
-  'beerName' | 'imageName' | 'priceLarge' | 'averageRating' | 'id' | 'isInCart'
->;
 
-export interface IPropsHeroSection extends HeroSectionProps {
-  image: string;
-}
-
-type DeliveryPaymentProps = Pick<ProductType, 'description'>;
+type DeliveryPaymentProps = Pick<GeneratedProductType, 'description'>;
 
 export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {}
+
+export interface IHeroSection
+  extends Pick<GeneratedProductType, 'id' | 'name' | 'image' | 'priceLarge' | 'isInCart' | 'rating'> {}

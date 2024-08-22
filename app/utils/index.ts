@@ -1,11 +1,11 @@
 import gsap from 'gsap';
 import store from 'store';
 import { CartResponseType, ProductsResponseType } from '../api/types';
-import { BeersApiResponse } from '../types/beers';
-import { CiderApiResponse } from '../types/ciders';
-import { SnackApiResponse } from '../types/snacks';
-import { SetsApiResponse } from '../types/sets';
-import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
+import { BeersApiResponse, BeerType } from '../types/beers';
+import { CiderApiResponse, CiderType } from '../types/ciders';
+import { SnackApiResponse, SnackType } from '../types/snacks';
+import { SetsApiResponse, SetsType } from '../types/sets';
+import { GeneratedProduct, PreparedProductApiResponse, PreparedProductType } from '../types/products';
 import { CartProxiResponse } from '../types/cart';
 export const parseProductName = (name: string) => name.split(' ').join('_');
 
@@ -141,6 +141,8 @@ export const generateProducts = ({
 };
 
 export const generateId = ({ type, id }: { type: string; id: number }): string => `${type}-${id}`;
+export const separateId = (id: string):number => Number(id.split('-')[1]);
+
 
 export const preparingProducts = (
   produtsResponse: BeersApiResponse | CiderApiResponse | SnackApiResponse | SetsApiResponse,
@@ -148,7 +150,7 @@ export const preparingProducts = (
   const products = {
     ...produtsResponse,
     content: produtsResponse.content.map((product) => ({
-      id: generateId({ type: product.type, id: product.id }),
+      id: generateId({ type: product.itemType, id: product.id }),
       name: product.beerName || product.ciderName || product.snackName || products.name,
       volumeLarge: product.volumeLarge || product.weightLarge || null,
       volumeSmall: product.volumeSmall || product.weightLarge || null,
@@ -160,7 +162,41 @@ export const preparingProducts = (
       rating: product.averageRating,
       votes: product.ratingCount,
       specialOfferIds: product.specialOfferIds,
+      itemType: product.itemType,
     })),
+  };
+  return products;
+};
+
+export const preparingSingleProducts = (produtsResponse: BeerType | CiderType | SnackType | SetsType): PreparedProductType => {
+  const products = {
+    id: generateId({ type: produtsResponse.itemType, id: produtsResponse.id }),
+    //@ts-ignore
+    name: produtsResponse.beerName || produtsResponse.ciderName || produtsResponse.snackName || produtsResponse.name,
+    //@ts-ignore
+    volumeLarge: produtsResponse.volumeLarge || produtsResponse.weightLarge || null,
+    //@ts-ignore
+    volumeSmall: produtsResponse.volumeSmall || produtsResponse.weightLarge || null,
+    //@ts-ignore
+    priceLarge: produtsResponse.priceLarge || produtsResponse.priceLarge || produtsResponse.price,
+    //@ts-ignore
+    priceSmall: produtsResponse.priceSmall || null,
+    description: produtsResponse.description,
+    //@ts-ignore
+    beerColor: produtsResponse.beerColor || null,
+    image:
+      //@ts-ignore
+      produtsResponse.imageName ||
+      //@ts-ignore
+      produtsResponse.ciderImageName ||
+      //@ts-ignore
+      produtsResponse.snackImageName ||
+      //@ts-ignore
+      produtsResponse.productImageName,
+    rating: produtsResponse.averageRating,
+    votes: produtsResponse.ratingCount,
+    specialOfferIds: produtsResponse.specialOfferIds,
+    itemType: produtsResponse.itemType,
   };
   return products;
 };

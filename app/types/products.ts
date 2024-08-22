@@ -19,6 +19,7 @@ export type PreparedProductType = {
   rating: number;
   votes: number;
   specialOfferIds: number[];
+  itemType: string
 };
 
 export type PreparedProductApiResponse = {
@@ -52,4 +53,5 @@ export type GeneratedProduct = {
   first: boolean;
   numberOfElements: number;
   empty: boolean;
+  itemType: string;
 };

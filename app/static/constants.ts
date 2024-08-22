@@ -27,8 +27,8 @@ export const ApiEndpoints = {
   sets: API_URL + 'products-bundle',
   carts: API_URL + 'carts',
   ratings: API_URL + 'ratings',
-  //needed to add real api
   weekProducts: API_URL + 'special-offers/active',
+  //needed to add real api
   specialForYou: API_URL + 'beers',
 };
 

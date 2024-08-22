@@ -14,23 +14,25 @@ import { fetchCartUtils } from '../utils/serverUtils';
 import NoItems from '../components/ui/NoItems/NoItems';
 
 export default async function Page({ searchParams: { filter } }: IProps) {
-  // const switchCartProxiApi =  fetchCartUtils();
-  // const productsProxiApi = () =>
-  //   fetch(ProxiEndpoints.products, {
-  //     method: 'POST',
-  //     cache: 'no-store',
-  //     body: JSON.stringify({ filter }),
-  //   });
+  const switchCartProxiApi = fetchCartUtils();
+  const productsProxiApi = () =>
+    fetch(ProxiEndpoints.products, {
+      method: 'POST',
+      cache: 'no-store',
+      body: JSON.stringify({ filter }),
+    });
 
-  // const [resProducts, resCart] = await Promise.all([productsProxiApi(), switchCartProxiApi()]);
+  const [resProducts, resCart] = await Promise.all([productsProxiApi(), switchCartProxiApi()]);
 
-  // const unpreparedProducts = await resProducts.json();
-  // const cart = await resCart.json();
+  const unpreparedProducts = await resProducts.json();
 
-  // const products = generateProducts({
-  //   products: unpreparedProducts,
-  //   cart,
-  // });
+  const cart = await resCart.json();
+  const products = generateProducts({
+    products: unpreparedProducts,
+    cart,
+  });
+
+
 
   return (
     <MainLayout>
@@ -39,7 +41,7 @@ export default async function Page({ searchParams: { filter } }: IProps) {
           <BreadCrumbs />
           <Suspense fallback={<Loader />}>
             <Filters />
-            {/* {!products.content.length ? (
+            {!products.content.length ? (
               <NoItems />
             ) : (
               <Gallery>
@@ -47,7 +49,7 @@ export default async function Page({ searchParams: { filter } }: IProps) {
                   <Card {...product} key={product.id} />
                 ))}
               </Gallery>
-            )} */}
+            )}
           </Suspense>
         </Section>
       </main>

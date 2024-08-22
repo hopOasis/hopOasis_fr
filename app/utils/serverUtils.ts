@@ -1,4 +1,3 @@
-'use server';
 
 import { cookies } from 'next/headers';
 import { oaza_guest, ProxiEndpoints } from '../static/constants';

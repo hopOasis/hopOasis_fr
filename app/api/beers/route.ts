@@ -11,7 +11,9 @@ export async function GET() {
   }
 
   const parsedRes: BeersApiResponse = await res.json();
+
   const products = preparingProducts(parsedRes);
+
 
   return NextResponse.json({ ...products });
 }
