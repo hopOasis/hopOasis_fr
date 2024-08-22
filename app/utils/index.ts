@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import store from 'store';
-import { CartResponseType, ProductsResponseType } from '../api/types';
 import { BeersApiResponse, BeerType } from '../types/beers';
 import { CiderApiResponse, CiderType } from '../types/ciders';
 import { SnackApiResponse, SnackType } from '../types/snacks';

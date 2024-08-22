@@ -53,5 +53,4 @@ export type GeneratedProduct = {
   first: boolean;
   numberOfElements: number;
   empty: boolean;
-  itemType: string;
 };
