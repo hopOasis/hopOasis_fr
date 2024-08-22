@@ -5,7 +5,7 @@ import './cart-list.scss';
 import CartItem from '../../ui/CartItem/CartItem';
 import { IProps } from './types';
 import { throttle } from 'throttle-debounce';
-import NoItems from '../../ui/NoItems/NoItems';
+import NoItemsInCart from '../../ui/NoItemsInCart/NoItemsInCart';
 
 export default function CartList({ cart }: IProps) {
   const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
@@ -65,7 +65,7 @@ export default function CartList({ cart }: IProps) {
         </ul>
       ) : (
         <div className="cart-modal__container ">
-          <NoItems />
+          <NoItemsInCart />
         </div>
       )}
     </>
