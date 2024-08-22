@@ -406,7 +406,7 @@ export const getApiDocs = async () => {
           get: {
             tags: ['Cart'],
             description:
-              'Getting cart from remote api. !!!Notice. Cart use cookies. Cookies expire after 30 days. Cookie automatically generated in the server. You can get cookie from BROWSER=>DEVTOOLS=>APPLICATION=>COOKIES=>OAZA_GUEST',
+              'Getting cart list from remote api. !!!Notice. Cart use cookies. Cookies expire after 30 days. Cookie automatically generated in the server. You can get cookie from BROWSER=>DEVTOOLS=>APPLICATION=>COOKIES=>OAZA_GUEST and put it to the ID filed',
             parameters: [{ name: 'id', in: 'path', type: 'number', required: true }],
             responses: {},
           },
