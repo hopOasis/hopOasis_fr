@@ -1,8 +1,7 @@
-
 import { cookies } from 'next/headers';
 import { oaza_guest, ProxiEndpoints } from '../static/constants';
 
-export const fetchCartUtils =  () => {
+export const fetchCartUtils = () => {
   const cookieStore = cookies();
   const oazaCookie = cookieStore.get(oaza_guest);
 
@@ -11,4 +10,8 @@ export const fetchCartUtils =  () => {
   return !cartId
     ? () => fetch(ProxiEndpoints.cartDefaults, { cache: 'no-store', method: 'GET' })
     : () => fetch(`${ProxiEndpoints.carts}/${cartId}`, { cache: 'no-store', method: 'GET' });
+};
+
+export const fetchProductsUtils = ({ filter }: { filter: string }) => {
+  return () => fetch(ProxiEndpoints?.[filter?.toLowerCase()] ?? ProxiEndpoints.beers, { method: 'GET' });
 };

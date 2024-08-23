@@ -4,6 +4,7 @@ import { ProductsResponseType } from '@/app/types/products';
 
 export async function GET(req: NextRequest) {
   const filter = req.nextUrl.searchParams.get('filter');
+  console.log("-------------------get products ----------------")
   const resProducts = await fetch(ProxiEndpoints?.[filter.toLowerCase()] ?? ProxiEndpoints.beers, { method: 'GET' });
 
   if (!resProducts.ok) {

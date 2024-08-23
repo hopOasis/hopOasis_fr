@@ -10,17 +10,22 @@ import { Card } from '../components/ui/card/Card';
 import { IProps } from './types';
 import { ProxiEndpoints } from '../static/constants';
 import { generateProducts } from '../utils';
-import { fetchCartUtils } from '../utils/serverUtils';
+import { fetchCartUtils, fetchProductsUtils } from '../utils/serverUtils';
 import NoItems from '../components/ui/NoItems/NoItems';
 
 export default async function Page({ searchParams: { filter = null } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
-  const productsProxiApi = () =>
-    fetch(`${ProxiEndpoints.products}?filter=${filter}`, {
-      method: 'GET',
-    });
+  // const productsProxiApi = () =>
+  //   fetch(`${ProxiEndpoints.products}?filter=${filter}`, {
+  //     method: 'GET',
+  //     cache: 'no-store',
+  //   });
+
+  const productsProxiApi = fetchProductsUtils({ filter });
 
   const [resProducts, resCart] = await Promise.all([productsProxiApi(), switchCartProxiApi()]);
+
+  // console.log(`${ProxiEndpoints.products}?filter=${filter}`, '-----------------------resProducts', resProducts);
 
   const unpreparedProducts = await resProducts.json();
 
