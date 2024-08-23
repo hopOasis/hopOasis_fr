@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ApiEndpoints, ProxiEndpoints } from '@/app/static/constants';
-import { preparingSingleProducts, separateId } from '@/app/utils';
+import { ProxiEndpoints } from '@/app/static/constants';
+import { separateId } from '@/app/utils';
 
 type Params = {
   id: number;
 };
-export async function POST(req: NextRequest, context: { params: Params }) {
+
+export async function GET(req: NextRequest, context: { params: Params }) {
   const id = context.params.id.toString();
-  const { filter } = await req.json();
+  const filter = req.nextUrl.searchParams.get('filter');
   const separatedId = separateId(id);
 
   const cases = {
