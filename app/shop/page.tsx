@@ -26,6 +26,7 @@ export default async function Page({ searchParams: { filter = null } }: IProps) 
     cart,
   });
 
+
   return (
     <MainLayout>
       <main className="shop-page">
