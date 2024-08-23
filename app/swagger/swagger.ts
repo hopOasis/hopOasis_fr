@@ -271,32 +271,18 @@ export const getApiDocs = async () => {
           },
         },
         '/products': {
-          post: {
+          get: {
             tags: ['Service'],
-            description: 'Getting products by filter',
-            requestBody: {
-              description:
-                "value can be      all | beers | ciders | snacks | sets . By defaulf ruturns data from '/beers' endpoint.",
-              required: true,
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    properties: {
-                      filter: {
-                        type: 'string',
-                        enum: ['all', 'beer', 'cider', 'snacks', 'sets'],
-                        description: 'Filter for the products',
-                      },
-                    },
-                    required: ['filter'],
-                  },
-                  example: {
-                    filter: '=> enum  all | beers | ciders | snacks | sets',
-                  },
-                },
+            description: 'Getting PRODUCTS by filter',
+            parameters: [
+              {
+                name: 'filter',
+                in: 'query',
+                required: true,
+                type: 'string',
+                description: 'beers | ciders | snacks | sets | null . If null => response returns list of /beers',
               },
-            },
+            ],
             responses: {
               200: {
                 description: 'The response returns a list of BEERS | CIDERS | SNACKS | SETS by filter',

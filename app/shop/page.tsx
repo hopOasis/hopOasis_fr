@@ -13,13 +13,11 @@ import { generateProducts } from '../utils';
 import { fetchCartUtils } from '../utils/serverUtils';
 import NoItems from '../components/ui/NoItems/NoItems';
 
-export default async function Page({ searchParams: { filter } }: IProps) {
+export default async function Page({ searchParams: { filter = null } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
   const productsProxiApi = () =>
-    fetch(ProxiEndpoints.products, {
-      method: 'POST',
-      cache: 'no-store',
-      body: JSON.stringify({ filter }),
+    fetch(`${ProxiEndpoints.products}?filter=${filter}`, {
+      method: 'GET',
     });
 
   const [resProducts, resCart] = await Promise.all([productsProxiApi(), switchCartProxiApi()]);
@@ -31,8 +29,6 @@ export default async function Page({ searchParams: { filter } }: IProps) {
     products: unpreparedProducts,
     cart,
   });
-
-
 
   return (
     <MainLayout>

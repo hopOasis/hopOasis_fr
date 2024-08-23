@@ -1,6 +1,6 @@
 
 export interface IProps {
-  searchParams: { filter: string };
+  searchParams: { filter: string | null};
 }
 
 
