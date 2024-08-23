@@ -11,11 +11,9 @@ export const ProxiEndpoints = {
   ciders: PROXI_URL + 'ciders',
   snacks: PROXI_URL + 'snacks',
   sets: PROXI_URL + 'sets',
-
   carts: PROXI_URL + 'carts',
   cartDefaults: PROXI_URL + 'carts/defaults',
   ratings: PROXI_URL + 'ratings',
-  products: PROXI_URL + 'products',
   weekProducts: PROXI_URL + 'weekProducts',
   specialForYou: PROXI_URL + 'specialForYou',
 };

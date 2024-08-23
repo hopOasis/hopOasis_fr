@@ -2,11 +2,10 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import type { NextRequest } from 'next/server';
 import { oaza_guest } from './app/static/constants';
-import { generateRandomID } from './app/utils';
 
 export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('Content-Type', 'application/json');
+  requestHeaders.set('Content-Type', 'application/json');  
 
   const response = NextResponse.next({
     request: {
@@ -27,7 +26,7 @@ export async function middleware(request: NextRequest) {
       const number = Math.round(Number(randomBigInt) * 0.000000000001);
       return number.toString();
     };
-    
+
     const cookieValue = generateRandomID();
     response.cookies.set(oaza_guest, cookieValue, {
       httpOnly: true,
