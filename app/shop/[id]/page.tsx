@@ -8,16 +8,16 @@ import BreadCrumbs from '@/app/components/ui/BreadCrumbs/BreadCrumbs';
 import HeroSection from './components/HeroSection';
 import DeliveryPaymantSection from './components/DeliveryPaymantSection';
 import SpecialForYouSection from './components/SpecialForYouSection';
-import { ProxiEndpoints } from '@/app/static/constants';
-import { fetchCartUtils } from '@/app/utils/serverUtils';
+import { fetchCartUtils, fetchProductsUtils } from '@/app/utils/serverUtils';
 
 export default async function SingleProductPage({ params: { id }, searchParams: { filter } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
-  const productProxiApi = () => fetch(`${ProxiEndpoints.products}/${id}?filter=${filter}`, { method: 'GET' });
+  const productProxiApi = fetchProductsUtils({ filter, id });
 
   const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);
 
   const unpreparedProduct = await resProduct.json();
+
   const cart = await resCart.json();
 
   const isInCart = cart.items.some(({ itemId }) => itemId === unpreparedProduct.id);
