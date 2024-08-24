@@ -9,7 +9,7 @@ export default function NavIcons() {
         .filter(({ icon }) => !!icon)
         .map(({ href, icon, id }) => (
           <li key={id}>
-            <Link href={{...href}}>{icon}</Link>
+            <Link href={{ ...href }}>{icon}</Link>
           </li>
         ))}
     </ul>
