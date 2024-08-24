@@ -4,11 +4,9 @@ import { WeekProductsApiResponse } from '@/app/types/weekProducts';
 import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
-  console.log('-------------------ApiEndpoints.weekProducts', ApiEndpoints.weekProducts);
   const res = await fetch(ApiEndpoints.weekProducts, { cache: 'no-store' });
 
   if (!res.ok) {
-    console.log("-----------------------------res",res)
     throw new Error('Error fetching WEEKLY PRODUCTS data');
   }
 
