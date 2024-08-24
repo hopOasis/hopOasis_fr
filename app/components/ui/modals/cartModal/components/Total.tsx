@@ -8,10 +8,10 @@ export default function Total({ total }: { total: number }) {
     <div className="cart-modal__container cart-list__total">
       <p className="cart-modal__title typography__h3">Сума замовлення {total} грн.</p>
       <div>
-        <MainLink href={routes[2].href} variant={Palitra.white}>
+        <MainLink href={routes[2].href.pathname} variant={Palitra.white}>
           Продовжити покупки
         </MainLink>
-        <MainLink href={routes[4].href}>Оформити замовлення</MainLink>
+        <MainLink href={routes[4].href.pathname}>Оформити замовлення</MainLink>
       </div>
     </div>
   );

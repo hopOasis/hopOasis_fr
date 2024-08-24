@@ -10,8 +10,9 @@ import DeliveryPaymantSection from './components/DeliveryPaymantSection';
 import SpecialForYouSection from './components/SpecialForYouSection';
 import { fetchCartUtils, fetchProductsUtils } from '@/app/utils/serverUtils';
 
-export default async function SingleProductPage({ params: { id }, searchParams: { filter } }: IProps) {
+export default async function SingleProductPage({ params: { id } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
+  const filter = id.split('-')[0];
   const productProxiApi = fetchProductsUtils({ filter, id });
 
   const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);

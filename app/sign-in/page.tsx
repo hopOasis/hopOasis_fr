@@ -18,7 +18,7 @@ export default function SignIn() {
           <h1 className="typography__h2">Вхід</h1>
           <p className="sign-in__sign-up-link typography__h4">
             Новий користувач? 
-            <Link href={routes[8].href} >
+            <Link href={routes[8].href.pathname} >
               Зареєструватися
             </Link>
           </p>
