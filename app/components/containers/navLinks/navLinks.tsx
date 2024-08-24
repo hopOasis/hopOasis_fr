@@ -13,8 +13,8 @@ export function NavLinks() {
       {routes.slice(1, 4).map(({ name, href, id }) => (
         <li className="navigation__item" key={id}>
           <Link
-            className={href === pathname ? 'active' : undefined}
-            href={href}
+            className={href.pathname === pathname ? 'active' : undefined}
+            href={{...href}}
             id={id}
           >
             {name}
@@ -44,7 +44,7 @@ export const LinksFooter = () => {
         <li key={id}>
           <Link
             href={{
-              pathname: routes[2].href,
+              pathname: routes[2].href.pathname,
               query: {
                 filter: id,
               },

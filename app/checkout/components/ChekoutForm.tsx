@@ -91,7 +91,7 @@ export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
           <div className="form__fields-block">
             <div className="form__header">
               <h1 className="typography__h3">Оформлення замовлення</h1>
-              <MainLink href={routes[7].href} variant={Palitra.white}>
+              <MainLink href={routes[7].href.pathname} variant={Palitra.white}>
                 Я маю обліковий запис
               </MainLink>
             </div>

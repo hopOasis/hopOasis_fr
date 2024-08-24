@@ -10,10 +10,10 @@ export default function BreadCrumbs({ productName = '' }: IProps) {
 
   let items = [];
   if (parsedPathname.length === 1) {
-    const route = routes.find(({ href }) => href === pathname);
+    const route = routes.find(({ href }) => href.pathname === pathname);
     items = [<span key={'1'}>{route?.name}</span>];
   } else {
-    const route = routes.find(({ href }) => href === `/${parsedPathname[0]}`);
+    const route = routes.find(({ href }) => href.pathname === `/${parsedPathname[0]}`);
     items = [<span key={'2'}>{route?.name}</span>, <span key={'3'}>{productName}</span>];
   }
 
