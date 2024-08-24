@@ -12,12 +12,12 @@ import { CartProxiResponse } from '@/app/types/cart';
 
 export default async function MainLayout({ children }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
-  const specialForYouProxiApi = () => fetch(ProxiEndpoints.specialForYou, { method: 'GET' });
+  const specialForYouProxiApi = () => fetch(ProxiEndpoints.specialForYou, { method: 'GET', cache:"no-store" });
 
-  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET' });
-  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET' });
-  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET' });
-  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET' });
+  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET', cache:"no-store" });
+  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET', cache:"no-store" });
+  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET', cache:"no-store" });
+  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET', cache:"no-store" });
 
   const [specialForYouProducts, beersProducts, cidersProducts, snacksProducts, setsProducts, resCart] =
     await Promise.all([
