@@ -34,7 +34,7 @@ export const ArrowLink = ({ href }: IArrowLinkProps) => {
 
 export const LogoLink = ({ variant = Palitra.light }: IPropsLogoLink) => {
   return (
-    <Link href={routes[0].href} className="logo-link">
+    <Link href={routes[0].href.pathname} className="logo-link">
       <Image
         src={variant === Palitra.light ? "/logo_light.svg" : "/logo_dark.svg"}
         alt="logo Khmilna oaza"

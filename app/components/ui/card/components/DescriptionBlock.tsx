@@ -5,7 +5,14 @@ import { revalidate } from '@/app/actions';
 import { ProxiEndpoints } from '@/app/static/constants';
 import { GeneratedProductType } from '@/app/types/products';
 
-export default function DescriptionBlock({ id, volumeLarge, priceLarge, isInCart , name, itemType}: GeneratedProductType) {
+export default function DescriptionBlock({
+  id,
+  volumeLarge,
+  priceLarge,
+  isInCart,
+  name,
+  itemType,
+}: GeneratedProductType) {
   const onClick = async () => {
     await fetch(ProxiEndpoints.carts, {
       method: 'POST',
@@ -22,8 +29,7 @@ export default function DescriptionBlock({ id, volumeLarge, priceLarge, isInCart
     <div className="card__description-wrapper">
       <Link
         href={{
-          pathname: `${routes[2].href}/${id}`,
-          query: { filter: itemType },
+          pathname: `${routes[2].href.pathname}/${id}`,
         }}
         className="card__name typography__h5"
       >{`${name}`}</Link>

@@ -22,6 +22,6 @@ export const fetchProductsUtils = ({ filter, id = null }: { filter: string; id?:
   };
 
   return !id
-    ? () => fetch(ProxiEndpoints?.[cases[filter]] ?? ProxiEndpoints.beers, { method: 'GET' })
-    : () => fetch(`${ProxiEndpoints?.[cases[filter]]}/${separateId(id)}`, { method: 'GET' });
+    ? () => fetch(ProxiEndpoints?.[cases[filter]] ?? ProxiEndpoints.beers, { method: 'GET', cache:"no-store" })
+    : () => fetch(`${ProxiEndpoints?.[cases[filter]]}/${separateId(id)}`, { method: 'GET', cache:"no-store" });
 };

@@ -14,6 +14,5 @@ export async function GET() {
 
   const products = preparingProducts(parsedRes);
 
-
   return NextResponse.json({ ...products });
 }
