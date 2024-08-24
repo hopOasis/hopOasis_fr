@@ -7,7 +7,7 @@ import AgeGateModalBody from './components/AgeGateModalBody';
 export default function AgeGateModal() {
   const [show, setShow] = useState<boolean>(() => {
     const isInStore = oazaStorage.getSecure();
-    return Boolean(isInStore);
+    return !isInStore;
   });
   return show && <AgeGateModalBody setShow={setShow} />;
 }
