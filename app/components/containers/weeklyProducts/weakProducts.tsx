@@ -10,6 +10,7 @@ import { fetchCartUtils } from '@/app/utils/serverUtils';
 import NoItems from '../../ui/NoItems/NoItems';
 
 const WeakProducts = memo(async () => {
+  console.log('--------------------ProxiEndpoints.weekProducts', ProxiEndpoints.weekProducts);
   const weekProductsProxiApi = () => fetch(ProxiEndpoints.weekProducts, { method: 'GET', cache:"no-store"});
   const switchCartProxiApi = fetchCartUtils();
 

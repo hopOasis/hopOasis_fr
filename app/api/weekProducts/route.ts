@@ -1,14 +1,15 @@
 import { ApiEndpoints } from '@/app/static/constants';
 import { NextResponse } from 'next/server';
 import { WeekProductsApiResponse } from '@/app/types/weekProducts';
+import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.weekProducts);
+  console.log('-------------------ApiEndpoints.weekProducts', ApiEndpoints.weekProducts);
+  const res = await fetch(ApiEndpoints.weekProducts, { cache: 'no-store' });
 
-  let products = [];
-
-  if (!res.ok && res.status === 404) {
-    return NextResponse.json({ content: products });
+  if (!res.ok) {
+    console.log("-----------------------------res",res)
+    throw new Error('Error fetching WEEKLY PRODUCTS data');
   }
 
   const parsedRes: WeekProductsApiResponse = await res.json();
@@ -18,7 +19,8 @@ export async function GET() {
   const snacks = parsedRes?.specialOfferSnacks ?? [];
   const sets = parsedRes?.specialOfferProductBundles ?? [];
 
-  products = [...beers, ...ciders, ...snacks, ...sets];
+  //@ts-ignore
+  const products = preparingProducts({ content: [...beers, ...ciders, ...snacks, ...sets] });
 
-  return NextResponse.json({ content: products });
+  return NextResponse.json({ ...products });
 }
