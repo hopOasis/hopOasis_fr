@@ -141,6 +141,16 @@ export const generateProducts = ({
 
 export const generateId = ({ type, id }: { type: string; id: number }): string => `${type}-${id}`;
 export const separateId = (id: string): number => Number(id.split('-')[1]);
+export const separateFilter = (id: string): string => {
+  const filter = id.split('-')[0];
+  const cases = {
+    BEER: 'beers',
+    CIDER: 'ciders',
+    SNACK: 'sancks',
+    PRODUCT_BUNDLE: 'sets',
+  };
+  return cases[filter];
+};
 
 export const preparingProducts = (
   produtsResponse: BeersApiResponse | CiderApiResponse | SnackApiResponse | SetsApiResponse,
