@@ -9,22 +9,22 @@ import { ProxiEndpoints } from '@/app/static/constants';
 import { IHeroSection } from '../types';
 
 export default function HeroSection({ id, name, image, priceLarge, isInCart, rating }: IHeroSection) {
+  const addRating = async (value: string) => {
+    console.log(value)
+    // await fetch(ProxiEndpoints.ratings, {
+    //   method: 'POST',
+    //   body: JSON.stringify({ id, value }),
+    // });
+    // revalidateProductPage(id);
+  };
+
   return (
     <Section>
       <Image src={image[0]} alt={name} width={628} height={431} />
       <div className="single-page__description-block ">
         <h1 className="title typography__h2">{name}</h1>
         <p className="title typography__h2 accent">{priceLarge} грн.</p>
-        <Rating
-          rating={rating}
-          onChange={async (value) => {
-            await fetch(ProxiEndpoints.ratings, {
-              method: 'POST',
-              body: JSON.stringify({ id, value }),
-            });
-            revalidateProductPage(id.toString());
-          }}
-        />
+        <Rating rating={rating} onChange={addRating} />
         <CardButton
           id={id}
           onClick={() => {

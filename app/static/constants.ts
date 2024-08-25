@@ -5,9 +5,9 @@ export const NEW_POST_URL = process.env.NEW_POST_URL;
 export const GEOLOCATION_API_KEY = process.env.GEOLOCATION_API_KEY;
 export const GEOLOCATION_URL = process.env.GEOLOCATION_URL;
 
-
 export const ProxiEndpoints = {
   beers: PROXI_URL + 'beers',
+  beersRating: (id: string) => `${PROXI_URL}beers/${id}/rating`,
   ciders: PROXI_URL + 'ciders',
   snacks: PROXI_URL + 'snacks',
   sets: PROXI_URL + 'sets',
