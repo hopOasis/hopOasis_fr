@@ -5,7 +5,7 @@ import { preparingProducts } from '@/app/utils';
 import { CiderApiResponse } from '@/app/types/ciders';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.ciders);
+  const res = await fetch(ApiEndpoints.ciders,  { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch CIDER data');

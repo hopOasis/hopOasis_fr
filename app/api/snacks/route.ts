@@ -4,7 +4,7 @@ import { preparingProducts } from '@/app/utils';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.snacks);
+  const res = await fetch(ApiEndpoints.snacks, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch SNACK data');
