@@ -7,15 +7,15 @@ import Image from 'next/image';
 import { revalidateProductPage } from '@/app/actions';
 import { ProxiEndpoints } from '@/app/static/constants';
 import { IHeroSection } from '../types';
+import { separateFilter } from '@/app/utils';
 
-export default function HeroSection({ id, name, image, priceLarge, isInCart, rating }: IHeroSection) {
-  const addRating = async (value: string) => {
-    console.log(value)
-    // await fetch(ProxiEndpoints.ratings, {
-    //   method: 'POST',
-    //   body: JSON.stringify({ id, value }),
-    // });
-    // revalidateProductPage(id);
+export default function HeroSection({ id, name, image, priceLarge, isInCart, rating, votes }: IHeroSection) {
+  const addRating = async (value: number) => {
+    await fetch(`${ProxiEndpoints[separateFilter(id)]}/${id}/rating`, {
+      method: 'POST',
+      body: JSON.stringify({ ratingValue: value }),
+    });
+    revalidateProductPage(id);
   };
 
   return (
@@ -24,7 +24,10 @@ export default function HeroSection({ id, name, image, priceLarge, isInCart, rat
       <div className="single-page__description-block ">
         <h1 className="title typography__h2">{name}</h1>
         <p className="title typography__h2 accent">{priceLarge} грн.</p>
-        <Rating rating={rating} onChange={addRating} />
+        <div className="single-page__rating-block">
+          <Rating rating={rating} onChange={addRating} />
+          <span className="typography__h6 t-b-100">{votes}</span>
+        </div>
         <CardButton
           id={id}
           onClick={() => {
