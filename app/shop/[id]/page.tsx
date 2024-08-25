@@ -10,6 +10,25 @@ import DeliveryPaymantSection from './components/DeliveryPaymantSection';
 import SpecialForYouSection from './components/SpecialForYouSection';
 import { fetchCartUtils, fetchProductsUtils } from '@/app/utils/serverUtils';
 import { separateFilter } from '@/app/utils';
+import { PreparedProductType } from '@/app/types/products';
+
+export async function generateMetadata({ params: { id } }) {
+  const productProxiApi = fetchProductsUtils({ filter: separateFilter(id), id });
+
+  const resProduct = await productProxiApi();
+  const product: PreparedProductType = await resProduct.json();
+
+  return {
+    title: `${product.name} - Купити в магазині пива`,
+    description: `Замовляйте ${product.name} у нашому інтернет-магазині крафтового пива. ${product.description}`,
+    keywords: `${product.name}, купити ${product.name}, крафтове пиво, інтернет-магазин пива`,
+    openGraph: {
+      title: `${product.name} - Купити в магазині пива`,
+      description: `Замовляйте ${product.name} у нашому інтернет-магазині крафтового пива.`,
+      images: product.image.map((image) => ({ url: image })),
+    },
+  };
+}
 
 export default async function SingleProductPage({ params: { id } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();

@@ -11,6 +11,25 @@ import { IProps } from './types';
 import { generateProducts } from '../utils';
 import { fetchCartUtils, fetchProductsUtils } from '../utils/serverUtils';
 import NoItems from '../components/ui/NoItems/NoItems';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hope Oasis | Магазин',
+  description:
+    'Ознайомтеся з нашим асортиментом крафтового пива та закусок в інтернет-магазині. Вибирайте улюблені сорти пива та замовляйте зручно онлайн з доставкою по Україні.',
+  keywords: [
+    'крафтове пиво',
+    'купити пиво онлайн',
+    'замовити пиво з доставкою',
+    'інтернет-магазин пива',
+    'крафтовий магазин',
+    'доставка пива',
+    'пивні закуски',
+    'унікальні сорти пива',
+    'пивні набори',
+    'кращі сорти пива',
+  ],
+};
 
 export default async function Page({ searchParams: { filter = null } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();

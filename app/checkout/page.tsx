@@ -10,13 +10,21 @@ import { ProxiEndpoints } from '../static/constants';
 import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
 import { CartProxiResponse } from '../types/cart';
 
+export async function generateMetadata() {
+  return {
+    title: 'Оформлення замовлення - Інтернет-магазин крафтового пива',
+    description:
+      'Завершіть оформлення замовлення в нашому інтернет-магазині крафтового пива. Простий і зручний процес покупки з доставкою по Україні.',
+  };
+}
+
 export default async function Page() {
   const city = await getLocation();
 
-  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET' });
-  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET' });
-  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET' });
-  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET' });
+  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' });
+  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET', cache: 'no-store' });
+  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET', cache: 'no-store' });
+  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET', cache: 'no-store' });
   const switchCartProxiApi = fetchCartUtils();
 
   const [beersProducts, cidersProducts, snacksProducts, setsProducts, resCart] = await Promise.all([
