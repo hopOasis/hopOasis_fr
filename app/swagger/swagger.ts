@@ -47,7 +47,15 @@ export const getApiDocs = async () => {
           get: {
             tags: ['Products'],
             description: 'Getting BEER from remote api and convert to unifiable object',
-            parameters: [{ name: 'id', in: 'path', required: true, type: 'number' }],
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be BEER-30001, for expample',
+              },
+            ],
             responses: {
               200: {
                 content: {
@@ -66,6 +74,46 @@ export const getApiDocs = async () => {
                       votes: 40,
                       specialOfferIds: [1],
                       itemType: 'BEER',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        '/beers/{id}/rating': {
+          post: {
+            tags: ['Products'],
+            description: 'Add BEER rating to remote api',
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be BEER-30001, for expample',
+              },
+            ],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      ratingValue: { type: 'number' },
+                    },
+                  },
+                  example: { ratingValue: 4 },
+                },
+              },
+              required: true,
+            },
+            responses: {
+              200: {
+                content: {
+                  'application/json': {
+                    example: {
+                      message: 'succsess',
                     },
                   },
                 },
@@ -108,7 +156,15 @@ export const getApiDocs = async () => {
           get: {
             tags: ['Products'],
             description: 'Getting CIDER from remote api convert to unifiable object',
-            parameters: [{ name: 'id', in: 'path', required: true, type: 'number' }],
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be CIDER-30001, for expample',
+              },
+            ],
             responses: {
               200: {
                 content: {
@@ -127,6 +183,46 @@ export const getApiDocs = async () => {
                       votes: 40,
                       specialOfferIds: [1],
                       itemType: 'CIDER',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        '/ciders/{id}/rating': {
+          post: {
+            tags: ['Products'],
+            description: 'Add CIDER rating to remote api',
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be CIDER-30001, for expample',
+              },
+            ],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      ratingValue: { type: 'number' },
+                    },
+                  },
+                  example: { ratingValue: 4 },
+                },
+              },
+              required: true,
+            },
+            responses: {
+              200: {
+                content: {
+                  'application/json': {
+                    example: {
+                      message: 'succsess',
                     },
                   },
                 },
@@ -169,7 +265,15 @@ export const getApiDocs = async () => {
           get: {
             tags: ['Products'],
             description: 'Getting SNACK from remote api api and convert to unifiable object',
-            parameters: [{ name: 'id', in: 'path', required: true, type: 'number' }],
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be SNACK-30001, for expample',
+              },
+            ],
             responses: {
               200: {
                 content: {
@@ -188,6 +292,46 @@ export const getApiDocs = async () => {
                       votes: 40,
                       specialOfferIds: [1],
                       itemType: 'SNACK',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        '/snacks/{id}/rating': {
+          post: {
+            tags: ['Products'],
+            description: 'Add SNACK rating to remote api',
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be SNACK-30001, for expample',
+              },
+            ],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      ratingValue: { type: 'number' },
+                    },
+                  },
+                  example: { ratingValue: 4 },
+                },
+              },
+              required: true,
+            },
+            responses: {
+              200: {
+                content: {
+                  'application/json': {
+                    example: {
+                      message: 'succsess',
                     },
                   },
                 },
@@ -230,7 +374,15 @@ export const getApiDocs = async () => {
           get: {
             tags: ['Products'],
             description: 'Getting set from remote api and convert to unifiable object',
-            parameters: [{ name: 'id', in: 'path', required: true, type: 'number' }],
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be PRODUCT_BUNDLE-30001, for expample',
+              },
+            ],
             responses: {
               200: {
                 content: {
@@ -249,6 +401,46 @@ export const getApiDocs = async () => {
                       votes: 40,
                       specialOfferIds: [1],
                       itemType: 'PRODUCT_BUNDLE',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        '/sets/{id}/rating': {
+          post: {
+            tags: ['Products'],
+            description: 'Add SET rating to remote api',
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                required: true,
+                type: 'number',
+                description: 'ID automatically generated in the server. ID must be PRODUCT_BUNDLE-30001, for expample',
+              },
+            ],
+            requestBody: {
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      ratingValue: { type: 'number' },
+                    },
+                  },
+                  example: { ratingValue: 4 },
+                },
+              },
+              required: true,
+            },
+            responses: {
+              200: {
+                content: {
+                  'application/json': {
+                    example: {
+                      message: 'succsess',
                     },
                   },
                 },

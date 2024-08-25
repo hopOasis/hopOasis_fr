@@ -30,6 +30,12 @@
     }
   }
 
+  &__rating-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .delivery-payment-tabs {
     position: relative;
     display: flex;
