@@ -10,7 +10,7 @@ type Params = {
 
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const res = await fetch(`${ApiEndpoints.sets}/${id}`);
+  const res = await fetch(`${ApiEndpoints.sets}/${id}`, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch SET data');

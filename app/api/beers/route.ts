@@ -4,7 +4,7 @@ import { BeersApiResponse } from '@/app/types/beers';
 import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.beers);
+  const res = await fetch(ApiEndpoints.beers, { cache: 'no-store' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch BEER data');
