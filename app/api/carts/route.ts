@@ -1,4 +1,5 @@
 import { ApiEndpoints, oaza_guest, ProxiEndpoints } from '@/app/static/constants';
+import { separateId } from '@/app/utils';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -11,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   //  only for swagger - next.js don't catch cookie from swagger
   if (oazaGuest) {
-    body = { ...body, cartId: oazaGuest.value };
+    body = { ...body, cartId: oazaGuest.value, itemId: separateId(body.itemId) };
   }
 
   const resCart = await fetch(ApiEndpoints.carts, {

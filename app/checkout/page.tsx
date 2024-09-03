@@ -3,8 +3,7 @@ import './checkout.scss';
 import CheckoutHeader from './components/CheckoutHeader';
 import ChekoutForm from './components/ChekoutForm';
 import Loader from '../components/ui/Loader/Loader';
-import { generateProducts, localizationCity } from '../utils';
-import { getLocation } from '../api/api';
+import { generateProducts } from '../utils';
 import { fetchCartUtils } from '../utils/serverUtils';
 import { ProxiEndpoints } from '../static/constants';
 import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
@@ -19,7 +18,6 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const city = await getLocation();
 
   const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' });
   const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET', cache: 'no-store' });
@@ -63,7 +61,7 @@ export default async function Page() {
       <CheckoutHeader />
       <main className="checkout container">
         <Suspense fallback={<Loader />}>
-          <ChekoutForm location={localizationCity(city)} cart={cart} />
+          <ChekoutForm  cart={cart} />
         </Suspense>
       </main>
     </>

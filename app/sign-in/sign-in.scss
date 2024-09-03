@@ -1,5 +1,10 @@
 .sign-in {
-  background-image: url('/log-in.jpg');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0) 
+    ),
+    url('/log-in.jpg');
   background-position: center;
   background-size: cover;
 
