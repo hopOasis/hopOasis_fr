@@ -14,7 +14,9 @@ import { throttle } from 'throttle-debounce';
 import { FormStateType, IPropsChekoutForm } from '../types';
 import { DepartmentComponent } from './deliveryRadioComponents';
 import { getLocation } from '@/app/api/api';
-import { localizationCity } from '@/app/utils';
+import NoItemsInCart from '@/app/components/ui/NoItemsInCart/NoItemsInCart';
+import { PostalComponent } from './PostalComponent';
+
 
 export default function ChekoutForm({ cart }: IPropsChekoutForm) {
   const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<boolean | null>(null);
@@ -96,7 +98,14 @@ export default function ChekoutForm({ cart }: IPropsChekoutForm) {
         setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
-    'parcel-station': null,
+    'parcel-station': (
+      <PostalComponent
+        isLoading={loading}
+        location={isTrueCurrentLocation ? location : ''}
+        isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
+      />
+    ),
     courier: null,
   };
 
@@ -159,26 +168,30 @@ export default function ChekoutForm({ cart }: IPropsChekoutForm) {
         <div className="form__right-block">
           <p className="typography__h3 right-block--padding">Ваше замовлення</p>
 
-          <ul className="form__cart-list">
-            {items.map((props) => (
-              <li key={props.id} className="form__cart-item --line">
-                <Image src={props.image[0]} width={54} height={93} alt="item" />
-                <h3>{props.name}</h3>
-                <IncrementDecrement
-                  count={props.quantity}
-                  increment={() => increment(props.id)}
-                  decrement={() => decrement(props.id)}
-                />
-                <button type="button" onClick={() => remove(props.id)}>
-                  <Icons name="trash" />
-                </button>
-                <span>{`${props.quantity * props.priceLarge} грн`}</span>
-              </li>
-            ))}
-          </ul>
+          {!items.length ? (
+            <NoItemsInCart />
+          ) : (
+            <ul className="form__cart-list">
+              {items.map((props) => (
+                <li key={props.id} className="form__cart-item --line">
+                  <Image src={props.image[0]} width={54} height={93} alt="item" />
+                  <h3>{props.name}</h3>
+                  <IncrementDecrement
+                    count={props.quantity}
+                    increment={() => increment(props.id)}
+                    decrement={() => decrement(props.id)}
+                  />
+                  <button type="button" onClick={() => remove(props.id)}>
+                    <Icons name="trash" />
+                  </button>
+                  <span>{`${props.quantity * props.priceLarge} грн`}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </form>
-      <Popup city={location} setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(Boolean(answer))} />
+      <Popup city={location} setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(answer)} />
     </>
   );
 }

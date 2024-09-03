@@ -3,7 +3,7 @@ import './checkout.scss';
 import CheckoutHeader from './components/CheckoutHeader';
 import ChekoutForm from './components/ChekoutForm';
 import Loader from '../components/ui/Loader/Loader';
-import { generateProducts, localizationCity } from '../utils';
+import { generateProducts } from '../utils';
 import { fetchCartUtils } from '../utils/serverUtils';
 import { ProxiEndpoints } from '../static/constants';
 import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
