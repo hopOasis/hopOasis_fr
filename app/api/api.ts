@@ -59,3 +59,18 @@ export async function getPostalLib({ cityRef, streetName }: { cityRef: string; s
   });
   return data;
 }
+
+export async function getSettlementStreets({ cityRef, streetName }: { cityRef: string; streetName: string }) {
+  const data = await axios.post(NEW_POST_URL, {
+    apiKey: NEW_POST_API_KEY,
+    modelName: 'AddressGeneral',
+    calledMethod: 'searchSettlementStreets',
+    methodProperties: {
+      StreetName: streetName,
+      SettlementRef: cityRef,
+      Limit: 50,
+    },
+  });
+
+  return data;
+}

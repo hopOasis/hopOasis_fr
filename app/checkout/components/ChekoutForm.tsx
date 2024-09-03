@@ -16,6 +16,7 @@ import { DepartmentComponent } from './deliveryRadioComponents';
 import { getLocation } from '@/app/api/api';
 import NoItemsInCart from '@/app/components/ui/NoItemsInCart/NoItemsInCart';
 import { PostalComponent } from './PostalComponent';
+import { CourierComponent } from './CourierComponent';
 
 
 export default function ChekoutForm({ cart }: IPropsChekoutForm) {
@@ -106,7 +107,14 @@ export default function ChekoutForm({ cart }: IPropsChekoutForm) {
         setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
-    courier: null,
+    courier: (
+      <CourierComponent
+        isLoading={loading}
+        location={isTrueCurrentLocation ? location : ''}
+        isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
+      />
+    ),
   };
 
   return (
