@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GEOLOCATION_API_KEY, GEOLOCATION_URL, NEW_POST_API_KEY, NEW_POST_URL } from '../static/constants';
+import { localizationCity } from '../utils';
 
 
 export async function getLocation() {
@@ -10,10 +11,7 @@ export async function getLocation() {
   const { data } = await axios.get(
     `${GEOLOCATION_URL}?${params.toString()}`,
   );
-
-  console.log('---------------server-side location', data.city);
-
-  return data.city;
+  return localizationCity(data.city);
 }
 
 export async function getNewPostSettlementsLib({ city }: { city: string }) {

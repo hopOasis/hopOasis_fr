@@ -80,6 +80,7 @@ export const localizationCity = (city: string) => {
   const cities: CitiesType = {
     kiev: 'київ',
     kyiv: 'київ',
+    shchors: "щорс",
   };
   return cities?.[city.toLowerCase()] || 'CITY not found in localization Library';
 };

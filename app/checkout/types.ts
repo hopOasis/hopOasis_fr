@@ -10,11 +10,11 @@ export type FormStateType = {
 };
 
 export interface IPropsChekoutForm {
-  location: string;
   cart: GeneratedProduct;
 }
 
 export interface IPropsDepartmentComponent {
+  isLoading:boolean;
   location: string;
   isTrueCurrentLocation: boolean | null;
   setIsTrueCurrentLocation: React.Dispatch<React.SetStateAction<boolean | null>>;

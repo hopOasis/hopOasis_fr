@@ -1,14 +1,10 @@
 'use client';
-import {
-  getDepartmentsAndPostalLib,
-  getNewPostSettlementsLib,
-} from '@/app/api/api';
+import { getDepartmentsAndPostalLib, getNewPostSettlementsLib } from '@/app/api/api';
 import Loader from '@/app/components/ui/Loader/Loader';
 import AsyncSelectComponent from '@/app/components/ui/SelectComponent/AsyncSelectComponent';
 import SelectComponent from '@/app/components/ui/SelectComponent/SelectComponent';
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
-//@ts-ignore
 import { IPropsDepartmentComponent } from '../types';
 import NewPostCharacters from './NewPostCharacters';
 import { ThrottleType } from './type';
@@ -19,11 +15,12 @@ const defaultOption = [
   },
 ];
 export const DepartmentComponent = ({
+  isLoading,
   isTrueCurrentLocation,
   location,
   setIsTrueCurrentLocation,
 }: IPropsDepartmentComponent) => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(isLoading);
   const [cityRef, setCityRef] = useState<any | null>(null);
   const [departmentRef, setDepartmentRef] = useState<any | null>(null);
 
@@ -35,8 +32,6 @@ export const DepartmentComponent = ({
         const { data } = await getNewPostSettlementsLib({ city: location });
         setCityRef(data.data[0].Addresses[0]);
       } catch (error) {
-        //@ts-ignore
-
         console.log(error.message);
       } finally {
         setLoading(false);
@@ -48,12 +43,7 @@ export const DepartmentComponent = ({
 
   const throttledFunc = throttle(
     1000,
-    async ({
-      inputValue,
-      resolve,
-      fetchFn,
-      generateOptionsFn,
-    }: ThrottleType) => {
+    async ({ inputValue, resolve, fetchFn, generateOptionsFn }: ThrottleType) => {
       const { data } = await fetchFn(inputValue);
       if (!data.success) return resolve(defaultOption);
       const options = generateOptionsFn(data);
