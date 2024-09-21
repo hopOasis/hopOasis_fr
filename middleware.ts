@@ -3,9 +3,19 @@ import { cookies } from 'next/headers';
 import type { NextRequest } from 'next/server';
 import { oaza_guest } from './app/static/constants';
 
+const generateRandomID = () => {
+  const randomBigInt = BigInt.asUintN(
+    64,
+    BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
+      BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)),
+  );
+  const number = Math.round(Number(randomBigInt) * 0.000000000001);
+  return number.toString();
+};
+
 export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('Content-Type', 'application/json');  
+  requestHeaders.set('Content-Type', 'application/json');
 
   const response = NextResponse.next({
     request: {
@@ -17,16 +27,6 @@ export async function middleware(request: NextRequest) {
   const oazaCookie = cookieStore.get(oaza_guest);
 
   if (!oazaCookie) {
-    const generateRandomID = () => {
-      const randomBigInt = BigInt.asUintN(
-        64,
-        BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)) *
-          BigInt(Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)),
-      );
-      const number = Math.round(Number(randomBigInt) * 0.000000000001);
-      return number.toString();
-    };
-
     const cookieValue = generateRandomID();
     response.cookies.set(oaza_guest, cookieValue, {
       httpOnly: true,

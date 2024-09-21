@@ -3,7 +3,7 @@ import NoItems from '../../../NoItems/NoItems';
 import { CardSlider } from '../../../slider/CardSlider';
 import { IPropsSpecialForYou } from '../types';
 
-export default async function SpecialForYouModal({ specialForYou }: IPropsSpecialForYou) {
+export default function SpecialForYouModal({ specialForYou }: IPropsSpecialForYou) {
   return (
     <section className="cart-modal__container cart-modal__section ">
       <p className="cart-modal__title typography__h3">Спеціально для тебе</p>

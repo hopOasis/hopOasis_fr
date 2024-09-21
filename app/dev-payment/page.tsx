@@ -4,6 +4,15 @@ import DeliveryText from "../components/ui/DeliveryText/DeliveryText";
 import Section from "../components/ui/section/section";
 import "./dev-payment.scss";
 
+
+export async function generateMetadata() {
+  return {
+    title: 'Доставка та Оплата - Інтернет-магазин крафтового пива',
+    description:
+      'Дізнайтеся про умови доставки та способи оплати в нашому інтернет-магазині крафтового пива. Оперативна доставка по Україні та зручні варіанти оплати для вашої зручності.',
+  };
+}
+
 export default function Page() {
   return (
     <MainLayout>

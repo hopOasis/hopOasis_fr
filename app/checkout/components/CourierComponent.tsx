@@ -1,20 +1,21 @@
 'use client';
-import { getDepartmentsAndPostalLib, getNewPostSettlementsLib } from '@/app/api/api';
+import { getNewPostSettlementsLib, getSettlementStreets } from '@/app/api/api';
 import Loader from '@/app/components/ui/Loader/Loader';
 import AsyncSelectComponent from '@/app/components/ui/SelectComponent/AsyncSelectComponent';
 import SelectComponent from '@/app/components/ui/SelectComponent/SelectComponent';
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { IPropsDepartmentComponent } from '../types';
-import NewPostCharacters from './NewPostCharacters';
 import { ThrottleType } from './type';
+import { fields } from '@/app/static/form';
+import Field from '@/app/components/ui/Field/Field';
 const defaultOption = [
   {
     label: 'Почніть вводити текст. Викоистовуйте українську літерацію',
     value: null,
   },
 ];
-export const DepartmentComponent = ({
+export const CourierComponent = ({
   isLoading,
   isTrueCurrentLocation,
   location,
@@ -23,6 +24,11 @@ export const DepartmentComponent = ({
   const [loading, setLoading] = useState<boolean>(isLoading);
   const [cityRef, setCityRef] = useState<any | null>(null);
   const [departmentRef, setDepartmentRef] = useState<any | null>(null);
+  const [values, setValues] = useState({
+    building_number: '',
+    appartment_number: '',
+  });
+
 
   useEffect(() => {
     if (!isTrueCurrentLocation) return;
@@ -71,7 +77,7 @@ export const DepartmentComponent = ({
     return options;
   };
 
-  const departmentsAndPostalOptions = async (street: string) => {
+  const settlementStreets = async (street: string) => {
     if (!cityRef) return defaultOption;
 
     const options = await new Promise((resolve) => {
@@ -79,16 +85,16 @@ export const DepartmentComponent = ({
         inputValue: street,
         resolve,
         fetchFn: (val) =>
-          getDepartmentsAndPostalLib({
-            cityRef: cityRef.DeliveryCity,
+          getSettlementStreets({
+            cityRef: cityRef.Ref,
             streetName: val,
           }),
         generateOptionsFn: (streets) =>
           //@ts-ignore
 
-          streets.data.map((data) => ({
-            value: data.Ref,
-            label: data.Description,
+          streets.data[0].Addresses.map((data) => ({
+            value: data.Present,
+            label: data.Present,
             transferData: data,
           })),
       });
@@ -131,14 +137,44 @@ export const DepartmentComponent = ({
       {cityRef && (
         <AsyncSelectComponent
           id="street"
-          placeholder="Адреса або номер відділення"
-          options={departmentsAndPostalOptions}
+          placeholder="Вулиця"
+          options={settlementStreets}
           onChange={(value) => {
             setDepartmentRef(value ? value.transferData : null);
           }}
         />
       )}
-      {departmentRef && cityRef && <NewPostCharacters {...departmentRef} />}
+      {cityRef &&
+        departmentRef &&
+        [fields[5]].map((props) => (
+          <Field
+            key={props.id}
+            {...props}
+            //@ts-ignore
+
+            value={values[props.id]}
+            onChange={({ id, value }) =>
+              //@ts-ignore
+              setValues({ ...values, [id]: value })
+            }
+          />
+        ))}
+      {cityRef &&
+        departmentRef &&
+        values.building_number &&
+        [fields[6]].map((props) => (
+          <Field
+            key={props.id}
+            {...props}
+            //@ts-ignore
+
+            value={values[props.id]}
+            onChange={({ id, value }) =>
+              //@ts-ignore
+              setValues({ ...values, [id]: value })
+            }
+          />
+        ))}
     </div>
   );
 };

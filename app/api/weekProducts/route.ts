@@ -5,9 +5,11 @@ import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
   const res = await fetch(ApiEndpoints.weekProducts, { cache: 'no-store' });
+  console.log('res.status', res.status);
 
-  if (!res.ok) {
-    throw new Error('Error fetching WEEKLY PRODUCTS data');
+  if (!res.ok && res.status === 404) {
+    return NextResponse.json({ content: [] });
+    // throw new Error('Error fetching WEEKLY PRODUCTS data');
   }
 
   const parsedRes: WeekProductsApiResponse = await res.json();

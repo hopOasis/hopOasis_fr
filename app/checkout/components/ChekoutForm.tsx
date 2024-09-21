@@ -5,22 +5,24 @@ import RadioButtons from '@/app/components/ui/RadioButtons/RadioButtons';
 import Icons from '@/app/components/ui/icons/icons';
 import MainLink from '@/app/components/ui/links/links';
 import Popup from '@/app/components/ui/popup/Popup';
-import { beer } from '@/app/static/bear';
 import { deliveryRadio, fields, paymentRadio } from '@/app/static/form';
 import { routes } from '@/app/static/routes';
 import { Palitra } from '@/app/types/types';
 import Image from 'next/image';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { FormStateType, IPropsChekoutForm } from '../types';
 import { DepartmentComponent } from './deliveryRadioComponents';
+import { getLocation } from '@/app/api/api';
+import NoItemsInCart from '@/app/components/ui/NoItemsInCart/NoItemsInCart';
+import { PostalComponent } from './PostalComponent';
+import { CourierComponent } from './CourierComponent';
 
-const initialState = Array(3)
-  .fill(1)
-  .map((el, idx) => ({ ...beer, id: idx, count: 1 }));
 
-export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
+export default function ChekoutForm({ cart }: IPropsChekoutForm) {
   const [isTrueCurrentLocation, setIsTrueCurrentLocation] = useState<boolean | null>(null);
+  const [location, setLocation] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [values, setValues] = useState<FormStateType>({
     firstName: '',
     lastName: '',
@@ -30,6 +32,22 @@ export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
     payment: paymentRadio[0].id,
   });
   const [items, setItems] = useState(cart.content.filter((product) => product.isInCart));
+
+  useEffect(() => {
+    setLoading(true);
+    const getData = async () => {
+      try {
+        const city = await getLocation();
+        setLocation(city);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, []);
 
   const remove = (id: string) => setItems(items.filter(({ id: prevId }) => prevId !== id));
 
@@ -75,13 +93,28 @@ export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
   const components = {
     department: (
       <DepartmentComponent
+        isLoading={loading}
         location={isTrueCurrentLocation ? location : ''}
         isTrueCurrentLocation={isTrueCurrentLocation}
         setIsTrueCurrentLocation={setIsTrueCurrentLocation}
       />
     ),
-    'parcel-station': null,
-    courier: null,
+    'parcel-station': (
+      <PostalComponent
+        isLoading={loading}
+        location={isTrueCurrentLocation ? location : ''}
+        isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
+      />
+    ),
+    courier: (
+      <CourierComponent
+        isLoading={loading}
+        location={isTrueCurrentLocation ? location : ''}
+        isTrueCurrentLocation={isTrueCurrentLocation}
+        setIsTrueCurrentLocation={setIsTrueCurrentLocation}
+      />
+    ),
   };
 
   return (
@@ -143,26 +176,30 @@ export default function ChekoutForm({ location, cart }: IPropsChekoutForm) {
         <div className="form__right-block">
           <p className="typography__h3 right-block--padding">Ваше замовлення</p>
 
-          <ul className="form__cart-list">
-            {items.map((props) => (
-              <li key={props.id} className="form__cart-item --line">
-                <Image src={props.image[0]} width={54} height={93} alt="item" />
-                <h3>{props.name}</h3>
-                <IncrementDecrement
-                  count={props.quantity}
-                  increment={() => increment(props.id)}
-                  decrement={() => decrement(props.id)}
-                />
-                <button type="button" onClick={() => remove(props.id)}>
-                  <Icons name="trash" />
-                </button>
-                <span>{`${props.quantity * props.priceLarge} грн`}</span>
-              </li>
-            ))}
-          </ul>
+          {!items.length ? (
+            <NoItemsInCart />
+          ) : (
+            <ul className="form__cart-list">
+              {items.map((props) => (
+                <li key={props.id} className="form__cart-item --line">
+                  <Image src={props.image[0]} width={54} height={93} alt="item" />
+                  <h3>{props.name}</h3>
+                  <IncrementDecrement
+                    count={props.quantity}
+                    increment={() => increment(props.id)}
+                    decrement={() => decrement(props.id)}
+                  />
+                  <button type="button" onClick={() => remove(props.id)}>
+                    <Icons name="trash" />
+                  </button>
+                  <span>{`${props.quantity * props.priceLarge} грн`}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </form>
-      <Popup city={location} setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(Boolean(answer))} />
+      <Popup city={location} setIsTrueCurrentLocation={(answer) => setIsTrueCurrentLocation(answer)} />
     </>
   );
 }

@@ -3,20 +3,26 @@ import './checkout.scss';
 import CheckoutHeader from './components/CheckoutHeader';
 import ChekoutForm from './components/ChekoutForm';
 import Loader from '../components/ui/Loader/Loader';
-import { generateProducts, localizationCity } from '../utils';
-import { getLocation } from '../api/api';
+import { generateProducts } from '../utils';
 import { fetchCartUtils } from '../utils/serverUtils';
 import { ProxiEndpoints } from '../static/constants';
 import { GeneratedProduct, PreparedProductApiResponse } from '../types/products';
 import { CartProxiResponse } from '../types/cart';
 
-export default async function Page() {
-  const city = await getLocation();
+export async function generateMetadata() {
+  return {
+    title: 'Оформлення замовлення - Інтернет-магазин крафтового пива',
+    description:
+      'Завершіть оформлення замовлення в нашому інтернет-магазині крафтового пива. Простий і зручний процес покупки з доставкою по Україні.',
+  };
+}
 
-  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET' });
-  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET' });
-  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET' });
-  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET' });
+export default async function Page() {
+
+  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' });
+  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET', cache: 'no-store' });
+  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET', cache: 'no-store' });
+  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET', cache: 'no-store' });
   const switchCartProxiApi = fetchCartUtils();
 
   const [beersProducts, cidersProducts, snacksProducts, setsProducts, resCart] = await Promise.all([
@@ -55,7 +61,7 @@ export default async function Page() {
       <CheckoutHeader />
       <main className="checkout container">
         <Suspense fallback={<Loader />}>
-          <ChekoutForm location={localizationCity(city)} cart={cart} />
+          <ChekoutForm  cart={cart} />
         </Suspense>
       </main>
     </>

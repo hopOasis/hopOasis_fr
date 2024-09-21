@@ -1,20 +1,22 @@
 'use client';
-import { getDepartmentsAndPostalLib, getNewPostSettlementsLib } from '@/app/api/api';
-import Loader from '@/app/components/ui/Loader/Loader';
-import AsyncSelectComponent from '@/app/components/ui/SelectComponent/AsyncSelectComponent';
-import SelectComponent from '@/app/components/ui/SelectComponent/SelectComponent';
 import { useEffect, useState } from 'react';
-import { throttle } from 'throttle-debounce';
 import { IPropsDepartmentComponent } from '../types';
-import NewPostCharacters from './NewPostCharacters';
+import { getDepartmentsAndPostalLib, getNewPostSettlementsLib, getPostalLib } from '@/app/api/api';
+import { throttle } from 'throttle-debounce';
 import { ThrottleType } from './type';
+import Loader from '@/app/components/ui/Loader/Loader';
+import SelectComponent from '@/app/components/ui/SelectComponent/SelectComponent';
+import AsyncSelectComponent from '@/app/components/ui/SelectComponent/AsyncSelectComponent';
+import NewPostCharacters from './NewPostCharacters';
+
 const defaultOption = [
   {
     label: 'Почніть вводити текст. Викоистовуйте українську літерацію',
     value: null,
   },
 ];
-export const DepartmentComponent = ({
+
+export const PostalComponent = ({
   isLoading,
   isTrueCurrentLocation,
   location,
@@ -79,7 +81,7 @@ export const DepartmentComponent = ({
         inputValue: street,
         resolve,
         fetchFn: (val) =>
-          getDepartmentsAndPostalLib({
+          getPostalLib({
             cityRef: cityRef.DeliveryCity,
             streetName: val,
           }),
@@ -130,7 +132,7 @@ export const DepartmentComponent = ({
       )}
       {cityRef && (
         <AsyncSelectComponent
-          id="street"
+          id="postal"
           placeholder="Адреса або номер відділення"
           options={departmentsAndPostalOptions}
           onChange={(value) => {

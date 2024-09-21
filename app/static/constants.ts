@@ -2,8 +2,8 @@ export const PROXI_URL = process.env.NEXT_PUBLIC_HOST_URL;
 export const API_URL = process.env.API_URL;
 export const NEW_POST_API_KEY = process.env.NEW_POST_API_KEY;
 export const NEW_POST_URL = process.env.NEW_POST_URL;
-export const GEOLOCATION_API_KEY = process.env.GEOLOCATION_API_KEY;
-export const GEOLOCATION_URL = process.env.GEOLOCATION_URL;
+export const GEOLOCATION_API_KEY = process.env.NEXT_PUBLIC_GEOLOCATION_API_KEY;
+export const GEOLOCATION_URL = process.env.NEXT_PUBLIC_GEOLOCATION_URL;
 
 export const ProxiEndpoints = {
   beers: PROXI_URL + 'beers',
@@ -16,6 +16,9 @@ export const ProxiEndpoints = {
   ratings: PROXI_URL + 'ratings',
   weekProducts: PROXI_URL + 'weekProducts',
   specialForYou: PROXI_URL + 'specialForYou',
+  dbGet: PROXI_URL + 'DB/get',
+  dbPost: PROXI_URL + 'DB/post',
+  dbSaveCookie: PROXI_URL + 'DB/saveCookieToDataBase',
 };
 
 export const ApiEndpoints = {
