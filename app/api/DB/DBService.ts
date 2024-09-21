@@ -33,11 +33,26 @@ export const DBService = {
     try {
       let data = await this.readDB();
       const isInDataBase = data.some((item: any) => item.cookie.value === cookie.value);
-      
-      if (isInDataBase) return;
 
+      if (isInDataBase) return;
       data.push({ cookie, timeStamp: new Date() });
       await fs.writeFile(filePath, JSON.stringify(data));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  },
+
+  removeCookiesAfterExpireFromDataBase: async function (cookie: any) {
+    try {
+      const data = await this.readDB();
+      const cookieData = data.find((item: any) => item.cookie.value === cookie.value);
+      const userDate = new Date(cookieData.timeStamp).getTime();
+      const currentDate = Date.now();
+
+      if (currentDate - userDate <= 60 * 60 * 24 * 30) return;
+
+      const newData = data.filter((item: any) => item.cookie.value !== cookie.value);
+      await fs.writeFile(filePath, JSON.stringify(newData));
     } catch (err) {
       throw new Error(err.message);
     }
