@@ -29,14 +29,14 @@ export const DBService = {
     }
   },
 
-  saveCookieToDataBase: async function (value: any) {
+  saveCookieToDataBase: async function (cookie: any) {
     try {
       let data = await this.readDB();
-      const isInDataBase = data.some((item: any) => item.cookie === value);
-
+      const isInDataBase = data.some((item: any) => item.cookie.value === cookie.value);
+      
       if (isInDataBase) return;
 
-      data.push({ cookie: value, timeStamp: new Date() });
+      data.push({ cookie, timeStamp: new Date() });
       await fs.writeFile(filePath, JSON.stringify(data));
     } catch (err) {
       throw new Error(err.message);
