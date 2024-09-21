@@ -8,8 +8,24 @@ import { revalidateProductPage } from '@/app/actions';
 import { ProxiEndpoints } from '@/app/static/constants';
 import { IHeroSection } from '../types';
 import { separateFilter } from '@/app/utils';
+import VolumeTabs from '@/app/components/containers/VolumeTabs/VolumeTabs';
+import { useState } from 'react';
 
-export default function HeroSection({ id, name, image, priceLarge, isInCart, rating, votes }: IHeroSection) {
+export default function HeroSection({
+  id,
+  name,
+  image,
+  priceLarge,
+  priceSmall,
+  isInCart,
+  rating,
+  votes,
+  itemType,
+  volumeLarge,
+  volumeSmall,
+}: IHeroSection) {
+  const [active, setActive] = useState<number>(1);
+
   const addRating = async (value: number) => {
     await fetch(`${ProxiEndpoints[separateFilter(id)]}/${id}/rating`, {
       method: 'POST',
@@ -23,11 +39,20 @@ export default function HeroSection({ id, name, image, priceLarge, isInCart, rat
       <Image src={image[0]} alt={name} width={628} height={431} />
       <div className="single-page__description-block ">
         <h1 className="title typography__h2">{name}</h1>
-        <p className="title typography__h2 accent">{priceLarge} грн.</p>
+        <p className="title typography__h2 accent">{active === 1 ? priceLarge : priceSmall} грн.</p>
+        <VolumeTabs
+          active={active}
+          itemType={itemType}
+          onClick={(value) => setActive(value)}
+          volumeLarge={volumeLarge}
+          volumeSmall={volumeSmall}
+        />
+
         <div className="single-page__rating-block">
           <Rating rating={rating} onChange={addRating} />
           <span className="typography__h6 t-b-100">{votes}</span>
         </div>
+
         <CardButton
           id={id}
           onClick={() => {

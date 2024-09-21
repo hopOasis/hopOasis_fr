@@ -15,4 +15,17 @@ type DeliveryPaymentProps = Pick<GeneratedProductType, 'description'>;
 export interface IPropsDeliveryPaymentSection extends DeliveryPaymentProps {}
 
 export interface IHeroSection
-  extends Pick<GeneratedProductType, 'id' | 'name' | 'image' | 'priceLarge' | 'isInCart' | 'rating' | 'votes'> {}
+  extends Pick<
+    GeneratedProductType,
+    | 'id'
+    | 'name'
+    | 'image'
+    | 'priceLarge'
+    | 'priceSmall'
+    | 'isInCart'
+    | 'rating'
+    | 'votes'
+    | 'itemType'
+    | 'volumeLarge'
+    | 'volumeSmall'
+  > {}

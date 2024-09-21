@@ -4,15 +4,20 @@ import { CardButton } from '../../buttons/buttons';
 import { revalidate } from '@/app/actions';
 import { ProxiEndpoints } from '@/app/static/constants';
 import { GeneratedProductType } from '@/app/types/products';
+import { useState } from 'react';
+import VolumeTabs from '@/app/components/containers/VolumeTabs/VolumeTabs';
 
 export default function DescriptionBlock({
   id,
   volumeLarge,
+  volumeSmall,
   priceLarge,
   isInCart,
   name,
   itemType,
 }: GeneratedProductType) {
+  const [active, setActive] = useState<number>(1);
+
   const onClick = async () => {
     await fetch(ProxiEndpoints.carts, {
       method: 'POST',
@@ -33,7 +38,13 @@ export default function DescriptionBlock({
         }}
         className="card__name typography__h5"
       >{`${name}`}</Link>
-      <p>{volumeLarge}</p>
+      <VolumeTabs
+        volumeLarge={volumeLarge}
+        volumeSmall={volumeSmall}
+        itemType={itemType}
+        onClick={(value: number) => setActive(value)}
+        active={active}
+      />
       <p className="card__price typography__h3 accent">{`${priceLarge} грн.`}</p>
       <CardButton id={id} isInCart={isInCart} onClick={onClick} />
     </div>
