@@ -18,8 +18,8 @@ export const ProxiEndpoints = {
   specialForYou: PROXI_URL + 'specialForYou',
   dbGet: PROXI_URL + 'DB/get',
   dbPost: PROXI_URL + 'DB/post',
-  dbSaveCookie: PROXI_URL + 'DB/saveCookieToDataBase',
-  dbRemoveCookie: PROXI_URL + 'DB/removeCookiesAfterExpire',
+  dbSaveCookie: PROXI_URL + 'DB/cookie/saveCookieToDataBase',
+  dbRemoveCookie: PROXI_URL + 'DB/cookie/removeCookiesAfterExpire',
 };
 
 export const ApiEndpoints = {

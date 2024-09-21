@@ -12,6 +12,7 @@ export const DBService = {
       throw new Error(err.message);
     }
   },
+
   writeDB: function (data: any) {
     if (!data) return null;
     try {
@@ -53,6 +54,17 @@ export const DBService = {
 
       const newData = data.filter((item: any) => item.cookie.value !== cookie.value);
       await fs.writeFile(filePath, JSON.stringify(newData));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  },
+
+  addVote: async function ({ cookie, productId }: { cookie: any; productId: string }) {
+    try {
+      const data = await this.readDB();
+      const user = data.find((item: any) => item.cookie.value === cookie.value);
+      !user?.votes ? (user.votes = [productId]) : user.votes.push(productId);
+      await fs.writeFile(filePath, JSON.stringify(data));
     } catch (err) {
       throw new Error(err.message);
     }
