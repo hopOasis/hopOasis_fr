@@ -16,6 +16,9 @@ export const ProxiEndpoints = {
   ratings: PROXI_URL + 'ratings',
   weekProducts: PROXI_URL + 'weekProducts',
   specialForYou: PROXI_URL + 'specialForYou',
+  dbGet: PROXI_URL + 'DB/get',
+  dbPost: PROXI_URL + 'DB/post',
+  dbSaveCookie: PROXI_URL + 'DB/saveCookieToDataBase',
 };
 
 export const ApiEndpoints = {

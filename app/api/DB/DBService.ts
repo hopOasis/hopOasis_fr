@@ -1,12 +1,15 @@
-const fs = require('node:fs');
+const path = require('path');
+const fs = require('fs').promises;
+const fileName = 'DataBase.json';
+const filePath = path.join(process.cwd(), 'app', 'api', 'DB', fileName);
 
-export const DB = {
-  readDB: () => {
+export const DBService = {
+  readDB: async function () {
     try {
-      const data = fs.readFileSync('database.json', 'utf8');
-      return JSON.parse(data);
+      const data = await fs.readFile(filePath, 'utf8');
+      return await JSON.parse(data);
     } catch (err) {
-      throw new Error(err.message)
+      throw new Error(err.message);
     }
   },
   writeDB: function (data: any) {
@@ -23,6 +26,20 @@ export const DB = {
       return this.readDB();
     } catch (err) {
       console.error('Failed to write data:', err);
+    }
+  },
+
+  saveCookieToDataBase: async function (value: any) {
+    try {
+      let data = await this.readDB();
+      const isInDataBase = data.some((item: any) => item.cookie === value);
+
+      if (isInDataBase) return;
+
+      data.push({ cookie: value, timeStamp: new Date() });
+      await fs.writeFile(filePath, JSON.stringify(data));
+    } catch (err) {
+      throw new Error(err.message);
     }
   },
 
@@ -48,14 +65,14 @@ export const DB = {
   //   writeDB(existingData, nameDB);
   // },
 
-  removeRecord: function (uniqueIdentifier: string) {
-    const existingData = this.readDB();
-    //@ts-ignore
-    const newData = existingData.filter(({ id }) => id === uniqueIdentifier);
-    try {
-      fs.writeFileSync('database.json', JSON.stringify(newData));
-    } catch (err) {
-      throw new Error(err.message);
-    }
-  },
+  // removeRecord: function (uniqueIdentifier: string) {
+  //   const existingData = this.readDB();
+  //   //@ts-ignore
+  //   const newData = existingData.filter(({ id }) => id === uniqueIdentifier);
+  //   try {
+  //     fs.writeFileSync('database.json', JSON.stringify(newData));
+  //   } catch (err) {
+  //     throw new Error(err.message);
+  //   }
+  // },
 };

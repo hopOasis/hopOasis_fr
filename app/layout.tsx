@@ -5,6 +5,7 @@ import 'normalize.css/normalize.css';
 import 'swiper/scss';
 import StorageUtils from './components/ui/StorageUtils/StorageUtils';
 import AgeGateModal from './components/ui/modals/AgeGateModal/AgeGateModal';
+import ServerUtils from './components/ui/ServerUtils/ServerUtils';
 
 const montserrat = Montserrat({
   weight: ['400', '500', '600'],

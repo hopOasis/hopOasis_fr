@@ -6,7 +6,8 @@ import Hero from './components/containers/hero/hero';
 import Proposals from './components/containers/proposals/proposals';
 import WeakProducts from './components/containers/weeklyProducts/weakProducts';
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <MainLayout>
       <main>
