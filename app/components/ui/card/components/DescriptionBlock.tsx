@@ -4,10 +4,12 @@ import { CardButton } from '../../buttons/buttons';
 import { revalidate } from '@/app/actions';
 import { ProxiEndpoints } from '@/app/static/constants';
 import { GeneratedProductType } from '@/app/types/products';
+import VolumeTabs from './VolumeTabs';
 
 export default function DescriptionBlock({
   id,
   volumeLarge,
+  volumeSmall,
   priceLarge,
   isInCart,
   name,
@@ -33,7 +35,7 @@ export default function DescriptionBlock({
         }}
         className="card__name typography__h5"
       >{`${name}`}</Link>
-      <p>{volumeLarge}</p>
+      <VolumeTabs volumeLarge={volumeLarge} volumeSmall={volumeSmall} itemType={itemType} />
       <p className="card__price typography__h3 accent">{`${priceLarge} грн.`}</p>
       <CardButton id={id} isInCart={isInCart} onClick={onClick} />
     </div>

@@ -36,7 +36,7 @@
 
   &__description-wrapper {
     padding: 16px 27px;
-    button {
+    .card-button {
       display: block;
       margin: 0 auto;
     }
@@ -48,5 +48,24 @@
 
   &__price {
     margin-bottom: 16px;
+  }
+
+  &__volume-tabs {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 12px 0px 8px 0px;
+  }
+  &__volume-tab {
+    border: 1px solid var(--black-100);
+    color: var(--black-100);
+    border-radius: 4px;
+    padding: 4px 8px;
+
+    &.active-tab {
+      border-color: var(--black-500);
+      color: var(--black-500);
+    }
   }
 }
