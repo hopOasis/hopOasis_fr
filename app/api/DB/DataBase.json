@@ -1,1 +1,4 @@
-[{"cookie":{"name":"oaza_guest","value":"13626971","path":"/"},"timeStamp":"2024-09-22T11:30:14.106Z","votes":["BEER-30002","BEER-30001","BEER-30003","BEER-30005"]}]
+[
+  { "cookie": { "name": "oaza_guest", "value": "10248272", "path": "/" }, "timeStamp": "2024-09-22T11:49:15.207Z" },
+  { "cookie": { "name": "oaza_guest", "value": "13626971", "path": "/" }, "timeStamp": "2024-09-22T12:13:35.528Z" }
+]

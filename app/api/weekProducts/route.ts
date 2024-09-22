@@ -4,7 +4,7 @@ import { WeekProductsApiResponse } from '@/app/types/weekProducts';
 import { preparingProducts } from '@/app/utils';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.weekProducts, { cache: 'no-store' });
+  const res = await fetch(ApiEndpoints.weekProducts, { method: 'GET' });
   console.log('res.status', res.status);
 
   if (!res.ok && res.status === 404) {

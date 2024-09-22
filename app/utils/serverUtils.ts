@@ -16,14 +16,12 @@ export const fetchCartUtils = () => {
 
 export const fetchProductsUtils = ({ filter, id = null }: { filter: string; id?: string }) => {
   return !id
-    ? () => fetch(ProxiEndpoints?.[filter] ?? ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' })
-    : () => fetch(`${ProxiEndpoints?.[filter]}/${separateId(id)}`, { method: 'GET', cache: 'no-store' });
+    ? () => fetch(ProxiEndpoints?.[filter] ?? ProxiEndpoints.beers, { method: 'GET' })
+    : () => fetch(`${ProxiEndpoints?.[filter]}/${separateId(id)}`, { method: 'GET' });
 };
 
-
-export const addCurrentUserVotingToDatabase = async({id}:{id:string}) => {
-    const cookieStore = cookies();
-    const oazaCookie = cookieStore.get(oaza_guest);
-    await DBService.addVote({ cookie: oazaCookie, productId: id });
-
-}
+export const addCurrentUserVotingToDatabase = async ({ id }: { id: string }) => {
+  const cookieStore = cookies();
+  const oazaCookie = cookieStore.get(oaza_guest);
+  await DBService.addVote({ cookie: oazaCookie, productId: id });
+};

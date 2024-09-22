@@ -1,8 +1,6 @@
-import { DBService } from '@/app/api/DB/DBService';
-import { ApiEndpoints, oaza_guest, ProxiEndpoints } from '@/app/static/constants';
+import { ApiEndpoints } from '@/app/static/constants';
 import { separateFilter, separateId } from '@/app/utils';
 import { addCurrentUserVotingToDatabase } from '@/app/utils/serverUtils';
-import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
