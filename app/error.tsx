@@ -7,11 +7,14 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <button type="button" onClick={() => reset()}>
-        Try again
-      </button>
-    </div>
+    <main className="error-page">
+      <div className="error-page__container">
+        <h2> :( Something went wrong!</h2>
+        <p>{error.message}</p>
+        <button className='main-link light' type="button" onClick={() => reset()}>
+          Try again
+        </button>
+      </div>
+    </main>
   );
 }
