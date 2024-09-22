@@ -1,5 +1,6 @@
 import { ApiEndpoints } from '@/app/static/constants';
 import { separateFilter, separateId } from '@/app/utils';
+import { addCurrentUserVotingToDatabase } from '@/app/utils/serverUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
 type Params = {
@@ -14,6 +15,8 @@ export async function POST(req: NextRequest, context: { params: Params }) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ...body }),
   });
+
+  await addCurrentUserVotingToDatabase({ id });
 
   if (!res.ok) {
     throw new Error('Failed to fetch RATING data');

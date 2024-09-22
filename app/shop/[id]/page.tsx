@@ -11,6 +11,8 @@ import SpecialForYouSection from './components/SpecialForYouSection';
 import { fetchCartUtils, fetchProductsUtils } from '@/app/utils/serverUtils';
 import { separateFilter } from '@/app/utils';
 import { PreparedProductType } from '@/app/types/products';
+import { oaza_guest, ProxiEndpoints } from '@/app/static/constants';
+import { cookies } from 'next/headers';
 
 export async function generateMetadata({ params: { id } }) {
   const productProxiApi = fetchProductsUtils({ filter: separateFilter(id), id });
@@ -33,15 +35,26 @@ export async function generateMetadata({ params: { id } }) {
 export default async function SingleProductPage({ params: { id } }: IProps) {
   const switchCartProxiApi = fetchCartUtils();
   const productProxiApi = fetchProductsUtils({ filter: separateFilter(id), id });
+  const currentUserVotes = () => fetch(ProxiEndpoints.currentUserVotes, { cache: 'no-store', credentials: 'include' });
 
-  const [resProduct, resCart] = await Promise.all([productProxiApi(), switchCartProxiApi()]);
+  const [resProduct, resCart, resVotes] = await Promise.all([
+    productProxiApi(),
+    switchCartProxiApi(),
+    currentUserVotes(),
+  ]);
 
   const unpreparedProduct = await resProduct.json();
-
   const cart = await resCart.json();
 
+  const cookieStore = cookies();
+  const oazaCookie = cookieStore.get(oaza_guest);
+  const votesData = await resVotes.json();
+  let votes = votesData.data.find((user: any) => user.cookie.value === oazaCookie.value);
+  votes = votes?.votes || [];
+
   const isInCart = cart.items.some(({ itemId }) => itemId === unpreparedProduct.id);
-  const product = { ...unpreparedProduct, isInCart };
+  const isAllreadyVoted = votes.includes(unpreparedProduct.id);
+  const product = { ...unpreparedProduct, isInCart, isAllreadyVoted };
 
   return (
     <MainLayout>

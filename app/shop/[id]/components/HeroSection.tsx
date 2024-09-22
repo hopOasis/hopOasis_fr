@@ -23,6 +23,7 @@ export default function HeroSection({
   itemType,
   volumeLarge,
   volumeSmall,
+  isAllreadyVoted,
 }: IHeroSection) {
   const [active, setActive] = useState<number>(1);
 
@@ -48,10 +49,14 @@ export default function HeroSection({
           volumeSmall={volumeSmall}
         />
 
-        <div className="single-page__rating-block">
-          <Rating rating={rating} onChange={addRating} />
-          <span className="typography__h6 t-b-100">{votes}</span>
-        </div>
+        {!isAllreadyVoted ? (
+          <div className="single-page__rating-block">
+            <Rating rating={rating} onChange={addRating} />
+            <span className="typography__h6 t-b-100">{votes}</span>
+          </div>
+        ) : (
+          <p>Ви вже оцінили цей товар.</p>
+        )}
 
         <CardButton
           id={id}
