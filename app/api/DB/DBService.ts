@@ -31,15 +31,20 @@ export const DBService = {
   },
 
   saveCookieToDataBase: async function (cookie: any) {
+    console.log('------------------cookie from browser', cookie);
+
     try {
       let data = await this.readDB();
+      console.log('------------------data from server', data);
+
       const isInDataBase = data.some((item: any) => item.cookie.value === cookie.value);
 
       if (isInDataBase) return;
-      
+
       data.push({ cookie, timeStamp: new Date() });
       await fs.writeFile(filePath, JSON.stringify(data));
     } catch (err) {
+      console.log('-----------------------------err.message', err.message);
       throw new Error(err.message);
     }
   },
