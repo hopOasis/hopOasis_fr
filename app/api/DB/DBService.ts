@@ -36,6 +36,7 @@ export const DBService = {
       const isInDataBase = data.some((item: any) => item.cookie.value === cookie.value);
 
       if (isInDataBase) return;
+      
       data.push({ cookie, timeStamp: new Date() });
       await fs.writeFile(filePath, JSON.stringify(data));
     } catch (err) {

@@ -1,6 +1,7 @@
 import { DBService } from '@/app/api/DB/DBService';
 import { ApiEndpoints, oaza_guest, ProxiEndpoints } from '@/app/static/constants';
 import { separateFilter, separateId } from '@/app/utils';
+import { addCurrentUserVotingToDatabase } from '@/app/utils/serverUtils';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -17,10 +18,8 @@ export async function POST(req: NextRequest, context: { params: Params }) {
     body: JSON.stringify({ ...body }),
   });
 
-  const cookieStore = cookies();
-  const oazaCookie = cookieStore.get(oaza_guest);
-  await DBService.addVote({ cookie: oazaCookie, productId: id });
-  
+  await addCurrentUserVotingToDatabase({ id });
+
   if (!res.ok) {
     throw new Error('Failed to fetch RATING data');
   }

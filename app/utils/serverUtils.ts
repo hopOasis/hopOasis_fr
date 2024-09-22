@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { oaza_guest, ProxiEndpoints } from '../static/constants';
 import { separateId } from '.';
+import { DBService } from '../api/DB/DBService';
 
 export const fetchCartUtils = () => {
   const cookieStore = cookies();
@@ -18,3 +19,11 @@ export const fetchProductsUtils = ({ filter, id = null }: { filter: string; id?:
     ? () => fetch(ProxiEndpoints?.[filter] ?? ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' })
     : () => fetch(`${ProxiEndpoints?.[filter]}/${separateId(id)}`, { method: 'GET', cache: 'no-store' });
 };
+
+
+export const addCurrentUserVotingToDatabase = async({id}:{id:string}) => {
+    const cookieStore = cookies();
+    const oazaCookie = cookieStore.get(oaza_guest);
+    await DBService.addVote({ cookie: oazaCookie, productId: id });
+
+}
