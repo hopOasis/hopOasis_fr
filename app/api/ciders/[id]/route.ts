@@ -10,7 +10,7 @@ type Params = {
 
 export async function GET(_: NextRequest, context: { params: Params }) {
   const id = context.params.id;
-  const res = await fetch(`${ApiEndpoints.ciders}/${id}`, { cache: 'no-store' });
+  const res = await fetch(`${ApiEndpoints.ciders}/${id}`, { method: 'GET' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch CIDER data');

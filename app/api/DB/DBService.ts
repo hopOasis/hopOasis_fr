@@ -12,6 +12,7 @@ export const DBService = {
       throw new Error(err.message);
     }
   },
+
   writeDB: function (data: any) {
     if (!data) return null;
     try {
@@ -29,14 +30,41 @@ export const DBService = {
     }
   },
 
-  saveCookieToDataBase: async function (value: any) {
+  saveCookieToDataBase: async function (cookie: any) {
     try {
       let data = await this.readDB();
-      const isInDataBase = data.some((item: any) => item.cookie === value);
+      const isInDataBase = data.some((item: any) => item.cookie.value === cookie.value);
 
       if (isInDataBase) return;
+      
+      data.push({ cookie, timeStamp: new Date() });
+      await fs.writeFile(filePath, JSON.stringify(data));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  },
 
-      data.push({ cookie: value, timeStamp: new Date() });
+  removeCookiesAfterExpireFromDataBase: async function (cookie: any) {
+    try {
+      const data = await this.readDB();
+      const cookieData = data.find((item: any) => item.cookie.value === cookie.value);
+      const userDate = new Date(cookieData.timeStamp).getTime();
+      const currentDate = Date.now();
+
+      if (currentDate - userDate <= 60 * 60 * 24 * 30) return;
+
+      const newData = data.filter((item: any) => item.cookie.value !== cookie.value);
+      await fs.writeFile(filePath, JSON.stringify(newData));
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  },
+
+  addVote: async function ({ cookie, productId }: { cookie: any; productId: string }) {
+    try {
+      const data = await this.readDB();
+      const user = data.find((item: any) => item.cookie.value === cookie.value);
+      !user?.votes ? (user.votes = [productId]) : user.votes.push(productId);
       await fs.writeFile(filePath, JSON.stringify(data));
     } catch (err) {
       throw new Error(err.message);

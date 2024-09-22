@@ -4,7 +4,7 @@ import { preparingProducts } from '@/app/utils';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const res = await fetch(ApiEndpoints.sets,  { cache: 'no-store' });
+  const res = await fetch(ApiEndpoints.sets,  { method: 'GET' });
 
   if (!res.ok) {
     throw new Error('Failed to fetch SET data');

@@ -28,4 +28,6 @@ export interface IHeroSection
     | 'itemType'
     | 'volumeLarge'
     | 'volumeSmall'
-  > {}
+  > {
+  isAllreadyVoted: boolean;
+}

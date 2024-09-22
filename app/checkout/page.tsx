@@ -18,11 +18,10 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-
-  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET', cache: 'no-store' });
-  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET', cache: 'no-store' });
-  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET', cache: 'no-store' });
-  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET', cache: 'no-store' });
+  const beersProxiApi = () => fetch(ProxiEndpoints.beers, { method: 'GET' });
+  const cidersProxiApi = () => fetch(ProxiEndpoints.ciders, { method: 'GET' });
+  const snacksProxiApi = () => fetch(ProxiEndpoints.snacks, { method: 'GET' });
+  const setsProxiApi = () => fetch(ProxiEndpoints.sets, { method: 'GET' });
   const switchCartProxiApi = fetchCartUtils();
 
   const [beersProducts, cidersProducts, snacksProducts, setsProducts, resCart] = await Promise.all([
@@ -61,7 +60,7 @@ export default async function Page() {
       <CheckoutHeader />
       <main className="checkout container">
         <Suspense fallback={<Loader />}>
-          <ChekoutForm  cart={cart} />
+          <ChekoutForm cart={cart} />
         </Suspense>
       </main>
     </>
