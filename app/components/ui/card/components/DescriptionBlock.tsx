@@ -6,12 +6,14 @@ import { ProxiEndpoints } from '@/app/static/constants';
 import { GeneratedProductType } from '@/app/types/products';
 import { useState } from 'react';
 import VolumeTabs from '@/app/components/containers/VolumeTabs/VolumeTabs';
+import AnimatedNumberComponent from '../../AnimatedNumberComponent/AnimatedNumberComponent';
 
 export default function DescriptionBlock({
   id,
   volumeLarge,
   volumeSmall,
   priceLarge,
+  priceSmall,
   isInCart,
   name,
   itemType,

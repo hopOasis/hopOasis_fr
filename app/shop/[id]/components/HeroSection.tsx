@@ -10,6 +10,7 @@ import { IHeroSection } from '../types';
 import { separateFilter } from '@/app/utils';
 import VolumeTabs from '@/app/components/containers/VolumeTabs/VolumeTabs';
 import { useState } from 'react';
+import AnimatedNumberComponent from '@/app/components/ui/AnimatedNumberComponent/AnimatedNumberComponent';
 
 export default function HeroSection({
   id,
@@ -40,7 +41,7 @@ export default function HeroSection({
       <Image src={image[0]} alt={name} width={628} height={431} />
       <div className="single-page__description-block ">
         <h1 className="title typography__h2">{name}</h1>
-        <p className="title typography__h2 accent">{active === 1 ? priceLarge : priceSmall} грн.</p>
+        <AnimatedNumberComponent number={active === 1 ? priceLarge : priceSmall} />
         <VolumeTabs
           active={active}
           itemType={itemType}

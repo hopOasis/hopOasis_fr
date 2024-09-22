@@ -1,4 +1,4 @@
-import { IVolumeTabs } from "../../ui/card/types";
+import { IVolumeTabs } from '../../ui/card/types';
 
 export default function VolumeTabs({ volumeLarge, volumeSmall, itemType, active, onClick }: IVolumeTabs) {
   const className = 'card__volume-tab typography__h6';
