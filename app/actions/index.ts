@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 export async function revalidate() {
-  revalidatePath("/", "page");
+  revalidatePath("/", "layout");
 }
 
 export async function revalidateCheckout() {
